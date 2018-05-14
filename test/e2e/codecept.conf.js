@@ -1,0 +1,51 @@
+/* eslint-disable no-magic-numbers */
+const config = require('config');
+
+const waitForTimeout = config.tests.e2e.waitForTimeout;
+const waitForAction = config.tests.e2e.waitForAction;
+const proxyServer = config.tests.e2e.proxyServer;
+const proxyByPass = config.tests.e2e.proxyByPass;
+
+exports.config = {
+  tests: './paths/**/*.js',
+  output: config.tests.e2e.outputDir,
+  helpers: {
+    Puppeteer: {
+      url: config.tests.e2e.url,
+      waitForTimeout,
+      waitForAction,
+      show: true,
+      chrome: {
+        ignoreHTTPSErrors: true,
+        args: [
+          '--no-sandbox',
+          `--proxy-server=${proxyServer}`,
+          `--proxy-bypass-list=${proxyByPass}`
+        ]
+      }
+    },
+    IdamHelper: { require: './helpers/idamHelper.js' }
+  },
+  include: { I: './pages/steps.js' },
+  mocha: {
+    reporterOptions: {
+      'codeceptjs-cli-reporter': {
+        stdout: '-',
+        options: { steps: true }
+      },
+      'mocha-junit-reporter': {
+        stdout: '-',
+        options: { mochaFile: `${config.tests.e2e.outputDir}/result.xml` }
+      },
+      mochawesome: {
+        stdout: `${config.tests.e2e.outputDir}/console.log`,
+        options: {
+          reportDir: config.tests.e2e.outputDir,
+          reportName: 'index',
+          inlineAssets: true
+        }
+      }
+    }
+  },
+  name: 'Frontend Tests'
+};

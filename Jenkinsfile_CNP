@@ -1,0 +1,14 @@
+#!groovy
+
+@Library("Infrastructure")
+
+String product = "div"
+String component = "pfe"
+
+withPipeline("nodejs", product, component) {  
+  after('build') {
+    sh 'yarn setup'
+  }
+  
+  enableSlackNotifications('#div-dev')
+}

@@ -1,0 +1,23 @@
+{% extends "look-and-feel/layouts/start_page.html" %}
+
+{% set title='Apply for Divorce' %}
+
+{% block head -%}
+  <link href="{{ asset_path }}main.css" media="screen" rel="stylesheet" />
+  <script type="text/javascript" src="{{ asset_path }}main.js"></script>
+{% endblock %}
+
+{% block guidance %}
+
+<p class="text">{{ content.useThisService }}</p>
+
+<div class="panel panel-border-wide">
+  <p class="text">
+    {{ content.divorces | safe }}
+  </p>
+</div>
+<p class="text">
+  {{ content.4To6Months | safe }}
+</p>
+
+{% endblock%}

@@ -1,0 +1,58 @@
+environment: production
+
+node:
+  protocol: http
+  hostname: localhost
+  port: 3000
+
+redis:
+
+ssl:
+  hpkp:
+    maxAge: 3600
+    sha256s: AbCdEf123=
+    sha256sBackup: ZyXwVu456=
+
+health:
+  timeout: 5000
+  deadline: 15000
+
+service:
+  name: 'divorce-respondent-frontend'
+
+services:
+  redis:
+    url: redis://127.0.0.1:6379
+    secret: defaultsecret
+    useSSL: false
+  idamAuthentication:
+    health: 'https://localhost:8000/health'
+  idamApp:
+    idamApiUrl:
+    accountsEndpoint:
+    testForename:
+    testSurname:
+    testUserGroup:
+    testLevelOfAccess:
+    health: 'http://localhost:8001/health'
+
+
+
+
+
+paths:
+  health: /health
+
+tests:
+  e2e:
+    waitForTimeout: 10000
+    waitForAction: 10000
+    proxyServer:
+    proxyByPass:
+    outputDir: ../../functional-output
+    idamTestEmail: test@email.com
+    idamTestPassword: password
+    url: http://localhost:3000
+
+features:
+  idam: false
