@@ -1,8 +1,13 @@
-const { Page } = require('@hmcts/one-per-page');
+const { Page, goTo } = require('@hmcts/one-per-page');
+const config = require('config');
 
 class Example extends Page {
   static get path() {
-    return '/';
+    return config.paths.index;
+  }
+
+  next() {
+    return goTo(this.journey.steps.Entry);
   }
 }
 

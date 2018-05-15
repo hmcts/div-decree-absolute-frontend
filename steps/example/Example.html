@@ -1,11 +1,8 @@
-{% extends "look-and-feel/layouts/start_page.html" %}
+{% extends "page.njk" %}
 
-{% set title='Apply for Divorce' %}
-
-{% block head -%}
-  <link href="{{ asset_path }}main.css" media="screen" rel="stylesheet" />
-  <script type="text/javascript" src="{{ asset_path }}main.js"></script>
-{% endblock %}
+{% set title %}
+  {{ content.title }}
+{% endset %}
 
 {% block guidance %}
 
@@ -19,5 +16,7 @@
 <p class="text">
   {{ content.4To6Months | safe }}
 </p>
+
+<a class="button button-start" href="/entry" role="button">Start now</a>
 
 {% endblock%}
