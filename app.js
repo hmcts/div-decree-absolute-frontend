@@ -4,27 +4,23 @@ const path = require('path');
 const { journey } = require('@hmcts/one-per-page');
 const lookAndFeel = require('@hmcts/look-and-feel');
 const logging = require('@hmcts/nodejs-logging');
-const steps = require('./steps');
-const setupHelmet = require('./middleware/helmet');
-const setupPrivacy = require('./middleware/privacy');
-const setupHealthChecks = require('./middleware/healthcheck');
+const steps = require('steps');
+const setupHelmet = require('middleware/helmet');
+const setupPrivacy = require('middleware/privacy');
+const setupHealthChecks = require('middleware/healthcheck');
+const baseUrl = require('helpers/baseUrl');
 
-const logger = logging.Logger.getLogger(__filename);
 const app = express();
 
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
 
-let baseUrl = `${config.get('node.protocol')}://${config.get('node.hostname')}`;
-if (config.environment === 'development') {
-  baseUrl = `${baseUrl}:${config.get('node.port')}`;
-}
-
 lookAndFeel.configure(app, {
   baseUrl,
   express: {
     views: [
+      path.resolve(__dirname, 'mocks', 'steps'),
       path.resolve(__dirname, 'steps'),
       path.resolve(__dirname, 'views')
     ]
@@ -56,5 +52,4 @@ journey(app, {
 
 app.use(logging.Express.accessLogger());
 
-app.listen(config.get('node.port'));
-logger.info(`App running: ${baseUrl}`);
+module.exports = app;

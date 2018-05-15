@@ -9,8 +9,8 @@ tests:
     outputDir: E2E_OUTPUT_DIR
 
 services:
-  idamApp:
-    idamApiUrl: IDAM_API_URL
+  idam:
+    apiUrl: IDAM_API_URL
     accountsEndpoint: IDAM_TEST_SUPPORT_CREATE_ACCOUNT_ENDPOINT
     testForename: IDAM_TEST_FORENAME
     testSurname: IDAM_TEST_SURNAME

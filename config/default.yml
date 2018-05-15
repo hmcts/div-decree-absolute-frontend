@@ -1,7 +1,7 @@
-environment: production
+environment: development
 
 node:
-  protocol: http
+  protocol: https
   hostname: localhost
   port: 3000
 
@@ -27,8 +27,11 @@ services:
     useSSL: false
   idamAuthentication:
     health: 'https://localhost:8000/health'
-  idamApp:
-    idamApiUrl:
+  idam:
+    apiUrl: http://localhost:8001
+    loginUrl: /idam
+    secret: 123456
+    clientId: divorce
     accountsEndpoint:
     testForename:
     testSurname:
@@ -36,12 +39,13 @@ services:
     testLevelOfAccess:
     health: 'http://localhost:8001/health'
 
-
-
-
-
 paths:
   health: /health
+  authenticated: /authenticated
+  index: /
+  protected: /protected
+  end: /end
+  entry: /entry
 
 tests:
   e2e:
