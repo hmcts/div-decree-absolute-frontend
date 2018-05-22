@@ -8,8 +8,10 @@ const logger = require('@hmcts/nodejs-logging')
 const { sinon } = require('@hmcts/one-per-page-test-suite');
 const config = require('config');
 const outputs = require('@hmcts/nodejs-healthcheck/healthcheck/outputs');
+const { OK } = require('http-status-codes');
 
 const app = {};
+let res = {};
 
 describe(modulePath, () => {
   beforeEach(() => {
@@ -17,6 +19,7 @@ describe(modulePath, () => {
     sinon.stub(healthcheck, 'web');
     sinon.stub(logger, 'error');
     sinon.stub(outputs, 'up');
+    res = { status: OK };
   });
 
   afterEach(() => {
@@ -52,7 +55,7 @@ describe(modulePath, () => {
     setupHealthChecks(app);
 
     const idamCallback = healthcheck.web.firstCall.args[1].callback;
-    idamCallback();
+    idamCallback(null, res);
 
     sinon.assert.called(outputs.up);
   });
@@ -61,7 +64,7 @@ describe(modulePath, () => {
     setupHealthChecks(app);
 
     const idamCallback = healthcheck.web.secondCall.args[1].callback;
-    idamCallback();
+    idamCallback(null, res);
 
     sinon.assert.called(outputs.up);
   });

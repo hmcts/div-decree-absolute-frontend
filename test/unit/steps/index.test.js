@@ -10,7 +10,7 @@ const findStepNames = location => {
   const files = [];
   glob.sync(location).forEach(file => {
     const stepName = file.replace(fileNameRegex, '').split('.')[0];
-    files.push(stepName);
+    files.push(stepName.toLowerCase());
   });
   return files;
 };
@@ -21,7 +21,7 @@ describe(modulePath, () => {
 
     const fileNames = findStepNames('steps/**/*.step.js');
     const stepNames = steps.map(step => {
-      return step.name;
+      return step.name.toLowerCase();
     });
     fileNames.forEach(fileName => {
       expect(stepNames.includes(fileName)).to.eql(true);
