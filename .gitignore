@@ -26,3 +26,5 @@ package-lock.json
 .sonar/
 .env
 .nyc_output
+.scannerwork
+dist
