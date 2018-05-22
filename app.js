@@ -1,23 +1,25 @@
 const config = require('config');
 const express = require('express');
 const path = require('path');
-const { journey } = require('@hmcts/one-per-page');
+const onePerPage = require('@hmcts/one-per-page');
 const lookAndFeel = require('@hmcts/look-and-feel');
 const logging = require('@hmcts/nodejs-logging');
-const steps = require('steps');
+const getSteps = require('steps');
 const setupHelmet = require('middleware/helmet');
 const setupPrivacy = require('middleware/privacy');
 const setupHealthChecks = require('middleware/healthcheck');
-const baseUrl = require('helpers/baseUrl');
 
 const app = express();
+
+console.log("REDIS URL", config.get('services.redis.url')); // eslint-disable-line
+console.log("BASE URL", config.get('node.baseUrl')); // eslint-disable-line
 
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
 
 lookAndFeel.configure(app, {
-  baseUrl,
+  baseUrl: config.node.baseUrl,
   express: {
     views: [
       path.resolve(__dirname, 'mocks', 'steps'),
@@ -39,9 +41,9 @@ lookAndFeel.configure(app, {
   }
 });
 
-journey(app, {
-  baseUrl,
-  steps,
+onePerPage.journey(app, {
+  baseUrl: config.node.baseUrl,
+  steps: getSteps(),
   errorPages: {},
   session: {
     redis: { url: config.get('services.redis.url') },

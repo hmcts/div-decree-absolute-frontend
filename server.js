@@ -3,12 +3,11 @@ const app = require('./app');
 const config = require('config');
 const path = require('path');
 const https = require('https');
-const baseUrl = require('helpers/baseUrl');
 const fs = require('fs');
 
 let http = {};
 
-if (config.environment === 'development' || config.environment === 'testing') {
+if (['development', 'testing'].includes(config.environment)) {
   const sslDirectory = path.join(__dirname, 'resources', 'localhost-ssl');
 
   const sslOptions = {
@@ -23,7 +22,7 @@ if (config.environment === 'development' || config.environment === 'testing') {
   http = app.listen(config.get('node.port'));
 }
 
-logger.info(`Application running: ${baseUrl}`);
+logger.info(`Application running: ${config.node.baseUrl}`);
 
 process.on('SIGTERM', () => {
   http.close(() => {
