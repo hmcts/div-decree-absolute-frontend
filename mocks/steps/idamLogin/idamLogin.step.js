@@ -1,9 +1,15 @@
-const { Question, goTo } = require('@hmcts/one-per-page');
+const { Question } = require('@hmcts/one-per-page');
+const { redirectTo } = require('@hmcts/one-per-page/src/flow');
 const { form, text } = require('@hmcts/one-per-page/forms');
 const { answer } = require('@hmcts/one-per-page/checkYourAnswers');
 const Joi = require('joi');
+const config = require('config');
 
-class Idam extends Question {
+class IdamLogin extends Question {
+  static get path() {
+    return config.paths.mock.idamLogin;
+  }
+
   get form() {
     const answers = ['yes', 'no'];
     const validAnswers = Joi.string()
@@ -16,7 +22,7 @@ class Idam extends Question {
   }
 
   next() {
-    return goTo(this.journey.steps.Authenticated);
+    return redirectTo(this.journey.steps.Authenticated);
   }
 
   answers() {
@@ -31,4 +37,4 @@ class Idam extends Question {
   }
 }
 
-module.exports = Idam;
+module.exports = IdamLogin;

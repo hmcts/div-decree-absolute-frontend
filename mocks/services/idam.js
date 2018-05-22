@@ -8,7 +8,7 @@ const userDetails = {
 const divIdamExpressMiddleware = {
   authenticate: idamArgs => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('Idam') && req.session.Idam.success === 'yes';
+      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
       if (mockIdamAuthenticated) {
         req.idam = { userDetails };
         next();
@@ -20,7 +20,7 @@ const divIdamExpressMiddleware = {
 
   landingPage: idamArgs => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('Idam') && req.session.Idam.success === 'yes';
+      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
       if (mockIdamAuthenticated) {
         req.idam = { userDetails };
         next();
@@ -32,7 +32,7 @@ const divIdamExpressMiddleware = {
 
   protect: idamArgs => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('Idam') && req.session.Idam.success === 'yes';
+      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
       if (mockIdamAuthenticated) {
         req.idam = { userDetails };
         next();
@@ -44,9 +44,9 @@ const divIdamExpressMiddleware = {
 
   logout: () => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('Idam') && req.session.Idam.success === 'yes';
+      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
       if (mockIdamAuthenticated) {
-        delete req.idam.Idam;
+        delete req.idam.IdamLogin;
         next();
       } else {
         logger.error('User failed to logout of idam');

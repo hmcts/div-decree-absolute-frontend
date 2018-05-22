@@ -26,8 +26,9 @@ services:
     secret: defaultsecret
     useSSL: false
   idam:
-    apiHealth: http://localhost:8001/health
+    apiHealth: https://localhost:8001/health
     authenticationHealth: https://localhost:8000/health
+    loginUrl: https://localhost:3000/idam-login
 
 paths:
   health: /health
@@ -36,6 +37,8 @@ paths:
   protected: /protected
   end: /end
   entry: /entry
+  mock:
+    idamLogin: /idam-login
 
 tests:
   e2e:

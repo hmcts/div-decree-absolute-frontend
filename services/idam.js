@@ -1,10 +1,8 @@
 const idamExpressMiddleware = require('@hmcts/div-idam-express-middleware');
 const idamExpressMiddlewareMock = require('mocks/services/idam');
 const config = require('config');
-const baseUrl = require('helpers/baseUrl');
 
-const authenticatedUrl = config.paths.authenticated;
-const redirectUri = `${baseUrl}${authenticatedUrl}`;
+const redirectUri = `${config.node.baseUrl}${config.paths.authenticated}`;
 const idamArgs = {
   redirectUri,
   indexUrl: config.paths.index,
@@ -15,9 +13,7 @@ const idamArgs = {
 };
 
 let middleware = idamExpressMiddleware;
-console.log('env', config.environment === 'development');
 if (config.environment === 'development') {
-  console.log('mockware');
   middleware = idamExpressMiddlewareMock;
 }
 
@@ -26,7 +22,6 @@ const methods = {
     return middleware.authenticate(idamArgs, ...args);
   },
   landingPage: (...args) => {
-    console.log('landing');
     return middleware.landingPage(idamArgs, ...args);
   },
   protect: (...args) => {
