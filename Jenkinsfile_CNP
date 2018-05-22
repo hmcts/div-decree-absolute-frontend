@@ -3,12 +3,8 @@
 @Library("Infrastructure")
 
 String product = "div"
-String component = "pfe"
+String component = "bfe"
 
-withPipeline("nodejs", product, component) {  
-  after('build') {
-    sh 'yarn setup'
-  }
-  
-  enableSlackNotifications('#div-dev')
+withPipeline("nodejs", product, component) {
+
 }
