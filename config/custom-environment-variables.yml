@@ -1,4 +1,9 @@
 environment: NODE_ENV
+NODE_ENV: NODE_ENV
+
+node:
+  port: PORT
+  baseUrl: BASE_URL
 
 tests:
   e2e:
@@ -8,11 +13,16 @@ tests:
     proxyByPass: E2E_PROXY_SERVER
     outputDir: E2E_OUTPUT_DIR
 
+ssl:
+  hpkp:
+    maxAge: HPKP_MAX_AGE
+    sha256s: HPKP_SHAS
+
 services:
+  redis:
+    url: REDISCLOUD_URL
+    secret: SESSION_SECRET
+    useSSL: USE_SSL
   idam:
-    apiUrl: IDAM_API_URL
-    accountsEndpoint: IDAM_TEST_SUPPORT_CREATE_ACCOUNT_ENDPOINT
-    testForename: IDAM_TEST_FORENAME
-    testSurname: IDAM_TEST_SURNAME
-    testUserGroup: IDAM_TEST_USER_GROUP
-    testLevelOfAccess: IDAM_TEST_LEVEL_OF_ACCESS
+    apiHealth: IDAM_APP_HEALHCHECK_URL
+    authenticationHealth: IDAM_AUTHENTICATION_HEALHCHECK_URL

@@ -1,9 +1,9 @@
 environment: development
+NODE_ENV: development
 
 node:
-  protocol: https
-  hostname: localhost
   port: 3000
+  baseUrl: https://localhost:3000
 
 redis:
 
@@ -25,19 +25,9 @@ services:
     url: redis://127.0.0.1:6379
     secret: defaultsecret
     useSSL: false
-  idamAuthentication:
-    health: 'https://localhost:8000/health'
   idam:
-    apiUrl: http://localhost:8001
-    loginUrl: /idam
-    secret: 123456
-    clientId: divorce
-    accountsEndpoint:
-    testForename:
-    testSurname:
-    testUserGroup:
-    testLevelOfAccess:
-    health: 'http://localhost:8001/health'
+    apiHealth: http://localhost:8001/health
+    authenticationHealth: https://localhost:8000/health
 
 paths:
   health: /health
@@ -56,7 +46,6 @@ tests:
     outputDir: ../../functional-output
     idamTestEmail: test@email.com
     idamTestPassword: password
-    url: http://localhost:3000
 
 features:
   idam: false
