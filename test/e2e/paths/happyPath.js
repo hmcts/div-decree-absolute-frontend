@@ -1,5 +1,6 @@
-Feature('Happy path', { retries: 1 });
+Feature('Happy path');
 
 Scenario('View example page', I => {
-  I.seeExamplePage('/index');
+  I.amOnLoadedPage('/');
+  I.seeExamplePage();
 });

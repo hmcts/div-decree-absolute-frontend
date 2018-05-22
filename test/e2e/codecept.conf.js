@@ -5,26 +5,28 @@ const waitForTimeout = config.tests.e2e.waitForTimeout;
 const waitForAction = config.tests.e2e.waitForAction;
 const proxyServer = config.tests.e2e.proxyServer;
 const proxyByPass = config.tests.e2e.proxyByPass;
+const chromeArgs = [ '--no-sandbox' ];
+
+if (config.environment !== 'testing') {
+  chromeArgs.push(`--proxy-server=${proxyServer}`);
+  chromeArgs.push(`--proxy-bypass-list=${proxyByPass}`);
+}
 
 exports.config = {
   tests: './paths/**/*.js',
   output: config.tests.e2e.outputDir,
   helpers: {
     Puppeteer: {
-      url: config.tests.e2e.url,
+      url: config.node.baseUrl,
       waitForTimeout,
       waitForAction,
-      show: true,
+      show: false,
       chrome: {
         ignoreHTTPSErrors: true,
-        args: [
-          '--no-sandbox',
-          `--proxy-server=${proxyServer}`,
-          `--proxy-bypass-list=${proxyByPass}`
-        ]
+        args: chromeArgs
       }
     },
-    IdamHelper: { require: './helpers/idamHelper.js' }
+    JSWait: { require: './helpers/JSWait.js' }
   },
   include: { I: './pages/steps.js' },
   mocha: {
