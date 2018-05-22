@@ -3,10 +3,8 @@ const modulePath = 'steps/index';
 const glob = require('glob');
 const allSteps = require(modulePath);
 const { expect } = require('@hmcts/one-per-page-test-suite');
-const config = require('config');
 
 const fileNameRegex = /^.*[\\\/]/g; // eslint-disable-line
-const currentEnvironment = config.environment;
 
 const findStepNames = location => {
   const files = [];
