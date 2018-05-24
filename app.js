@@ -11,9 +11,6 @@ const setupHealthChecks = require('middleware/healthcheck');
 
 const app = express();
 
-console.log("REDIS URL", config.get('services.redis.url')); // eslint-disable-line
-console.log("BASE URL", config.get('node.baseUrl')); // eslint-disable-line
-
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
