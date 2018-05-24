@@ -19,36 +19,38 @@ client.on('error', error => {
   logger.error(error);
 });
 
-const checks = {
-  redis: healthcheck.raw(() => {
-    return client.ping().then(_ => {
-      return healthcheck.status(_ === 'PONG');
-    })
-      .catch(error => {
-        logger.error(`Health check failed on redis: ${error}`);
-      });
-  }),
-  'idam-authentication': healthcheck.web(config.services.idamAuthentication.health, {
-    callback: (error, res) => { // eslint-disable-line id-blacklist
-      if (error) {
-        logger.error(`Health check failed on idam-authentication: ${error}`);
+const checks = () => {
+  return {
+    redis: healthcheck.raw(() => {
+      return client.ping().then(_ => {
+        return healthcheck.status(_ === 'PONG');
+      })
+        .catch(error => {
+          logger.error(`Health check failed on redis: ${error}`);
+        });
+    }),
+    'idam-authentication': healthcheck.web(config.services.idam.authenticationHealth, {
+      callback: (error, res) => { // eslint-disable-line id-blacklist
+        if (error) {
+          logger.error(`Health check failed on idam-authentication: ${error}`);
+        }
+        return !error && res.status === OK ? outputs.up() : outputs.down(error);
       }
-      return !error && res.status === OK ? outputs.up() : outputs.down(error);
-    }
-  }, options),
-  'idam-app': healthcheck.web(config.services.idamApp.health, {
-    callback: (error, res) => { // eslint-disable-line id-blacklist
-      if (error) {
-        logger.error(`Health check failed on idam-app: ${error}`);
+    }, options),
+    'idam-app': healthcheck.web(config.services.idam.apiHealth, {
+      callback: (error, res) => { // eslint-disable-line id-blacklist
+        if (error) {
+          logger.error(`Health check failed on idam-app: ${error}`);
+        }
+        return !error && res.status === OK ? outputs.up() : outputs.down(error);
       }
-      return !error && res.status === OK ? outputs.up() : outputs.down(error);
-    }
-  }, options)
+    }, options)
+  };
 };
 
 const setupHealthChecks = app => {
   app.use(config.paths.health, healthcheck.configure({
-    checks,
+    checks: checks(),
     buildInfo: {
       name: config.service.name,
       host: os.hostname(),

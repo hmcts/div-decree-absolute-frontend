@@ -6,7 +6,8 @@
   },
   "extends": "@hmcts/eslint-config/test",
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2017
   },
   "rules": {
     "object-curly-newline": ["error", {
@@ -23,6 +24,8 @@
     "After": true,
     "Before": true,
     "Feature": true,
-    "Scenario": true
+    "Scenario": true,
+    "actor": true,
+    "codecept_helper": true
   }
 }

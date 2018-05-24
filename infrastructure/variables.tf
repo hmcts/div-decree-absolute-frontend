@@ -5,7 +5,7 @@ variable "reform_team" {
 }
 
 variable "reform_service_name" {
-  default = "pfe"
+  default = "bfe"
 }
 
 variable "product" {
@@ -101,20 +101,6 @@ variable "no_proxy" {
   default = "localhost,127.0.0.0/8,127.0.0.1,127.0.0.1*,local.home,reform.hmcts.net,*.reform.hmcts.net,betaDevBdivorceAppLB.reform.hmcts.net,betaDevBccidamAppLB.reform.hmcts.net,*.internal,*.platform.hmcts.net"
 }
 
-variable "google_analytics_tracking_id" {}
-
-variable "google_analytics_tracking_url" {
-  default = "http://www.google-analytics.com/collect"
-}
-
-variable "rediscloud_url" {
-  type = "string"
-}
-
-variable "use_auth" {
-  default = false
-}
-
 variable "health_endpoint" {
   default = "/health"
 }
@@ -143,48 +129,12 @@ variable "s2s_microservice_name" {
   default = "divorce_frontend"
 }
 
-variable "transformation_service_base_path" {
-  default = "/transformationapi/version/1"
-}
-
-variable "draft_store_api_base_path" {
-  default = "/draftsapi/version/1"
-}
-
-variable "evidence_management_client_api_upload_endpoint" {
-  default = "/emclientapi/version/1/upload"
-}
-
-variable "payment_service_url" {
-  type = "string"
-}
-
-variable "payment_reference_service_id" {
-  default = "DIV1"
-}
-
-variable "fee_register_url" {
-  type = "string"
-}
-
-variable "post_code_url" {
-  default = "https://postcodeinfo.service.justice.gov.uk"
-}
-
 variable "hpkp_max_age" {
   default = "86400"
 }
 
 variable "hpkp_shas" {
   default = "Naw+prhcXSIkbtYJ0t7vAD+Fc92DWL9UZevVfWBvids=,klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=,grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME="
-}
-
-variable "rate_limiter_total" {
-  default = "3600"
-}
-
-variable "rate_limiter_expire" {
-  default = "3600000"
 }
 
 variable "survey_feedback_url" {
@@ -195,178 +145,6 @@ variable "survey_feedback_done_url" {
   default = "http://www.smartsurvey.co.uk/s/8RR1T"
 }
 
-variable "court_eastmidlands_name" {
-  default = "East Midlands Regional Divorce Centre"
-}
-
-variable "court_eastmidlands_city" {
-  default = "Nottingham"
-}
-
-variable "court_eastmidlands_pobox" {
-  default = "PO Box 10447"
-}
-
-variable "court_eastmidlands_postcode" {
-  default = "NG2 9QN"
-}
-
-variable "court_eastmidlands_openinghours" {
-  default = "Monday to Friday, 8.30am to 5pm"
-}
-
-variable "court_eastmidlands_email" {
-  default = "eastmidlandsdivorce@hmcts.gsi.gov.uk"
-}
-
-variable "court_eastmidlands_phonenumber" {
-  default = "0300 303 0642"
-}
-
-variable "court_eastmidlands_siteid" {
-  default = "AA01"
-}
-
-variable "court_eastmidlands_weight" {
-  default = "0.32"
-}
-
-variable "court_westmidlands_name" {
-  default = "West Midlands Regional Divorce Centre"
-}
-
-variable "court_westmidlands_city" {
-  default = "Stoke-on-Trent"
-}
-
-variable "court_westmidlands_pobox" {
-  default = "PO Box 3650"
-}
-
-variable "court_westmidlands_postcode" {
-  default = "ST4 9NH"
-}
-
-variable "court_westmidlands_openinghours" {
-  default = "Monday to Friday, 8.30am to 5pm"
-}
-
-variable "court_westmidlands_email" {
-  default = "westmidlandsdivorce@hmcts.gsi.gov.uk"
-}
-
-variable "court_westmidlands_phonenumber" {
-  default = "0300 303 0642"
-}
-
-variable "court_westmidlands_siteid" {
-  default = "AA02"
-}
-
-variable "court_westmidlands_weight" {
-  default = "0.23"
-}
-
-variable "court_southwest_name" {
-  default = "South West Regional Divorce Centre"
-}
-
-variable "court_southwest_city" {
-  default = "Southampton"
-}
-
-variable "court_southwest_pobox" {
-  default = "PO Box 1792"
-}
-
-variable "court_southwest_postcode" {
-  default = "SO15 9GG"
-}
-
-variable "court_southwest_openinghours" {
-  default = "Monday to Friday, 8.30am to 5pm"
-}
-
-variable "court_southwest_email" {
-  default = "sw-region-divorce@hmcts.gsi.gov.uk"
-}
-
-variable "court_southwest_phonenumber" {
-  default = "0300 303 0642"
-}
-
-variable "court_southwest_siteid" {
-  default = "AA03"
-}
-
-variable "court_southwest_weight" {
-  default = "0.18"
-}
-
-variable "court_northwest_name" {
-  default = "North West Regional Divorce Centre"
-}
-
-variable "court_northwest_addressname" {
-  default = "Liverpool Civil & Family Court"
-}
-
-variable "court_northwest_city" {
-  default = "Liverpool"
-}
-
-variable "court_northwest_street" {
-  default = "35 Vernon Street"
-}
-
-variable "court_northwest_postcode" {
-  default = "L2 2BX"
-}
-
-variable "court_northwest_openinghours" {
-  default = "Monday to Friday, 8.30am to 5pm"
-}
-
-variable "court_northwest_email" {
-  default = "family@liverpool.countycourt.gsi.gov.uk"
-}
-
-variable "court_northwest_phonenumber" {
-  default = "0300 303 0642"
-}
-
-variable "court_northwest_siteid" {
-  default = "AA04"
-}
-
-variable "court_northwest_weight" {
-  default = "0.27"
-}
-
-variable "court_phone_number" {
-  default = "0300 303 0642"
-}
-
-variable "court_opening_hours" {
-  default = "Monday to Friday, 8.30am to 5pm"
-}
-
-variable "court_email" {
-  default = "Divorce_Reform_Pro@Justice.gov.uk"
-}
-
-variable "court_eastmidlands_court_weight" {
-  default = "0.32"
-}
-
-variable "court_westmidlands_court_weight" {
-  default = "0.23"
-}
-
-variable "court_southwest_court_weight" {
-  default = "0.18"
-}
-
-variable "court_northwest_court_weight" {
-  default = "0.27"
+variable "deployment_namespace" {
+  type = "string"
 }

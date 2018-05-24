@@ -1,30 +1,25 @@
 const config = require('config');
 const express = require('express');
 const path = require('path');
-const { journey } = require('@hmcts/one-per-page');
+const onePerPage = require('@hmcts/one-per-page');
 const lookAndFeel = require('@hmcts/look-and-feel');
 const logging = require('@hmcts/nodejs-logging');
-const steps = require('./steps');
-const setupHelmet = require('./middleware/helmet');
-const setupPrivacy = require('./middleware/privacy');
-const setupHealthChecks = require('./middleware/healthcheck');
+const getSteps = require('steps');
+const setupHelmet = require('middleware/helmet');
+const setupPrivacy = require('middleware/privacy');
+const setupHealthChecks = require('middleware/healthcheck');
 
-const logger = logging.Logger.getLogger(__filename);
 const app = express();
 
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
 
-let baseUrl = `${config.get('node.protocol')}://${config.get('node.hostname')}`;
-if (config.environment === 'development') {
-  baseUrl = `${baseUrl}:${config.get('node.port')}`;
-}
-
 lookAndFeel.configure(app, {
-  baseUrl,
+  baseUrl: config.node.baseUrl,
   express: {
     views: [
+      path.resolve(__dirname, 'mocks', 'steps'),
       path.resolve(__dirname, 'steps'),
       path.resolve(__dirname, 'views')
     ]
@@ -43,9 +38,9 @@ lookAndFeel.configure(app, {
   }
 });
 
-journey(app, {
-  baseUrl,
-  steps,
+onePerPage.journey(app, {
+  baseUrl: config.node.baseUrl,
+  steps: getSteps(),
   errorPages: {},
   session: {
     redis: { url: config.get('services.redis.url') },
@@ -56,5 +51,4 @@ journey(app, {
 
 app.use(logging.Express.accessLogger());
 
-app.listen(config.get('node.port'));
-logger.info(`App running: ${baseUrl}`);
+module.exports = app;

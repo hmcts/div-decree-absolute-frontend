@@ -13,6 +13,13 @@ https://help.github.com/articles/fork-a-repo/
 To sync with the latest changes
 https://help.github.com/articles/syncing-a-fork/
 
+## Getting the app running on CNP
+- Change package name description
+- Change product component name ( currently "bfe" ) in following files
+  div-frontend-boilerplate/infrastructure/main.tf
+  div-frontend-boilerplate/infrastructure/variables.tf
+  div-frontend-boilerplate/Jenkinsfile_CNP
+- Permissions added on CNP side to allow it to build
 
 ## Getting started
 

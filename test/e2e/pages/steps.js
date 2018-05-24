@@ -1,32 +1,20 @@
 'use strict';
-const requireDirectory = require('require-directory'),
-  steps = requireDirectory(module);
+const requireDirectory = require('require-directory');
 
-let actions = {};
+const steps = requireDirectory(module);
+const actions = {};
 
-function setActorActions(data) {
-
-  for (var k in data) {
-    if (data.hasOwnProperty(k)) {
-      actions[k] = data[k];
+const getActors = () => {
+  const stepsKeys = Object.keys(steps);
+  for (const step in stepsKeys) {
+    if (stepsKeys[step]) {
+      const sectionKeys = Object.keys(steps[stepsKeys[step]]);
+      sectionKeys.forEach(sectionKey => {
+        actions[sectionKey] = steps[stepsKeys[step]][sectionKey];
+      });
     }
   }
-}
-
-module.exports = function() {
-
-  let stepsKeys = Object.keys(steps);
-
-  for (let step in stepsKeys) {
-
-    let sectionKeys = Object.keys(steps[stepsKeys[step]]);
-
-    for (let section in sectionKeys) {
-
-      setActorActions(steps[stepsKeys[step]][sectionKeys[section]]);
-    }
-
-  }
-
   return actor(actions);
 };
+
+module.exports = getActors();

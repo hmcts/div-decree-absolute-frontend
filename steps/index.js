@@ -1,11 +1,15 @@
 const glob = require('glob');
 
-const steps = [];
+const getSteps = () => {
+  const steps = [];
 
-glob.sync(`${__dirname}/**/*.step.js`).forEach(file => {
-  const step = require(file); // eslint-disable-line global-require
+  glob.sync('steps/**/*.step.js').forEach(file => {
+    const step = require(file); // eslint-disable-line global-require
 
-  steps.push(step);
-});
+    steps.push(step);
+  });
 
-module.exports = steps;
+  return steps;
+};
+
+module.exports = getSteps;
