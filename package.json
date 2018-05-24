@@ -3,7 +3,7 @@
   "description": "Divorce frontend boilerplate",
   "version": "0.0.1",
   "engines": {
-    "node": ">=8.11.2"
+    "node": ">=8.9.4"
   },
   "scripts": {
     "start": "NODE_PATH=. node server.js",
