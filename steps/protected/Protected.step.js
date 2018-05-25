@@ -1,7 +1,7 @@
 const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
 const config = require('config');
-const { protect } = require('services/idam');
+const idam = require('services/idam');
 
 class Protected extends Interstitial {
   static get path() {
@@ -13,7 +13,7 @@ class Protected extends Interstitial {
   }
 
   get middleware() {
-    return [...super.middleware, protect()];
+    return [...super.middleware, idam.protect()];
   }
 }
 

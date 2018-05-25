@@ -1,7 +1,9 @@
-const example = require('steps/example/Example.step');
+const modulePath = 'steps/start/Start.step';
+
+const example = require(modulePath);
 const { content } = require('@hmcts/one-per-page-test-suite');
 
-describe('Start Page', () => {
+describe(modulePath, () => {
   it('renders the page on GET', () => {
     return content(example);
   });

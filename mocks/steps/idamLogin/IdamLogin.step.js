@@ -1,7 +1,6 @@
 const { Question } = require('@hmcts/one-per-page');
 const { redirectTo } = require('@hmcts/one-per-page/src/flow');
 const { form, text } = require('@hmcts/one-per-page/forms');
-const { answer } = require('@hmcts/one-per-page/checkYourAnswers');
 const Joi = require('joi');
 const config = require('config');
 
@@ -23,17 +22,6 @@ class IdamLogin extends Question {
 
   next() {
     return redirectTo(this.journey.steps.Authenticated);
-  }
-
-  answers() {
-    return answer(this, {
-      section: 'idam',
-      answer: this.fields.success.value
-    });
-  }
-
-  values() {
-    return { idam: { success: this.fields.success.value } };
   }
 }
 

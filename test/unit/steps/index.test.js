@@ -35,14 +35,14 @@ describe(modulePath, () => {
 
     const fileNames = findStepNames('mocks/steps/**/*.step.js');
     const stepNames = steps.map(step => {
-      return step.name;
+      return step.name.toLowerCase();
     });
     fileNames.forEach(fileName => {
       expect(stepNames.includes(fileName)).to.eql(true);
     });
   });
 
-  it.skip('doest not include mocks if env is not developement or testing', () => {
+  it('doest not include mocks if env is not developement or testing', () => {
     config.environment = 'another env';
     const steps = allSteps();
 

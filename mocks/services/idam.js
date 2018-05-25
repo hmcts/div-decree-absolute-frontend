@@ -46,7 +46,8 @@ const divIdamExpressMiddleware = {
     return (req, res, next) => {
       const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
       if (mockIdamAuthenticated) {
-        delete req.idam.IdamLogin;
+        delete req.session.IdamLogin;
+        delete req.idam;
         next();
       } else {
         logger.error('User failed to logout of idam');
