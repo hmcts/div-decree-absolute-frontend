@@ -148,3 +148,7 @@ variable "survey_feedback_done_url" {
 variable "deployment_namespace" {
   type = "string"
 }
+
+variable "capacity" {
+  default = "1"
+}

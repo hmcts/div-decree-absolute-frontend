@@ -10,3 +10,5 @@ http_proxy = ""
 idam_authentication_web_url = "https://hmcts-access.service.gov.uk"
 idam_api_url = "https://prod-idamapi.reform.hmcts.net:3511
 service_auth_provider_url = "https://prod-s2s-api.reform.hmcts.net:3511"
+
+capacity = "2"

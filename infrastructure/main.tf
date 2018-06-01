@@ -51,6 +51,7 @@ module "frontend" {
   subscription = "${var.subscription}"
   additional_host_name = "${var.env != "preview" ? var.additional_host_name : "null"}"
   https_only = "true"
+  capacity = "${var.capacity}"
 
   app_settings = {
 
