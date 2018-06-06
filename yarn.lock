@@ -11,6 +11,15 @@
     request-promise-native "^1.0.5"
     uuid "^3.1.0"
 
+"@hmcts/div-idam-express-middleware@https://github.com/hmcts/div-idam-express-middleware.git":
+  version "6.0.0"
+  resolved "https://github.com/hmcts/div-idam-express-middleware.git#3b2466873627729a157b5c831217ff9610ed969d"
+  dependencies:
+    "@hmcts/nodejs-logging" "^2.2.0"
+    request "^2.83.0"
+    request-promise-native "^1.0.5"
+    uuid "^3.1.0"
+
 "@hmcts/div-idam-test-harness@https://github.com/hmcts/div-idam-test-harness.git":
   version "1.0.13"
   resolved "https://github.com/hmcts/div-idam-test-harness.git#a16e94474237c2457e3d587cf7155d2be751e4ae"
@@ -81,9 +90,9 @@
     on-finished "^2.3.0"
     winston "^2.4.1"
 
-"@hmcts/one-per-page-test-suite@https://github.com/hmcts/one-per-page-test-suite.git#05c6900e49b95b2aab47c28658dc0eb329a09c12":
+"@hmcts/one-per-page-test-suite@https://github.com/hmcts/one-per-page-test-suite.git#6b2674740f2c837260749e2788eec2c930d15a11":
   version "0.0.2"
-  resolved "https://github.com/hmcts/one-per-page-test-suite.git#05c6900e49b95b2aab47c28658dc0eb329a09c12"
+  resolved "https://github.com/hmcts/one-per-page-test-suite.git#6b2674740f2c837260749e2788eec2c930d15a11"
   dependencies:
     "@hmcts/eslint-config" "^1.3.0"
     "@hmcts/look-and-feel" "^1.13.3"
@@ -93,16 +102,19 @@
     chai-as-promised "^7.1.1"
     chai-jq "^0.0.9"
     codacy-coverage "^2.0.2"
-    domino "^2.0.0"
+    cookie-parser "^1.4.3"
+    domino "^2.0.2"
     eslint "^4.5.0"
     eslint-plugin-mocha "^5.0.0"
+    express "^4.16.3"
+    express-nunjucks "^2.2.3"
     jquery "^3.2.1"
     mocha "^4.0.1"
     nyc "^11.1.0"
     proxyquire "^1.8.0"
     sinon "^5.0.7"
     sinon-chai "^3.0.0"
-    supertest "^3.0.0"
+    supertest "^3.1.0"
     zepto-node "^1.0.0"
 
 "@hmcts/one-per-page@https://github.com/hmcts/one-per-page#7b3098ec0983996dde3baf914f1ce915f7d4ec4d":
@@ -2271,7 +2283,7 @@ domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
 
-domino@^2.0.0, domino@^2.0.2:
+domino@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/domino/-/domino-2.0.2.tgz#fa2da6ace8381cf64089079470ee33c53901010f"
 
@@ -7411,7 +7423,7 @@ superagent@^3.5.1:
     qs "^6.5.1"
     readable-stream "^2.3.5"
 
-supertest@^3.0.0:
+supertest@^3.0.0, supertest@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/supertest/-/supertest-3.1.0.tgz#f9ebaf488e60f2176021ec580bdd23ad269e7bc6"
   dependencies:
