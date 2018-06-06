@@ -23,6 +23,4 @@ describe(modulePath, () => {
     const sessionData = { success: 'yes' };
     return question.rendersValues(IdamLogin, sessionData);
   });
-
-  it.skip('loads error if no answer');
 });
