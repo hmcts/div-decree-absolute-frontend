@@ -43,9 +43,9 @@ onePerPage.journey(app, {
   steps: getSteps(),
   errorPages: {},
   session: {
-    redis: { url: config.get('services.redis.url') },
-    cookie: { secure: config.get('services.redis.useSSL') === 'true' },
-    secret: config.get('services.redis.secret')
+    redis: { url: config.services.redis.url },
+    cookie: { secure: config.services.redis.useSSL === 'true' },
+    secret: config.services.redis.secret
   }
 });
 

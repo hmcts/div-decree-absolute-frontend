@@ -2,7 +2,7 @@ const healthcheck = require('@hmcts/nodejs-healthcheck');
 const config = require('config');
 const os = require('os');
 const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
-const ioRedis = require('ioredis');
+const redis = require('services/redis');
 const outputs = require('@hmcts/nodejs-healthcheck/healthcheck/outputs');
 const { OK } = require('http-status-codes');
 
@@ -11,18 +11,10 @@ const options = {
   deadline: config.health.deadline
 };
 
-const client = ioRedis.createClient(
-  config.services.redis.url,
-  { enableOfflineQueue: false }
-);
-client.on('error', error => {
-  logger.error(error);
-});
-
 const checks = () => {
   return {
     redis: healthcheck.raw(() => {
-      return client.ping().then(_ => {
+      return redis.ping().then(_ => {
         return healthcheck.status(_ === 'PONG');
       })
         .catch(error => {

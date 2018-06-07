@@ -38,11 +38,8 @@ describe(modulePath, () => {
 
   it('adds hpkp helmet to app middleware', () => {
     const hpkpStub = sinon.stub(helmet, 'hpkp');
-    const maxAge = config.get('ssl.hpkp.maxAge');
-    const sha256s = [
-      config.get('ssl.hpkp.sha256s'),
-      config.get('ssl.hpkp.sha256sBackup')
-    ];
+    const maxAge = config.ssl.hpkp.maxAge;
+    const sha256s = [ config.ssl.hpkp.sha256s, config.ssl.hpkp.sha256sBackup ];
 
     setupHelmet(app);
 

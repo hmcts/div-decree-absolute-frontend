@@ -17,9 +17,9 @@ if (['development', 'testing'].includes(config.environment)) {
 
   const server = https.createServer(sslOptions, app);
 
-  http = server.listen(config.get('node.port'));
+  http = server.listen(config.node.port);
 } else {
-  http = app.listen(config.get('node.port'));
+  http = app.listen(config.node.port);
 }
 
 logger.info(`Application running: ${config.node.baseUrl}`);
