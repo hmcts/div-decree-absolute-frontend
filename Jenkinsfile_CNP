@@ -7,6 +7,6 @@ String component = "bfe"
 
 withPipeline("nodejs", product, component) {
   after('test') {
-    sh 'yarn test-validation'
+    sh 'yarn test:validation'
   }
 }
