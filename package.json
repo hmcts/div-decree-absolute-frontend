@@ -18,6 +18,7 @@
     "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner",
     "test:smoke": "NODE_PATH=. NODE_ENV=testing nyc --reporter=text-summary mocha 'test/unit/**/*.js'",
     "test:functional": "NODE_PATH=. NODE_ENV=testing nyc --reporter=text-summary mocha 'test/unit/**/*.js'",
+    "test:validation": "NODE_PATH=. NODE_ENV=testing mocha test/w3cjs",
     "lint": "eslint ."
   },
   "pre-commit": [
@@ -44,7 +45,7 @@
   },
   "devDependencies": {
     "@hmcts/div-idam-test-harness": "https://github.com/hmcts/div-idam-test-harness.git",
-    "@hmcts/one-per-page-test-suite": "https://github.com/hmcts/one-per-page-test-suite.git#6b2674740f2c837260749e2788eec2c930d15a11",
+    "@hmcts/one-per-page-test-suite": "https://github.com/hmcts/one-per-page-test-suite.git#9b03f463db960950d9c6735ac1dfa54253242ef7",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chai-jq": "^0.0.9",
@@ -65,6 +66,7 @@
     "sinon-chai": "^3.0.0",
     "sonar-scanner": "^3.1.0",
     "supertest": "^3.0.0",
+    "w3cjs": "^0.4.0",
     "zepto-node": "^1.0.0"
   },
   "nyc": {
