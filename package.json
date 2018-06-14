@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@hmcts/div-idam-test-harness": "https://github.com/hmcts/div-idam-test-harness.git",
-    "@hmcts/one-per-page-test-suite": "https://github.com/hmcts/one-per-page-test-suite.git#9b03f463db960950d9c6735ac1dfa54253242ef7",
+    "@hmcts/one-per-page-test-suite": "https://github.com/hmcts/one-per-page-test-suite.git#76a36aade5ce9058dcda35d9816dfb04e58b4bcf",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chai-jq": "^0.0.9",
