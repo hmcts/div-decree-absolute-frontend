@@ -26,11 +26,15 @@ const filterSteps = step => {
   return stepInstance.middleware.includes(resolveTemplate);
 };
 
-// set up step with valid idam creds
-const session = { IdamLogin: { success: 'yes' } };
+const userDetails = {
+  id: 'idamUserId',
+  email: 'user@email.com'
+};
+
 const stepHtml = step => {
   return custom(step)
-    .withSession(session)
+    .withSession()
+    .withCookie('mockIdamUserDetails', JSON.stringify(userDetails))
     .get()
     .expect(httpStatus.OK)
     .text(html => html);

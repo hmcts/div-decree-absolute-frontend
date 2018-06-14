@@ -8,12 +8,16 @@ const getSteps = require('steps');
 const setupHelmet = require('middleware/helmet');
 const setupPrivacy = require('middleware/privacy');
 const setupHealthChecks = require('middleware/healthcheck');
+const idam = require('services/idam');
 
 const app = express();
 
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
+
+// Get user details from idam, sets req.idam.userDetails
+app.use(idam.userDetails());
 
 lookAndFeel.configure(app, {
   baseUrl: config.node.baseUrl,
@@ -45,7 +49,14 @@ onePerPage.journey(app, {
   session: {
     redis: { url: config.services.redis.url },
     cookie: { secure: config.services.redis.useSSL === 'true' },
-    secret: config.services.redis.secret
+    secret: config.services.redis.secret,
+    sessionEncryption: req => {
+      let key = config.services.redis.encryptionAtRestKey;
+      if (req && req.idam && req.idam.userDetails) {
+        key += req.idam.userDetails.id;
+      }
+      return key;
+    }
   }
 });
 

@@ -25,6 +25,7 @@ services:
     url: redis://127.0.0.1:6379
     secret: defaultsecret
     useSSL: false
+    encryptionAtRestKey: encryptionAtRestKey
   idam:
     apiHealth: https://localhost:8001/health
     authenticationHealth: https://localhost:8000/health
