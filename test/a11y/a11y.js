@@ -1,7 +1,8 @@
 const pa11y = require('pa11y');
+const url = require('url');
 
 module.exports = (testPage, method = 'GET') => {
-  const [host] = /(^http.+:\d+\/)/.exec(testPage);
+  const host = url.parse(testPage).host;
   const indexUrl = `${host}index`;
 
   const pa11yRun = pa11y({

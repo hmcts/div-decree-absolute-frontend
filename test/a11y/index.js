@@ -9,7 +9,7 @@ const filterSteps = step => {
   return stepInstance.middleware.includes(resolveTemplate);
 };
 
-// ensure step has a template - if it doesnt no need to test it
+// ensure step has parse function - if it does then test POST requests
 const stepIsPostable = step => {
   const stepInstance = new step({ journey: {} });
   return typeof stepInstance.parse === 'function';
