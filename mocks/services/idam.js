@@ -1,16 +1,15 @@
-const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
+const Cookies = require('cookies');
+const crypto = require('crypto');
 
-const userDetails = {
-  id: 'idamUserId',
-  emai: 'idamUserEmailAddress'
-};
+const randomStringLength = 64;
 
 const divIdamExpressMiddleware = {
   authenticate: idamArgs => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
-      if (mockIdamAuthenticated) {
-        req.idam = { userDetails };
+      const cookies = new Cookies(req, res);
+      const userDetails = cookies.get('mockIdamUserDetails');
+      if (userDetails) {
+        req.idam = { userDetails: JSON.parse(userDetails) };
         next();
       } else {
         res.redirect(idamArgs.idamLoginUrl);
@@ -20,8 +19,19 @@ const divIdamExpressMiddleware = {
 
   landingPage: idamArgs => {
     return (req, res, next) => {
+      const cookies = new Cookies(req, res);
       const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
+      delete req.session.IdamLogin;
+
       if (mockIdamAuthenticated) {
+        const token = crypto.randomBytes(randomStringLength).toString('hex');
+        const userDetails = {
+          id: `idamUserId-${token}`,
+          email: 'user@email.com'
+        };
+
+        cookies.set('mockIdamUserDetails', JSON.stringify(userDetails));
+
         req.idam = { userDetails };
         next();
       } else {
@@ -32,9 +42,10 @@ const divIdamExpressMiddleware = {
 
   protect: idamArgs => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
-      if (mockIdamAuthenticated) {
-        req.idam = { userDetails };
+      const cookies = new Cookies(req, res);
+      const userDetails = cookies.get('mockIdamUserDetails');
+      if (userDetails) {
+        req.idam = { userDetails: JSON.parse(userDetails) };
         next();
       } else {
         res.redirect(idamArgs.indexUrl);
@@ -44,15 +55,24 @@ const divIdamExpressMiddleware = {
 
   logout: () => {
     return (req, res, next) => {
-      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
-      if (mockIdamAuthenticated) {
-        delete req.session.IdamLogin;
-        delete req.idam;
-        next();
-      } else {
-        logger.error('User failed to logout of idam');
-        next();
+      const cookies = new Cookies(req, res);
+      const userDetails = cookies.get('mockIdamUserDetails');
+      if (userDetails) {
+        res.clearCookie('mockIdamUserDetails');
       }
+      delete req.idam;
+      next();
+    };
+  },
+
+  userDetails: () => {
+    return (req, res, next) => {
+      const cookies = new Cookies(req, res);
+      const userDetails = cookies.get('mockIdamUserDetails');
+      if (userDetails) {
+        req.idam = { userDetails: JSON.parse(userDetails) };
+      }
+      next();
     };
   }
 };

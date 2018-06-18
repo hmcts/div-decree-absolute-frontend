@@ -11,25 +11,38 @@ const idamArgs = {
   indexUrl: 'application.index.url'
 };
 
+const userDetails = {
+  id: 'idamUserId',
+  email: 'user@email.com'
+};
+
 describe(modulePath, () => {
   beforeEach(() => {
-    req = { session: {} };
+    req = {
+      session: {},
+      headers: {},
+      connection: { encrypted: false }
+    };
     next = sinon.stub();
-    res = { redirect: sinon.stub() };
+    res = {
+      redirect: sinon.stub(),
+      getHeader: sinon.stub(),
+      setHeader: sinon.stub(),
+      clearCookie: sinon.stub()
+    };
   });
 
   describe('#authenticate', () => {
     it('runs next and adds idam object if authenticated', () => {
-      req.session.IdamLogin = { success: 'yes' };
+      req.headers.cookie = `mockIdamUserDetails=${JSON.stringify(userDetails)};`;
       const middleware = idam.authenticate(idamArgs);
       middleware(req, res, next);
-      sinon.assert.calledOnce(next);
+      expect(next.calledOnce).to.eql(true);
       expect(req.hasOwnProperty('idam')).to.eql(true);
       expect(req.idam.hasOwnProperty('userDetails')).to.eql(true);
     });
 
     it('redirects to idamLoginUrl if not authenticated', () => {
-      req.session.IdamLogin = { success: 'no' };
       const middleware = idam.authenticate(idamArgs);
       middleware(req, res, next);
       sinon.assert.calledWith(res.redirect, idamArgs.idamLoginUrl);
@@ -41,7 +54,7 @@ describe(modulePath, () => {
       req.session.IdamLogin = { success: 'yes' };
       const middleware = idam.landingPage(idamArgs);
       middleware(req, res, next);
-      sinon.assert.calledOnce(next);
+      expect(next.calledOnce).to.eql(true);
       expect(req.hasOwnProperty('idam')).to.eql(true);
       expect(req.idam.hasOwnProperty('userDetails')).to.eql(true);
     });
@@ -56,7 +69,7 @@ describe(modulePath, () => {
 
   describe('#protect', () => {
     it('runs next and adds idam object if authenticated', () => {
-      req.session.IdamLogin = { success: 'yes' };
+      req.headers.cookie = `mockIdamUserDetails=${JSON.stringify(userDetails)};`;
       const middleware = idam.protect(idamArgs);
       middleware(req, res, next);
       sinon.assert.calledOnce(next);
@@ -65,7 +78,6 @@ describe(modulePath, () => {
     });
 
     it('redirects to idamLoginUrl if not authenticated', () => {
-      req.session.IdamLogin = { success: 'no' };
       const middleware = idam.protect(idamArgs);
       middleware(req, res, next);
       sinon.assert.calledWith(res.redirect, idamArgs.indexUrl);
@@ -73,24 +85,22 @@ describe(modulePath, () => {
   });
 
   describe('#logout', () => {
-    it('runs next and removes idam object', () => {
-      req.session.IdamLogin = { success: 'yes' };
-      req.idam = { userDetails: { id: 'idam.user.id' } };
+    it('runs next and removes idam object and removes cookie', () => {
+      req.headers.cookie = `mockIdamUserDetails=${JSON.stringify(userDetails)};`;
+      req.idam = { userDetails };
       const middleware = idam.logout(idamArgs);
       middleware(req, res, next);
-      sinon.assert.calledOnce(next);
+      expect(next.calledOnce).to.eql(true);
       expect(req.hasOwnProperty('idam')).to.eql(false);
-      expect(req.session.hasOwnProperty('IdamLogin')).to.eql(false);
+      expect(res.clearCookie.calledOnce).to.eql(true);
     });
 
-    it('runs next and removes idam object', () => {
-      req.session.IdamLogin = { success: 'no' };
-      req.idam = { userDetails: { id: 'idam.user.id' } };
+    it('runs next and removes idam object if no idam cookie', () => {
+      req.idam = { userDetails };
       const middleware = idam.logout(idamArgs);
       middleware(req, res, next);
-      sinon.assert.calledOnce(next);
-      expect(req.hasOwnProperty('idam')).to.eql(true);
-      expect(req.idam.hasOwnProperty('userDetails')).to.eql(true);
+      expect(next.calledOnce).to.eql(true);
+      expect(req.hasOwnProperty('idam')).to.eql(false);
     });
   });
 });

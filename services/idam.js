@@ -29,6 +29,9 @@ const methods = {
   },
   logout: (...args) => {
     return middleware.logout(idamArgs, ...args);
+  },
+  userDetails: () => {
+    return middleware.userDetails(idamArgs);
   }
 };
 
