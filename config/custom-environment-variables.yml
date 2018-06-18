@@ -26,3 +26,4 @@ services:
   idam:
     apiHealth: IDAM_APP_HEALHCHECK_URL
     authenticationHealth: IDAM_AUTHENTICATION_HEALHCHECK_URL
+    loginUrl: IDAM_LOGIN_URL

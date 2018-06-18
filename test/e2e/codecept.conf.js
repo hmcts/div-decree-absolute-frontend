@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 const config = require('config');
 
 const waitForTimeout = config.tests.e2e.waitForTimeout;

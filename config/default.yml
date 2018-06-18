@@ -29,7 +29,7 @@ services:
   idam:
     apiHealth: https://localhost:8001/health
     authenticationHealth: https://localhost:8000/health
-    loginUrl: https://localhost:3000/idam-login
+    loginUrl: /idam-login
 
 paths:
   health: /health
