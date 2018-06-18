@@ -1,4 +1,4 @@
-const ExamplePage = require('steps/example/Example.step');
+const ExamplePage = require('steps/start/Start.step');
 
 function seeExamplePage() {
   const I = this;
