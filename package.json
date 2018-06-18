@@ -13,7 +13,7 @@
     "test:unit": "NODE_PATH=. NODE_ENV=testing mocha 'test/unit/**/*.js'",
     "test:e2e": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=OFF codeceptjs run -c test/e2e/codecept.conf.js --steps --invert",
     "test:coverage": "nyc check-coverage --statements 80 --branches 80 --functions 80 --lines 80",
-    "test:a11y": "NODE_PATH=. NODE_ENV=testing mocha test/a11y",
+    "test:a11y": "NODE_PATH=. NODE_ENV=testing mocha test/a11y --timeout 15000",
     "test:nsp": "nsp check",
     "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner",
     "test:smoke": "NODE_PATH=. NODE_ENV=testing nyc --reporter=text-summary mocha 'test/unit/**/*.js'",
