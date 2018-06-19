@@ -30,6 +30,11 @@ services:
     apiHealth: https://localhost:8001/health
     authenticationHealth: https://localhost:8000/health
     loginUrl: /idam-login
+  sourceLabs:
+    browser: 'chrome'
+    username: 'username'
+    key: 'privatekey'
+    tunnelId: ''
 
 paths:
   health: /health
@@ -45,11 +50,13 @@ tests:
   e2e:
     waitForTimeout: 10000
     waitForAction: 10000
+    smartWait: 5000
     proxyServer:
     proxyByPass:
     outputDir: ../../functional-output
     idamTestEmail: test@email.com
     idamTestPassword: password
+  url: https://localhost:3000
 
 features:
   idam: false

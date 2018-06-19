@@ -9,12 +9,16 @@ const setupHelmet = require('middleware/helmet');
 const setupPrivacy = require('middleware/privacy');
 const setupHealthChecks = require('middleware/healthcheck');
 const idam = require('services/idam');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
+
+// Parsing cookies
+app.use(cookieParser());
 
 // Get user details from idam, sets req.idam.userDetails
 app.use(idam.userDetails());

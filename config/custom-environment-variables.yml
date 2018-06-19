@@ -1,4 +1,4 @@
-environment: NODE_ENV
+environment: REFORM_ENVIRONMENT
 NODE_ENV: NODE_ENV
 
 node:
@@ -12,6 +12,7 @@ tests:
     proxyServer: E2E_PROXY_BYPASS
     proxyByPass: E2E_PROXY_SERVER
     outputDir: E2E_OUTPUT_DIR
+  url: TEST_URL
 
 ssl:
   hpkp:

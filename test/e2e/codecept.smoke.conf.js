@@ -6,7 +6,7 @@ const proxyServer = config.tests.e2e.proxyServer;
 const proxyByPass = config.tests.e2e.proxyByPass;
 const chromeArgs = [ '--no-sandbox' ];
 
-if (config.environment !== 'testing') {
+if (config.environment !== 'development') {
   chromeArgs.push(`--proxy-server=${proxyServer}`);
   chromeArgs.push(`--proxy-bypass-list=${proxyByPass}`);
 }
@@ -16,7 +16,7 @@ exports.config = {
   output: config.tests.e2e.outputDir,
   helpers: {
     Puppeteer: {
-      url: config.node.baseUrl,
+      url: config.tests.url || config.node.baseUrl,
       waitForTimeout,
       waitForAction,
       show: false,
