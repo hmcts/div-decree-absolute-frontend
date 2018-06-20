@@ -38,6 +38,8 @@ services:
   googleAnalytics:
     id: TBD
     trackingUrl: https://localhost:3000/
+  applicationInsights:
+    instrumentationKey: 'dummy-key'
 
 paths:
   health: /health
