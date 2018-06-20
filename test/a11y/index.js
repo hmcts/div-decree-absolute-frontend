@@ -20,6 +20,7 @@ const session = { IdamLogin: { success: 'yes' } };
 const getAgent = step => {
   return custom(step)
     .withSession(session)
+    .withGlobal('feedbackLink', 'https://github.com/hmcts/one-per-page/issues/new')
     .asServer();
 };
 
