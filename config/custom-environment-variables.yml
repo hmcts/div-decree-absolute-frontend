@@ -28,3 +28,6 @@ services:
     apiHealth: IDAM_APP_HEALHCHECK_URL
     authenticationHealth: IDAM_AUTHENTICATION_HEALHCHECK_URL
     loginUrl: IDAM_LOGIN_URL
+  googleAnalytics:
+    id: GOOGLE_ANALYTICS_ID
+    trackingUrl: GOOGLE_ANALYTICS_TRACKING_URL

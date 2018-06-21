@@ -152,3 +152,9 @@ variable "deployment_namespace" {
 variable "capacity" {
   default = "1"
 }
+
+variable "google_analytics_tracking_id" {}
+
+variable "google_analytics_tracking_url" {
+  default = "http://www.google-analytics.com/collect"
+}

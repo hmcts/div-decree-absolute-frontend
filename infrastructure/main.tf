@@ -101,6 +101,10 @@ module "frontend" {
     // Encryption secrets
     SECRET ="${data.vault_generic_secret.session_secret.data["value"]}"
 
+    // Google Anayltics
+    GOOGLE_ANALYTICS_ID           = "${var.google_analytics_tracking_id}"
+    GOOGLE_ANALYTICS_TRACKING_URL = "${var.google_analytics_tracking_url}"
+
     // HPKP
     HPKP_MAX_AGE = "${var.hpkp_max_age}"
     HPKP_SHAS = "${var.hpkp_shas}"

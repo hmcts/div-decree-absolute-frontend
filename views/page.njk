@@ -3,9 +3,8 @@
 {% from "look-and-feel/components/phase_banner.njk" import phaseBanner %}
 {% from "look-and-feel/components/i18n.njk" import languageSwitch %}
 
-{% block head -%}
-  <link href="{{ asset_path }}main.css" media="screen" rel="stylesheet" />
-  <script type="text/javascript" src="{{ asset_path }}main.js"></script>
+{% block head %}
+  {% include "includes/head.html" %}
 {% endblock %}
 
 {% block breadcrumbs %}
