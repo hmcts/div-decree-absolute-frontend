@@ -10,7 +10,7 @@ appInsights();
 
 let http = {};
 
-if (['development', 'testing'].includes(config.environment)) {
+if (['development'].includes(config.environment)) {
   const sslDirectory = path.join(__dirname, 'resources', 'localhost-ssl');
 
   const sslOptions = {
