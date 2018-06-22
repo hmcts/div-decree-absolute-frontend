@@ -6,7 +6,7 @@ const https = require('https');
 const fs = require('fs');
 const appInsights = require('./services/app-insights');
 
-appInsights.start();
+appInsights();
 
 let http = {};
 
