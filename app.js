@@ -41,7 +41,8 @@ lookAndFeel.configure(app, {
   nunjucks: {
     globals: {
       phase: 'ALPHA',
-      feedbackLink: 'https://github.com/hmcts/one-per-page/issues/new'
+      feedbackLink: 'https://github.com/hmcts/one-per-page/issues/new',
+      googleAnalyticsId: config.services.googleAnalytics.id
     }
   }
 });

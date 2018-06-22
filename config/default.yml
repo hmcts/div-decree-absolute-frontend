@@ -35,6 +35,9 @@ services:
     username: 'username'
     key: 'privatekey'
     tunnelId: ''
+  googleAnalytics:
+    id: TBD
+    trackingUrl: https://localhost:3000/
 
 paths:
   health: /health
