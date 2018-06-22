@@ -4,6 +4,9 @@ const config = require('config');
 const path = require('path');
 const https = require('https');
 const fs = require('fs');
+const appInsights = require('./services/app-insights');
+
+appInsights();
 
 let http = {};
 

@@ -31,3 +31,5 @@ services:
   googleAnalytics:
     id: GOOGLE_ANALYTICS_ID
     trackingUrl: GOOGLE_ANALYTICS_TRACKING_URL
+  applicationInsights:
+    instrumentationKey: APPINSIGHTS_INSTRUMENTATIONKEY
