@@ -33,3 +33,7 @@ services:
     trackingUrl: GOOGLE_ANALYTICS_TRACKING_URL
   applicationInsights:
     instrumentationKey: APPINSIGHTS_INSTRUMENTATIONKEY
+  rateLimiter:
+    total: RATE_LIMITER_TOTAL
+    expire: RATE_LIMITER_EXPIRE
+    enabled: RATE_LIMITER_ENABLED

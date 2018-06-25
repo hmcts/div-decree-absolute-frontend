@@ -13,3 +13,5 @@ service_auth_provider_url = "https://preprod-s2s-api.reform.hmcts.net:3511"
 google_analytics_tracking_id = "TBD"
 
 capacity = "2"
+
+rate_limiter_enabled = false
