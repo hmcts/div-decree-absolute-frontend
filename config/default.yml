@@ -40,6 +40,10 @@ services:
     trackingUrl: https://localhost:3000/
   applicationInsights:
     instrumentationKey: 'dummy-key'
+  rateLimiter:
+    total: 3600 # 1 req/s on average per hour
+    expire: 3600000
+    enabled: false
 
 paths:
   health: /health

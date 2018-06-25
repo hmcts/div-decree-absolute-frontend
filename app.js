@@ -10,12 +10,14 @@ const setupPrivacy = require('middleware/privacy');
 const setupHealthChecks = require('middleware/healthcheck');
 const idam = require('services/idam');
 const cookieParser = require('cookie-parser');
+const setupRateLimiter = require('services/rateLimiter');
 
 const app = express();
 
 setupHelmet(app);
 setupPrivacy(app);
 setupHealthChecks(app);
+setupRateLimiter(app);
 
 // Parsing cookies
 app.use(cookieParser());

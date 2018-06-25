@@ -108,5 +108,10 @@ module "frontend" {
     // HPKP
     HPKP_MAX_AGE = "${var.hpkp_max_age}"
     HPKP_SHAS = "${var.hpkp_shas}"
+
+    // Rate Limiter
+    RATE_LIMITER_TOTAL  = "${var.rate_limiter_total}"
+    RATE_LIMITER_EXPIRE = "${var.rate_limiter_expire}"
+    RATE_LIMITER_ENABLED = "${var.rate_limiter_enabled}"
   }
 }

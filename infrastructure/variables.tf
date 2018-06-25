@@ -158,3 +158,15 @@ variable "google_analytics_tracking_id" {}
 variable "google_analytics_tracking_url" {
   default = "http://www.google-analytics.com/collect"
 }
+
+variable "rate_limiter_total" {
+  default = "3600"
+}
+
+variable "rate_limiter_expire" {
+  default = "3600000"
+}
+
+variable "rate_limiter_enabled" {
+  default = false
+}
