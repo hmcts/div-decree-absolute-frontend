@@ -30,11 +30,12 @@ services:
     apiHealth: https://localhost:8001/health
     authenticationHealth: https://localhost:8000/health
     loginUrl: /idam-login
-  sourceLabs:
+  saucelabs:
     browser: 'chrome'
     username: 'username'
     key: 'privatekey'
     tunnelId: ''
+    waitForTimeout: 30000
   googleAnalytics:
     id: TBD
     trackingUrl: https://localhost:3000/
