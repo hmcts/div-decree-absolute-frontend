@@ -20,6 +20,15 @@ const filteredWarnings = r => {
   return true;
 };
 
+/* eslint-disable */
+const excludedErrors = [
+    'Element “h1” not allowed as child of element “legend” in this context. (Suppressing further errors from this subtree.)'
+];
+const filteredErrors = r => {
+  return !excludedErrors.includes(r.message);
+};
+/* eslint-enable */
+
 // ensure step has a template - if it doesnt no need to test it
 const filterSteps = step => {
   const stepInstance = new step({ journey: {} });
@@ -50,7 +59,8 @@ const w3cjsValidate = html => {
         }
 
         const errors = res.messages
-          .filter(r => r.type === 'error');
+          .filter(r => r.type === 'error')
+          .filter(filteredErrors);
         const warnings = res.messages
           .filter(r => r.type === 'info')
           .filter(filteredWarnings);
