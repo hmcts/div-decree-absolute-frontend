@@ -5,11 +5,13 @@ variable "reform_team" {
 }
 
 variable "reform_service_name" {
-  default = "dafe"
+  default = "da"
 }
 
-variable "product" {
-  type = "string"
+variable "product" {}
+
+variable "raw_product" {
+  default = "div"
 }
 
 variable "location" {
@@ -109,6 +111,14 @@ variable "idam_authentication_web_url" {
   type = "string"
 }
 
+variable "petitioner_frontend_url" {
+  type = "string"
+}
+
+variable "respondent_frontend_url" {
+  type = "string"
+}
+
 variable "idam_authentication_login_endpoint" {
   default = "/login"
 }
@@ -117,12 +127,8 @@ variable "idam_api_url" {
   type = "string"
 }
 
-variable "service_auth_provider_url" {
-  type = "string"
-}
-
 variable "frontend_service_name" {
-  default = "divorce-respondent-frontend"
+  default = "divorce-decree-nisi-frontend"
 }
 
 variable "s2s_microservice_name" {
@@ -145,8 +151,8 @@ variable "survey_feedback_done_url" {
   default = "http://www.smartsurvey.co.uk/s/8RR1T"
 }
 
-variable "deployment_namespace" {
-  type = "string"
+variable "component" {
+   type = "string"
 }
 
 variable "capacity" {
@@ -173,4 +179,30 @@ variable "rate_limiter_enabled" {
 
 variable "common_tags" {
   type = "map"
+}
+
+variable "evidence_management_client_api_upload_endpoint" {
+  default = "/emclientapi/version/1/upload"
+}
+
+variable "evidence_management_download_endpoint" {
+  default = "/documents"
+}
+
+variable "case_orchestration_service_draft_endpoint" {
+  default = "/draftsapi/version/1"
+}
+
+variable "feature_idam" {
+  default = true
+}
+
+variable "ccd_digital_courts" {
+  type = "string"
+  default = "[\"serviceCentre\"]"
+}
+
+variable "appinsights_instrumentation_key" {
+  description = "Instrumentation key of the App Insights instance this webapp should use. Module will create own App Insights resource if this is not provided"
+  default     = ""
 }
