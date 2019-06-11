@@ -38,6 +38,7 @@
     "express": "^4.17.1",
     "express-limiter": "^1.6.1",
     "glob": "^7.1.4",
+    "hard-source-webpack-plugin": "^0.13.1",
     "helmet": "^3.18.0",
     "i18next": "^11.10.2",
     "ioredis": "^3.2.2",
