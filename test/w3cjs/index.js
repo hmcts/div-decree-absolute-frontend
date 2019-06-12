@@ -22,7 +22,7 @@ const filteredWarnings = r => {
 
 /* eslint-disable */
 const excludedErrors = [
-    'Element “h1” not allowed as child of element “legend” in this context. (Suppressing further errors from this subtree.)'
+    'Element “h2” not allowed as child of element “legend” in this context. (Suppressing further errors from this subtree.)'
 ];
 const filteredErrors = r => {
   return !excludedErrors.includes(r.message);
