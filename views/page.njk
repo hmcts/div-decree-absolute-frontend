@@ -2,20 +2,53 @@
 {% from "look-and-feel/components/header.njk" import header %}
 {% from "look-and-feel/components/phase_banner.njk" import phaseBanner %}
 {% from "look-and-feel/components/i18n.njk" import languageSwitch %}
+{% from "look-and-feel/components/nav.njk" import propositionalNavigation %}
+
+{% block breadcrumbs %}
+  {{ phaseBanner(phase, feedbackLink) }}
+  {% block back %}
+    <a class="link-back" href="#" onclick="history.go(-1); return false;">{{ content.backLink }}</a>
+  {% endblock %}
+  {{ languageSwitch(currentLang, availableLangs) }}
+{% endblock %}
+
+{% set titleSize = titleSize | default('xlarge') %}
 
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
 
-{% block breadcrumbs %}
-{{ phaseBanner(phase, feedbackLink) }}
-{{ languageSwitch(currentLang, availableLangs) }}
+{% block body_start %}
+  <noscript>
+    <img src="/noJS.png" alt="1px" width="1" height="1" style="display: none;" />
+  </noscript>
+{% endblock %}
+
+{% block footer_support_links %}
+  <ul>
+    <li><a href="/cookie">Cookies</a></li>
+    <li><a href="/terms-and-conditions">Terms and conditions</a></li>
+    <li><a href="/privacy-policy">Privacy Policy</a></li>
+  </ul>
+{% endblock %}
+
+{% block proposition_header %}
+  {% include "includes/propositional_navigation.html" %}
 {% endblock %}
 
 {% block two_thirds -%}
+  {% block title %}
+    {{ header(title, size=titleSize) }}
+  {% endblock %}
+  {% block main_content %}
+  {% endblock %}
+  <div>
+  {% block problems_with_this_page -%}
+    {% include "includes/problem_with_this_page.html" %}
+  {%- endblock %}
+  </div>
+{%- endblock %}
 
-{{ header(title, size='xlarge') }}
-{% block guidance %}
-{% endblock %}
-
+{% block one_third -%}
+  {% block side_content %}{% endblock %}
 {%- endblock %}

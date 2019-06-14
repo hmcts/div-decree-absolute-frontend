@@ -42,7 +42,7 @@ describe(modulePath, () => {
     });
   });
 
-  it('doest not include mocks if env is not developement', () => {
+  it('doest not include mocks if env is not development', () => {
     config.environment = 'another env';
     const steps = allSteps();
 
