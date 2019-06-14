@@ -2,3 +2,111 @@
 @import 'look-and-feel/check-your-answers';
 @import 'look-and-feel/add-another';
 @import 'look-and-feel/language-switch';
+@import 'look-and-feel/progress-list';
+@import 'look-and-feel/text-reference';
+@import 'look-and-feel/document-list';
+
+.govuk-related-items {
+  margin-top: 30px;
+  border-top: 10px solid #005ea5;
+  padding-top: 5px;
+}
+
+.govuk-related-items .heading-medium {
+  margin-top: 0.3em;
+  margin-bottom: 0.5em;
+}
+
+.govuk-related-items li {
+  margin-bottom: 10px;
+  list-style-type: none;
+}
+
+#global-header .header-wrapper .header-proposition {
+  clear: none;
+  width: 67%;
+  float: left;
+}
+
+#global-header .header-wrapper .header-proposition .content {
+  margin: 0 18px;
+}
+
+#global-header .header-wrapper .header-global {
+  float: left;
+  width: 33%;
+}
+
+#global-header .header-wrapper .header-global .header-logo {
+  width: 100%;
+}
+
+#global-header .header-logo #logo {
+position: relative;
+  top: -1px;
+  background-size: 35px 31px;
+}
+
+#account-details {
+  float: right;
+  display: inline;
+}
+
+#account-details #name a {
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+#account-details #name a:hover {
+  text-decoration: underline;
+}
+
+#account-details span {
+  padding-right: 22px;
+}
+
+.form-group .multiple-choice [type=checkbox] + label::before {
+    background-color: #fff;
+}
+
+.confirmation-block .form-group  {
+  background: #dee0e2;
+  padding: 25px;
+  width: 100%;
+}
+
+@media (min-width: 641px) {
+h1.heading-large {
+    margin-top: 0.4em;
+  }
+}
+
+.report-error {
+  display: inline-block;
+  clear: both;
+  margin: 2em 0 1.5em 0;
+
+}
+
+textarea.form-control {
+  width: 100%;
+}
+
+.padded-container {
+  margin: 15px 0 15px 0;
+}
+
+.default-margin .form-section {
+  margin-bottom: 30px;
+}
+
+.heading-subsection {
+  h2.heading-medium {
+    margin-top: 20px;
+  }
+}
+
+.notice-padding {
+  padding-bottom: 25px;
+}

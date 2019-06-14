@@ -5,11 +5,11 @@ const config = require('config');
 
 class Entry extends EntryPoint {
   static get path() {
-    return config.paths.entry;
+    return config.paths.index;
   }
 
   next() {
-    return redirectTo(this.journey.steps.Protected);
+    return redirectTo(this.journey.steps.ProgressBar);
   }
 
   get middleware() {

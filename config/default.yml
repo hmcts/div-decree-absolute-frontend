@@ -18,7 +18,7 @@ health:
   deadline: 15000
 
 service:
-  name: 'divorce-respondent-frontend'
+  name: 'divorce-decree-absolute-frontend'
 
 services:
   redis:
@@ -51,8 +51,12 @@ paths:
   authenticated: /authenticated
   index: /
   protected: /protected
+  progressBar: /progress-bar
   end: /end
   entry: /entry
+  termsAndConditions: /terms-and-conditions
+  cookiesPolicy: /cookie
+  privacyPolicy: /privacy-policy
   mock:
     idamLogin: /idam-login
 
