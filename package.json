@@ -3,28 +3,29 @@
   "description": "Divorce Decree Absolute Frontend",
   "version": "0.0.1",
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=8.9.4 <9.0.0"
   },
   "scripts": {
     "start": "NODE_PATH=. node server.js",
     "setup": "NODE_PATH=.",
     "dev": "NODE_PATH=. node-dev server.js",
-    "test": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=OFF nyc mocha 'test/unit/**/*.test.js'",
-    "test:unit": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=OFF mocha 'test/unit/**/*.js'",
-    "test:e2e": "NODE_PATH=. LOG_LEVEL=OFF codeceptjs run -c test/e2e/codecept.conf.js --steps --invert",
-    "test:smoke": "NODE_PATH=. LOG_LEVEL=OFF codeceptjs run -c test/e2e/codecept.smoke.conf.js --steps --invert",
-    "test:overnight": "NODE_PATH=. LOG_LEVEL=OFF codeceptjs run-multiple saucelabs -c test/e2e/codecept.overnight.conf.js --steps",
-    "test:coverage": "nyc check-coverage --statements 80 --branches 80 --functions 80 --lines 80",
-    "test:a11y": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=OFF mocha test/a11y --timeout 15000",
-    "test:nsp": "nsp check",
+    "mocks": "NODE_PATH=. node-dev mocks/index.js",
+    "test": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR nyc mocha --exit 'test/unit/**/*.test.js' --timeout 15000",
+    "test:all": "yarn lint; yarn test:unit; yarn test:a11y; yarn test:validation",
+    "test:unit": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit 'test/unit/**/*.js' --timeout 15000",
+    "test:coverage": "nyc check-coverage --statements 10 --branches 10 --functions 10 --lines 10",
+    "test:a11y": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit test/a11y --timeout 15000",
+    "test:nsp": "npm audit --audit-level high",
     "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner",
-    "test:functional": "NODE_PATH=. LOG_LEVEL=OFF codeceptjs run -c test/e2e/codecept.conf.js --steps --invert",
-    "test:validation": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=OFF mocha test/w3cjs",
+    "test:functional": "NODE_PATH=. LOG_LEVEL=DEBUG codeceptjs run -c test/e2e/codecept.conf.js --steps --grep '@Pipeline' --reporter mochawesome",
+    "test:validation": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit test/w3cjs --timeout 15000",
+    "test:crossbrowser": "./bin/run-crossbrowser-tests.sh",
+    "test-crossbrowser-e2e": "NODE_PATH=. NODE_ENV=ci LOG_LEVEL=DEBUG node_modules/.bin/codeceptjs run-multiple  ${BROWSER_GROUP:-'--all'} -c test/e2e/saucelabs.conf.js --steps --grep '@Pipeline' --reporter mochawesome",
     "lint": "eslint ."
   },
   "pre-commit": [
     "lint"
-   ],
+  ],
   "dependencies": {
     "@hmcts/div-document-express-handler": "^1.1.0",
     "@hmcts/div-idam-express-middleware": "^6.4.0",
@@ -92,5 +93,17 @@
     "tunnel-agent": "^0.6.0",
     "ua-parser-js": "^0.7.19",
     "underscore.string": "^3.3.5"
+  },
+  "nyc": {
+    "report-dir": "coverage",
+    "temp-directory": "./coverage/.nyc_output",
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "exclude": [
+      "test/**/*",
+      "mocks/**/*"
+    ]
   }
 }

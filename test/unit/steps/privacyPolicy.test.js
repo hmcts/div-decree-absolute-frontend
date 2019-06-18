@@ -10,7 +10,7 @@ describe(modulePath, () => {
 
   describe('values', () => {
     it('displays correct details', () => {
-      const ignoreContent = ['continue', 'serviceName', 'backLink'];
+      const ignoreContent = ['continue', 'serviceName', 'backLink', 'signOut'];
 
       return content(PrivacyPolicy, {}, { ignoreContent });
     });

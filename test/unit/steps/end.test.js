@@ -19,7 +19,7 @@ describe(modulePath, () => {
 
   describe('values', () => {
     it('displays Correct details', () => {
-      const ignoreContent = ['continue', 'serviceName', 'backLink'];
+      const ignoreContent = ['continue', 'serviceName', 'backLink', 'signOut'];
 
       return content(End, {}, { ignoreContent });
     });
