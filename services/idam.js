@@ -1,10 +1,8 @@
 const idamExpressMiddleware = require('@hmcts/div-idam-express-middleware');
 const idamExpressMiddlewareMock = require('mocks/services/idam');
-const config = require('config');
+const config = require('@hmcts/properties-volume').addTo(require('config'));
 
-const redirectUri = `${config.node.baseUrl}${config.paths.authenticated}`;
 const idamArgs = {
-  redirectUri,
   indexUrl: config.paths.index,
   idamApiUrl: config.services.idam.apiUrl,
   idamLoginUrl: config.services.idam.loginUrl,
@@ -13,13 +11,25 @@ const idamArgs = {
 };
 
 let middleware = idamExpressMiddleware;
-if (['testing', 'development'].includes(config.environment)) {
+if (['development'].includes(config.environment)) {
   middleware = idamExpressMiddlewareMock;
 }
 
+const setArgsFromRequest = req => {
+  // clone args so we don't modify the global idamArgs
+  const args = Object.assign({}, idamArgs);
+  args.hostName = req.hostname;
+  args.redirectUri = `https://${req.get('host') + config.paths.authenticated}`;
+  return args;
+};
+
 const methods = {
-  authenticate: (...args) => {
-    return middleware.authenticate(idamArgs, ...args);
+  getIdamArgs: () => {
+    return idamArgs;
+  },
+  authenticate: (req, res, next) => {
+    const args = setArgsFromRequest(req);
+    middleware.authenticate(args)(req, res, next);
   },
   landingPage: (...args) => {
     return middleware.landingPage(idamArgs, ...args);

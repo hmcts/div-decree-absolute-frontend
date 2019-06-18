@@ -6,7 +6,9 @@ const { question, content } = require('@hmcts/one-per-page-test-suite');
 
 describe(modulePath, () => {
   it('renders the page on GET', () => {
-    return content(IdamLogin);
+    const ignoreContent = ['signOut'];
+
+    return content(IdamLogin, {}, { ignoreContent });
   });
 
   it('redirects to Authenticated if answer is no', () => {
