@@ -45,6 +45,22 @@ services:
     total: 3600 # 1 req/s on average per hour
     expire: 3600000
     enabled: false
+  caseOrchestration:
+    baseUrl: http://localhost:3001/case-orchestration
+    health: http://localhost:3001/health
+  dnFrontend:
+    url: https://localhost:4000
+    landing: /authenticated
+  caseMaintenance:
+    baseUrl: http://localhost:3001/case-maintenance
+  feesAndPayments:
+    baseUrl: http://localhost:3001
+    health: http://localhost:3001/health
+  proxyUrl: ''
+  evidenceManagement:
+    baseUrl: http://localhost:3001/evidence-management
+    health: http://localhost:3001/health
+    downloadEndpoint: /emclientapi/version/1/download
 
 paths:
   health: /health
@@ -52,7 +68,7 @@ paths:
   index: /
   protected: /protected
   progressBar: /progress-bar
-  end: /end
+  exit: /exit
   entry: /entry
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
@@ -62,15 +78,22 @@ paths:
 
 tests:
   e2e:
+    show: false
     waitForTimeout: 10000
-    waitForAction: 10000
+    waitForAction: 1000
     smartWait: 5000
-    proxyServer:
-    proxyByPass:
-    outputDir: ../../functional-output
-    idamTestEmail: test@email.com
-    idamTestPassword: password
-  url: https://localhost:3000
+    outputDir: './functional-output'
+    proxy: ''
+    proxyByPass: ''
+    addWaitForCrossBrowser: false
+    idam:
+      idamTestUsername:
+      idamTestPassword:
+      idamTestForename:
+      idamTestSurname:
+      idamTestUserGroup:
+      idamTestLevelOfAccess:
+      idamTestSupportCreateAccountEndpoint:
 
 features:
   idam: false

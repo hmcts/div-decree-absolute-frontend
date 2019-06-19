@@ -100,7 +100,7 @@ module "frontend" {
     EVIDENCE_MANAGEMENT_CLIENT_API_UPLOAD_ENDPOINT = "${var.evidence_management_client_api_upload_endpoint}"
     EVIDENCE_MANAGEMENT_CLIENT_API_DOWNLOAD_ENDPOINT = "${var.evidence_management_download_endpoint}"
 
-    // CCase Orchestration API
+    // Case Orchestration API
     ORCHESTRATION_SERVICE_URL              = "${local.case_orchestration_service_api_url}"
     ORCHESTRATION_SERVICE_GET_PETITION_URL = "${local.case_orchestration_service_api_url}/retrieve-case"
     ORCHESTRATION_SERVICE_POST_PETITION_URL= "${local.case_orchestration_service_api_url}/submit-dn"
@@ -139,6 +139,9 @@ module "frontend" {
 
     // Respondent Front End
     RESPONDENT_FRONTEND_URL = "${var.respondent_frontend_url}"
+
+    // Decree Nisi Front End
+    DECREE_NISI_FRONTEND_URL = "${var.decree_nisi_frontend_url}"
 
     // CCD Filters
     CCD_DIGITAL_COURTS = "${var.ccd_digital_courts}"

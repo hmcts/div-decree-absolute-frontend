@@ -40,5 +40,5 @@ exports.config = {
       }
     }
   },
-  name: 'Frontend Smoke Tests'
+  name: 'Decree Absolute Frontend Smoke Tests'
 };
