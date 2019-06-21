@@ -5,7 +5,7 @@ const path = require('path');
 const healthcheck = require('@hmcts/nodejs-healthcheck');
 const logger = require('@hmcts/nodejs-logging')
   .Logger.getLogger(path.resolve('middleware/healthcheck.js'));
-const { sinon, expect } = require('@hmcts/one-per-page-test-suite');
+const { sinon } = require('@hmcts/one-per-page-test-suite');
 const config = require('config');
 const outputs = require('@hmcts/nodejs-healthcheck/healthcheck/outputs');
 const { OK } = require('http-status-codes');
@@ -16,7 +16,7 @@ let res = {};
 
 describe(modulePath, () => {
   beforeEach(() => {
-    app.use = sinon.stub();
+    app.get = sinon.stub();
     sinon.stub(redis, 'ping').resolves('PONG');
     sinon.stub(healthcheck, 'web');
     sinon.stub(healthcheck, 'raw');
@@ -35,153 +35,87 @@ describe(modulePath, () => {
     outputs.up.restore();
   });
 
-  it('set a middleware on the health check endpoint', () => {
+  it('set a middleware on the healthcheck endpoint', () => {
     setupHealthChecks(app);
-    sinon.assert.calledWith(app.use, config.paths.health);
+    sinon.assert.calledWith(app.get, config.paths.health);
   });
 
-  describe('redis', () => {
-    it('throws an error if health check fails', done => {
-      redis.ping.rejects('error');
-      setupHealthChecks(app);
+  it('throws an error if healthcheck fails for redis', done => {
+    redis.ping.rejects('error');
+    setupHealthChecks(app);
 
-      const rawPromise = healthcheck.raw.getCall(0).args[0];
-      rawPromise()
-        .then(() => {
-          sinon.assert.calledOnce(logger.error);
-        })
-        .then(done, done);
-    });
-
-    it('passes health check', done => {
-      setupHealthChecks(app);
-
-      const rawPromise = healthcheck.raw.getCall(0).args[0];
-      rawPromise()
-        .then(() => {
-          sinon.assert.calledWith(healthcheck.status, true);
-        })
-        .then(done, done);
-    });
+    const rawPromise = healthcheck.raw.firstCall.args[0];
+    rawPromise()
+      .then(() => {
+        sinon.assert.calledOnce(logger.error);
+      })
+      .then(done, done);
   });
 
-  describe('idam-api', () => {
-    it('passes health check', () => {
-      setupHealthChecks(app);
+  it('passes healthcheck for redis if redis is running', done => {
+    setupHealthChecks(app);
 
-      const callArgs = healthcheck.web.getCall(0).args;
-
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.idam.apiHealth);
-
-      const idamCallback = callArgs[1].callback;
-      idamCallback(null, res);
-
-      sinon.assert.called(outputs.up);
-    });
-
-    it('throws an error if health check fails', () => {
-      setupHealthChecks(app);
-
-      const callArgs = healthcheck.web.getCall(0).args;
-
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.idam.apiHealth);
-
-      const idamCallback = callArgs[1].callback;
-      idamCallback('error');
-
-      sinon.assert.calledOnce(logger.error);
-    });
+    const rawPromise = healthcheck.raw.firstCall.args[0];
+    rawPromise()
+      .then(() => {
+        sinon.assert.calledWith(healthcheck.status, true);
+      })
+      .then(done, done);
   });
 
-  describe('case-orchestration-service', () => {
-    it('passes health check', () => {
-      setupHealthChecks(app);
+  it('throws an error if healthcheck fails for idam-api', () => {
+    setupHealthChecks(app);
 
-      const callArgs = healthcheck.web.getCall(1).args;
+    const idamCallback = healthcheck.web.firstCall.args[1].callback;
+    idamCallback('error');
 
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.caseOrchestration.health);
+    sinon.assert.calledWith(logger.error);
+  });
 
-      const cosCallback = callArgs[1].callback;
-      cosCallback(null, res);
+  it('throws an error if healthcheck fails for case-orchestration-service', () => {
+    setupHealthChecks(app);
 
-      sinon.assert.called(outputs.up);
-    });
+    const cosCallback = healthcheck.web.secondCall.args[1].callback;
+    cosCallback('error');
 
-    it('throws an error if health check fails for case-orchestration-service', () => {
-      setupHealthChecks(app);
+    sinon.assert.calledWith(logger.error);
+  });
 
-      const callArgs = healthcheck.web.getCall(1).args;
+  it('returns up if no error passed', () => {
+    setupHealthChecks(app);
 
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.caseOrchestration.health);
+    const idamCallback = healthcheck.web.firstCall.args[1].callback;
+    idamCallback(null, res);
 
-      const cosCallback = callArgs[1].callback;
-      cosCallback('error');
+    sinon.assert.called(outputs.up);
+  });
 
-      sinon.assert.calledOnce(logger.error);
-    });
+  it('passes healthcheck for idam-api', () => {
+    setupHealthChecks(app);
+
+    const idamCallback = healthcheck.web.secondCall.args[1].callback;
+    idamCallback(null, res);
+
+    sinon.assert.called(outputs.up);
   });
 
   describe('fees-and-payments service', () => {
-    it('passes health check', () => {
+    it('passes healthcheck', () => {
       setupHealthChecks(app);
 
-      const callArgs = healthcheck.web.getCall(2).args;
-
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.feesAndPayments.health);
-
-      const feesCallback = callArgs[1].callback;
+      const feesCallback = healthcheck.web.lastCall.args[1].callback;
       feesCallback(null, res);
 
       sinon.assert.called(outputs.up);
     });
 
-    it('throws an error if health check fails for fees-and-payments', () => {
+    it('throws an error if healthcheck fails for fees-and-payments', () => {
       setupHealthChecks(app);
 
-      const callArgs = healthcheck.web.getCall(2).args;
-
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.feesAndPayments.health);
-
-      const feesCallback = callArgs[1].callback;
+      const feesCallback = healthcheck.web.lastCall.args[1].callback;
       feesCallback('error');
 
-      sinon.assert.calledOnce(logger.error);
-    });
-  });
-
-  describe('evidence-management service', () => {
-    it('passes health check', () => {
-      setupHealthChecks(app);
-
-      const callArgs = healthcheck.web.getCall(3).args;
-
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.evidenceManagement.health);
-
-      const evidenceManagementCallback = callArgs[1].callback;
-      evidenceManagementCallback(null, res);
-
-      sinon.assert.called(outputs.up);
-    });
-
-    it('throws an error if health check fails for evidence-management', () => {
-      setupHealthChecks(app);
-
-      const callArgs = healthcheck.web.getCall(3).args;
-
-      // check we are testing correct service
-      expect(callArgs[0]).to.eql(config.services.evidenceManagement.health);
-
-      const evidenceManagementCallback = callArgs[1].callback;
-      evidenceManagementCallback('error');
-
-      sinon.assert.calledOnce(logger.error);
+      sinon.assert.calledWith(logger.error);
     });
   });
 });

@@ -5,7 +5,10 @@ node:
   port: 3000
   baseUrl: https://localhost:3000
 
-redis:
+session:
+  secret: sessionSecret
+  secure: true
+  expires: 3600000 # 60 minutes
 
 ssl:
   hpkp:
@@ -14,7 +17,7 @@ ssl:
     sha256sBackup: ZyXwVu456=
 
 health:
-  timeout: 5000
+  timeout: 10000
   deadline: 15000
 
 service:
@@ -23,44 +26,48 @@ service:
 services:
   redis:
     url: redis://127.0.0.1:6379
-    secret: defaultsecret
     useSSL: false
     encryptionAtRestKey: encryptionAtRestKey
   idam:
     apiHealth: https://localhost:8001/health
-    authenticationHealth: https://localhost:8000/health
-    loginUrl: /idam-login
-  saucelabs:
-    browser: 'chrome'
-    username: 'username'
-    key: 'privatekey'
-    tunnelId: ''
-    waitForTimeout: 30000
+    authenticationHealth: https://localhost:3000/health
+    apiUrl: http://localhost:8001
+    secret: '123456'
+    loginUrl: https://localhost:3000/idam-mock-login
+    clientId: 'divorce'
+    proxy:
+
   googleAnalytics:
     id: TBD
     trackingUrl: https://localhost:3000/
   applicationInsights:
     instrumentationKey: 'dummy-key'
+  evidenceManagementClient:
+    url: http://localhost:4009/
+    health: http://localhost:4009/status/health
+    uploadEndpoint: /emclientapi/version/1/uploadFiles
+    downloadEndpoint: /emclientapi/version/1/download
   rateLimiter:
     total: 3600 # 1 req/s on average per hour
     expire: 3600000
     enabled: false
-  caseOrchestration:
-    baseUrl: http://localhost:3001/case-orchestration
-    health: http://localhost:3001/health
-  dnFrontend:
-    url: https://localhost:4000
+  orchestrationService:
+    getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
+    submitCaseUrl: http://localhost:3001/case-orchestration/submit-dn
+    health: http://localhost:3001/case-orchestration/health
+    draftEndpoint: http://localhost:3001/case-orchestration/draftsapi/version/1
+    amendPetitionUrl: http://localhost:3001/case-orchestration/amend-petition
+  petitionerFrontend:
+    url: https://localhost:8080
+    landing: /authenticated
+  aosFrontend:
+    url: https://localhost:2000
     landing: /authenticated
   caseMaintenance:
     baseUrl: http://localhost:3001/case-maintenance
   feesAndPayments:
-    baseUrl: http://localhost:3001
+    url: http://localhost:3001
     health: http://localhost:3001/health
-  proxyUrl: ''
-  evidenceManagement:
-    baseUrl: http://localhost:3001/evidence-management
-    health: http://localhost:3001/health
-    downloadEndpoint: /emclientapi/version/1/download
 
 paths:
   health: /health
@@ -77,15 +84,14 @@ paths:
     idamLogin: /idam-login
 
 tests:
-  e2e:
-    show: false
+  functional:
     waitForTimeout: 10000
     waitForAction: 1000
     smartWait: 5000
-    outputDir: './functional-output'
-    proxy: ''
-    proxyByPass: ''
-    addWaitForCrossBrowser: false
+    outputDir: ../../functional-output
+    proxy: http://proxyout.reform.hmcts.net:8080
+    proxyByPass: '*beta*LB.reform.hmcts.net'
+    verifyDonePageOnCrossbrowser: false
     idam:
       idamTestUsername:
       idamTestPassword:
@@ -97,3 +103,30 @@ tests:
 
 features:
   idam: false
+
+journey:
+  timeoutDelay: 300
+
+document:
+  sessionPath: 'case.data.d8'
+  documentNamePath: 'fileName'
+  filesWhiteList:
+  - 'd8petition'
+  - 'respondentAnswers'
+  - 'coRespondentAnswers'
+  - 'certificateOfEntitlement'
+
+ccd:
+  d8States:
+    - 'AwaitingPayment'
+    - 'AmendPetition'
+  courts:
+    - 'serviceCentre'
+
+saucelabs:
+  browser: 'chrome'
+  username: 'username'
+  key: 'privatekey'
+  tunnelId: 'reformtunnel'
+  waitForTimeout: 60000
+  smartWait: 45000

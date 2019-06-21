@@ -31,29 +31,29 @@ const checks = () => {
         });
     }),
     'idam-api': healthcheck.web(config.services.idam.apiHealth,
-      healthOptions('Health check failed on idam-api')
+      healthOptions('Health check failed on idam-api:')
     ),
-    'case-orchestration-service': healthcheck.web(config.services.caseOrchestration.health,
-      healthOptions('Health check failed on case-orchestration-service')
+    'case-orchestration-service': healthcheck.web(config.services.orchestrationService.health,
+      healthOptions('Health check failed on case-orchestration-service:')
     ),
     'fees-and-payments-service': healthcheck.web(config.services.feesAndPayments.health,
-      healthOptions('Health check failed on fees-and-payments')
+      healthOptions('Health check failed on fees-and-payments-service:')
     ),
-    'evidence-management-client': healthcheck.web(config.services.evidenceManagement.health,
-      healthOptions('Health check failed on evidence-management')
+    'evidence-management-client': healthcheck.web(config.services.evidenceManagementClient.health,
+      healthOptions('Health check failed on evidence-management-client:')
     )
   };
 };
 
 const setupHealthChecks = app => {
-  app.use(config.paths.health, healthcheck.configure({
+  healthcheck.addTo(app, {
     checks: checks(),
     buildInfo: {
       name: config.service.name,
       host: os.hostname(),
       uptime: process.uptime()
     }
-  }));
+  });
 };
 
 module.exports = setupHealthChecks;
