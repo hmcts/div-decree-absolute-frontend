@@ -3,15 +3,17 @@ const express = require('express');
 const path = require('path');
 const onePerPage = require('@hmcts/one-per-page');
 const lookAndFeel = require('@hmcts/look-and-feel');
-const logging = require('@hmcts/nodejs-logging');
+const { accessLogger } = require('services/logger');
 const getSteps = require('steps');
+const documentHandler = require('services/documentHandler');
 const setupHelmet = require('middleware/helmet');
 const setupPrivacy = require('middleware/privacy');
 const setupHealthChecks = require('middleware/healthcheck');
 const idam = require('services/idam');
 const cookieParser = require('cookie-parser');
 const setupRateLimiter = require('services/rateLimiter');
-const errorContent = require('views/errors/error-content');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const getFilters = require('views/filters');
 
 const app = express();
 
@@ -22,9 +24,6 @@ setupRateLimiter(app);
 
 // Parsing cookies
 app.use(cookieParser());
-
-// Get user details from idam, sets req.idam.userDetails
-app.use(idam.userDetails());
 
 lookAndFeel.configure(app, {
   baseUrl: '/',
@@ -38,47 +37,56 @@ lookAndFeel.configure(app, {
   webpack: {
     entry: [
       path.resolve(__dirname, 'assets/js/main.js'),
-      path.resolve(__dirname, 'assets/scss/main.scss')
+      path.resolve(__dirname, 'assets/scss/main.scss'),
+      path.resolve(__dirname, 'node_modules/dropzone/dist/dropzone.js')
+    ],
+    plugins: [
+      new CopyWebpackPlugin(
+        [
+          {
+            from: path.resolve(__dirname, 'assets/images'),
+            to: 'images'
+          }
+        ])
     ]
   },
   nunjucks: {
+    filters: getFilters(),
     globals: {
-      phase: 'ALPHA',
-      feedbackLink: 'https://github.com/hmcts/one-per-page/issues/new',
+      phase: 'BETA',
+      feedbackLink: 'http://www.smartsurvey.co.uk/s/8RR1T?pageurl=/email',
       googleAnalyticsId: config.services.googleAnalytics.id
     }
   }
 });
 
+// Get user details from idam, sets req.idam.userDetails
+app.use(idam.userDetails());
+
+// 1px image used for tracking
+app.get('/noJS.png', (req, res) => {
+  res.send('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+});
+
+app.use(accessLogger());
+
+app.set('trust proxy', 1);
+
 onePerPage.journey(app, {
   baseUrl: config.node.baseUrl,
   steps: getSteps(),
-  errorPages: {
-    serverError: {
-      template: 'errors/server-error',
-      message: {
-        tryAgain: errorContent.tryAgain,
-        canContact: errorContent.canContact,
-        phoneDetails: errorContent.isThereAProblemWithThisPagePhone,
-        emailDetails: errorContent.isThereAProblemWithThisPageEmail,
-        serviceName: errorContent.serviceName
-      }
-    },
-    notFound: {
-      template: 'errors/not-found-error',
-      message: {
-        errorMessage: errorContent.notFoundMessage,
-        isThereAProblem: errorContent.isThereAProblemWithThisPageParagraph,
-        phoneDetails: errorContent.isThereAProblemWithThisPagePhone,
-        emailDetails: errorContent.isThereAProblemWithThisPageEmail,
-        serviceName: errorContent.serviceName
-      }
-    }
+  routes: [ documentHandler ],
+  errorPages: { serverError: { template: 'errors/error' }, notFound: { template: 'errors/error' } },
+  noSessionHandler: (req, res) => {
+    return res.redirect(config.paths.entry);
   },
   session: {
     redis: { url: config.services.redis.url },
-    cookie: { secure: config.services.redis.useSSL === 'true' },
-    secret: config.services.redis.secret,
+    cookie: {
+      secure: config.session.secure,
+      expires: config.session.expires
+    },
+    secret: config.session.secret,
     sessionEncryption: req => {
       let key = config.services.redis.encryptionAtRestKey;
       if (req && req.idam && req.idam.userDetails) {
@@ -86,9 +94,10 @@ onePerPage.journey(app, {
       }
       return key;
     }
-  }
+  },
+  timeoutDelay: config.journey.timeoutDelay,
+  i18n: { filters: getFilters() },
+  useCsrfToken: true
 });
-
-app.use(logging.Express.accessLogger());
 
 module.exports = app;
