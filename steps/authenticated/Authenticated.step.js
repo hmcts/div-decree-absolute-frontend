@@ -13,7 +13,10 @@ class Authenticated extends Redirect {
   }
 
   get middleware() {
-    return [...super.middleware, idam.landingPage()];
+    return [
+      idam.landingPage,
+      ...super.middleware
+    ];
   }
 }
 
