@@ -13,6 +13,7 @@ const idam = require('services/idam');
 const cookieParser = require('cookie-parser');
 const setupRateLimiter = require('services/rateLimiter');
 const getFilters = require('views/filters');
+const errorContent = require('views/errors/error-content');
 
 const app = express();
 
@@ -65,9 +66,27 @@ onePerPage.journey(app, {
   baseUrl: config.node.baseUrl,
   steps: getSteps(),
   routes: [ documentHandler ],
-  errorPages: { serverError: { template: 'errors/error' }, notFound: { template: 'errors/error' } },
-  noSessionHandler: (req, res) => {
-    return res.redirect(config.paths.entry);
+  errorPages: {
+    serverError: {
+      template: 'errors/server-error',
+      message: {
+        tryAgain: errorContent.tryAgain,
+        canContact: errorContent.canContact,
+        phoneDetails: errorContent.isThereAProblemWithThisPagePhone,
+        emailDetails: errorContent.isThereAProblemWithThisPageEmail,
+        serviceName: errorContent.serviceName
+      }
+    },
+    notFound: {
+      template: 'errors/not-found-error',
+      message: {
+        errorMessage: errorContent.notFoundMessage,
+        isThereAProblem: errorContent.isThereAProblemWithThisPageParagraph,
+        phoneDetails: errorContent.isThereAProblemWithThisPagePhone,
+        emailDetails: errorContent.isThereAProblemWithThisPageEmail,
+        serviceName: errorContent.serviceName
+      }
+    }
   },
   session: {
     redis: { url: config.services.redis.url },

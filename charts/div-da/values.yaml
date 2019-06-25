@@ -11,6 +11,7 @@ nodejs:
         RATE_LIMITER_ENABLED: "false"
         RATE_LIMITER_EXPIRE: "3600000"
         RATE_LIMITER_TOTAL: "3600"
+        LOG_LEVEL: "DEBUG"
     keyVaults:
         "div":
             resourceGroup: div
