@@ -2,23 +2,24 @@ const modulePath = 'steps/authenticated/Authenticated.step';
 
 const Authenticated = require(modulePath);
 const idam = require('services/idam');
-const { middleware, sinon, redirect } = require('@hmcts/one-per-page-test-suite');
-const ProgressBar = require('steps/progress-bar/ProgressBar.step');
+const { middleware, sinon, expect } = require('@hmcts/one-per-page-test-suite');
+const Entry = require('steps/entry/Entry.step');
 
 describe(modulePath, () => {
   beforeEach(() => {
-    sinon.stub(idam, 'landingPage').callsFake(middleware.nextMock);
+    sinon.stub(idam, 'protect').returns(middleware.nextMock);
   });
 
   afterEach(() => {
-    idam.landingPage.restore();
+    idam.protect.restore();
   });
 
   it('has idam middleware', () => {
     return middleware.hasMiddleware(Authenticated, [ idam.landingPage ]);
   });
 
-  it('to protected page', () => {
-    return redirect.navigatesToNext(Authenticated, ProgressBar);
+  it('navigates to Entry step', () => {
+    const stepInstance = new Authenticated({ journey: { steps: { Entry } } });
+    expect(stepInstance.next().nextStep.path).to.eql(Entry.path);
   });
 });

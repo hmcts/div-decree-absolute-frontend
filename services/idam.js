@@ -1,8 +1,11 @@
 const idamExpressMiddleware = require('@hmcts/div-idam-express-middleware');
 const idamExpressMiddlewareMock = require('mocks/services/idam');
-const config = require('@hmcts/properties-volume').addTo(require('config'));
+const config = require('config');
+
+const redirectUri = `${config.node.baseUrl}${config.paths.authenticated}`;
 
 const idamArgs = {
+  redirectUri,
   indexUrl: config.paths.index,
   idamApiUrl: config.services.idam.apiUrl,
   idamLoginUrl: config.services.idam.loginUrl,
@@ -31,8 +34,9 @@ const methods = {
     const args = setArgsFromRequest(req);
     middleware.authenticate(args)(req, res, next);
   },
-  landingPage: (...args) => {
-    return middleware.landingPage(idamArgs, ...args);
+  landingPage: (req, res, next) => {
+    const args = setArgsFromRequest(req);
+    middleware.landingPage(args)(req, res, next);
   },
   protect: (...args) => {
     return middleware.protect(idamArgs, ...args);

@@ -9,7 +9,7 @@ class Authenticated extends Redirect {
   }
 
   next() {
-    return redirectTo(this.journey.steps.ProgressBar);
+    return redirectTo(this.journey.steps.Entry);
   }
 
   get middleware() {
