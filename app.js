@@ -12,7 +12,6 @@ const setupHealthChecks = require('middleware/healthcheck');
 const idam = require('services/idam');
 const cookieParser = require('cookie-parser');
 const setupRateLimiter = require('services/rateLimiter');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const getFilters = require('views/filters');
 
 const app = express();
@@ -37,17 +36,7 @@ lookAndFeel.configure(app, {
   webpack: {
     entry: [
       path.resolve(__dirname, 'assets/js/main.js'),
-      path.resolve(__dirname, 'assets/scss/main.scss'),
-      path.resolve(__dirname, 'node_modules/dropzone/dist/dropzone.js')
-    ],
-    plugins: [
-      new CopyWebpackPlugin(
-        [
-          {
-            from: path.resolve(__dirname, 'assets/images'),
-            to: 'images'
-          }
-        ])
+      path.resolve(__dirname, 'assets/scss/main.scss')
     ]
   },
   nunjucks: {
