@@ -1,6 +1,5 @@
 const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
-const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
 
@@ -52,20 +51,13 @@ class ProgressBar extends Interstitial {
   }
 
   getProgressBarContent() {
-    const caseState = 'notDivorced';
     // will be replaced once we're able to properly retrieve session data
     // const caseState = this.session.caseState;
 
     // we will use the current case state to decide what content to display the user
+    // refer to RFE to see how we will properly implement this
 
-    if (caseState === 'notDivorced') {
-      return this.progressStates.notDivorced;
-    } else if (caseState === 'Divorced') {
-      return this.progressStates.Divorced;
-    }
-
-    logger.errorWithReq(this.req, 'progress_bar_content', 'No valid case state for ProgressBar page', caseState);
-    return this.progressStates.other;
+    return this.progressStates.notDivorced;
   }
 
   // Select the co-responding template depending on case states
