@@ -11,7 +11,7 @@
     "dev": "NODE_PATH=. node-dev server.js",
     "mocks": "NODE_PATH=. node-dev mocks/index.js",
     "test": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR nyc mocha --exit 'test/unit/**/*.test.js' --timeout 15000",
-    "test:all": "yarn lint; yarn test:unit; yarn test:a11y; yarn test:validation",
+    "test:all": "yarn lint; yarn test:unit; yarn test:e2e; yarn test:a11y; yarn test:validation",
     "test:unit": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit 'test/unit/**/*.js' --timeout 15000",
     "test:e2e": "NODE_PATH=. LOG_LEVEL=ERROR codeceptjs run -c test/e2e/codecept.conf.js --steps",
     "test:smoke": "NODE_PATH=. LOG_LEVEL=ERROR codeceptjs run -c test/e2e/codecept.smoke.conf.js --steps",
