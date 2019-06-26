@@ -16,3 +16,4 @@ rate_limiter_enabled = true
 
 petitioner_frontend_url = "https://div-pfe-sandbox.service.core-compute-sandbox.internal"
 respondent_frontend_url = "https://div-rfe-sandbox.service.core-compute-sandbox.internal"
+decree_nisi_frontend_url = "https://div-dn-sandbox.service.core-compute-sandbox.internal"

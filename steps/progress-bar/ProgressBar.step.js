@@ -20,11 +20,7 @@ class ProgressBar extends Interstitial {
   }
 
   next() {
-    return goTo(this.journey.steps.End);
-  }
-
-  get stateTemplate() {
-    return './sections/OneCircleFilledIn.html';
+    return goTo(this.journey.steps.Exit);
   }
 }
 

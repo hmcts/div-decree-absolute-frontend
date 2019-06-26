@@ -71,7 +71,7 @@ const setupConfig = {
       browsers: getBrowserConfig()
     }
   },
-  name: 'Frontend Tests'
+  name: 'Decree Absolute Frontend Tests'
 };
 
 exports.config = setupConfig;

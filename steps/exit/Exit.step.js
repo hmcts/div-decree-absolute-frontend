@@ -2,9 +2,9 @@ const { ExitPoint } = require('@hmcts/one-per-page');
 const config = require('config');
 const idam = require('services/idam');
 
-class End extends ExitPoint {
+class Exit extends ExitPoint {
   static get path() {
-    return config.paths.end;
+    return config.paths.exit;
   }
 
   get middleware() {
@@ -16,4 +16,4 @@ class End extends ExitPoint {
   }
 }
 
-module.exports = End;
+module.exports = Exit;

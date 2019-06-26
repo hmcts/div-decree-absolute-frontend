@@ -1,6 +1,6 @@
-const modulePath = 'steps/end/End.step';
+const modulePath = 'steps/exit/Exit.step';
 
-const End = require(modulePath);
+const Exit = require(modulePath);
 const idam = require('services/idam');
 const { middleware, sinon, content } = require('@hmcts/one-per-page-test-suite');
 
@@ -14,14 +14,14 @@ describe(modulePath, () => {
   });
 
   it('has idam.protect and idam.logout middleware', () => {
-    return middleware.hasMiddleware(End, [ idam.protect(), idam.logout() ]);
+    return middleware.hasMiddleware(Exit, [ idam.protect(), idam.logout() ]);
   });
 
   describe('values', () => {
     it('displays Correct details', () => {
       const ignoreContent = ['continue', 'serviceName', 'backLink', 'signOut'];
 
-      return content(End, {}, { ignoreContent });
+      return content(Exit, {}, { ignoreContent });
     });
   });
 });

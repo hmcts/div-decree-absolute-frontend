@@ -1,18 +1,30 @@
-environment: REFORM_ENVIRONMENT
+environment: DEPLOYMENT_ENV
 NODE_ENV: NODE_ENV
 
 node:
   port: PORT
   baseUrl: BASE_URL
 
+session:
+  secret: SESSION_SECRET
+
 tests:
-  e2e:
-    waitForTimeout: E2E_WAIT_FOR_TIMEOUT_VALUE
-    waitForAction: E2E_WAIT_FOR_ACTION_VALUE
-    proxyServer: E2E_PROXY_BYPASS
-    proxyByPass: E2E_PROXY_SERVER
-    outputDir: E2E_OUTPUT_DIR
-  url: TEST_URL
+  functional:
+    waitForTimeout: FUNCTIONAL_WAIT_FOR_TIMEOUT_VALUE
+    waitForAction: FUNCTIONAL_WAIT_FOR_ACTION_VALUE
+    outputDir: FUNCTIONAL_OUTPUT_DIR
+    url: TEST_URL
+    proxy: FUNCTIONAL_IDAM_PROXY
+    proxyByPass: FUNCTIONAL_IDAM_SERVER
+    verifyDonePageOnCrossbrowser: VERIFY_DONE_PAGE_CROSSBROWSER
+    idam:
+      idamTestUsername: FUNCTIONAL_IDAM_USERNAME
+      idamTestPassword: FUNCTIONAL_IDAM_PASSWORD
+      idamTestForename: IDAM_TEST_FORENAME
+      idamTestSurname: IDAM_TEST_SURNAME
+      idamTestUserGroup: IDAM_TEST_USER_GROUP
+      idamTestLevelOfAccess: IDAM_TEST_LEVEL_OF_ACCESS
+      idamTestSupportCreateAccountEndpoint: IDAM_TEST_SUPPORT_CREATE_ACCOUNT_ENDPOINT
 
 ssl:
   hpkp:
@@ -22,18 +34,51 @@ ssl:
 services:
   redis:
     url: REDISCLOUD_URL
-    secret: SESSION_SECRET
     useSSL: USE_SSL
+    encryptionAtRestKey: REDIS_ENCRYPTION_SECRET
   idam:
     apiHealth: IDAM_APP_HEALHCHECK_URL
     authenticationHealth: IDAM_AUTHENTICATION_HEALHCHECK_URL
+    apiUrl: IDAM_API_URL
+    secret: IDAM_SECRET
     loginUrl: IDAM_LOGIN_URL
+    clientId: IDAM_CLIENT_ID
+    proxy: IDAM_PROXY
   googleAnalytics:
     id: GOOGLE_ANALYTICS_ID
     trackingUrl: GOOGLE_ANALYTICS_TRACKING_URL
   applicationInsights:
     instrumentationKey: APPINSIGHTS_INSTRUMENTATIONKEY
+  evidenceManagementClient:
+    url: EVIDENCE_MANAGEMENT_CLIENT_API_URL
+    health: EVIDENCE_MANAGEMENT_CLIENT_API_HEALTHCHECK_URL
+    uploadEndpoint: EVIDENCE_MANAGEMENT_CLIENT_API_UPLOAD_ENDPOINT
+    downloadEndpoint: EVIDENCE_MANAGEMENT_CLIENT_API_DOWNLOAD_ENDPOINT
   rateLimiter:
     total: RATE_LIMITER_TOTAL
     expire: RATE_LIMITER_EXPIRE
     enabled: RATE_LIMITER_ENABLED
+  orchestrationService:
+    getCaseUrl: ORCHESTRATION_SERVICE_GET_PETITION_URL
+    submitCaseUrl: ORCHESTRATION_SERVICE_POST_PETITION_URL
+    health: ORCHESTRATION_SERVICE_HEALTH_URL
+    draftEndpoint: ORCHESTRATION_SERVICE_DRAFT_ENDPOINT
+    amendPetitionUrl: ORCHESTRATION_SERVICE_AMEND_PETITION_URL
+  petitionerFrontend:
+    url: PETITIONER_FRONTEND_URL
+  aosFrontend:
+    url: RESPONDENT_FRONTEND_URL
+  caseMaintenance:
+    baseUrl: CASE_MAINTENANCE_BASE_URL
+  feesAndPayments:
+    url: FEES_AND_PAYMENTS_URL
+    health: FEES_AND_PAYMENTS_HEALTHCHECK_URL
+
+journey:
+  timeoutDelay: JOURNEY_TIMEOUT_DELAY
+
+features:
+  idam: FEATURE_IDAM
+
+ccd:
+  courts: CCD_DIGITAL_COURTS
