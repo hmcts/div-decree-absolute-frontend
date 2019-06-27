@@ -27,7 +27,6 @@ class ProgressBar extends Interstitial {
   }
 
   get session() {
-      console.log(this.req.session);
     return this.req.session;
   }
 
@@ -38,6 +37,11 @@ class ProgressBar extends Interstitial {
   get case() {
     return this.req.session.case.data;
   }
+
+  get caseId() {
+    return this.req.session.case.caseId;
+  }
+
 
   get middleware() {
     return [

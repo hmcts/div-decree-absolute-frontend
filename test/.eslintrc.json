@@ -16,9 +16,10 @@
     "no-invalid-this":"off",
     "new-cap": "off",
     "max-len": ["error", {
-        "code": 100
-      }
-    ]
+      "code": 100
+    }
+    ],
+    "id-blacklist": ["error", "err", "e", "cb", "callback"]
   },
   "globals": {
     "After": true,
