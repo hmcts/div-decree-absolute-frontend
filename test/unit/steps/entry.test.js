@@ -1,6 +1,6 @@
 const modulePath = 'steps/entry/Entry.step';
 const Entry = require(modulePath);
-const ProgressBar = require('steps/progress-bar/ProgressBar.step');
+const ProgressBar = require('steps/petitioner/progress-bar/ProgressBar.step');
 const idam = require('services/idam');
 const { middleware, redirect, sinon } = require('@hmcts/one-per-page-test-suite');
 

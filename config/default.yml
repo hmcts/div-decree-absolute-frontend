@@ -76,12 +76,13 @@ paths:
   authenticated: /authenticated
   index: /
   protected: /protected
-  progressBar: /progress-bar
   exit: /exit
   entry: /entry
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
+  petitioner:
+    progressBar: /progress-bar
   mock:
     idamLogin: /idam-login
 
