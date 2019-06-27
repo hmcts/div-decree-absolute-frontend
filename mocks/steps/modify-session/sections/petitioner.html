@@ -1,0 +1,75 @@
+<h2 class="heading-large">Petitioner</h2>
+
+{% call formSection() %}
+  {{ selectionButtons(fields.divorceWho, content.fields.petitioner.divorceWho.title,
+    options = [
+      { label: content.fields.petitioner.divorceWho.husband, value: "husband" },
+      { label: content.fields.petitioner.divorceWho.wife, value: "wife" }
+    ],
+    hideQuestion = false,
+    inline = true
+  ) }}
+
+  {{ selectionButtons(fields.marriageIsSameSexCouple, content.fields.petitioner.marriageIsSameSexCouple.title,
+    options = [
+      { label: content.fields.petitioner.marriageIsSameSexCouple.yes, value: "Yes" },
+      { label: content.fields.petitioner.marriageIsSameSexCouple.no, value: "No" }
+    ],
+    hideQuestion = false,
+    inline = true
+  ) }}
+
+  {{ selectionButtons(fields.reasonForDivorce, content.fields.petitioner.reasonForDivorce.title,
+    options = [
+      { label: content.fields.petitioner.reasonForDivorce.behaviour, value: "unreasonable-behaviour", target: "reason-behaviour-no-container"},
+      { label: content.fields.petitioner.reasonForDivorce.adultery, value: "adultery", target: "reason-adultery-container" },
+      { label: content.fields.petitioner.reasonForDivorce.sepTwoYrs, value: "separation-2-years" },
+      { label: content.fields.petitioner.reasonForDivorce.sepFiveYrs, value: "separation-5-years" },
+      { label: content.fields.petitioner.reasonForDivorce.desertion, value: "desertion", target: "reason-desertion-no-container" }
+    ],
+    hideQuestion = false,
+    inline = true
+  ) }}
+
+  {{ selectionButtons(fields.claimsCosts, content.fields.petitioner.claimCosts.title,
+  options = [
+     { label: content.fields.petitioner.claimCosts.yes, value: "Yes" },
+     { label: content.fields.petitioner.claimCosts.no, value: "No" }
+  ],
+  hideQuestion = false,
+  inline = true
+) }}
+{% endcall %}
+
+<div class="js-hidden" id="reason-adultery-container">
+  <div class="form-group">
+    {{ content.fields.petitioner.reasonForDivorceAdulteryDetails.title }}
+    <textarea class="form-control"
+              id="reasonForDivorceAdulteryDetails"
+              name="reasonForDivorceAdulteryDetails"
+              rows="4">{% if fields.reasonForDivorceAdulteryDetails.value %}
+      {{ fields.reasonForDivorceAdulteryDetails.value }}{% endif %}</textarea>
+  </div>
+</div>
+
+<div class="js-hidden" id="reason-behaviour-no-container">
+  <div class="form-group">
+    {{ content.fields.petitioner.reasonForDivorceBehaviourDetails.title }}
+    <textarea class="form-control"
+              id="reasonForDivorceBehaviourDetails"
+              name="reasonForDivorceBehaviourDetails"
+              rows="4">{% if fields.reasonForDivorceBehaviourDetails.value %}
+      {{ fields.reasonForDivorceBehaviourDetails.value }}{% endif %}</textarea>
+  </div>
+</div>
+
+<div class="js-hidden" id="reason-desertion-no-container">
+  <div class="form-group">
+    {{ content.fields.petitioner.reasonForDivorceDesertionDetails.title }}
+    <textarea class="form-control"
+              id="reasonForDivorceDesertionDetails"
+              name="reasonForDivorceDesertionDetails"
+              rows="4">{% if fields.reasonForDivorceDesertionDetails.value %}
+      {{ fields.reasonForDivorceDesertionDetails.value }}{% endif %}</textarea>
+  </div>
+</div>

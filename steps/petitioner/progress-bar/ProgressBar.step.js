@@ -1,21 +1,23 @@
 const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
+const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
 
 const progressStates = {
-  notDivorced: 'notDivorced',
-  divorced: 'Divorced'
+  awaitingDecreeAbsolute: 'awaitingDecreeAbsolute',
+  divorceGranted: 'divorceGranted',
+  other: 'other'
 };
 
 const caseStateMap = [
   {
     template: './sections/ThreeCirclesFilledIn.html',
-    state: ['notDivorced']
+    state: ['AwaitingDecreeAbsolute']
   },
   {
     template: './sections/FourCirclesFilledIn.html',
-    state: ['Divorced']
+    state: ['DivorceGranted']
   }
 ];
 
@@ -25,7 +27,16 @@ class ProgressBar extends Interstitial {
   }
 
   get session() {
+      console.log(this.req.session);
     return this.req.session;
+  }
+
+  get progressStates() {
+    return progressStates;
+  }
+
+  get case() {
+    return this.req.session.case.data;
   }
 
   get middleware() {
@@ -38,26 +49,30 @@ class ProgressBar extends Interstitial {
   next() {
     return goTo(this.journey.steps.Exit);
   }
-  get progressStates() {
-    return progressStates;
+
+  getProgressBarContent() {
+    const caseState = this.session.case.state;
+
+    if (this.awaitingDA(caseState)) {
+      return this.progressStates.awaitingDecreeAbsolute;
+    } else if (this.divorceGranted(caseState)) {
+      return this.progressStates.divorceGranted;
+    }
+
+    logger.errorWithReq(this.req, 'progress_bar_content', 'No valid case state for ProgressBar page', caseState);
+    return this.progressStates.other;
+  }
+
+  awaitingDA(caseState) {
+    return caseState === config.caseStates.AwaitingDecreeAbsolute;
+  }
+
+  divorceGranted(caseState) {
+    return caseState === config.caseStates.DivorceGranted;
   }
 
   get currentCaseState() {
-    // obviously will be changed but just to demonstrate the idea
-    // return this.req.session.caseState;
-
-    // return 'Divorced';
-    return 'notDivorced';
-  }
-
-  getProgressBarContent() {
-    // will be replaced once we're able to properly retrieve session data
-    // const caseState = this.session.caseState;
-
-    // we will use the current case state to decide what content to display the user
-    // refer to RFE to see how we will properly implement this
-
-    return this.progressStates.notDivorced;
+    return this.req.session.case.state;
   }
 
   // Select the co-responding template depending on case states
