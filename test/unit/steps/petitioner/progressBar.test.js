@@ -2,8 +2,8 @@ const modulePath = 'steps/petitioner/progress-bar/ProgressBar.step';
 const ProgressBar = require(modulePath);
 const Exit = require('steps/exit/Exit.step');
 const idam = require('services/idam');
-const { custom, middleware, sinon, redirect,
-  stepAsInstance, expect } = require('@hmcts/one-per-page-test-suite');
+const { custom, expect, middleware,
+  sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');
 const httpStatus = require('http-status-codes');
 
 const templates = {
@@ -28,7 +28,11 @@ describe(modulePath, () => {
   });
 
   describe('right hand side menu rendering', () => {
-    const session = {};
+    const session = {
+      case: {
+        state: 'AwaitingDecreeAbsolute'
+      }
+    };
 
     it('should render guidance links', () => {
       return custom(ProgressBar)
