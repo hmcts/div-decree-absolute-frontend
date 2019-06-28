@@ -30,10 +30,6 @@ class ProgressBar extends Interstitial {
     return this.req.session;
   }
 
-  get progressStates() {
-    return progressStates;
-  }
-
   get case() {
     return this.req.session.case.data;
   }
@@ -42,7 +38,6 @@ class ProgressBar extends Interstitial {
     return this.req.session.case.caseId;
   }
 
-
   get middleware() {
     return [
       ...super.middleware,
@@ -50,28 +45,28 @@ class ProgressBar extends Interstitial {
     ];
   }
 
-  next() {
-    return goTo(this.journey.steps.Exit);
+  get progressStates() {
+    return progressStates;
   }
 
   getProgressBarContent() {
     const caseState = this.session.case.state;
 
-    if (this.awaitingDA(caseState)) {
+    if (this.isCaseStateAwaitingDA(caseState)) {
       return this.progressStates.awaitingDecreeAbsolute;
-    } else if (this.divorceGranted(caseState)) {
+    } else if (this.isCaseStateDivorceGranted(caseState)) {
       return this.progressStates.divorceGranted;
     }
 
-    logger.errorWithReq(this.req, 'progress_bar_content', 'No valid case state for ProgressBar page', caseState);
+    logger.errorWithReq(this.req, 'progress_bar_content', 'No valid DA case state for ProgressBar page', caseState);
     return this.progressStates.other;
   }
 
-  awaitingDA(caseState) {
+  isCaseStateAwaitingDA(caseState) {
     return caseState === config.caseStates.AwaitingDecreeAbsolute;
   }
 
-  divorceGranted(caseState) {
+  isCaseStateDivorceGranted(caseState) {
     return caseState === config.caseStates.DivorceGranted;
   }
 
@@ -79,7 +74,7 @@ class ProgressBar extends Interstitial {
     return this.req.session.case.state;
   }
 
-  // Select the co-responding template depending on case states
+  // Select the correct template based on case state
   // decides which circles should be filled in - either 3 or 4
   get stateTemplate() {
     let template = '';
@@ -88,10 +83,12 @@ class ProgressBar extends Interstitial {
         template = dataMap.template;
       }
     });
-    if (template === '') {
-      template = './sections/ThreeCirclesFilledIn.html';
-    }
-    return template;
+
+    return template || './sections/OneCircleFilledIn.html';
+  }
+
+  next() {
+    return goTo(this.journey.steps.Exit);
   }
 }
 

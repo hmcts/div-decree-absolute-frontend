@@ -37,15 +37,6 @@ $ yarn test
 
 #### Run Functional tests locally
 
-1. create local.yml file in config folder with the contents:
-```yml
-tests:
-  functional:
-    proxy:
-    proxyByPass:
-```
-
-2. run
 ```shell
 $ yarn test:functional
 ```

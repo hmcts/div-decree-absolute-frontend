@@ -10,14 +10,14 @@ class Entry extends EntryPoint {
     return config.paths.index;
   }
 
+  get middleware() {
+    return [...super.middleware, idam.authenticate];
+  }
+
   next() {
     return action(caseOrchestrationService.getApplication)
       .then(redirectTo(this.journey.steps.ProgressBar))
       .onFailure(caseOrchestrationHelper.handleErrorCodes);
-  }
-
-  get middleware() {
-    return [...super.middleware, idam.authenticate];
   }
 }
 

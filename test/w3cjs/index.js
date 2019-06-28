@@ -7,9 +7,8 @@ const cosMockCase = require('mocks/services/case-orchestration/retrieve-case/moc
 const config = require('config');
 const feesAndPaymentsService = require('services/feesAndPaymentsService');
 
-
 // Ignored warnings
-const excludedWarnings = [
+const excludeWarnings = [
   'The “type” attribute is unnecessary for JavaScript resources.',
   'The “banner” role is unnecessary for element “header”.',
   'The “main” role is unnecessary for element “main”.',
@@ -19,7 +18,7 @@ const excludedWarnings = [
   'Possible misuse of “aria-label”. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)' // eslint-disable-line max-len
 ];
 const filteredWarnings = r => {
-  return !excludedWarnings.includes(r.message);
+  return !excludeWarnings.includes(r.message);
 };
 
 /* eslint-disable */
