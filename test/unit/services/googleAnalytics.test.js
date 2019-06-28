@@ -1,7 +1,7 @@
 const exampleStep = require('steps/petitioner/progress-bar/ProgressBar.step');
-const { custom, expect, middleware, sinon } = require('@hmcts/one-per-page-test-suite');
-const httpStatus = require('http-status-codes');
+const { custom, expect, sinon, middleware } = require('@hmcts/one-per-page-test-suite');
 const idam = require('services/idam');
+const httpStatus = require('http-status-codes');
 
 const feesAndPaymentsService = require('services/feesAndPaymentsService');
 
@@ -22,13 +22,13 @@ describe('Google analytics', () => {
     feesAndPaymentsService.getFee.restore();
   });
 
-  it('should to be injected into the page', () => {
+  it('should be injected into the page', () => {
     const googleAnalyticsId = 'google-analytics-id';
     return custom(exampleStep)
       .withGlobal('googleAnalyticsId', googleAnalyticsId)
       .withSession({
         case: {
-          state: 'awaitingdecreenisi',
+          state: 'awaitingDecreeAbsolute',
           data: {}
         }
       })

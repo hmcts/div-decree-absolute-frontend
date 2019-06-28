@@ -8,7 +8,7 @@ const config = require('config');
 const feesAndPaymentsService = require('services/feesAndPaymentsService');
 
 // Ignored warnings
-const excludeWarnings = [
+const excludedWarnings = [
   'The “type” attribute is unnecessary for JavaScript resources.',
   'The “banner” role is unnecessary for element “header”.',
   'The “main” role is unnecessary for element “main”.',
@@ -18,19 +18,19 @@ const excludeWarnings = [
   'Possible misuse of “aria-label”. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)' // eslint-disable-line max-len
 ];
 const filteredWarnings = r => {
-  return !excludeWarnings.includes(r.message);
+  return !excludedWarnings.includes(r.message);
 };
 
 /* eslint-disable */
 // FIXME - Ignored errors (temporarily)
-const excludeErrors = [
+const excludedErrors = [
   'Attribute “pattern” is only allowed when the input type is “email”, “password”, “search”, “tel”, “text”, or “url”.',
   'Element “h2” not allowed as child of element “legend” in this context. (Suppressing further errors from this subtree.)',
   "Duplicate ID “dnCosts.claimCosts”."
 ];
 /* eslint-enable */
 const filteredErrors = r => {
-  return !excludeErrors.includes(r.message);
+  return !excludedErrors.includes(r.message);
 };
 
 // ensure step has a template - if it doesnt no need to test it

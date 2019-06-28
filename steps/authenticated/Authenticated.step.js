@@ -8,15 +8,15 @@ class Authenticated extends Redirect {
     return config.paths.authenticated;
   }
 
+  next() {
+    return redirectTo(this.journey.steps.Entry);
+  }
+
   get middleware() {
     return [
       idam.landingPage,
       ...super.middleware
     ];
-  }
-
-  next() {
-    return redirectTo(this.journey.steps.Entry);
   }
 }
 

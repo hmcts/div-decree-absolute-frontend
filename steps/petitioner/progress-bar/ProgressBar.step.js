@@ -45,6 +45,10 @@ class ProgressBar extends Interstitial {
     ];
   }
 
+  next() {
+    return goTo(this.journey.steps.Exit);
+  }
+
   get progressStates() {
     return progressStates;
   }
@@ -84,11 +88,7 @@ class ProgressBar extends Interstitial {
       }
     });
 
-    return template || './sections/OneCircleFilledIn.html';
-  }
-
-  next() {
-    return goTo(this.journey.steps.Exit);
+    return template || './sections/ThreeCirclesFilledIn.html';
   }
 }
 
