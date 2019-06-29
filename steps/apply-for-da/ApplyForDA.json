@@ -4,7 +4,7 @@
     "body": "The Decree Nisi made on {DecreeNisiGrantedDate} will be made absolute and the marriage between {PetitionerName} and {DefendantName} will be ended",
     "warningText": "Applying for your decree absolute before your financials proceedings have concluded is not advised. You may wish to seek some form of legal advice prior to submitting your application for your decree absolute. If you proceed you will be divorced, and you won’t be able to undo it",
     "fields": {
-      "finaliseYourDivorce": {
+      "applyForDA": {
         "title": "Do you want to finalise your divorce?",
         "yes": "Yes",
         "no": "No"
