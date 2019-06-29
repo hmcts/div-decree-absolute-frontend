@@ -9,9 +9,12 @@ class ApplyForDA extends Question {
   static get path() {
     return config.paths.applyForDA;
   }
+  get session() {
+    return this.req.session;
+  }
 
   get case() {
-    return this.req.session.case;
+    return this.req.session.case.data;
   }
 
   get form() {

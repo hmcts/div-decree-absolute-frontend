@@ -9,7 +9,13 @@
 
 {% block fields %}
     <p class="text">{{ content.body | safe }}</p>
-    <br>
+    <div class="notice">
+        <em class="icon icon-important">
+            <span class="visually-hidden">Warning</span>
+        </em>
+        <strong class="bold-small">{{ content.financialWarning | safe }}</strong>
+    </div>
+<br>
     {% call formSection() %}
         {{ selectionButtons(fields.applyForDA, content.fields.applyForDA.title,
             options = [
