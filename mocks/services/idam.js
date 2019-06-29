@@ -1,5 +1,6 @@
 const Cookies = require('cookies');
 const crypto = require('crypto');
+const aosCase = require('./case-orchestration/retrieve-case/mock-case');
 
 const randomStringLength = 64;
 
@@ -20,13 +21,14 @@ const divIdamExpressMiddleware = {
   landingPage: idamArgs => {
     return (req, res, next) => {
       const cookies = new Cookies(req, res);
-      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success !== 'no';
+      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
+      delete req.session.IdamLogin;
 
       if (mockIdamAuthenticated) {
         const token = crypto.randomBytes(randomStringLength).toString('hex');
         const userDetails = {
           id: `idamUserId-${token}`,
-          email: 'user@email.com'
+          email: aosCase.data.petitionerEmail
         };
 
         cookies.set('mockIdamUserDetails', JSON.stringify(userDetails));
@@ -45,14 +47,6 @@ const divIdamExpressMiddleware = {
       const userDetails = cookies.get('mockIdamUserDetails');
       if (userDetails) {
         req.idam = { userDetails: JSON.parse(userDetails) };
-        const stepName = req.currentStep ? req.currentStep.name : '';
-        const idamLogin = req.session ? req.session.IdamLogin : null;
-        if (stepName === 'CaptureCaseAndPin' && req.method === 'POST') {
-          if (idamLogin && idamLogin.success === 'yesCaseNotLinked') {
-            // simulate case being linked after entering case ID/pin
-            cookies.set('__auth-token', 'yesCaseStarted');
-          }
-        }
         next();
       } else {
         res.redirect(idamArgs.indexUrl);

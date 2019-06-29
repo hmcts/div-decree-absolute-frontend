@@ -55,7 +55,7 @@ services:
     enabled: false
   orchestrationService:
     getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
-    submitCaseUrl: http://localhost:3001/case-orchestration/submit-dn
+    submitCaseUrl: http://localhost:3001/case-orchestration/submit-da
     health: http://localhost:3001/case-orchestration/health
     draftEndpoint: http://localhost:3001/case-orchestration/draftsapi/version/1
     amendPetitionUrl: http://localhost:3001/case-orchestration/amend-petition
@@ -86,6 +86,7 @@ paths:
     progressBar: /progress-bar
   mock:
     idamLogin: /idam-login
+    modifySession: /session
 
 tests:
   e2e:
@@ -111,6 +112,10 @@ features:
 
 journey:
   timeoutDelay: 300
+
+caseStates:
+  AwaitingDecreeAbsolute: 'AwaitingDecreeAbsolute'
+  DivorceGranted: 'DivorceGranted'
 
 document:
   sessionPath: 'case.data.d8'
