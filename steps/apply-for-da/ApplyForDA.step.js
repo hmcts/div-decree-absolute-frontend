@@ -11,7 +11,7 @@ class ApplyForDA extends Question {
   }
 
   get case() {
-    return this.req.session.case.data;
+    return this.req.session.case;
   }
 
   get form() {

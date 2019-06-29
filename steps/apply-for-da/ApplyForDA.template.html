@@ -3,19 +3,19 @@
 {% from "look-and-feel/components/fields.njk" import formSection, selectionButtons %}
 
 {% set title %}
-  {{ content.title | safe }}
+{{ content.title | safe }}
 {% endset %}
 
 
-{% block main_content %}
-
-
+{% block fields %}
+    <p class="text">{{ content.body | safe }}</p>
+    <br>
     {% call formSection() %}
         {{ selectionButtons(fields.applyForDA, content.fields.applyForDA.title,
-        options = [
-        { label: content.fields.applyForDA.yes, value: "yes" },
-        { label: content.fields.applyForDA.no, value: "no", target: "no-container"}
-        ],
+            options = [
+                { label: content.fields.applyForDA.yes, value: "yes" },
+                { label: content.fields.applyForDA.no, value: "no", target: "no-container"}
+            ],
         hint=false,
         hideQuestion=true,
         inline=true,
