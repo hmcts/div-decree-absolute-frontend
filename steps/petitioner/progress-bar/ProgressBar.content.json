@@ -2,7 +2,7 @@
   "en": {
     "title": "Your divorce",
     "youApply": "You apply",
-    "yourPartnerMustRespond": "Your {{ session.divorceWho }} must respond",
+    "yourPartnerMustRespond": "Your {{ case.divorceWho }} must respond",
     "getDecreeNisi": "Get a decree nisi",
     "madeFinal": "The divorce is complete",
     "downloadableFiles": "Download your documents",
