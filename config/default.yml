@@ -78,6 +78,7 @@ paths:
   protected: /protected
   exit: /exit
   entry: /entry
+  applyForDA: /continue-with-divorce
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
