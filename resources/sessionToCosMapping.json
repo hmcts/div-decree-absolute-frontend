@@ -1,0 +1,36 @@
+{
+  "ApplyForDecreeNisi.applyForDecreeNisi": "applyForDecreeNisi",
+
+  "MiniPetition.changes.hasBeenChanges": "hasBeenChanges",
+  "MiniPetition.changes.changesDetails": "changesDetails",
+  "MiniPetition.changes.statementOfTruthChanges": "statementOfTruthChanges",
+  "MiniPetition.changes.statementOfTruthNoChanges": "statementOfTruthChanges",
+
+  "ClaimCosts.dnCosts.claimCosts": "claimCosts",
+  "ClaimCosts.dnCosts.costsDifferentDetails": "costsDifferentDetails",
+
+  "ShareCourtDocuments.upload": "uploadAnyOtherDocuments",
+
+  "CheckYourAnswers.statementOfTruth": "statementOfTruth",
+
+  "Intolerable.intolerable": "intolerable",
+
+  "AdulteryFirstFoundOut.adulteryFirstFoundDate": "adulteryFirstFoundDate",
+
+  "BehaviourContinuedSinceApplication.changes.behaviourContinuedSinceApplication": "behaviourContinuedSinceApplication",
+  "BehaviourContinuedSinceApplication.changes.lastIncidentDate": "lastIncidentDate",
+
+  "LivedApartSinceLastIncidentDate.changes.livedApartSinceLastIncidentDate": "livedApartSinceLastIncidentDate",
+  "LivedApartSinceLastIncidentDate.changes.approximateDatesOfLivingTogetherField": "approximateDatesOfLivingTogetherField",
+
+  "LivedApartSinceSeparation.changes.livedApartSinceSeparation": "livedApartSinceSeparation",
+  "LivedApartSinceSeparation.changes.approximateDatesOfLivingTogetherField": "approximateDatesOfLivingTogetherField",
+
+  "LivedApartSinceDesertion.changes.livedApartSinceDesertion": "livedApartSinceDesertion",
+  "LivedApartSinceDesertion.changes.approximateDatesOfLivingTogetherField": "approximateDatesOfLivingTogetherField",
+
+  "LivedApartSinceAdultery.livedApart.livedApartSinceAdultery": "livedApartSinceAdultery",
+  "LivedApartSinceAdultery.livedApart.datesLivedTogether": "datesLivedTogether",
+
+  "Upload.files": "files"
+}

@@ -1,0 +1,10 @@
+{% call formSection() %}
+  {{ selectionButtons(fields.state, "Select case state",
+    options = [
+      { label: "AwaitingDecreeAbsolute", value: "AwaitingDecreeAbsolute" },
+      { label: "DivorceGranted", value: "DivorceGranted" }
+    ],
+    hideQuestion = false,
+    inline = true
+  ) }}
+{% endcall %}

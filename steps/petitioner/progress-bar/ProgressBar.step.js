@@ -1,21 +1,23 @@
 const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
+const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
 
 const progressStates = {
-  notDivorced: 'notDivorced',
-  divorced: 'Divorced'
+  awaitingDecreeAbsolute: 'awaitingDecreeAbsolute',
+  divorceGranted: 'divorceGranted',
+  other: 'other'
 };
 
 const caseStateMap = [
   {
     template: './sections/ThreeCirclesFilledIn.html',
-    state: ['notDivorced']
+    state: ['AwaitingDecreeAbsolute']
   },
   {
     template: './sections/FourCirclesFilledIn.html',
-    state: ['Divorced']
+    state: ['DivorceGranted']
   }
 ];
 
@@ -28,6 +30,14 @@ class ProgressBar extends Interstitial {
     return this.req.session;
   }
 
+  get case() {
+    return this.req.session.case.data;
+  }
+
+  get caseId() {
+    return this.req.session.case.caseId;
+  }
+
   get middleware() {
     return [
       ...super.middleware,
@@ -38,29 +48,37 @@ class ProgressBar extends Interstitial {
   next() {
     return goTo(this.journey.steps.Exit);
   }
+
   get progressStates() {
     return progressStates;
   }
 
-  get currentCaseState() {
-    // obviously will be changed but just to demonstrate the idea
-    // return this.req.session.caseState;
-
-    // return 'Divorced';
-    return 'notDivorced';
-  }
-
   getProgressBarContent() {
-    // will be replaced once we're able to properly retrieve session data
-    // const caseState = this.session.caseState;
+    const caseState = this.session.case.state;
 
-    // we will use the current case state to decide what content to display the user
-    // refer to RFE to see how we will properly implement this
+    if (this.isCaseStateAwaitingDA(caseState)) {
+      return this.progressStates.awaitingDecreeAbsolute;
+    } else if (this.isCaseStateDivorceGranted(caseState)) {
+      return this.progressStates.divorceGranted;
+    }
 
-    return this.progressStates.notDivorced;
+    logger.errorWithReq(this.req, 'progress_bar_content', 'No valid DA case state for ProgressBar page', caseState);
+    return this.progressStates.other;
   }
 
-  // Select the co-responding template depending on case states
+  isCaseStateAwaitingDA(caseState) {
+    return caseState === config.caseStates.AwaitingDecreeAbsolute;
+  }
+
+  isCaseStateDivorceGranted(caseState) {
+    return caseState === config.caseStates.DivorceGranted;
+  }
+
+  get currentCaseState() {
+    return this.req.session.case.state;
+  }
+
+  // Select the correct template based on case state
   // decides which circles should be filled in - either 3 or 4
   get stateTemplate() {
     let template = '';
@@ -69,10 +87,8 @@ class ProgressBar extends Interstitial {
         template = dataMap.template;
       }
     });
-    if (template === '') {
-      template = './sections/ThreeCirclesFilledIn.html';
-    }
-    return template;
+
+    return template || './sections/ThreeCirclesFilledIn.html';
   }
 }
 

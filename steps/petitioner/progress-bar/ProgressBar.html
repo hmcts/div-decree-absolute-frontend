@@ -10,16 +10,18 @@
 {% endset %}
 
     {% block main_content %}
-        <p class="font-xsmall">
-            <strong class="bold-xsmall">{{ content.referenceNumber }}:</strong>&nbsp;&nbsp;<br>
-            <strong class="bold-xsmall">{{ content.name }}:</strong> &nbsp;&nbsp;
-        </p>
+    <p class="font-xsmall">
+        <strong class="bold-xsmall">{{ content.referenceNumber }}
+            :</strong>&nbsp;&nbsp;&nbsp; {{ session.case.data.caseReference }}<br>
+        <strong class="bold-xsmall">{{ content.name }}:</strong> &nbsp;&nbsp;
+        {{ session.case.data.respondentFirstName }} {{ session.case.data.respondentLastName }}
+    </p>
 
-        {% include stateTemplate %}
+    {% include stateTemplate %}
 
     {% set progressBarContent = getProgressBarContent() %}
 
-    {% if  progressBarContent === progressStates.notDivorced %}
+    {% if progressBarContent === progressStates.awaitingDecreeAbsolute %}
         <h2 class="heading-medium">{{ content.youCanNowFinaliseYourDivorce }}</h2>
         <p>{{ content.mainBody | safe }}</p>
 
@@ -41,7 +43,7 @@
         <br>
     {% endif %}
 
-    {% if  progressBarContent === progressStates.Divorced %}
+    {% if progressBarContent === progressStates.divorceGranted %}
         <h2 class="heading-medium">{{ content.youAreNowDivorced }}</h2>
     {% endif %}
 {% endblock %}
@@ -60,12 +62,6 @@
                 {{ content.contactDetails.divorceCenterHours }}<br>
             </li>
         </ul>
-
-        {% if (downloadableFiles.length > 0) %}
-        <h3 class="heading-small" id="subsection-title">{{ content.downloadableFiles }}</h3>
-
-        {{ documentList(downloadableFiles, content.files) }}
-        {% endif %}
 
         {% include "includes/sideMenuGuidanceLinks.html" %}
     </aside>
