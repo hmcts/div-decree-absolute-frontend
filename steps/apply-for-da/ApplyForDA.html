@@ -1,20 +1,20 @@
 {% extends "question.njk" %}
 
-{% from "look-and-feel/components/fields.njk" import selectionButtons %}
-
+{% from "look-and-feel/components/fields.njk" import formSection, selectionButtons %}
 
 {% set title %}
-    {{ content.title | safe %}}
-{% end set %}
+  {{ content.title | safe }}
+{% endset %}
+
 
 {% block main_content %}
 
 
     {% call formSection() %}
-        {{ selectionButtons(fields.applyForDecreeNisi, content.fields.applyForDecreeNisi.title,
+        {{ selectionButtons(fields.applyForDA, content.fields.applyForDA.title,
         options = [
-        { label: content.fields.applyForDecreeNisi.yes, value: "yes" },
-        { label: content.fields.applyForDecreeNisi.no, value: "no", target: "no-container"}
+        { label: content.fields.applyForDA.yes, value: "yes" },
+        { label: content.fields.applyForDA.no, value: "no", target: "no-container"}
         ],
         hint=false,
         hideQuestion=true,
@@ -27,3 +27,5 @@
     <div class="js-hidden panel panel-border-wide" id="no-container">
     <p class="text">{{ content.signOutDetail | safe}}</p>
     </div>
+
+{% endblock %}
