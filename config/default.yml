@@ -76,6 +76,7 @@ paths:
   authenticated: /authenticated
   index: /
   protected: /protected
+  done: /done
   exit: /exit
   entry: /entry
   termsAndConditions: /terms-and-conditions
