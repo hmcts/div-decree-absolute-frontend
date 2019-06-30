@@ -1,0 +1,20 @@
+{% extends "page.njk" %}
+
+{% block back %}{% endblock %}
+
+{% block proposition_header %}{% endblock %}
+
+{% set title %}
+  {{ content.title | safe}}
+{% endset %}
+
+{% block main_content %}
+  <p class="text">{{ content.youCanApplyForYourDaAnytimeFromNow | safe }}</p>
+  <p class="text">{{ content.theCourtCanCancelTheDN | safe }}</p>
+
+  <h2 class="heading-medium">{{ content.whenYourDivorceWhoCanApply | safe }}</h2>
+  <p class="text">{{ content.yourDivorceWhoCanApplyForTheDaFrom | safe }}</p>
+  <p class="text">{{ content.signInToReturnToApplication | safe }}</p>
+{% endblock %}
+
+{% block fields %}{% endblock %}
