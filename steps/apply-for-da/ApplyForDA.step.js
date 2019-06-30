@@ -36,7 +36,7 @@ class ApplyForDA extends Question {
 
     return branch(
       redirectTo(this.journey.steps.Exit).if(declinesToApplyForDA),
-      redirectTo(this.journey.steps.ProgressBar)
+      redirectTo(this.journey.steps.Done)
     );
   }
 
