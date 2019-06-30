@@ -76,13 +76,15 @@ paths:
   authenticated: /authenticated
   index: /
   protected: /protected
-  exit: /exit
+  done: /done
   entry: /entry
+  exit: /exit
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   petitioner:
     progressBar: /progress-bar
+    exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   mock:
     idamLogin: /idam-login
     modifySession: /session
