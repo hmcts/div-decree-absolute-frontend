@@ -2,6 +2,7 @@ const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
 const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
+const { createUris } = require('@hmcts/div-document-express-handler');
 const idam = require('services/idam');
 
 const progressStates = {

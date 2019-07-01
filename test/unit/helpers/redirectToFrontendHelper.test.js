@@ -5,7 +5,8 @@ const authTokenString = '__auth-token';
 
 const modulePath = 'helpers/redirectToFrontendHelper';
 
-const { redirectToFrontend, redirectToAos, redirectToFrontendAmend } = require(modulePath);
+const { redirectToFrontend, redirectToFrontendAmend,
+  redirectToAos, redirectToDN } = require(modulePath);
 
 describe(modulePath, () => {
   let req = {};
@@ -50,6 +51,16 @@ describe(modulePath, () => {
     const expectedUrl = `${landingUrl}?${authTokenString}=someValue`;
 
     redirectToAos(req, res);
+
+    expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
+  });
+
+  it('should redirect to DN on call', () => {
+    const dnFrontend = config.services.dnFrontend;
+    const landingUrl = `${dnFrontend.url}${dnFrontend.landing}`;
+    const expectedUrl = `${landingUrl}?${authTokenString}=someValue`;
+
+    redirectToDN(req, res);
 
     expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
   });

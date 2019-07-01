@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces,max-len */
 const sessionToCosMapping = require('resources/sessionToCosMapping');
 const { get } = require('lodash');
 const config = require('config');
@@ -12,6 +13,10 @@ redirectToPetitionerError.statusCode = REDIRECT_TO_PETITIONER_FE;
 const REDIRECT_TO_RESPONDENT_FE = Symbol('redirect_to_rfe');
 const redirectToRespondentError = new Error('User is a respondent');
 redirectToRespondentError.statusCode = REDIRECT_TO_RESPONDENT_FE;
+
+const REDIRECT_TO_DECREE_NISI_FE = Symbol('redirect_to_rfe');
+const redirectToDecreeNisiError = new Error('User is in Decree Nisi state');
+redirectToDecreeNisiError.statusCode = REDIRECT_TO_DECREE_NISI_FE;
 
 const formatSessionForSubmit = req => {
   const { journey } = req;
@@ -55,10 +60,15 @@ const formatSessionForSubmit = req => {
 const validateResponse = (req, response) => {
   const { idam } = req;
 
+  // if not a valid state or no court redirect to PFE
   const notValidState = !response.state || config.ccd.d8States.includes(response.state);
   const noDigitalCourt = !config.ccd.courts.includes(response.data.courts);
 
-  const userIsRespondent = idam.userDetails.email === response.data.respEmailAddress; // eslint-disable-line max-len
+  // if email of address of user is the same as the respondent (aka respondent tries to login) - redirect to RFE
+  const userIsRespondent = idam.userDetails.email === response.data.respEmailAddress;
+
+  // if it is the petitioner logging in but the case state is not a valid DA state - redirect to DN
+  const userIsNotInDaState = idam.userDetails.email === response.data.petitionerEmail && config.ccd.validDaStates.notInclude(response.state);
 
   switch (true) {
   case notValidState:
@@ -66,6 +76,8 @@ const validateResponse = (req, response) => {
     return Promise.reject(redirectToPetitionerError);
   case userIsRespondent:
     return Promise.reject(redirectToRespondentError);
+  case userIsNotInDaState:
+    return Promise.reject(redirectToDecreeNisiError);
   default:
     return Promise.resolve(response);
   }
@@ -85,6 +97,11 @@ const handleErrorCodes = (error, req, res, next) => {
       redirectToFrontendHelper.redirectToAos(req, res);
     });
     break;
+  case REDIRECT_TO_DECREE_NISI_FE:
+    idamService.logout()(req, res, () => {
+      redirectToFrontendHelper.redirectToDN(req, res);
+    });
+    break;
   default:
     next(error);
   }
@@ -95,5 +112,6 @@ module.exports = {
   validateResponse,
   handleErrorCodes,
   redirectToPetitionerError,
-  redirectToRespondentError
+  redirectToRespondentError,
+  redirectToDecreeNisiError
 };

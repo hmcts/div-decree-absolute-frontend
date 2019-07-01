@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const moduleName = 'helpers/caseOrchestrationHelper';
 
 const rewire = require('rewire');
@@ -138,7 +139,30 @@ describe(moduleName, () => {
       });
     });
 
-    it('resolves if state is good and user is petitioner', () => {
+    // NEED TO FIX
+    context('rejects with redirectToDecreeNisiError', () => {
+      beforeEach(() => {
+        response.state = 'aValidState';
+        response.data.courts = config.ccd.courts[0];
+      });
+
+      it('if respondent email match with idam email', () => {
+        response.data.respEmailAddress = 'anotheremail@email.com';
+        req.idam.userDetails.email = 'anotheremail@email.com';
+        return expect(caseOrchestrationHelper.validateResponse(req, response))
+          .to.be.rejectedWith(caseOrchestrationHelper.redirectToRespondentError);
+      });
+
+      it('if the state is in blacklist', () => {
+        response.data.petitionerEmail = 'email@email.com';
+        response.data.respEmailAddress = 'email@email.com';
+        req.idam.userDetails.email = 'email@email.com';
+        return expect(caseOrchestrationHelper.validateResponse(req, response))
+          .to.be.rejectedWith(caseOrchestrationHelper.redirectToRespondentError);
+      });
+    });
+
+    it('resolves if state is good and user is petitioner in proper DA state', () => {
       response.state = 'aValidState';
       response.data.courts = config.ccd.courts[0];
       response.data.petitionerEmail = 'email@email.com';
@@ -153,11 +177,13 @@ describe(moduleName, () => {
     beforeEach(() => {
       sinon.stub(redirectToFrontendHelper, 'redirectToFrontend');
       sinon.stub(redirectToFrontendHelper, 'redirectToAos');
+      sinon.stub(redirectToFrontendHelper, 'redirectToDN');
     });
 
     afterEach(() => {
       redirectToFrontendHelper.redirectToFrontend.restore();
       redirectToFrontendHelper.redirectToAos.restore();
+      redirectToFrontendHelper.redirectToDN.restore();
     });
 
     it('redirect to petitioner frontend if error is NOT_FOUND', () => {
@@ -178,12 +204,22 @@ describe(moduleName, () => {
       expect(res.redirect.calledOnce).to.eql(true);
     });
 
-    it('redirect to respondent frontend & logouts out of idam if error is REDIRECT_TO_RESPONDENT_FE'
+    it('redirect to respondent frontend & logs out out of IDAM if error is REDIRECT_TO_RESPONDENT_FE'
       , () => {
         const idamLogoutMiddleware = sinon.stub().callsArg(2);
         sinon.stub(idam, 'logout').returns(idamLogoutMiddleware);
         caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToRespondentError);
         expect(redirectToFrontendHelper.redirectToAos.calledOnce).to.eql(true);
+        expect(idam.logout.calledOnce).to.eql(true);
+        idam.logout.restore();
+      });
+
+    it('redirect to decree nisi frontend & logs out out of IDAM if error is REDIRECT_TO_DECREE_NISI_FE'
+      , () => {
+        const idamLogoutMiddleware = sinon.stub().callsArg(2);
+        sinon.stub(idam, 'logout').returns(idamLogoutMiddleware);
+        caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToDecreeNisiError);
+        expect(redirectToFrontendHelper.redirectToDN.calledOnce).to.eql(true);
         expect(idam.logout.calledOnce).to.eql(true);
         idam.logout.restore();
       });
