@@ -3,9 +3,12 @@
 {% from "look-and-feel/components/fields.njk" import formSection, selectionButtons %}
 
 {% set title %}
-{{ content.title | safe }}
+    {{ content.title | safe }}
 {% endset %}
 
+{% set continueText  %}
+    {{content.submit}}
+{% endset %}
 
 {% block fields %}
     <p class="text">{{ content.body | safe }}</p>
