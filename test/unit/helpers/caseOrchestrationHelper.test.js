@@ -139,31 +139,22 @@ describe(moduleName, () => {
       });
     });
 
-    // NEED TO FIX
     context('rejects with redirectToDecreeNisiError', () => {
       beforeEach(() => {
         response.state = 'aValidState';
         response.data.courts = config.ccd.courts[0];
       });
 
-      it('if respondent email match with idam email', () => {
-        response.data.respEmailAddress = 'anotheremail@email.com';
-        req.idam.userDetails.email = 'anotheremail@email.com';
-        return expect(caseOrchestrationHelper.validateResponse(req, response))
-          .to.be.rejectedWith(caseOrchestrationHelper.redirectToRespondentError);
-      });
-
       it('if the state is in blacklist', () => {
         response.data.petitionerEmail = 'email@email.com';
-        response.data.respEmailAddress = 'email@email.com';
         req.idam.userDetails.email = 'email@email.com';
         return expect(caseOrchestrationHelper.validateResponse(req, response))
-          .to.be.rejectedWith(caseOrchestrationHelper.redirectToRespondentError);
+          .to.be.rejectedWith(caseOrchestrationHelper.redirectToDecreeNisiError);
       });
     });
 
-    it('resolves if state is good and user is petitioner in proper DA state', () => {
-      response.state = 'aValidState';
+    it('resolves if state is valid and user is petitioner in proper DA state', () => {
+      response.state = 'AwaitingDecreeAbsolute';
       response.data.courts = config.ccd.courts[0];
       response.data.petitionerEmail = 'email@email.com';
       req.idam.userDetails.email = 'email@email.com';

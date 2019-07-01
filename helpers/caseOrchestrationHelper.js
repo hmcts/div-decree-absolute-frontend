@@ -68,7 +68,7 @@ const validateResponse = (req, response) => {
   const userIsRespondent = idam.userDetails.email === response.data.respEmailAddress;
 
   // if it is the petitioner logging in but the case state is not a valid DA state - redirect to DN
-  const userIsNotInDaState = idam.userDetails.email === response.data.petitionerEmail && config.ccd.validDaStates.notInclude(response.state);
+  const userIsNotInDaState = idam.userDetails.email === response.data.petitionerEmail && !config.ccd.validDaStates.includes(response.state);
 
   switch (true) {
   case notValidState:

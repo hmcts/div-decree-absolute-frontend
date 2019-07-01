@@ -30,7 +30,7 @@ const redirectToAos = (req, res) => {
 };
 
 const redirectToDN = (req, res) => {
-  logger.infoWithReq(req, 'redirecting_to_decree_nisi', 'Redirecting user to DN. User is in DN state');
+  logger.infoWithReq(req, 'redirecting_to_decree_nisi', 'Redirecting user to DN. User is not in DA state');
 
   const dnFrontend = config.services.dnFrontend;
   redirectToUrl(req, res, `${dnFrontend.url}${dnFrontend.landing}`);
