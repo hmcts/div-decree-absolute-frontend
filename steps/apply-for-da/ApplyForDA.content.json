@@ -12,6 +12,9 @@
         "no": "No"
       }
     },
+    "errors": {
+      "required": "Select whether you want to finalise your divorce or not."
+    },
     "signOutDetail": "Press Continue to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
   }
 }
