@@ -79,6 +79,7 @@ paths:
   authenticated: /authenticated
   index: /
   protected: /protected
+  contactDivorceTeamError: /contact-your-divorce-error
   done: /done
   entry: /entry
   exit: /exit

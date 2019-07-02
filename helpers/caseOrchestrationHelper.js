@@ -2,6 +2,7 @@ const sessionToCosMapping = require('resources/sessionToCosMapping');
 const { get } = require('lodash');
 const config = require('config');
 const redirectToFrontendHelper = require('helpers/redirectToFrontendHelper');
+const { NOT_FOUND, MULTIPLE_CHOICES } = require('http-status-codes');
 
 const REDIRECT_TO_DECREE_NISI_FE = Symbol('redirect_to_rfe');
 const redirectToDecreeNisiError = new Error('User is in Decree Nisi state');
@@ -59,8 +60,12 @@ const validateResponse = (req, response) => {
 
 const handleErrorCodes = (error, req, res, next) => {
   switch (error.statusCode) {
+  case NOT_FOUND:
   case REDIRECT_TO_DECREE_NISI_FE:
     redirectToFrontendHelper.redirectToDN(req, res);
+    break;
+  case MULTIPLE_CHOICES:
+    res.redirect(config.paths.contactDivorceTeamError);
     break;
   default:
     next(error);
