@@ -20,15 +20,17 @@
     </div>
     <br>
     {% call formSection() %}
-        {{ selectionButtons(fields.applyForDA, content.fields.applyForDA.title,
-                options = [
-                    { label: content.fields.applyForDA.yes, value: "yes" },
-                    { label: content.fields.applyForDA.no, value: "no", target: "no-container"}
-                ],
+        {{ selectionButtons(
+            fields.applyForDA,
+            content.fields.applyForDA.title,
+            options = [
+                { label: content.fields.applyForDA.yes, value: "yes" },
+                { label: content.fields.applyForDA.no, value: "no", target: "no-container"}
+            ],
             hint=false,
             hideQuestion=true,
             inline=true,
-            type='radio')
+            type="radio")
         }}
     {% endcall %}
 
