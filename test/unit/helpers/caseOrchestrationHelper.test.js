@@ -9,7 +9,6 @@ const caseOrchestrationHelper = require(moduleName);
 const config = require('config');
 const redirectToFrontendHelper = require('helpers/redirectToFrontendHelper');
 const { IM_A_TEAPOT } = require('http-status-codes');
-const idam = require('services/idam');
 
 describe(moduleName, () => {
   describe('#formatSessionForSubmit', () => {
@@ -136,15 +135,10 @@ describe(moduleName, () => {
     });
 
     // eslint-disable-next-line max-len
-    it('redirect to decree nisi frontend & logs out out of IDAM if error is REDIRECT_TO_DECREE_NISI_FE'
-      , () => {
-        const idamLogoutMiddleware = sinon.stub().callsArg(2);
-        sinon.stub(idam, 'logout').returns(idamLogoutMiddleware);
-        caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToDecreeNisiError);
-        expect(redirectToFrontendHelper.redirectToDN.calledOnce).to.eql(true);
-        expect(idam.logout.calledOnce).to.eql(true);
-        idam.logout.restore();
-      });
+    it('redirect to decree nisi frontend if error is REDIRECT_TO_DECREE_NISI_FE', () => {
+      caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToDecreeNisiError);
+      expect(redirectToFrontendHelper.redirectToDN.calledOnce).to.eql(true);
+    });
 
     it('calls next with error if error not recognised', () => {
       const next = sinon.stub();
