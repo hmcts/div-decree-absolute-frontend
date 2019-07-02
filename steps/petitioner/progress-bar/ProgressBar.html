@@ -48,20 +48,19 @@
     {% endif %}
 {% endblock %}
 
-    {% block one_third %}
-    <aside class="govuk-related-items" role="complementary">
-        <h3 class="heading-small">{{ content.contactDetails.heading }}</h3>
+{% block one_third %}
+<aside class="govuk-related-items" role="complementary">
 
-        <ul class="font-xsmall">
-            <li>
-                <strong class="bold-xsmall">{{ content.contactDetails.email }}</strong><br>
-                <br>
-            </li>
-            <li>
-                <strong class="bold-xsmall">{{ content.contactDetails.phone }}</strong><br>
-                {{ content.contactDetails.divorceCenterHours }}<br>
-            </li>
-        </ul>
+    <h3 class="heading-small">{{ content.help }}</h3>
+
+    {% include "includes/sideMenuCourtDetails.html" %}
+
+    {% if (downloadableFiles.length > 0) %}
+        <h3 class="heading-small">{{ content.downloadDocuments }}</h3>
+
+    {{ documentList(downloadableFiles, content.files) }}
+
+    {% endif %}
 
         {% include "includes/sideMenuGuidanceLinks.html" %}
     </aside>

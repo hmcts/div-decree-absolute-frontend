@@ -20,28 +20,25 @@
     "youAreNowDivorced": "You are now divorced",
 
     "yourCourt": "Your divorce centre",
-    "careOfAbbreviation": "c/o",
-    "helpHeading": "If you need help",
-    "helpContent": "You can contact the service centre if you need help. Court staff can’t give you legal advice however, and you should speak to a <a href=\"https://www.gov.uk/find-a-legal-adviser\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">solicitor or legal adviser</a>.",
-    "improveHeading": "Help us improve this service",
-    "improveContent": "Please help us improve this service by <a href=\"http://www.smartsurvey.co.uk/s/8RR1T?pageurl=/done\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">leaving your feedback</a>.",
-    "defendedContact": {
-      "name": "East Midlands Regional Divorce Centre",
-      "poBox": "PO Box 10447",
-      "town": "Nottingham",
-      "postcode": "NG2 9QN"
-    },
-    "contactDetails": {
-      "heading": "Getting help",
-      "yourCourt": "Your divorce centre",
-      "email": "Email",
-      "phone": "Phone",
-      "divorceCenterHours": "(Monday to Friday, 8.30am to 5pm)"
-    },
+    "help": "Getting help",
+    "email": "Email",
+    "phone": "Phone",
+    "careOf": "c/o ",
+    "divorceEmail": "divorcecase@justice.gov.uk",
+    "openTimes": "(Monday to Friday, 8.30am to 5pm)",
+    "phoneNumber" : "0300 303 0642",
+    "guidance": "Guidance on GOV.UK",
+    "howRespondsLink": "<a href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">How your {{ case.divorceWho }} responds</a>",
+    "decreeNisiLink": "<a href=\"https://www.gov.uk/divorce/apply-for-decree-nisi\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree nisi</a>",
+    "decreeAbsoluteLink": "<a href=\"https://www.gov.uk/divorce/apply-for-a-decree-absolute\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree absolute</a>",
+    "childrenAndDivorceLink": "<a href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
+    "moneyAndPropertyLinky": "<a href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Money and property</a>",
+    "DivorceApplication": "Divorce application",
+    "downloadDocuments" : "Download your documents",
+    "downloadAndSaveYourDocuments" : "Download and save all the documents for this application before you continue. If you do amend your application, you won’t be able to access any of these documents online anymore.",
     "guidance": {
       "title": "Guidance on GOV.UK",
-      "decreeNisiLink": "<a href=\"https://www.gov.uk/divorce/apply-for-decree-nisi\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree nisi</a>",
-      "decreeAbsoluteLink": "<a href=\"https://www.gov.uk/divorce/apply-for-a-decree-absolute\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree absolute</a>",
+      "getADivorce": "<a href=\"https://www.gov.uk/get-a-divorce\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Get a divorce</a>",
       "childrenAndDivorceLink": "<a href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
       "moneyAndPropertyLink": "<a href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Money and property</a>"
     }
