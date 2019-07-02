@@ -60,14 +60,10 @@ const formatSessionForSubmit = req => {
 const validateResponse = (req, response) => {
   const { idam } = req;
 
-  // if not a valid state or no court redirect to PFE
   const notValidState = !response.state || config.ccd.d8States.includes(response.state);
   const noDigitalCourt = !config.ccd.courts.includes(response.data.courts);
 
-  // if email of address of user is the same as the respondent (aka respondent tries to login) - redirect to RFE
   const userIsRespondent = idam.userDetails.email === response.data.respEmailAddress;
-
-  // if it is the petitioner logging in but the case state is not a valid DA state - redirect to DN
   const userIsNotInDaState = idam.userDetails.email === response.data.petitionerEmail && !config.ccd.validDaStates.includes(response.state);
 
   switch (true) {
