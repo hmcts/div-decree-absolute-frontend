@@ -1,7 +1,5 @@
 const modulePath = 'steps/apply-for-da/ApplyForDA.step';
 
-const ApplyForDAContent = require('steps/apply-for-da/ApplyForDA.content');  // eslint-disable-line
-
 const ApplyForDA = require(modulePath);
 
 const Done = require('steps/done/Done.step');
@@ -26,7 +24,8 @@ describe(modulePath, () => {
   });
 
   it('renders the content', () => {
-    return content(ApplyForDA, session);
+    const options = { ignoreContent: ['signOut'] };
+    return content(ApplyForDA, session, options);
   });
 
   it('shows error if does not answer question', () => {
@@ -46,30 +45,5 @@ describe(modulePath, () => {
       applyForDA: 'no'
     };
     return question.redirectWithField(ApplyForDA, fields, Exit);
-  });
-
-  it('returns correct answers if answered yes', () => {
-    const expectedContent = [
-      // eslint-disable-next-line max-len
-      ApplyForDAContent.en.fields.applyForDA.title,
-      ApplyForDAContent.en.fields.applyForDA.yes
-    ];
-    const stepData = { applyForDA: 'yes' };
-
-    return question.answers(ApplyForDA, stepData, expectedContent, session);
-  });
-
-  it('returns correct answers if answered no', () => {
-    const expectedContent = [
-      // eslint-disable-next-line max-len
-      ApplyForDAContent.en.fields.applyForDA.title,
-      ApplyForDAContent.en.fields.applyForDA.no
-    ];
-
-    const stepData = {
-      applyForDA: 'no'
-    };
-
-    return question.answers(ApplyForDA, stepData, expectedContent, session);
   });
 });

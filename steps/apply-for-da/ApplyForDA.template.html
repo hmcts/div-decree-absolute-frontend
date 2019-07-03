@@ -7,7 +7,7 @@
 {% endset %}
 
 {% set continueText  %}
-    {{content.submit}}
+    {{ content.submit | safe }}
 {% endset %}
 
 {% block fields %}
