@@ -4,7 +4,7 @@ const config = require('config');
 const redirectToFrontendHelper = require('helpers/redirectToFrontendHelper');
 const { NOT_FOUND, MULTIPLE_CHOICES } = require('http-status-codes');
 
-const REDIRECT_TO_DECREE_NISI_FE = Symbol('redirect_to_rfe');
+const REDIRECT_TO_DECREE_NISI_FE = Symbol('redirect_to_dn');
 const redirectToDecreeNisiError = new Error('User is in Decree Nisi state');
 redirectToDecreeNisiError.statusCode = REDIRECT_TO_DECREE_NISI_FE;
 

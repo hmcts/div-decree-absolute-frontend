@@ -55,16 +55,9 @@ services:
     enabled: false
   orchestrationService:
     getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
-    submitCaseUrl: http://localhost:3001/case-orchestration/submit-da
     health: http://localhost:3001/case-orchestration/health
     draftEndpoint: http://localhost:3001/case-orchestration/draftsapi/version/1
     amendPetitionUrl: http://localhost:3001/case-orchestration/amend-petition
-  petitionerFrontend:
-    url: https://localhost:8080
-    landing: /authenticated
-  aosFrontend:
-    url: https://localhost:2000
-    landing: /authenticated
   dnFrontend:
     url: https://localhost:4000
     landing: /authenticated
