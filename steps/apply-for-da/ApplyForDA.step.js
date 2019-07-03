@@ -1,9 +1,11 @@
 const { Question, branch } = require('@hmcts/one-per-page');
-const { redirectTo } = require('@hmcts/one-per-page/flow');
+const { redirectTo, action, goTo } = require('@hmcts/one-per-page/flow');
 const { form, text } = require('@hmcts/one-per-page/forms');
 const config = require('config');
 const idam = require('services/idam');
 const Joi = require('joi');
+
+const caseOrchestrationService = require('services/caseOrchestrationService');
 
 class ApplyForDA extends Question {
   static get path() {
@@ -37,7 +39,15 @@ class ApplyForDA extends Question {
     return branch(
       redirectTo(this.journey.steps.ExitNoLongerWantsToProceed)
         .if(declinesToApplyForDA),
-      redirectTo(this.journey.steps.Done)
+      action(caseOrchestrationService.submitApplication)
+        .then(goTo(this.journey.steps.Done))
+        .onFailure((error, req, res) => {
+          const { session } = req;
+          // push error into session to display error message to user
+          session.temp = { ApplyForDA: Object.assign({}, session.ApplyForDA, { submitError: 'error' }) };
+          return redirectTo(this.journey.steps.ApplyForDA)
+            .redirect(req, res);
+        })
     );
   }
 
