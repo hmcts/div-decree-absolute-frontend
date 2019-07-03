@@ -123,9 +123,9 @@ document:
   documentNamePath: 'fileName'
   filesWhiteList:
   - 'd8petition'
-  - 'respondentAnswers'
-  - 'coRespondentAnswers'
   - 'certificateOfEntitlement'
+  - 'costsOrder'
+  - 'decreeNisi'
 
 ccd:
   d8States:
