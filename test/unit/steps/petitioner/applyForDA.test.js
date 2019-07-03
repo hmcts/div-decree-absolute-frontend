@@ -1,4 +1,4 @@
-const modulePath = 'steps/apply-for-da/ApplyForDA.step';
+const modulePath = 'steps/petitioner/apply-for-da/ApplyForDA.step';
 
 const ApplyForDA = require(modulePath);
 

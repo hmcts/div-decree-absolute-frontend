@@ -7,7 +7,7 @@ const Joi = require('joi');
 
 class ApplyForDA extends Question {
   static get path() {
-    return config.paths.applyForDA;
+    return config.paths.petitioner.applyForDA;
   }
   get session() {
     return this.req.session;

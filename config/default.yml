@@ -78,12 +78,12 @@ paths:
   protected: /protected
   done: /done
   entry: /entry
-  applyForDA: /continue-with-divorce
   exit: /exit
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   petitioner:
+    applyForDA: /continue-with-divorce
     progressBar: /progress-bar
     exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   mock:
