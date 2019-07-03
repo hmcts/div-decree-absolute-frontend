@@ -5,7 +5,6 @@
     "yourPartnerMustRespond": "Your {{ case.divorceWho }} must respond",
     "getDecreeNisi": "Get a decree nisi",
     "madeFinal": "The divorce is complete",
-    "downloadableFiles": "Download your documents",
     "referenceNumber": "Reference number",
     "name": "Name",
 
@@ -27,7 +26,6 @@
     "divorceEmail": "divorcecase@justice.gov.uk",
     "openTimes": "(Monday to Friday, 8.30am to 5pm)",
     "phoneNumber" : "0300 303 0642",
-    "guidance": "Guidance on GOV.UK",
     "howRespondsLink": "<a href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">How your {{ case.divorceWho }} responds</a>",
     "decreeNisiLink": "<a href=\"https://www.gov.uk/divorce/apply-for-decree-nisi\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree nisi</a>",
     "decreeAbsoluteLink": "<a href=\"https://www.gov.uk/divorce/apply-for-a-decree-absolute\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree absolute</a>",
@@ -41,6 +39,12 @@
       "getADivorce": "<a href=\"https://www.gov.uk/get-a-divorce\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Get a divorce</a>",
       "childrenAndDivorceLink": "<a href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
       "moneyAndPropertyLink": "<a href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Money and property</a>"
+    },
+    "files": {
+      "dpetition": "Divorce application",
+      "certificateOfEntitlement": "Certificate of Entitlement",
+      "costsOrder": "Cost Order",
+      "decreeNisi": "Decree Nisi"
     }
   }
 }

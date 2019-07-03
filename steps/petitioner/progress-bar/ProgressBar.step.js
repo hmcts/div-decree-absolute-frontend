@@ -3,6 +3,8 @@ const { goTo } = require('@hmcts/one-per-page/flow');
 const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
+const { createUris } = require('@hmcts/div-document-express-handler');
+
 
 const progressStates = {
   awaitingDecreeAbsolute: 'awaitingDecreeAbsolute',
@@ -76,6 +78,15 @@ class ProgressBar extends Interstitial {
 
   get currentCaseState() {
     return this.req.session.case.state;
+  }
+
+  get downloadableFiles() {
+    const docConfig = {
+      documentNamePath: config.document.documentNamePath,
+      documentWhiteList: config.document.filesWhiteList
+    };
+
+    return createUris(this.case.d8, docConfig);
   }
 
   // Select the correct template based on case state

@@ -30,7 +30,23 @@ describe(modulePath, () => {
   describe('right hand side menu rendering', () => {
     const session = {
       case: {
-        state: 'AwaitingDecreeAbsolute'
+        state: 'AwaitingDecreeAbsolute',
+        data: {
+          d8: [
+            {
+              fileName: 'd8petition1554740111371638.pdf'
+            },
+            {
+              fileName: 'certificateOfEntitlement1559143445687032.pdf'
+            },
+            {
+              fileName: 'costsOrder1559143445687032.pdf'
+            },
+            {
+              fileName: 'decreeNisi1559143445687032.pdf'
+            }
+          ]
+        }
       }
     };
 
@@ -46,6 +62,21 @@ describe(modulePath, () => {
             .and.to.include('Children and divorce')
             .and.to.include('Money and property');
         });
+    });
+
+    it('should expect download documents', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+
+      const fileTypes = instance.downloadableFiles.map(file => {
+        return file.type;
+      });
+
+      expect(fileTypes).to.eql([
+        'dpetition',
+        'certificateOfEntitlement',
+        'costsOrder',
+        'decreeNisi'
+      ]);
     });
   });
 
