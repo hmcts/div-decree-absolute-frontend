@@ -4,7 +4,7 @@
     "body": "The Decree Nisi made on {{ case.decreeNisiGrantedDate | date }} will be made absolute and the marriage between {{ case.petitionerFirstName }} {{ case.petitionerLastName }} and {{ case.respondentFirstName }} {{ case.respondentLastName }} will be ended.",
     "warning": "Warning",
     "submit": "Submit",
-    "financialWarning": "Applying for your decree absolute before your financial proceedings have concluded is not advised. You may wish to seek some form of legal advice prior to submitting your application for your decree absolute. If you proceed you will be divorced, and you won’t be able to undo it",
+    "financialWarning": "When a decree absolute is made, your marriage will be legally ended. This might affect your financial position. If you are unsure what to do, particularly if you have not yet concluded any negotiations or legal proceedings about your [matrimonial] finances, it is recommended that you seek legal advice before applying for the decree absolute.",
     "fields": {
       "applyForDA": {
         "title": "Do you want to finalise your divorce?",
