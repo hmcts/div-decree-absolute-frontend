@@ -6,9 +6,7 @@
     {{ content.title | safe }}
 {% endset %}
 
-{% set continueText  %}
-    {{ content.submit | safe }}
-{% endset %}
+{% set continueText  %}{{ content.submit | safe }}{% endset %}
 
 {% block fields %}
     <p class="text">{{ content.body | safe }}</p>
