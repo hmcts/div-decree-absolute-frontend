@@ -6,6 +6,7 @@ const idam = require('services/idam');
 const Joi = require('joi');
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
+const caseOrchestrationHelper = require('helpers/caseOrchestrationHelper');
 
 class ApplyForDA extends Question {
   static get path() {
@@ -27,8 +28,9 @@ class ApplyForDA extends Question {
 
     const applyForDA = text
       .joi(this.content.errors.required, validAnswers);
-
-    return form({ applyForDA });
+    const submitError = text
+      .joi(this.submitError, Joi.valid(['']));
+    return form({ applyForDA, submitError });
   }
 
   next() {
@@ -42,11 +44,7 @@ class ApplyForDA extends Question {
       action(caseOrchestrationService.submitApplication)
         .then(goTo(this.journey.steps.Done))
         .onFailure((error, req, res) => {
-          const { session } = req;
-          // push error into session to display error message to user
-          session.temp = { ApplyForDA: Object.assign({}, session.ApplyForDA, { submitError: 'error' }) };
-          return redirectTo(this.journey.steps.ApplyForDA)
-            .redirect(req, res);
+          return caseOrchestrationHelper.handleErrorCodes(error, req, res);
         })
     );
   }

@@ -13,7 +13,8 @@
       }
     },
     "errors": {
-      "required": "Select whether you want to finalise your divorce or not."
+      "required": "Select whether you want to finalise your divorce or not.",
+      "submitError": "Sorry, we’re having technical problems. Please try again in a few minutes. If the problem continues you can contact the Courts and Tribunals Service Centre."
     },
     "signOutDetail": "Press Continue to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
   }

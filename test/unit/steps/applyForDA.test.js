@@ -1,5 +1,4 @@
 const modulePath = 'steps/apply-for-da/ApplyForDA.step';
-
 const ApplyForDA = require(modulePath);
 
 const Done = require('steps/done/Done.step');
@@ -7,6 +6,8 @@ const Done = require('steps/done/Done.step');
 const Exit = require('steps/petitioner/exit-no-longer-wants-to-proceed/ExitNoLongerWantsToProceed.step');
 const idam = require('services/idam');
 const { middleware, question, sinon, content } = require('@hmcts/one-per-page-test-suite');
+
+const caseOrchestrationService = require('services/caseOrchestrationService');
 
 const session = { case: { data: {} } };
 
@@ -45,5 +46,27 @@ describe(modulePath, () => {
       applyForDA: 'no'
     };
     return question.redirectWithField(ApplyForDA, fields, Exit);
+  });
+
+  describe('errors', () => {
+    beforeEach(() => {
+      sinon.stub(caseOrchestrationService, 'submitApplication');
+    });
+
+    afterEach(() => {
+      caseOrchestrationService.submitApplication.restore();
+    });
+
+    it('shows error if does not answer question', () => {
+      const onlyErrors = ['required'];
+      return question.testErrors(ApplyForDA, session, {}, { onlyErrors });
+    });
+
+    it('shows error if case submission fails', () => {
+      caseOrchestrationService.submitApplication.rejects();
+      const fields = { applyForDA: 'yes' };
+      const onlyErrors = ['submitError'];
+      return question.testErrors(ApplyForDA, session, fields, { onlyErrors });
+    });
   });
 });
