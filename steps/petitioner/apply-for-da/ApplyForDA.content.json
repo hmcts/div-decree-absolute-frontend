@@ -1,0 +1,20 @@
+{
+  "en": {
+    "title": "Do you want to finalise your divorce?",
+    "body": "The Decree Nisi made on {{ case.decreeNisiGrantedDate | date }} will be made absolute and the marriage between {{ case.petitionerFirstName }} {{ case.petitionerLastName }} and {{ case.respondentFirstName }} {{ case.respondentLastName }} will be ended.",
+    "warning": "Warning",
+    "submit": "Submit",
+    "financialWarning": "When a decree absolute is made, your marriage will be legally ended. This might affect your financial position. If you are unsure what to do, particularly if you have not yet concluded any negotiations or legal proceedings about your [matrimonial] finances, it is recommended that you seek legal advice before applying for the decree absolute.",
+    "fields": {
+      "applyForDA": {
+        "title": "Do you want to finalise your divorce?",
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "errors": {
+      "required": "Select whether you want to finalise your divorce or not."
+    },
+    "signOutDetail": "Press Continue to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
+  }
+}

@@ -1,6 +1,6 @@
 const modulePath = 'steps/petitioner/progress-bar/ProgressBar.step';
 const ProgressBar = require(modulePath);
-const Exit = require('steps/exit/Exit.step');
+const ApplyForDA = require('steps/petitioner/apply-for-da/ApplyForDA.step');
 const idam = require('services/idam');
 const { custom, expect, middleware,
   sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');
@@ -109,9 +109,9 @@ describe(modulePath, () => {
   });
 
   describe('navigation', () => {
-    it('goes to Exit page:', () => {
+    it('goes to Apply for Decree Absolute page:', () => {
       const session = {};
-      return redirect.navigatesToNext(ProgressBar, Exit, session);
+      return redirect.navigatesToNext(ProgressBar, ApplyForDA, session);
     });
   });
 });

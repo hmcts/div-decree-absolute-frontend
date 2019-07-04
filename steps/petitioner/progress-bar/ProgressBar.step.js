@@ -48,7 +48,7 @@ class ProgressBar extends Interstitial {
   }
 
   next() {
-    return goTo(this.journey.steps.Exit);
+    return goTo(this.journey.steps.ApplyForDA);
   }
 
   get progressStates() {
