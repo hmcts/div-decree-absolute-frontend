@@ -72,8 +72,9 @@ describe(modulePath, () => {
       error.statusCode = INTERNAL_SERVER_ERROR;
       caseOrchestrationService.submitApplication.rejects(error);
       return custom(ApplyForDA)
+        .withSetup(req => req.session.generate())
         .withField('applyForDA', 'yes')
-        .get()
+        .post()
         .expect(INTERNAL_SERVER_ERROR)
         .text(pageContent => {
           expect(pageContent.indexOf(error) !== -1).to.eql(true);
