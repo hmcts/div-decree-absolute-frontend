@@ -117,6 +117,7 @@ journey:
 
 caseStates:
   AwaitingDecreeAbsolute: 'AwaitingDecreeAbsolute'
+  DaRequested: 'DARequested'
   DivorceGranted: 'DivorceGranted'
 
 document:

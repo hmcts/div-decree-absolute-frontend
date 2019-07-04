@@ -30,7 +30,7 @@ describe(modulePath, () => {
   describe('right hand side menu rendering', () => {
     const session = {
       case: {
-        state: 'AwaitingDecreeAbsolute',
+        state: 'DARequested',
         data: {
           d8: [
             {
@@ -77,6 +77,31 @@ describe(modulePath, () => {
         'costsOrder',
         'decreeNisi'
       ]);
+    });
+  });
+
+  describe('CCD state: DARequested', () => {
+    const session = {
+      case: {
+        state: 'DARequested',
+        data: {}
+      }
+    };
+
+    it('renders DARequested content', () => {
+      const daTitle = 'Your application for Decree Absolute is being processed';
+      // eslint-disable-next-line max-len
+      const daDescription = 'This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised';
+
+      return custom(ProgressBar)
+        .withSession(session)
+        .get()
+        .expect(httpStatus.OK)
+        .html($ => {
+          const daRequestedContent = $('.da-requested-content').html();
+          expect(daRequestedContent).to.include(daTitle)
+            .and.to.includes(daDescription);
+        });
     });
   });
 

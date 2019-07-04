@@ -44,6 +44,13 @@
         <br>
     {% endif %}
 
+    {% if progressBarContent === progressStates.daRequested %}
+        <div class="da-requested-content">
+            <h2 class="heading-medium">{{ content.daRequested.daRequestedTitle }}</h2>
+            <p>{{ content.daRequested.daRequestedDescription }}</p>
+        </div>
+    {% endif %}
+
     {% if progressBarContent === progressStates.divorceGranted %}
         <h2 class="heading-medium">{{ content.youAreNowDivorced }}</h2>
     {% endif %}

@@ -16,6 +16,11 @@
     "detail3": "When your {{ case.divorceWho }} can apply",
     "detail4": "Your {{ case.divorceWho }} can apply for the decree absolute from 3 April 2019 (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
 
+    "daRequested": {
+      "daRequestedTitle": "Your application for Decree Absolute is being processed",
+      "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised"
+    },
+
     "youAreNowDivorced": "You are now divorced",
 
     "yourCourt": "Your divorce centre",

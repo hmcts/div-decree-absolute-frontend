@@ -8,6 +8,7 @@ const { createUris } = require('@hmcts/div-document-express-handler');
 
 const progressStates = {
   awaitingDecreeAbsolute: 'awaitingDecreeAbsolute',
+  daRequested: 'daRequested',
   divorceGranted: 'divorceGranted',
   other: 'other'
 };
@@ -62,6 +63,8 @@ class ProgressBar extends Interstitial {
       return this.progressStates.awaitingDecreeAbsolute;
     } else if (this.isCaseStateDivorceGranted(caseState)) {
       return this.progressStates.divorceGranted;
+    } else if (this.isCaseStateDaRequested(caseState)) {
+      return this.progressStates.daRequested;
     }
 
     logger.errorWithReq(this.req, 'progress_bar_content', 'No valid DA case state for ProgressBar page', caseState);
@@ -70,6 +73,10 @@ class ProgressBar extends Interstitial {
 
   isCaseStateAwaitingDA(caseState) {
     return caseState === config.caseStates.AwaitingDecreeAbsolute;
+  }
+
+  isCaseStateDaRequested(caseState) {
+    return caseState === config.caseStates.DaRequested;
   }
 
   isCaseStateDivorceGranted(caseState) {
