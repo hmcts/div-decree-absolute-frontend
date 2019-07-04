@@ -71,12 +71,22 @@ describe(moduleName, () => {
     let uri = '';
     let headers = {};
 
+    const exampleSubmitBody = {
+      foo: 'bar',
+      bar: 'foo'
+    };
 
     beforeEach(() => {
+      sinon.stub(caseOrchestrationHelper, 'formatSessionForSubmit').returns(exampleSubmitBody);
+
       req = { cookies: { '__auth-token': 'token' }, session: { case: { caseId: '1234' } } };
 
       uri = `${config.services.orchestrationService.submitCaseUrl}/${req.session.case.caseId}`;
       headers = { Authorization: 'Bearer token' };
+    });
+
+    afterEach(() => {
+      caseOrchestrationHelper.formatSessionForSubmit.restore();
     });
 
     it('submits case', done => {
@@ -88,7 +98,7 @@ describe(moduleName, () => {
             uri,
             headers,
             json: true,
-            body: {}
+            body: exampleSubmitBody
           });
         })
         .then(done, done);

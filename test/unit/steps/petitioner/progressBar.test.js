@@ -1,6 +1,6 @@
 const modulePath = 'steps/petitioner/progress-bar/ProgressBar.step';
 const ProgressBar = require(modulePath);
-const ApplyForDA = require('steps/apply-for-da/ApplyForDA.step');
+const ApplyForDA = require('steps/apply-for-da/ApplyForDecreeAbsolute.step');
 const idam = require('services/idam');
 const { custom, expect, middleware,
   sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');

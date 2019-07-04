@@ -1,4 +1,4 @@
-const modulePath = 'steps/apply-for-da/ApplyForDA.step';
+const modulePath = 'steps/apply-for-da/ApplyForDecreeAbsolute.step';
 const ApplyForDA = require(modulePath);
 
 const idam = require('services/idam');
@@ -17,10 +17,12 @@ const session = { case: { data: {} } };
 describe(modulePath, () => {
   beforeEach(() => {
     sinon.stub(idam, 'protect').returns(middleware.nextMock);
+    sinon.stub(caseOrchestrationService, 'submitApplication');
   });
 
   afterEach(() => {
     idam.protect.restore();
+    caseOrchestrationService.submitApplication.restore();
   });
 
   it('has idam.protect middleware', () => {
@@ -38,27 +40,26 @@ describe(modulePath, () => {
   });
 
   it('redirects to Done page if answered yes', () => {
+    caseOrchestrationService.submitApplication.resolves();
     const fields = {
-      applyForDA: 'yes'
+      applyForDecreeAbsolute: 'yes'
     };
     return question.redirectWithField(ApplyForDA, fields, Done, session);
   });
 
   it('redirects to ExitNoLongerWantsToProceed if answered no', () => {
     const fields = {
-      applyForDA: 'no'
+      applyForDecreeAbsolute: 'no'
     };
     return question.redirectWithField(ApplyForDA, fields, Exit);
   });
 
   describe('errors', () => {
     beforeEach(() => {
-      sinon.stub(caseOrchestrationService, 'submitApplication');
       sinon.spy(caseOrchestrationHelper, 'handleErrorCodes');
     });
 
     afterEach(() => {
-      caseOrchestrationService.submitApplication.restore();
       caseOrchestrationHelper.handleErrorCodes.restore();
     });
 
@@ -73,7 +74,7 @@ describe(modulePath, () => {
       caseOrchestrationService.submitApplication.rejects(error);
       return custom(ApplyForDA)
         .withSetup(req => req.session.generate())
-        .withField('applyForDA', 'yes')
+        .withField('applyForDecreeAbsolute', 'yes')
         .post()
         .expect(INTERNAL_SERVER_ERROR)
         .text(pageContent => {

@@ -78,7 +78,7 @@ paths:
   protected: /protected
   done: /done
   entry: /entry
-  applyForDA: /continue-with-divorce
+  applyForDecreeAbsolute: /continue-with-divorce
   exit: /exit
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie

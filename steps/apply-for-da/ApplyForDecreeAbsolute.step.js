@@ -8,9 +8,9 @@ const Joi = require('joi');
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const caseOrchestrationHelper = require('helpers/caseOrchestrationHelper');
 
-class ApplyForDA extends Question {
+class ApplyForDecreeAbsolute extends Question {
   static get path() {
-    return config.paths.applyForDA;
+    return config.paths.applyForDecreeAbsolute;
   }
   get session() {
     return this.req.session;
@@ -26,16 +26,16 @@ class ApplyForDA extends Question {
       .valid(answers)
       .required();
 
-    const applyForDA = text
+    const applyForDecreeAbsolute = text
       .joi(this.content.errors.required, validAnswers);
     const submitError = text
       .joi(this.submitError, Joi.valid(['']));
-    return form({ applyForDA, submitError });
+    return form({ applyForDecreeAbsolute, submitError });
   }
 
   next() {
     const declinesToApplyForDA = () => {
-      return this.fields.applyForDA.value === 'no';
+      return this.fields.applyForDecreeAbsolute.value === 'no';
     };
 
     if (declinesToApplyForDA()) {
@@ -52,4 +52,4 @@ class ApplyForDA extends Question {
   }
 }
 
-module.exports = ApplyForDA;
+module.exports = ApplyForDecreeAbsolute;
