@@ -1,4 +1,4 @@
-const { Question, branch } = require('@hmcts/one-per-page');
+const { Question } = require('@hmcts/one-per-page');
 const { redirectTo, action, goTo } = require('@hmcts/one-per-page/flow');
 const { form, text } = require('@hmcts/one-per-page/forms');
 const config = require('config');
@@ -38,15 +38,13 @@ class ApplyForDA extends Question {
       return this.fields.applyForDA.value === 'no';
     };
 
-    return branch(
-      redirectTo(this.journey.steps.ExitNoLongerWantsToProceed)
-        .if(declinesToApplyForDA),
-      action(caseOrchestrationService.submitApplication)
-        .then(goTo(this.journey.steps.Done))
-        .onFailure((error, req, res) => {
-          return caseOrchestrationHelper.handleErrorCodes(error, req, res);
-        })
-    );
+    if (declinesToApplyForDA()) {
+      return redirectTo(this.journey.steps.ExitNoLongerWantsToProceed);
+    }
+
+    return action(caseOrchestrationService.submitApplication)
+      .then(goTo(this.journey.steps.Done))
+      .onFailure(caseOrchestrationHelper.handleErrorCodes);
   }
 
   get middleware() {

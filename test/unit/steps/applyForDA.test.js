@@ -1,11 +1,14 @@
 const modulePath = 'steps/apply-for-da/ApplyForDA.step';
 const ApplyForDA = require(modulePath);
 
+const idam = require('services/idam');
 const Done = require('steps/done/Done.step');
 // eslint-disable-next-line max-len
 const Exit = require('steps/petitioner/exit-no-longer-wants-to-proceed/ExitNoLongerWantsToProceed.step');
-const idam = require('services/idam');
-const { middleware, question, sinon, content } = require('@hmcts/one-per-page-test-suite');
+// eslint-disable-next-line max-len
+const { middleware, question, sinon, content, custom, expect } = require('@hmcts/one-per-page-test-suite');
+const { INTERNAL_SERVER_ERROR } = require('http-status-codes');
+const caseOrchestrationHelper = require('helpers/caseOrchestrationHelper');
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
 
@@ -51,10 +54,12 @@ describe(modulePath, () => {
   describe('errors', () => {
     beforeEach(() => {
       sinon.stub(caseOrchestrationService, 'submitApplication');
+      sinon.spy(caseOrchestrationHelper, 'handleErrorCodes');
     });
 
     afterEach(() => {
       caseOrchestrationService.submitApplication.restore();
+      caseOrchestrationHelper.handleErrorCodes.restore();
     });
 
     it('shows error if does not answer question', () => {
@@ -62,11 +67,18 @@ describe(modulePath, () => {
       return question.testErrors(ApplyForDA, session, {}, { onlyErrors });
     });
 
-    it('shows error if case submission fails', () => {
-      caseOrchestrationService.submitApplication.rejects();
-      const fields = { applyForDA: 'yes' };
-      const onlyErrors = ['submitError'];
-      return question.testErrors(ApplyForDA, session, fields, { onlyErrors });
+    it('calls caseOrchestrationHelper.handleErrorCodes on failure', () => {
+      const error = new Error('An error has occoured on the Case Orchestartion Service');
+      error.statusCode = INTERNAL_SERVER_ERROR;
+      caseOrchestrationService.submitApplication.rejects(error);
+      return custom(ApplyForDA)
+        .withField('applyForDA', 'yes')
+        .get()
+        .expect(INTERNAL_SERVER_ERROR)
+        .text(pageContent => {
+          expect(pageContent.indexOf(error) !== -1).to.eql(true);
+          return expect(caseOrchestrationHelper.handleErrorCodes.calledOnce).to.eql(true);
+        });
     });
   });
 });
