@@ -1,6 +1,6 @@
 const modulePath = 'steps/petitioner/progress-bar/ProgressBar.step';
 const ProgressBar = require(modulePath);
-const ApplyForDA = require('steps/apply-for-da/ApplyForDecreeAbsolute.step');
+const ApplyForDA = require('steps/petitioner/apply-for-da/ApplyForDecreeAbsolute.step');
 const idam = require('services/idam');
 const { custom, expect, middleware,
   sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');
@@ -30,7 +30,23 @@ describe(modulePath, () => {
   describe('right hand side menu rendering', () => {
     const session = {
       case: {
-        state: 'AwaitingDecreeAbsolute'
+        state: 'DARequested',
+        data: {
+          d8: [
+            {
+              fileName: 'd8petition1554740111371638.pdf'
+            },
+            {
+              fileName: 'certificateOfEntitlement1559143445687032.pdf'
+            },
+            {
+              fileName: 'costsOrder1559143445687032.pdf'
+            },
+            {
+              fileName: 'decreeNisi1559143445687032.pdf'
+            }
+          ]
+        }
       }
     };
 
@@ -45,6 +61,46 @@ describe(modulePath, () => {
             .and.to.include('Get a divorce')
             .and.to.include('Children and divorce')
             .and.to.include('Money and property');
+        });
+    });
+
+    it('should expect download documents', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+
+      const fileTypes = instance.downloadableFiles.map(file => {
+        return file.type;
+      });
+
+      expect(fileTypes).to.eql([
+        'dpetition',
+        'certificateOfEntitlement',
+        'costsOrder',
+        'decreeNisi'
+      ]);
+    });
+  });
+
+  describe('CCD state: DARequested', () => {
+    const session = {
+      case: {
+        state: 'DARequested',
+        data: {}
+      }
+    };
+
+    it('renders DARequested content', () => {
+      const daTitle = 'Your application for Decree Absolute is being processed';
+      // eslint-disable-next-line max-len
+      const daDescription = 'This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised';
+
+      return custom(ProgressBar)
+        .withSession(session)
+        .get()
+        .expect(httpStatus.OK)
+        .html($ => {
+          const daRequestedContent = $('.da-requested-content').html();
+          expect(daRequestedContent).to.include(daTitle)
+            .and.to.includes(daDescription);
         });
     });
   });

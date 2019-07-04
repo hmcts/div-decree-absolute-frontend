@@ -280,7 +280,7 @@
         "poBox": "PO Box 10447",
         "postCode": "NG2 9QN",
         "openingHours": "Telephone Enquiries from: 8.30am to 5pm",
-        "email": "contactdivorce@justice.gov.uk",
+        "email": "divorcecase@justice.gov.uk",
         "phoneNumber": "0300 303 0642",
         "siteId": "CTSC"
       }
@@ -367,6 +367,28 @@
         "lastModifiedBy": 0,
         "modifiedOn": null,
         "fileName": "certificateOfEntitlement1559143445687032.pdf",
+        "fileUrl": "http://dm-store-aat.service.core-compute-aat.internal/documents/23e0b759-77b5-4778-a604-580f9c485238",
+        "mimeType": null,
+        "status": null
+      },
+      {
+        "id": "23e0b759-77b5-4778-a604-580f9c485238",
+        "createdBy": 0,
+        "createdOn": null,
+        "lastModifiedBy": 0,
+        "modifiedOn": null,
+        "fileName": "costsOrder1559143445687032.pdf",
+        "fileUrl": "http://dm-store-aat.service.core-compute-aat.internal/documents/23e0b759-77b5-4778-a604-580f9c485238",
+        "mimeType": null,
+        "status": null
+      },
+      {
+        "id": "23e0b759-77b5-4778-a604-580f9c485238",
+        "createdBy": 0,
+        "createdOn": null,
+        "lastModifiedBy": 0,
+        "modifiedOn": null,
+        "fileName": "decreeNisi1559143445687032.pdf",
         "fileUrl": "http://dm-store-aat.service.core-compute-aat.internal/documents/23e0b759-77b5-4778-a604-580f9c485238",
         "mimeType": null,
         "status": null

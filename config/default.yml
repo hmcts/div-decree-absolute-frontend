@@ -84,6 +84,7 @@ paths:
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   petitioner:
+    applyForDA: /continue-with-divorce
     progressBar: /progress-bar
     exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   mock:
@@ -117,6 +118,7 @@ journey:
 
 caseStates:
   AwaitingDecreeAbsolute: 'AwaitingDecreeAbsolute'
+  DaRequested: 'DARequested'
   DivorceGranted: 'DivorceGranted'
 
 document:
@@ -124,9 +126,9 @@ document:
   documentNamePath: 'fileName'
   filesWhiteList:
   - 'd8petition'
-  - 'respondentAnswers'
-  - 'coRespondentAnswers'
   - 'certificateOfEntitlement'
+  - 'costsOrder'
+  - 'decreeNisi'
 
 ccd:
   d8States:

@@ -1,4 +1,4 @@
-const modulePath = 'steps/apply-for-da/ApplyForDecreeAbsolute.step';
+const modulePath = 'steps/petitioner/apply-for-da/ApplyForDecreeAbsolute.step';
 const ApplyForDA = require(modulePath);
 
 const idam = require('services/idam');

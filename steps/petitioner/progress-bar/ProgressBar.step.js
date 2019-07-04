@@ -3,9 +3,12 @@ const { goTo } = require('@hmcts/one-per-page/flow');
 const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
+const { createUris } = require('@hmcts/div-document-express-handler');
+
 
 const progressStates = {
   awaitingDecreeAbsolute: 'awaitingDecreeAbsolute',
+  daRequested: 'daRequested',
   divorceGranted: 'divorceGranted',
   other: 'other'
 };
@@ -60,6 +63,8 @@ class ProgressBar extends Interstitial {
       return this.progressStates.awaitingDecreeAbsolute;
     } else if (this.isCaseStateDivorceGranted(caseState)) {
       return this.progressStates.divorceGranted;
+    } else if (this.isCaseStateDaRequested(caseState)) {
+      return this.progressStates.daRequested;
     }
 
     logger.errorWithReq(this.req, 'progress_bar_content', 'No valid DA case state for ProgressBar page', caseState);
@@ -70,12 +75,25 @@ class ProgressBar extends Interstitial {
     return caseState === config.caseStates.AwaitingDecreeAbsolute;
   }
 
+  isCaseStateDaRequested(caseState) {
+    return caseState === config.caseStates.DaRequested;
+  }
+
   isCaseStateDivorceGranted(caseState) {
     return caseState === config.caseStates.DivorceGranted;
   }
 
   get currentCaseState() {
     return this.req.session.case.state;
+  }
+
+  get downloadableFiles() {
+    const docConfig = {
+      documentNamePath: config.document.documentNamePath,
+      documentWhiteList: config.document.filesWhiteList
+    };
+
+    return createUris(this.case.d8, docConfig);
   }
 
   // Select the correct template based on case state
