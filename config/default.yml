@@ -80,7 +80,7 @@ paths:
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   petitioner:
-    applyForDA: /continue-with-divorce
+    applyForDecreeAbsolute: /continue-with-divorce
     progressBar: /progress-bar
     exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   mock:

@@ -42,7 +42,6 @@ const methods = {
     const uri = `${config.services.orchestrationService.submitCaseUrl}/${caseId}`;
     const headers = { Authorization: `Bearer ${req.cookies[authTokenString]}` };
     const body = caseOrchestrationHelper.formatSessionForSubmit(req);
-
     return request.post({ uri, headers, json: true, body })
       .then(() => {
         logger.infoWithReq(req, 'application_submitted',

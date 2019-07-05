@@ -6,14 +6,15 @@
     "submit": "Submit",
     "financialWarning": "When a decree absolute is made, your marriage will be legally ended. This might affect your financial position. If you are unsure what to do, particularly if you have not yet concluded any negotiations or legal proceedings about your [matrimonial] finances, it is recommended that you seek legal advice before applying for the decree absolute.",
     "fields": {
-      "applyForDA": {
+      "applyForDecreeAbsolute": {
         "title": "Do you want to finalise your divorce?",
         "yes": "Yes",
         "no": "No"
       }
     },
     "errors": {
-      "required": "Select whether you want to finalise your divorce or not."
+      "required": "Select whether you want to finalise your divorce or not.",
+      "submitError": "Sorry, we’re having technical problems. Please try again in a few minutes. If the problem continues you can contact the Courts and Tribunals Service Centre."
     },
     "signOutDetail": "Press Continue to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
   }
