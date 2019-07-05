@@ -4,6 +4,7 @@ const { form, text } = require('@hmcts/one-per-page/forms');
 const config = require('config');
 const idam = require('services/idam');
 const Joi = require('joi');
+const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
 
 class ApplyForDA extends Question {
   static get path() {
@@ -42,7 +43,7 @@ class ApplyForDA extends Question {
   }
 
   get middleware() {
-    return [...super.middleware, idam.protect()];
+    return [...super.middleware, idam.protect(), removeNonCurrentStepErrors];
   }
 }
 
