@@ -26,11 +26,11 @@ nodejs:
         ORCHESTRATION_SERVICE_DRAFT_ENDPOINT: "http://div-cos-aat.service.core-compute-aat.internal/draftsapi/version/1"
         ORCHESTRATION_SERVICE_GET_PETITION_URL: "http://div-cos-aat.service.core-compute-aat.internal/retrieve-case"
         ORCHESTRATION_SERVICE_HEALTH_URL: "http://div-cos-aat.service.core-compute-aat.internal/health"
-        ORCHESTRATION_SERVICE_POST_PETITION_URL: "http://div-cos-aat.service.core-compute-aat.internal/submit-dn"
-        PETITIONER_FRONTEND_URL: "https://div-pfe-aat.service.core-compute-aat.internal"
         REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
         REFORM_ENVIRONMENT: "aat"
+        PETITIONER_FRONTEND_URL: "https://div-pfe-aat.service.core-compute-aat.internal"
         RESPONDENT_FRONTEND_URL: "https://div-rfe-aat.service.core-compute-aat.internal"
+        DECREE_NISI_FRONTEND_URL: "https://div-dn-aat.service.core-compute-aat.internal"
         # TODO - this should be changed once we deploy AAT to AKS
         BASE_URL: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
         PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"

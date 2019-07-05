@@ -5,7 +5,7 @@ const authTokenString = '__auth-token';
 
 const modulePath = 'helpers/redirectToFrontendHelper';
 
-const { redirectToFrontend, redirectToAos, redirectToFrontendAmend } = require(modulePath);
+const { redirectToDN } = require(modulePath);
 
 describe(modulePath, () => {
   let req = {};
@@ -22,34 +22,12 @@ describe(modulePath, () => {
       redirect: sinon.stub()
     };
   });
-
-  it('should redirect to petitioner frontend on call', () => {
-    const petitionerFrontend = config.services.petitionerFrontend;
-    const landingUrl = `${petitionerFrontend.url}${petitionerFrontend.landing}`;
+  it('should redirect to DN on call', () => {
+    const dnFrontend = config.services.dnFrontend;
+    const landingUrl = `${dnFrontend.url}${dnFrontend.landing}`;
     const expectedUrl = `${landingUrl}?${authTokenString}=someValue`;
 
-    redirectToFrontend(req, res);
-
-    expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
-  });
-
-  it('should redirect to Petitioner Frontend to amend application', () => {
-    const petitionerFrontend = config.services.petitionerFrontend;
-    // eslint-disable-next-line
-    const landingUrl = `${petitionerFrontend.url}${petitionerFrontend.landing}?toNextUnansweredPage=true&${authTokenString}=${req.cookies[authTokenString]}`;
-    const expectedUrl = `${landingUrl}`;
-
-    redirectToFrontendAmend(req, res);
-
-    expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
-  });
-
-  it('should redirect to AOS on call', () => {
-    const aosFrontend = config.services.aosFrontend;
-    const landingUrl = `${aosFrontend.url}${aosFrontend.landing}`;
-    const expectedUrl = `${landingUrl}?${authTokenString}=someValue`;
-
-    redirectToAos(req, res);
+    redirectToDN(req, res);
 
     expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
   });
