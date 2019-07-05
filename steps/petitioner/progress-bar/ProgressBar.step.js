@@ -4,7 +4,7 @@ const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
 const { createUris } = require('@hmcts/div-document-express-handler');
-
+const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
 
 const progressStates = {
   awaitingDecreeAbsolute: 'awaitingDecreeAbsolute',
@@ -44,7 +44,8 @@ class ProgressBar extends Interstitial {
   get middleware() {
     return [
       ...super.middleware,
-      idam.protect()
+      idam.protect(),
+      removeNonCurrentStepErrors
     ];
   }
 
