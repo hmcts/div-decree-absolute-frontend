@@ -55,6 +55,7 @@ services:
     enabled: false
   orchestrationService:
     getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
+    submitCaseUrl: http://localhost:3001/case-orchestration/submit-da
     health: http://localhost:3001/case-orchestration/health
     draftEndpoint: http://localhost:3001/case-orchestration/draftsapi/version/1
     amendPetitionUrl: http://localhost:3001/case-orchestration/amend-petition
@@ -80,7 +81,7 @@ paths:
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   petitioner:
-    applyForDA: /continue-with-divorce
+    applyForDecreeAbsolute: /continue-with-divorce
     progressBar: /progress-bar
     exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   mock:
@@ -134,6 +135,7 @@ ccd:
     - 'serviceCentre'
   validDaStates:
     - 'AwaitingDecreeAbsolute'
+    - 'DARequested'
     - 'DivorceGranted'
 
 saucelabs:

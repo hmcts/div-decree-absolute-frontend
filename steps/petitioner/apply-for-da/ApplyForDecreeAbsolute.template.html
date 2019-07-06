@@ -6,9 +6,7 @@
     {{ content.title | safe }}
 {% endset %}
 
-{% set continueText  %}
-    {{ content.submit | safe }}
-{% endset %}
+{% set continueText  %}{{ content.submit | safe }}{% endset %}
 
 {% block fields %}
     <p class="text">{{ content.body | safe }}</p>
@@ -21,11 +19,11 @@
     <br>
     {% call formSection() %}
         {{ selectionButtons(
-            fields.applyForDA,
-            content.fields.applyForDA.title,
+            fields.applyForDecreeAbsolute,
+            content.fields.applyForDecreeAbsolute.title,
             options = [
-                { label: content.fields.applyForDA.yes, value: "yes" },
-                { label: content.fields.applyForDA.no, value: "no", target: "no-container"}
+                { label: content.fields.applyForDecreeAbsolute.yes, value: "yes" },
+                { label: content.fields.applyForDecreeAbsolute.no, value: "no", target: "no-container"}
             ],
             hint=false,
             hideQuestion=true,
