@@ -135,6 +135,7 @@ ccd:
     - 'serviceCentre'
   validDaStates:
     - 'AwaitingDecreeAbsolute'
+    - 'DARequested'
     - 'DivorceGranted'
 
 saucelabs:
