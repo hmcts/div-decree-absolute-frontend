@@ -11,8 +11,9 @@ const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepError
 
 class ApplyForDecreeAbsolute extends Question {
   static get path() {
-    return config.paths.applyForDecreeAbsolute;
+    return config.paths.petitioner.applyForDecreeAbsolute;
   }
+
   get session() {
     return this.req.session;
   }
@@ -49,7 +50,11 @@ class ApplyForDecreeAbsolute extends Question {
   }
 
   get middleware() {
-    return [...super.middleware, idam.protect(), removeNonCurrentStepErrors];
+    return [
+      ...super.middleware,
+      idam.protect(),
+      removeNonCurrentStepErrors
+    ];
   }
 }
 

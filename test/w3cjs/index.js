@@ -36,8 +36,8 @@ const filteredErrors = r => {
 // ensure step has a template - if it doesnt no need to test it
 const filterSteps = step => {
   const stepInstance = new step({ journey: {} });
-  const notMockStep = Object.values(config.paths).includes(step.path);
-  return stepInstance.middleware.includes(resolveTemplate) && notMockStep;
+  const isMockStep = Object.values(config.paths.mock).includes(step.path);
+  return stepInstance.middleware.includes(resolveTemplate) && !isMockStep;
 };
 
 const userDetails = {
