@@ -25,7 +25,7 @@ nodejs:
         ORCHESTRATION_SERVICE_AMEND_PETITION_URL: "http://div-cos-aat.service.core-compute-aat.internal/amend-petition"
         ORCHESTRATION_SERVICE_DRAFT_ENDPOINT: "http://div-cos-aat.service.core-compute-aat.internal/draftsapi/version/1"
         ORCHESTRATION_SERVICE_GET_PETITION_URL: "http://div-cos-aat.service.core-compute-aat.internal/retrieve-case"
-        ORCHESTRATION_SERVICE_POST_PETITION_URL: http://div-cos-aat.service.core-compute-aat.internal/submit-da"
+        ORCHESTRATION_SERVICE_POST_PETITION_URL: http://div-cos-pr-360.service.core-compute-preview.internal/submit-da"
         ORCHESTRATION_SERVICE_HEALTH_URL: "http://div-cos-aat.service.core-compute-aat.internal/health"
         REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
         REFORM_ENVIRONMENT: "aat"
