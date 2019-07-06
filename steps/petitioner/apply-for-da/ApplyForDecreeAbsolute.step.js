@@ -6,7 +6,6 @@ const idam = require('services/idam');
 const Joi = require('joi');
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
-const caseOrchestrationHelper = require('helpers/caseOrchestrationHelper');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
 
 class ApplyForDecreeAbsolute extends Question {
@@ -46,7 +45,9 @@ class ApplyForDecreeAbsolute extends Question {
 
     return action(caseOrchestrationService.submitApplication)
       .then(goTo(this.journey.steps.Done))
-      .onFailure(caseOrchestrationHelper.handleErrorCodes);
+      .onFailure((error, req, res, next) => {
+        next(error);
+      });
   }
 
   get middleware() {

@@ -8,7 +8,6 @@ const Exit = require('steps/petitioner/exit-no-longer-wants-to-proceed/ExitNoLon
 // eslint-disable-next-line max-len
 const { middleware, question, sinon, content, custom, expect } = require('@hmcts/one-per-page-test-suite');
 const { INTERNAL_SERVER_ERROR } = require('http-status-codes');
-const caseOrchestrationHelper = require('helpers/caseOrchestrationHelper');
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
 
@@ -55,14 +54,6 @@ describe(modulePath, () => {
   });
 
   describe('errors', () => {
-    beforeEach(() => {
-      sinon.spy(caseOrchestrationHelper, 'handleErrorCodes');
-    });
-
-    afterEach(() => {
-      caseOrchestrationHelper.handleErrorCodes.restore();
-    });
-
     it('shows error if does not answer question', () => {
       const onlyErrors = ['required'];
       return question.testErrors(ApplyForDA, session, {}, { onlyErrors });
@@ -79,7 +70,6 @@ describe(modulePath, () => {
         .expect(INTERNAL_SERVER_ERROR)
         .text(pageContent => {
           expect(pageContent.indexOf(error) !== -1).to.eql(true);
-          return expect(caseOrchestrationHelper.handleErrorCodes.calledOnce).to.eql(true);
         });
     });
   });
