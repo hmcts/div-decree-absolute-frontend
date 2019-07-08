@@ -1,0 +1,19 @@
+{
+  "en": {
+    "youAreNowDivorced": "You are now divorced",
+    "decreeAbsoluteHasBeenGranted": "Your decree absolute has been granted",
+    "referenceNumber": "Your reference number is",
+    "emailConfirmation": "Email confirmation has been sent to <strong class=\"bold-small\">{{ case.petitionerEmail }}</strong>.",
+    "youApplied": "You apply",
+    "husbandWifeResponded": "Your {{ case.divorceWho }} responds",
+    "getDecreeNisi": "Get a decree nisi",
+    "madeFinal": "Divorce is complete",
+
+    "downloadDecreeAbsolute": "Download your decree absolute",
+    "ThisIsTheCertificateConfirming": "This is the certificate confirming that you're divorced. Keep your certificate safe. You'll need to take a printed copy to the register office if you want to get married again.",
+    "yourDivorceWhoWillBeSentAnEmail": "Your {{ case.divorceWho }} has been sent an email telling them how to download the decree absolute.",
+
+    "yourDocumentsWillBeAvailableFor1Year": "Your documents will be available here for one year",
+    "yourAccountWillThenBeClosed": "Your account will then be closed. If you need a certified copy after that, you'll need to apply to the general register office and pay a fee."
+  }
+}

@@ -1,0 +1,75 @@
+{% extends "page.njk" %}
+
+{% from "look-and-feel/components/progress-list.njk" import progressList %}
+{% from "look-and-feel/components/document-list.njk" import documentList %}
+
+{% block back %}
+{% endblock %}
+
+{% set title %}
+    {{ content.title | safe }}
+{% endset %}
+
+    {% block main_content %}
+    <p class="font-xsmall">
+        <strong class="bold-xsmall">{{ content.referenceNumber }}
+            :</strong>&nbsp;&nbsp;&nbsp; {{ session.case.data.caseReference }}<br>
+        <strong class="bold-xsmall">{{ content.name }}:</strong> &nbsp;&nbsp;
+        {{ session.case.data.petitionerFirstName }} {{ session.case.data.petitionerLastName }}
+    </p>
+
+    {% include stateTemplate %}
+
+    {% set progressBarContent = getProgressBarContent() %}
+
+    {% if progressBarContent === progressStates.awaitingDecreeAbsolute %}
+        <h2 class="heading-medium">{{ content.youCanNowFinaliseYourDivorce }}</h2>
+        <p>{{ content.mainBody | safe }}</p>
+
+        <details>
+            <summary aria-controls="details-content-0" aria-expanded="false">
+                <span class="summary">{{ content.whenYouNeedToApplyBy }}</span>
+            </summary>
+            <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+                <p class="text">{{ content.detail1 }}</p>
+                <p class="text">{{ content.detail2 }}</p>
+                <p class="heading-small">{{ content.detail3 }}</p>
+                <p class="text">{{ content.detail4 }}</p>
+            </div>
+        </details>
+
+        <form action="{{ postUrl | default(path if path else url) }}" method="post" class="form">
+            <input class="button button-start" type="submit" value="{{ content.continue }}">
+        </form>
+        <br>
+    {% endif %}
+
+    {% if progressBarContent === progressStates.daRequested %}
+        <div class="da-requested-content">
+            <h2 class="heading-medium">{{ content.daRequested.daRequestedTitle }}</h2>
+            <p>{{ content.daRequested.daRequestedDescription }}</p>
+        </div>
+    {% endif %}
+
+    {% if progressBarContent === progressStates.divorceGranted %}
+        <h2 class="heading-medium">{{ content.youAreNowDivorced }}</h2>
+    {% endif %}
+{% endblock %}
+
+{% block one_third %}
+<aside class="govuk-related-items" role="complementary">
+
+    <h3 class="heading-small">{{ content.help }}</h3>
+
+    {% include "includes/sideMenuCourtDetails.html" %}
+
+    {% if (downloadableFiles.length > 0) %}
+        <h3 class="heading-small">{{ content.downloadDocuments }}</h3>
+
+    {{ documentList(downloadableFiles, content.files) }}
+
+    {% endif %}
+
+    {% include "includes/sideMenuGuidanceLinks.html" %}
+    </aside>
+{% endblock %}

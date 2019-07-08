@@ -1,0 +1,55 @@
+{
+  "en": {
+    "title": "Your divorce",
+    "youApply": "You apply",
+    "yourPartnerMustRespond": "Your {{ case.divorceWho }} must respond",
+    "getDecreeNisi": "Get a decree nisi",
+    "madeFinal": "The divorce is complete",
+    "referenceNumber": "Reference number",
+    "name": "Name",
+
+    "youCanNowFinaliseYourDivorce": "You can now finalise your divorce",
+    "mainBody": "The 6 week waiting period has passed. You can now complete the divorce and get a decree absolute.",
+    "whenYouNeedToApplyBy": "When you need to apply by",
+    "detail1": "You can apply for your decree absolute any time from now. If you apply after 3 June 2020 (1 year after the decree nisi was granted) you’ll have to explain the delay to the court.",
+    "detail2": "The court can cancel (legally known as rescind) the decree nisi any time up until the decree absolute is granted, if it’s given new evidence showing why you should'nt be given a divorce.",
+    "detail3": "When your {{ case.divorceWho }} can apply",
+    "detail4": "Your {{ case.divorceWho }} can apply for the decree absolute from 3 April 2019 (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
+
+    "daRequested": {
+      "daRequestedTitle": "Your application for Decree Absolute is being processed",
+      "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised"
+    },
+
+    "youAreNowDivorced": "You are now divorced",
+
+    "yourCourt": "Your divorce centre",
+    "help": "Getting help",
+    "email": "Email",
+    "phone": "Phone",
+    "careOf": "c/o ",
+    "divorceEmail": "divorcecase@justice.gov.uk",
+    "openTimes": "(Monday to Friday, 8.30am to 5pm)",
+    "phoneNumber" : "0300 303 0642",
+    "howRespondsLink": "<a href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">How your {{ case.divorceWho }} responds</a>",
+    "decreeNisiLink": "<a href=\"https://www.gov.uk/divorce/apply-for-decree-nisi\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree nisi</a>",
+    "decreeAbsoluteLink": "<a href=\"https://www.gov.uk/divorce/apply-for-a-decree-absolute\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree absolute</a>",
+    "childrenAndDivorceLink": "<a href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
+    "moneyAndPropertyLinky": "<a href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Money and property</a>",
+    "DivorceApplication": "Divorce application",
+    "downloadDocuments" : "Download your documents",
+    "downloadAndSaveYourDocuments" : "Download and save all the documents for this application before you continue. If you do amend your application, you won’t be able to access any of these documents online anymore.",
+    "guidance": {
+      "title": "Guidance on GOV.UK",
+      "getADivorce": "<a href=\"https://www.gov.uk/get-a-divorce\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Get a divorce</a>",
+      "childrenAndDivorceLink": "<a href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
+      "moneyAndPropertyLink": "<a href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Money and property</a>"
+    },
+    "files": {
+      "dpetition": "Divorce application",
+      "certificateOfEntitlement": "Certificate of Entitlement",
+      "costsOrder": "Cost Order",
+      "decreeNisi": "Decree Nisi"
+    }
+  }
+}

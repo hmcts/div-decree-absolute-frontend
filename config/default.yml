@@ -55,15 +55,12 @@ services:
     enabled: false
   orchestrationService:
     getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
-    submitCaseUrl: http://localhost:3001/case-orchestration/submit-dn
+    submitCaseUrl: http://localhost:3001/case-orchestration/submit-da
     health: http://localhost:3001/case-orchestration/health
     draftEndpoint: http://localhost:3001/case-orchestration/draftsapi/version/1
     amendPetitionUrl: http://localhost:3001/case-orchestration/amend-petition
-  petitionerFrontend:
-    url: https://localhost:8080
-    landing: /authenticated
-  aosFrontend:
-    url: https://localhost:2000
+  dnFrontend:
+    url: https://localhost:4000
     landing: /authenticated
   caseMaintenance:
     baseUrl: http://localhost:3001/case-maintenance
@@ -76,14 +73,20 @@ paths:
   authenticated: /authenticated
   index: /
   protected: /protected
-  progressBar: /progress-bar
-  exit: /exit
+  contactDivorceTeamError: /contact-your-divorce-error
+  done: /done
   entry: /entry
+  exit: /exit
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
+  petitioner:
+    applyForDecreeAbsolute: /continue-with-divorce
+    progressBar: /progress-bar
+    exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   mock:
     idamLogin: /idam-login
+    modifySession: /session
 
 tests:
   e2e:
@@ -110,14 +113,19 @@ features:
 journey:
   timeoutDelay: 300
 
+caseStates:
+  AwaitingDecreeAbsolute: 'AwaitingDecreeAbsolute'
+  DaRequested: 'DARequested'
+  DivorceGranted: 'DivorceGranted'
+
 document:
   sessionPath: 'case.data.d8'
   documentNamePath: 'fileName'
   filesWhiteList:
   - 'd8petition'
-  - 'respondentAnswers'
-  - 'coRespondentAnswers'
   - 'certificateOfEntitlement'
+  - 'costsOrder'
+  - 'decreeNisi'
 
 ccd:
   d8States:
@@ -125,6 +133,10 @@ ccd:
     - 'AmendPetition'
   courts:
     - 'serviceCentre'
+  validDaStates:
+    - 'AwaitingDecreeAbsolute'
+    - 'DARequested'
+    - 'DivorceGranted'
 
 saucelabs:
   browser: 'chrome'

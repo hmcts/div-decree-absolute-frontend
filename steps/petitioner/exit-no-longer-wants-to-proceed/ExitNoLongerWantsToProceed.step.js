@@ -1,0 +1,23 @@
+const { ExitPoint } = require('@hmcts/one-per-page');
+const config = require('config');
+const idam = require('services/idam');
+
+class ExitNoLongerWantsToProceed extends ExitPoint {
+  static get path() {
+    return config.paths.petitioner.exitNoLongerWantsToProceed;
+  }
+
+  get case() {
+    return this.req.session.case.data;
+  }
+
+  get middleware() {
+    return [
+      idam.protect(),
+      idam.logout(),
+      ...super.middleware
+    ];
+  }
+}
+
+module.exports = ExitNoLongerWantsToProceed;

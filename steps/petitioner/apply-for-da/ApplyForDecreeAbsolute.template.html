@@ -1,0 +1,40 @@
+{% extends "question.njk" %}
+
+{% from "look-and-feel/components/fields.njk" import formSection, selectionButtons %}
+
+{% set title %}
+    {{ content.title | safe }}
+{% endset %}
+
+{% set continueText  %}{{ content.submit | safe }}{% endset %}
+
+{% block fields %}
+    <p class="text">{{ content.body | safe }}</p>
+    <div class="notice">
+        <em class="icon icon-important">
+            <span class="visually-hidden">Warning</span>
+        </em>
+        <strong class="bold-small">{{ content.financialWarning | safe }}</strong>
+    </div>
+    <br>
+    {% call formSection() %}
+        {{ selectionButtons(
+            fields.applyForDecreeAbsolute,
+            content.fields.applyForDecreeAbsolute.title,
+            options = [
+                { label: content.fields.applyForDecreeAbsolute.yes, value: "yes" },
+                { label: content.fields.applyForDecreeAbsolute.no, value: "no", target: "no-container"}
+            ],
+            hint=false,
+            hideQuestion=true,
+            inline=true,
+            type="radio")
+        }}
+    {% endcall %}
+
+    <!-- Dropdown area if answered no -->
+    <div class="js-hidden panel panel-border-wide" id="no-container">
+        <p class="text">{{ content.signOutDetail | safe}}</p>
+    </div>
+
+{% endblock %}
