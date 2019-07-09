@@ -126,6 +126,7 @@ document:
   - 'certificateOfEntitlement'
   - 'costsOrder'
   - 'decreeNisi'
+  - 'decreeAbsolute'
 
 ccd:
   d8States:
