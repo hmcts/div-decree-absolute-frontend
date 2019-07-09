@@ -1,5 +1,5 @@
 const { Question } = require('@hmcts/one-per-page');
-const { redirectTo, action, goTo } = require('@hmcts/one-per-page/flow');
+const { redirectTo, action } = require('@hmcts/one-per-page/flow');
 const { form, text } = require('@hmcts/one-per-page/forms');
 const config = require('config');
 const idam = require('services/idam');
@@ -7,6 +7,8 @@ const Joi = require('joi');
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
+
+const POST_SUCCESSFUL_SUBMISSION_STATE = 'DARequested';
 
 class ApplyForDecreeAbsolute extends Question {
   static get path() {
@@ -43,8 +45,16 @@ class ApplyForDecreeAbsolute extends Question {
       return redirectTo(this.journey.steps.ExitNoLongerWantsToProceed);
     }
 
-    return action(caseOrchestrationService.submitApplication)
-      .then(goTo(this.journey.steps.Done))
+    return action((req, res) => {
+      const promise = caseOrchestrationService.submitApplication(req, res);
+
+      promise.then(() => {
+        req.session.case.state = POST_SUCCESSFUL_SUBMISSION_STATE;
+      });
+
+      return promise;
+    })
+      .then(redirectTo(this.journey.steps.ProgressBar))
       .onFailure((error, req, res, next) => {
         next(error);
       });
