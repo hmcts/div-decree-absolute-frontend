@@ -24,6 +24,21 @@ const caseStateMap = [
   }
 ];
 
+const pageContent = [
+  {
+    template: './sections/DivorceAwaiting.html',
+    state: ['AwaitingDecreeAbsolute']
+  },
+  {
+    template: './sections/DivorceRequested.html',
+    state: ['DARequested']
+  },
+  {
+    template: './sections/DivorceGranted.html',
+    state: ['DivorceGranted']
+  }
+];
+
 class ProgressBar extends Interstitial {
   static get path() {
     return config.paths.petitioner.progressBar;
@@ -95,6 +110,33 @@ class ProgressBar extends Interstitial {
     };
 
     return createUris(this.case.d8, docConfig);
+  }
+
+  get decreeAbsoluteFile() {
+    return this.downloadableFiles.find(file => {
+      return file.type === 'decreeAbsolute';
+    });
+  }
+
+  /**
+   * Select the correct template to display based on the case state
+   *
+   * States:
+   * AwaitingDecreeAbsolute = apply for DA content
+   * DARequested = Processing page
+   * DivorceGranted = Divorce granted page with direct link to DA certificate
+   *
+   * @returns {string}
+   */
+  get pageContentTemplate() {
+    let pageContentTemplate = '';
+    pageContent.forEach(dataMap => {
+      if (dataMap.state.includes((this.currentCaseState))) {
+        pageContentTemplate = dataMap.template;
+      }
+    });
+
+    return pageContentTemplate;
   }
 
   // Select the correct template based on case state

@@ -21,7 +21,14 @@
       "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised"
     },
 
-    "youAreNowDivorced": "You are now divorced",
+    "divorceGranted": {
+      "youAreNowDivorced": "You are now divorced",
+      "divorceComplete": "The court has now issued your decree absolute, and your divorce is complete.",
+      "decreeAbsoluteDownloadLink": "<a href=\"{{ decreeAbsoluteFile.uri | safe }}\" target=\"_blank\" aria-label=\"This link will download the Decree Absolute PDF.\">Download your decree absolute</a> ({{ decreeAbsoluteFile.fileType | upper }}).",
+      "daDownloadLinkText": "Download your decree absolute",
+      "daDownloadSubText": "Print your certificate. You will need to show it if you get married again. You can also use it to change your name, for example with your bank.",
+      "daCertLength": "Your certificate will be stored here for one year. If you need a copy of your certificates after this date, you'll need to contact the court."
+    },
 
     "yourCourt": "Your divorce centre",
     "help": "Getting help",
@@ -49,7 +56,8 @@
       "dpetition": "Divorce application",
       "certificateOfEntitlement": "Certificate of Entitlement",
       "costsOrder": "Cost Order",
-      "decreeNisi": "Decree Nisi"
+      "decreeNisi": "Decree Nisi",
+      "decreeAbsolute": "Decree Absolute"
     }
   }
 }

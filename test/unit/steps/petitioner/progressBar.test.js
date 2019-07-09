@@ -6,11 +6,17 @@ const { custom, expect, middleware,
   sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');
 const httpStatus = require('http-status-codes');
 
-const templates = {
+const progressBarTemplates = {
   awaitingDecreeAbsolute:
         './sections/ThreeCirclesFilledIn.html',
   divorceGranted:
         './sections/FourCirclesFilledIn.html'
+};
+
+const pageContentTemplates = {
+  awaitingDecreeAbsolute: './sections/DivorceAwaiting.html',
+  daRequested: './sections/DivorceRequested.html',
+  divorceGranted: './sections/DivorceGranted.html'
 };
 
 describe(modulePath, () => {
@@ -44,6 +50,9 @@ describe(modulePath, () => {
             },
             {
               fileName: 'decreeNisi1559143445687032.pdf'
+            },
+            {
+              fileName: 'decreeAbsolute1559143445687032.pdf'
             }
           ]
         }
@@ -75,8 +84,28 @@ describe(modulePath, () => {
         'dpetition',
         'certificateOfEntitlement',
         'costsOrder',
-        'decreeNisi'
+        'decreeNisi',
+        'decreeAbsolute'
       ]);
+    });
+  });
+
+  // Test if all progressbar templates are rendered properly
+  describe('CCD state: AwaitingDecreeAbsolute', () => {
+    const session = {
+      case: {
+        state: 'AwaitingDecreeAbsolute'
+      }
+    };
+
+    it('renders the correct progress bar template', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+      expect(instance.stateTemplate).to.eql(progressBarTemplates.awaitingDecreeAbsolute);
+    });
+
+    it('renders the correct content template', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+      expect(instance.pageContentTemplate).to.eql(pageContentTemplates.awaitingDecreeAbsolute);
     });
   });
 
@@ -87,6 +116,11 @@ describe(modulePath, () => {
         data: {}
       }
     };
+
+    it('renders the correct content template', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+      expect(instance.pageContentTemplate).to.eql(pageContentTemplates.daRequested);
+    });
 
     it('renders DARequested content', () => {
       const daTitle = 'Your application for Decree Absolute is being processed';
@@ -105,31 +139,38 @@ describe(modulePath, () => {
     });
   });
 
-  // Test if all progressbar templates are rendered properly
-
-  describe('CCD state: AwaitingDecreeAbsolute', () => {
-    const session = {
-      case: {
-        state: 'AwaitingDecreeAbsolute'
-      }
-    };
-
-    it('renders the correct template', () => {
-      const instance = stepAsInstance(ProgressBar, session);
-      expect(instance.stateTemplate).to.eql(templates.awaitingDecreeAbsolute);
-    });
-  });
-
   describe('CCD state: DivorceGranted', () => {
     const session = {
       case: {
-        state: 'DivorceGranted'
+        state: 'DivorceGranted',
+        data: {
+          d8: [
+            {
+              fileName: 'decreeAbsolute1559143445687032.pdf'
+            }
+          ]
+        }
       }
     };
 
     it('renders the correct template', () => {
       const instance = stepAsInstance(ProgressBar, session);
-      expect(instance.stateTemplate).to.eql(templates.divorceGranted);
+      expect(instance.stateTemplate).to.eql(progressBarTemplates.divorceGranted);
+    });
+
+    it('renders the correct content template', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+      expect(instance.pageContentTemplate).to.eql(pageContentTemplates.divorceGranted);
+    });
+
+    it('should expect decree absolute document', () => {
+      const instance = stepAsInstance(ProgressBar, session);
+      const decreeAbsoluteDocument = instance.decreeAbsoluteFile;
+      const decreeAbsoluteDocumentUri = '/document-download/decreeAbsolute1559143445687032.pdf';
+
+      expect(decreeAbsoluteDocument.type).to.eql('decreeAbsolute');
+      expect(decreeAbsoluteDocument.fileType).to.eql('pdf');
+      expect(decreeAbsoluteDocument.uri).to.eql(decreeAbsoluteDocumentUri);
     });
   });
 
