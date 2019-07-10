@@ -1,16 +1,37 @@
-const caseStateMap = [
+const caseStates = {
+  AwaitingDA: 'awaitingDecreeAbsolute',
+  DARequested: 'daRequested',
+  DAGranted: 'divorceGranted'
+};
+
+const contentMap = [
   {
     template: './sections/DivorceAwaiting.html',
-    state: ['AwaitingDecreeAbsolute']
+    state: ['awaitingDecreeAbsolute']
   },
   {
     template: './sections/DivorceRequested.html',
-    state: ['DARequested']
+    state: ['daRequested']
   },
   {
     template: './sections/DivorceGranted.html',
-    state: ['DivorceGranted']
+    state: ['divorceGranted']
   }
 ];
 
-module.export = { caseStateMap };
+const progressBarMap = [
+  {
+    template: './sections/ThreeCirclesFilledIn.html',
+    state: [caseStates.AwaitingDA, caseStates.DARequested]
+  },
+  {
+    template: './sections/FourCirclesFilledIn.html',
+    state: [caseStates.DAGranted]
+  }
+];
+
+module.export = {
+  caseStates,
+  contentMap,
+  progressBarMap
+};

@@ -31,11 +31,11 @@
     "marriageRespondentName": "Jenny Benny",
     "marriedInUk": "Yes",
     "petitionerNameDifferentToMarriageCertificate": "No",
-    "petitionerEmail": "simulate-delivered-john@notifications.service.gov.uk",
+    "petitionerEmail": "petitioner@gmail.com",
     "petitionerPhoneNumber": "0123456789",
     "petitionerConsent": "Yes",
-    "petitionerFirstName": "Jerry",
-    "petitionerLastName": "Dammers",
+    "petitionerFirstName": "Brad",
+    "petitionerLastName": "Pitt",
     "petitionerContactDetailsConfidential": "share",
     "petitionerHomeAddress": {
       "address": [
@@ -60,8 +60,8 @@
       "addressType": "postcode",
       "postcodeError": "false"
     },
-    "respondentFirstName": "Billy",
-    "respondentLastName": "William",
+    "respondentFirstName": "Angelina",
+    "respondentLastName": "Jolie",
     "respondentHomeAddress": {
       "address": [
         "82",
@@ -299,7 +299,7 @@
     "respAgreeToCosts": "No",
     "respCostsAmount": "1232321",
     "respCostsReason": "a)I should not pay any costs, and will give my reasons1\r\nb)I should not pay any costs, and will give my reasons2\r\nc)I should not pay any costs, and will give my reasons3\r\nd)I should not pay any costs, and will give my reasons4.Test\r\ne)I should not pay any costs, and will give my reasons",
-    "respEmailAddress": "est@somemail.com",
+    "respEmailAddress": "petitioner@gmail.com",
     "respPhoneNumber": "12344555",
     "respStatementOfTruth": "Yes",
     "respConsentToEmail": "No",
