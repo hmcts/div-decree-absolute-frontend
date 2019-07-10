@@ -28,7 +28,7 @@ describe('Google analytics', () => {
       .withGlobal('googleAnalyticsId', googleAnalyticsId)
       .withSession({
         case: {
-          state: 'awaitingDecreeAbsolute',
+          state: 'AwaitingDecreeAbsolute',
           data: {}
         }
       })
