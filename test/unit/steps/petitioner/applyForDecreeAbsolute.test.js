@@ -47,7 +47,7 @@ describe(modulePath, () => {
   });
 
   it('redirects to ProgressBar page if answered yes', () => {
-    caseOrchestrationService.submitApplication.resolves();
+    caseOrchestrationService.submitApplication.resolves({ state: POST_STATE });
 
     return custom(ApplyForDA)
       .withSession(session)

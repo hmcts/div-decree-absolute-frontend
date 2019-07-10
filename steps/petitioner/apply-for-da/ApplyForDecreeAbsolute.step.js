@@ -8,8 +8,6 @@ const Joi = require('joi');
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
 
-const POST_SUCCESSFUL_SUBMISSION_STATE = 'DARequested';
-
 class ApplyForDecreeAbsolute extends Question {
   static get path() {
     return config.paths.petitioner.applyForDecreeAbsolute;
@@ -48,8 +46,8 @@ class ApplyForDecreeAbsolute extends Question {
     return action((req, res) => {
       const promise = caseOrchestrationService.submitApplication(req, res);
 
-      promise.then(() => {
-        req.session.case.state = POST_SUCCESSFUL_SUBMISSION_STATE;
+      promise.then(response => {
+        req.session.case.state = response.state;
       });
 
       return promise;
