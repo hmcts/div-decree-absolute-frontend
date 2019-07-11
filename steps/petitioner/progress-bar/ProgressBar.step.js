@@ -99,7 +99,8 @@ class ProgressBar extends Interstitial {
         pageContent = contentMap.divorceGranted;
         break;
       default:
-        pageContent = '';
+        // if it's none of the above, user will be ri-directed to correct app
+        pageContent = null;
       }
     }
     return pageContent;

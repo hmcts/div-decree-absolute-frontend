@@ -31,7 +31,7 @@ describe(modulePath, () => {
 
   const idamDetails = {
     userDetails: {
-      email: 'repondent@gmail.com'
+      email: 'respondent@gmail.com'
     }
   };
 
@@ -107,7 +107,7 @@ describe(modulePath, () => {
       case: {
         state: 'AwaitingDecreeAbsolute',
         data: {
-          respEmailAddress: 'repondent@gmail.com'
+          respEmailAddress: 'respondent@gmail.com'
         }
       }
     };
@@ -128,7 +128,7 @@ describe(modulePath, () => {
       case: {
         state: 'DARequested',
         data: {
-          respEmailAddress: 'repondent@gmail.com'
+          respEmailAddress: 'respondent@gmail.com'
         }
       }
     };
@@ -161,7 +161,7 @@ describe(modulePath, () => {
       case: {
         state: 'DivorceGranted',
         data: {
-          respEmailAddress: 'repondent@gmail.com',
+          respEmailAddress: 'respondent@gmail.com',
           d8: [
             {
               fileName: 'decreeAbsolute1559143445687032.pdf'
