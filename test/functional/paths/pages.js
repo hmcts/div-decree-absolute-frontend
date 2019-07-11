@@ -14,9 +14,6 @@ Scenario('Pages', async I => {
   I.testProgressBar();
 
   I.testApplyForDecreeAbsolutePage();
-  /*
-  re add missing tests
-   */
 
   I.testDonePage();
 

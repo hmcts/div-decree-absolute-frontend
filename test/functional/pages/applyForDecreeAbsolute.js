@@ -7,7 +7,9 @@ function testApplyForDecreeAbsolutePage() {
   const I = this;
 
   I.amOnLoadedPage(ApplyForDecreeAbsolute.path);
+
   I.checkOption(ApplyForDecreeAbsoluteContent.en.fields.applyForDecreeAbsolute.yes);
+
   I.navByClick(ApplyForDecreeAbsoluteContent.en.submit);
 
   I.seeCurrentUrlEquals(ProgressBar.path);

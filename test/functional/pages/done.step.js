@@ -5,6 +5,7 @@ function testDonePage() {
   const I = this;
 
   I.amOnLoadedPage(DonePage.path);
+
   I.see(DoneContent.en.youAreNowDivorced);
 }
 

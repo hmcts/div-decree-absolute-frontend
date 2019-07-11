@@ -5,6 +5,7 @@ function testProgressBar() {
   const I = this;
 
   I.amOnLoadedPage(ProgressBarStep.path);
+
   I.see(ProgressBarStepContent.en.title);
 }
 
