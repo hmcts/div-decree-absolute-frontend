@@ -43,10 +43,11 @@ const methods = {
     const headers = { Authorization: `Bearer ${req.cookies[authTokenString]}` };
     const body = caseOrchestrationHelper.formatSessionForSubmit(req);
     return request.post({ uri, headers, json: true, body })
-      .then(() => {
+      .then(response => {
         logger.infoWithReq(req, 'application_submitted',
           'Successfully submitted DN case'
         );
+        return response;
       })
       .catch(error => {
         logger.errorWithReq(req, 'error_submitting_application',
