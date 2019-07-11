@@ -1,12 +1,12 @@
 const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
-const logger = require('services/logger').getLogger(__filename);
 const config = require('config');
 const idam = require('services/idam');
 const { createUris } = require('@hmcts/div-document-express-handler');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
 
 const {
+  caseStates,
   contentMap,
   progressBarMap
 } = require('./stateTemplates');
@@ -64,6 +64,13 @@ class ProgressBar extends Interstitial {
     });
   }
 
+  get stateTemplate() {
+    if (this.currentCaseState.toLowerCase() === caseStates.DAGranted) {
+      return progressBarMap.fourCirclesFilledIn;
+    }
+    return progressBarMap.threeCirclesFilledIn;
+  }
+
   /**
    * Select the correct template to display based on the case state
    *
@@ -75,37 +82,27 @@ class ProgressBar extends Interstitial {
    * @returns {string}
    */
   get pageContentTemplate() {
-    let pageContentTemplate = '';
+    let pageContent = '';
     // eslint-disable-next-line max-len
-    const isResp = this.req.idam.userDetails.email === this.req.session.case.data.respEmailAddress;
-    if (isResp) {
-      pageContentTemplate = './sections/DivorceGranted.html';
+    const idamUserIsRespondent = this.req.idam.userDetails.email === this.req.session.case.data.respEmailAddress;
+    if (idamUserIsRespondent) {
+      pageContent = contentMap.divorceGranted;
     } else {
-      contentMap.forEach(dataMap => {
-        if (dataMap.state.includes((this.currentCaseState))) {
-          pageContentTemplate = dataMap.template;
-        }
-      });
+      switch (this.currentCaseState.toLowerCase()) {
+      case caseStates.awaitingDA:
+        pageContent = contentMap.awaitingDA;
+        break;
+      case caseStates.daRequested:
+        pageContent = contentMap.daRequested;
+        break;
+      case caseStates.divorceGranted:
+        pageContent = contentMap.divorceGranted;
+        break;
+      default:
+        pageContent = '';
+      }
     }
-    return pageContentTemplate;
-  }
-
-  // Select the correct template based on case state
-  // decides which circles should be filled in - either 3 or 4
-  get stateTemplate() {
-    let progressBarTemplate = '';
-    // eslint-disable-next-line max-len
-    const isResp = this.req.idam.userDetails.email === this.req.session.case.data.respEmailAddress;
-    if (isResp) {
-      progressBarTemplate = './sections/FourCirclesFilledIn.html';
-    } else {
-      progressBarMap.forEach(dataMap => {
-        if (dataMap.state.includes(this.currentCaseState)) {
-          progressBarTemplate = dataMap.template;
-        }
-      });
-    }
-    return progressBarTemplate || './sections/ThreeCirclesFilledIn.html';
+    return pageContent;
   }
 }
 
