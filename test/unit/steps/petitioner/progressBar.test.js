@@ -22,7 +22,15 @@ const pageContentTemplates = {
 describe(modulePath, () => {
   beforeEach(() => {
     sinon.stub(idam, 'protect')
-      .returns(middleware.nextMock);
+      .returns((req, res, next) => {
+        console.log("Hello tony");
+        req.idam = {
+          userDetails: {
+            email: 'repondent@gmail.com'
+          }
+        };
+        next();
+      });
   });
 
   afterEach(() => {
@@ -36,7 +44,7 @@ describe(modulePath, () => {
   describe('right hand side menu rendering', () => {
     const session = {
       case: {
-        state: 'DARequested',
+        state: 'divorceGranted',
         data: {
           d8: [
             {
@@ -104,6 +112,10 @@ describe(modulePath, () => {
     });
 
     it('renders the correct content template', () => {
+      // custom(ProgressBar)
+      //   .withSession(session)
+      //   .get()
+      //   .expect().to.eql.(pageContentTemplates.awaitingDecreeAbsolute);
       const instance = stepAsInstance(ProgressBar, session);
       expect(instance.pageContentTemplate).to.eql(pageContentTemplates.awaitingDecreeAbsolute);
     });
@@ -113,7 +125,9 @@ describe(modulePath, () => {
     const session = {
       case: {
         state: 'DARequested',
-        data: {}
+        data: {
+          respEmailAddress: 'repondent@gmail.com'
+        }
       }
     };
 
@@ -128,6 +142,7 @@ describe(modulePath, () => {
       const daDescription = 'This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised';
 
       return custom(ProgressBar)
+        // .withSetup(setup)
         .withSession(session)
         .get()
         .expect(httpStatus.OK)
