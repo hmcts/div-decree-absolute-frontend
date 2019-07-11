@@ -65,7 +65,7 @@ class ProgressBar extends Interstitial {
   }
 
   get stateTemplate() {
-    if (this.currentCaseState.toLowerCase() === caseStates.DAGranted) {
+    if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
       return progressBarMap.fourCirclesFilledIn;
     }
     return progressBarMap.threeCirclesFilledIn;
