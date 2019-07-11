@@ -1,5 +1,5 @@
 const { Question } = require('@hmcts/one-per-page');
-const { redirectTo, action, goTo } = require('@hmcts/one-per-page/flow');
+const { redirectTo, action } = require('@hmcts/one-per-page/flow');
 const { form, text } = require('@hmcts/one-per-page/forms');
 const config = require('config');
 const idam = require('services/idam');
@@ -43,8 +43,16 @@ class ApplyForDecreeAbsolute extends Question {
       return redirectTo(this.journey.steps.ExitNoLongerWantsToProceed);
     }
 
-    return action(caseOrchestrationService.submitApplication)
-      .then(goTo(this.journey.steps.Done))
+    return action((req, res) => {
+      const promise = caseOrchestrationService.submitApplication(req, res);
+
+      promise.then(response => {
+        req.session.case.state = response.state;
+      });
+
+      return promise;
+    })
+      .then(redirectTo(this.journey.steps.ProgressBar))
       .onFailure((error, req, res, next) => {
         next(error);
       });

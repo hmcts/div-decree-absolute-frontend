@@ -8,6 +8,10 @@ const REDIRECT_TO_DECREE_NISI_FE = Symbol('redirect_to_dn');
 const redirectToDecreeNisiError = new Error('User is in Decree Nisi state');
 redirectToDecreeNisiError.statusCode = REDIRECT_TO_DECREE_NISI_FE;
 
+const REDIRECT_TO_RESPONDENT_FE = Symbol('redirect_to_rfe');
+const redirectToRespondentFrontendError = new Error('User is respondent');
+redirectToRespondentFrontendError.statusCode = REDIRECT_TO_RESPONDENT_FE;
+
 const formatSessionForSubmit = req => {
   const { journey } = req;
   const sessionFieldPaths = Object.keys(sessionToCosMapping);
@@ -48,9 +52,14 @@ const formatSessionForSubmit = req => {
 };
 
 const validateResponse = (req, response) => {
+  const { idam } = req;
+
+  const userIsRespondentAndDivorceNotGranted = (idam.userDetails.email === response.data.respEmailAddress) && !(response.state === 'DivorceGranted');
   const userIsNotInDaState = !config.ccd.validDaStates.includes(response.state);
 
   switch (true) {
+  case userIsRespondentAndDivorceNotGranted:
+    return Promise.reject(redirectToRespondentFrontendError);
   case userIsNotInDaState:
     return Promise.reject(redirectToDecreeNisiError);
   default:
@@ -64,6 +73,9 @@ const handleErrorCodes = (error, req, res, next) => {
   case REDIRECT_TO_DECREE_NISI_FE:
     redirectToFrontendHelper.redirectToDN(req, res);
     break;
+  case REDIRECT_TO_RESPONDENT_FE:
+    redirectToFrontendHelper.redirectToRFE(req, res);
+    break;
   case MULTIPLE_CHOICES:
     res.redirect(config.paths.contactDivorceTeamError);
     break;
@@ -76,5 +88,6 @@ module.exports = {
   formatSessionForSubmit,
   validateResponse,
   handleErrorCodes,
-  redirectToDecreeNisiError
+  redirectToDecreeNisiError,
+  redirectToRespondentFrontendError
 };
