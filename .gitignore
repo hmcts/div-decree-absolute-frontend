@@ -28,3 +28,4 @@ package-lock.json
 .scannerwork
 dist
 mochawesome-report
+_output

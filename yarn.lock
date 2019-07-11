@@ -289,6 +289,13 @@
     webpack "^3.4.1"
     webpack-dev-middleware "^2.0.4"
 
+"@hmcts/node-js-environment-variable-setter@https://github.com/hmcts/node-js-environment-variable-setter#0.2":
+  version "1.0.0"
+  resolved "https://github.com/hmcts/node-js-environment-variable-setter#8933c71471e2aa81c75a78997784fa486c951b49"
+  dependencies:
+    chai "^4.2.0"
+    mocha "^5.2.0"
+
 "@hmcts/nodejs-healthcheck@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@hmcts/nodejs-healthcheck/-/nodejs-healthcheck-1.5.1.tgz#4d99f9e3041e11fcfacf0bec82eb8a2463fcea01"
@@ -2470,7 +2477,7 @@ chai-jq@^0.0.9:
   resolved "https://registry.yarnpkg.com/chai-jq/-/chai-jq-0.0.9.tgz#6df6af3a940cfabafb1ed5184ec7a734d8252882"
   integrity sha1-bfavOpQM+rr7HtUYTsenNNglKII=
 
-chai@^4.1.2:
+chai@^4.1.2, chai@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.2.0.tgz#760aa72cf20e3795e84b12877ce0e83737aa29e5"
   integrity sha512-XQU3bhBukrOsQCuwZndwGcCVQHyZi53fQ6Ys1Fym7E4olpIqqZZhhoFJoaKVvV17lWQoXYwgWN2nF5crA8J2jw==
@@ -11295,9 +11302,9 @@ referrer-policy@1.2.0:
   resolved "https://registry.yarnpkg.com/referrer-policy/-/referrer-policy-1.2.0.tgz#b99cfb8b57090dc454895ef897a4cc35ef67a98e"
   integrity sha512-LgQJIuS6nAy1Jd88DCQRemyE3mS+ispwlqMk3b0yjZ257fI1v9c+/p6SD5gP5FGyXUIgrNOAfmyioHwZtYv2VA==
 
-"reform-pattern-library@git+https://github.com/hmcts/reform-pattern-library.git":
+"reform-pattern-library@https://github.com/hmcts/reform-pattern-library.git":
   version "1.0.0"
-  resolved "git+https://github.com/hmcts/reform-pattern-library.git#4c75c1e9352e08eb0ed939221203ef1db35b4a54"
+  resolved "https://github.com/hmcts/reform-pattern-library.git#4c75c1e9352e08eb0ed939221203ef1db35b4a54"
   dependencies:
     body-parser "^1.18.2"
     browser-sync "^2.18.13"
