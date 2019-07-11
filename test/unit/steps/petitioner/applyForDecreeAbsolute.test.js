@@ -29,7 +29,7 @@ describe(modulePath, () => {
   });
 
   it('renders the content', () => {
-    const options = { ignoreContent: ['signOut'] };
+    const options = { ignoreContent: ['signOut', 'serviceName'] };
     return content(ApplyForDA, session, options);
   });
 
