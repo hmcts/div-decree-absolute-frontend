@@ -71,16 +71,6 @@ class ProgressBar extends Interstitial {
     return progressBarMap.threeCirclesFilledIn;
   }
 
-  /**
-   * Select the correct template to display based on the case state
-   *
-   * States:
-   * AwaitingDecreeAbsolute = apply for DA content
-   * DARequested = Processing page
-   * DivorceGranted = Divorce granted page with direct link to DA certificate
-   *
-   * @returns {string}
-   */
   get pageContentTemplate() {
     let pageContent = '';
     /* eslint-disable indent */
