@@ -1,11 +1,4 @@
-/* eslint-disable */
-const processEnvironmentSetup = require('@hmcts/node-js-environment-variable-setter');
-
-if (process.env.POINT_TO_REMOTE) {
-  const configurationFile = './remote-config.json';
-  processEnvironmentSetup.setUpEnvironmentVariables(configurationFile);
-}
-
+/* eslint-disable no-process-env */
 const config = require('config');
 
 const waitForTimeout = config.tests.functional.waitForTimeout;
@@ -30,7 +23,6 @@ exports.config = {
       url: config.tests.functional.url || config.node.baseUrl,
       waitForTimeout,
       waitForAction,
-      show: false,
       chrome: {
         ignoreHTTPSErrors: true,
         args: chromeArgs
@@ -51,5 +43,5 @@ exports.config = {
       }
     }
   },
-  name: 'Frontend Smoke Tests'
+  name: 'DA Frontend Smoke Tests'
 };

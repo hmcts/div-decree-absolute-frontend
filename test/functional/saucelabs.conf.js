@@ -3,17 +3,8 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 const config = require('config');
 
-const processEnvironmentSetup = require('@hmcts/node-js-environment-variable-setter');
-
-if (process.env.POINT_TO_REMOTE) {
-  const configurationFile = './remote-config.json';
-  processEnvironmentSetup.setUpEnvironmentVariables(configurationFile);
-}
-
-const waitForTimeout = config.saucelabs.waitForTimeout;
-const smartWait = config.saucelabs.smartWait;
-
-
+const waitForTimeout = parseInt(config.saucelabs.waitForTimeoutValue);
+const smartWait = parseInt(config.saucelabs.smartWait);
 const browser = process.env.SAUCE_BROWSER || config.saucelabs.browser;
 const tunnelName = process.env.SAUCE_TUNNEL_IDENTIFIER || config.saucelabs.tunnelId;
 const getBrowserConfig = browserGroup => {
