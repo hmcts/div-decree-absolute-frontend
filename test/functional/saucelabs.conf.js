@@ -22,7 +22,7 @@ const getBrowserConfig = browserGroup => {
     if (candidateBrowser) {
       const desiredCapability = supportedBrowsers[browserGroup][candidateBrowser];
       desiredCapability.tunnelIdentifier = tunnelName;
-      desiredCapability.tags = ['DN_divorce'];
+      desiredCapability.tags = ['DA_divorce'];
       browserConfig.push({
         browser: desiredCapability.browserName,
         desiredCapabilities: desiredCapability
@@ -82,7 +82,7 @@ const setupConfig = {
       browsers: getBrowserConfig('safari')
     }
   },
-  name: 'DN Frontend Tests'
+  name: 'DA Frontend Tests'
 };
 
 exports.config = setupConfig;

@@ -46,7 +46,7 @@ exports.config = {
   mocha: {
     reporterOptions: {
       reportDir: process.env.FUNCTIONAL_OUTPUT_DIR || './functional-output',
-      reportName: 'DecreeNisiFrontendTests',
+      reportName: 'DecreeAbsoluteFrontendTests',
       inlineAssets: true
     }
   },
