@@ -46,7 +46,7 @@ describe(modulePath, () => {
   describe('right hand side menu rendering', () => {
     const session = {
       case: {
-        state: 'divorceGranted',
+        state: 'DivorceGranted',
         data: {
           d8: [
             {
