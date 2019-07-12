@@ -59,6 +59,9 @@ describe(modulePath, () => {
               fileName: 'costsOrder1559143445687032.pdf'
             },
             {
+              fileName: 'dnAnswers1559143445687032.pdf'
+            },
+            {
               fileName: 'decreeNisi1559143445687032.pdf'
             },
             {
@@ -95,6 +98,7 @@ describe(modulePath, () => {
         'dpetition',
         'certificateOfEntitlement',
         'costsOrder',
+        'dnAnswers',
         'decreeNisi',
         'decreeAbsolute'
       ]);

@@ -56,8 +56,10 @@
       "dpetition": "Divorce application",
       "certificateOfEntitlement": "Certificate of Entitlement",
       "costsOrder": "Cost Order",
+      "dnAnswers": "Decree Nisi Answers",
       "decreeNisi": "Decree Nisi",
       "decreeAbsolute": "Decree Absolute"
+
     }
   }
 }
