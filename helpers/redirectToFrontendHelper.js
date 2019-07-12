@@ -15,4 +15,11 @@ const redirectToDN = (req, res) => {
   redirectToUrl(req, res, `${dnFrontend.url}${dnFrontend.landing}`);
 };
 
-module.exports = { redirectToDN };
+const redirectToRFE = (req, res) => {
+  logger.infoWithReq(req, 'redirecting_to_respondent_frontend', 'Redirecting user to RFE. User is respondent & not in DA state');
+
+  const rfeFrontend = config.services.rfeFrontend;
+  redirectToUrl(req, res, `${rfeFrontend.url}${rfeFrontend.landing}`);
+};
+
+module.exports = { redirectToDN, redirectToRFE };
