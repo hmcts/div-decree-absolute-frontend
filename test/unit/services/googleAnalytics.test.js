@@ -24,7 +24,7 @@ describe('Google analytics', () => {
 
   const idamDetails = {
     userDetails: {
-      email: 'repondent@gmail.com'
+      email: 'respondent@localhost.local'
     }
   };
 

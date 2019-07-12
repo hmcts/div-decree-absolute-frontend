@@ -35,7 +35,7 @@
     "petitionerPhoneNumber": "0123456789",
     "petitionerConsent": "Yes",
     "petitionerFirstName": "Bread",
-    "petitionerLastName": "Pott",
+    "petitionerLastName": "Jolly",
     "petitionerContactDetailsConfidential": "share",
     "petitionerHomeAddress": {
       "address": [
@@ -61,7 +61,7 @@
       "postcodeError": "false"
     },
     "respondentFirstName": "Angela",
-    "respondentLastName": "Jolly",
+    "respondentLastName": "Pott",
     "respondentHomeAddress": {
       "address": [
         "82",
