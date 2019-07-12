@@ -83,25 +83,15 @@ class ProgressBar extends Interstitial {
    */
   get pageContentTemplate() {
     let pageContent = '';
-    // eslint-disable-next-line max-len
-    const idamUserIsRespondent = this.req.idam.userDetails.email === this.req.session.case.data.respEmailAddress;
-    if (idamUserIsRespondent && this.currentCaseState.toLowerCase() === contentMap.divorceGranted) {
+    switch (this.currentCaseState.toLowerCase()) {
+    case caseStates.daRequested:
+      pageContent = contentMap.daRequested;
+      break;
+    case caseStates.divorceGranted:
       pageContent = contentMap.divorceGranted;
-    } else {
-      switch (this.currentCaseState.toLowerCase()) {
-      case caseStates.awaitingDA:
-        pageContent = contentMap.awaitingDA;
-        break;
-      case caseStates.daRequested:
-        pageContent = contentMap.daRequested;
-        break;
-      case caseStates.divorceGranted:
-        pageContent = contentMap.divorceGranted;
-        break;
-      default:
-        // if it's none of the above, user will be ri-directed to correct app
-        pageContent = null;
-      }
+      break;
+    default:
+      pageContent = contentMap.awaitingDA;
     }
     return pageContent;
   }

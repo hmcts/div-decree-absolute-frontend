@@ -34,8 +34,8 @@
     "petitionerEmail": "petitioner-brad@notifications.service.gov.uk",
     "petitionerPhoneNumber": "0123456789",
     "petitionerConsent": "Yes",
-    "petitionerFirstName": "Brad",
-    "petitionerLastName": "Pitt",
+    "petitionerFirstName": "Bread",
+    "petitionerLastName": "Pott",
     "petitionerContactDetailsConfidential": "share",
     "petitionerHomeAddress": {
       "address": [
@@ -60,8 +60,8 @@
       "addressType": "postcode",
       "postcodeError": "false"
     },
-    "respondentFirstName": "Angelina",
-    "respondentLastName": "Jolie",
+    "respondentFirstName": "Angela",
+    "respondentLastName": "Jolly",
     "respondentHomeAddress": {
       "address": [
         "82",
