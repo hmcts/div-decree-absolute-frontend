@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@add-missing-subscription-flag")
+@Library("Infrastructure")
 
 String product = "div"
 String component = "da"
