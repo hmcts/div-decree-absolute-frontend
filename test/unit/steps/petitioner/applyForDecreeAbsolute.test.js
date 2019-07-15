@@ -77,7 +77,7 @@ describe(modulePath, () => {
     it('calls caseOrchestrationHelper.handleErrorCodes on failure', () => {
       const error = new Error('An error has occurred on the Case Orchestration Service');
       error.statusCode = INTERNAL_SERVER_ERROR;
-      caseOrchestrationService.submitApplication.throws(error);
+      caseOrchestrationService.submitApplication.rejects(error);
       return custom(ApplyForDA)
         .withSession(session)
         .withField('applyForDecreeAbsolute', 'yes')
