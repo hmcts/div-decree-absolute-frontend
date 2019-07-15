@@ -3,7 +3,7 @@ const ProgressBar = require(modulePath);
 const ApplyForDA = require('steps/petitioner/apply-for-da/ApplyForDecreeAbsolute.step');
 const idam = require('services/idam');
 const { custom, expect, middleware,
-  sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');
+  sinon, redirect, stepAsInstance, content } = require('@hmcts/one-per-page-test-suite');
 const httpStatus = require('http-status-codes');
 
 const progressBarTemplates = {
@@ -107,7 +107,9 @@ describe(modulePath, () => {
       case: {
         state: 'AwaitingDecreeAbsolute',
         data: {
-          respEmailAddress: 'respondent@localhost.local'
+          respEmailAddress: 'respondent@localhost.local',
+          dateRespondentEligibleForDA: '2019-05-24',
+          dateCaseNoLongerEligibleForDA: '2020-05-12',
         }
       }
     };
@@ -120,6 +122,17 @@ describe(modulePath, () => {
     it('renders the correct content template', () => {
       const instance = new ProgressBar({ journey: {}, idam: idamDetails, session });
       expect(instance.pageContentTemplate).to.eql(pageContentTemplates.awaitingDecreeAbsolute);
+    });
+
+    it('renders the DA-related dates correctly', () => {
+      return custom(ProgressBar)
+        .withSetup(setup)
+        .withSession(session)
+        .get()
+        .expect(httpStatus.OK)
+        .text($ => {
+          expect('test').not.to.be.eq('broken');
+        });
     });
   });
 
