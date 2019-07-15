@@ -5,7 +5,7 @@ const authTokenString = '__auth-token';
 
 const modulePath = 'helpers/redirectToFrontendHelper';
 
-const { redirectToDN } = require(modulePath);
+const { redirectToDN, redirectToRFE } = require(modulePath);
 
 describe(modulePath, () => {
   let req = {};
@@ -28,6 +28,16 @@ describe(modulePath, () => {
     const expectedUrl = `${landingUrl}?${authTokenString}=someValue`;
 
     redirectToDN(req, res);
+
+    expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
+  });
+
+  it('should redirect to RFE on call', () => {
+    const rfeFrontend = config.services.rfeFrontend;
+    const landingUrl = `${rfeFrontend.url}${rfeFrontend.landing}`;
+    const expectedUrl = `${landingUrl}?${authTokenString}=someValue`;
+
+    redirectToRFE(req, res);
 
     expect(res.redirect.calledWith(expectedUrl)).to.equal(true);
   });

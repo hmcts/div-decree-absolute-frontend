@@ -55,12 +55,16 @@ services:
     enabled: false
   orchestrationService:
     getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
+    getAosCaseUrl: http://localhost:3001/case-orchestration/retrieve-aos-case
     submitCaseUrl: http://localhost:3001/case-orchestration/submit-da
     health: http://localhost:3001/case-orchestration/health
     draftEndpoint: http://localhost:3001/case-orchestration/draftsapi/version/1
     amendPetitionUrl: http://localhost:3001/case-orchestration/amend-petition
   dnFrontend:
     url: https://localhost:4000
+    landing: /authenticated
+  rfeFrontend:
+    url: https://localhost:2000
     landing: /authenticated
   caseMaintenance:
     baseUrl: http://localhost:3001/case-maintenance
@@ -126,6 +130,7 @@ document:
   - 'certificateOfEntitlement'
   - 'costsOrder'
   - 'decreeNisi'
+  - 'decreeAbsolute'
 
 ccd:
   d8States:

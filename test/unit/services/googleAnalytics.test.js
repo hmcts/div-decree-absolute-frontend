@@ -22,13 +22,24 @@ describe('Google analytics', () => {
     feesAndPaymentsService.getFee.restore();
   });
 
+  const idamDetails = {
+    userDetails: {
+      email: 'respondent@localhost.local'
+    }
+  };
+
+  const setup = req => {
+    req.idam = idamDetails;
+  };
+
   it('should be injected into the page', () => {
     const googleAnalyticsId = 'google-analytics-id';
     return custom(exampleStep)
+      .withSetup(setup)
       .withGlobal('googleAnalyticsId', googleAnalyticsId)
       .withSession({
         case: {
-          state: 'awaitingDecreeAbsolute',
+          state: 'AwaitingDecreeAbsolute',
           data: {}
         }
       })

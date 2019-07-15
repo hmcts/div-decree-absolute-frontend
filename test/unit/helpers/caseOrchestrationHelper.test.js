@@ -122,22 +122,38 @@ describe(moduleName, () => {
       return expect(caseOrchestrationHelper.validateResponse(req, response))
         .to.eventually.equal(response);
     });
+
+    it('resolves if user is respondent and case state is DivorceGranted', () => {
+      response.state = 'DivorceGranted';
+      response.data.courts = config.ccd.courts[0];
+      response.data.respEmailAddress = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.eventually.equal(response);
+    });
   });
 
   describe('#handleErrorCodes', () => {
     const error = {};
     beforeEach(() => {
       sinon.stub(redirectToFrontendHelper, 'redirectToDN');
+      sinon.stub(redirectToFrontendHelper, 'redirectToRFE');
     });
 
     afterEach(() => {
       redirectToFrontendHelper.redirectToDN.restore();
+      redirectToFrontendHelper.redirectToRFE.restore();
     });
 
-    // eslint-disable-next-line max-len
-    it('redirect to decree nisi frontend if error is REDIRECT_TO_DECREE_NISI_FE', () => {
+    it('redirect to Decree Nisi frontend if error is REDIRECT_TO_DECREE_NISI_FE', () => {
       caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToDecreeNisiError);
       expect(redirectToFrontendHelper.redirectToDN.calledOnce).to.eql(true);
+    });
+
+    it('redirect to Respondent FE if error is REDIRECT_TO_RESPONDENT_FE', () => {
+    // eslint-disable-next-line max-len
+      caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToRespondentFrontendError);
+      expect(redirectToFrontendHelper.redirectToRFE.calledOnce).to.eql(true);
     });
 
     it('calls next with error if error not recognised', () => {
