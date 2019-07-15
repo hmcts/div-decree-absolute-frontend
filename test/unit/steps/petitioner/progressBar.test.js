@@ -29,6 +29,16 @@ describe(modulePath, () => {
     idam.protect.restore();
   });
 
+  const idamDetails = {
+    userDetails: {
+      email: 'respondent@localhost.local'
+    }
+  };
+
+  const setup = req => {
+    req.idam = idamDetails;
+  };
+
   it('has idam.protect middleware', () => {
     return middleware.hasMiddleware(ProgressBar, [idam.protect()]);
   });
@@ -36,7 +46,7 @@ describe(modulePath, () => {
   describe('right hand side menu rendering', () => {
     const session = {
       case: {
-        state: 'DARequested',
+        state: 'DivorceGranted',
         data: {
           d8: [
             {
@@ -61,6 +71,7 @@ describe(modulePath, () => {
 
     it('should render guidance links', () => {
       return custom(ProgressBar)
+        .withSetup(setup)
         .withSession(session)
         .get()
         .expect(httpStatus.OK)
@@ -90,10 +101,14 @@ describe(modulePath, () => {
     });
   });
 
+  // Test if all progressbar templates are rendered properly
   describe('CCD state: AwaitingDecreeAbsolute', () => {
     const session = {
       case: {
-        state: 'AwaitingDecreeAbsolute'
+        state: 'AwaitingDecreeAbsolute',
+        data: {
+          respEmailAddress: 'respondent@localhost.local'
+        }
       }
     };
 
@@ -103,7 +118,7 @@ describe(modulePath, () => {
     });
 
     it('renders the correct content template', () => {
-      const instance = stepAsInstance(ProgressBar, session);
+      const instance = new ProgressBar({ journey: {}, idam: idamDetails, session });
       expect(instance.pageContentTemplate).to.eql(pageContentTemplates.awaitingDecreeAbsolute);
     });
   });
@@ -112,12 +127,14 @@ describe(modulePath, () => {
     const session = {
       case: {
         state: 'DARequested',
-        data: {}
+        data: {
+          respEmailAddress: 'respondent@localhost.local'
+        }
       }
     };
 
     it('renders the correct content template', () => {
-      const instance = stepAsInstance(ProgressBar, session);
+      const instance = new ProgressBar({ journey: {}, idam: idamDetails, session });
       expect(instance.pageContentTemplate).to.eql(pageContentTemplates.daRequested);
     });
 
@@ -127,6 +144,7 @@ describe(modulePath, () => {
       const daDescription = 'This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised';
 
       return custom(ProgressBar)
+        .withSetup(setup)
         .withSession(session)
         .get()
         .expect(httpStatus.OK)
@@ -143,6 +161,7 @@ describe(modulePath, () => {
       case: {
         state: 'DivorceGranted',
         data: {
+          respEmailAddress: 'respondent@localhost.local',
           d8: [
             {
               fileName: 'decreeAbsolute1559143445687032.pdf'
@@ -158,7 +177,7 @@ describe(modulePath, () => {
     });
 
     it('renders the correct content template', () => {
-      const instance = stepAsInstance(ProgressBar, session);
+      const instance = new ProgressBar({ journey: {}, idam: idamDetails, session });
       expect(instance.pageContentTemplate).to.eql(pageContentTemplates.divorceGranted);
     });
 
