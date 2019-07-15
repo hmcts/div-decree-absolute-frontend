@@ -9,7 +9,7 @@ steps:
   # (Re)create base image
   - id: base
     build: >
-      -t {{.Run.Registry}}/hmcts/div-decree-absolute-frontend/base
+      -t {{.Run.Registry}}/div/decree-absolute-frontend/base
       --cache-from {{.Run.Registry}}/div/decree-absolute-frontend/base:latest
       --target base
       .
