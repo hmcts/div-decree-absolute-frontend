@@ -14,7 +14,7 @@ function login() {
   const I = this;
 
   if (config.features.idam) {
-    I.seeInCurrentUrl('/login?');
+    I.seeInCurrentUrl('idam-login');
     I.fillField('username', idamConfigHelper.getTestEmail());
     I.fillField('password', idamConfigHelper.getTestPassword());
     I.navByClick('Sign in');
