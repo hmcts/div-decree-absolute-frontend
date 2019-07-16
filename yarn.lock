@@ -210,9 +210,9 @@
     request-promise-native "^1.0.7"
     socks5-https-client "^1.2.1"
 
-"@hmcts/div-test-harness@https://github.com/hmcts/div-test-harness#0.1":
-  version "1.0.0"
-  resolved "https://github.com/hmcts/div-test-harness#a459aaa16a92cb13e0dac35c32bf559ad79de6a6"
+"@hmcts/div-test-harness@https://github.com/hmcts/div-test-harness#1.0.1":
+  version "1.0.1"
+  resolved "https://github.com/hmcts/div-test-harness#80f57182fca4c135bfcad7abd24e401277b9ccc2"
   dependencies:
     "@hmcts/nodejs-logging" "^3.0.0"
     request "^2.88.0"
@@ -11295,9 +11295,9 @@ referrer-policy@1.2.0:
   resolved "https://registry.yarnpkg.com/referrer-policy/-/referrer-policy-1.2.0.tgz#b99cfb8b57090dc454895ef897a4cc35ef67a98e"
   integrity sha512-LgQJIuS6nAy1Jd88DCQRemyE3mS+ispwlqMk3b0yjZ257fI1v9c+/p6SD5gP5FGyXUIgrNOAfmyioHwZtYv2VA==
 
-"reform-pattern-library@git+https://github.com/hmcts/reform-pattern-library.git":
+"reform-pattern-library@https://github.com/hmcts/reform-pattern-library.git":
   version "1.0.0"
-  resolved "git+https://github.com/hmcts/reform-pattern-library.git#4c75c1e9352e08eb0ed939221203ef1db35b4a54"
+  resolved "https://github.com/hmcts/reform-pattern-library.git#4c75c1e9352e08eb0ed939221203ef1db35b4a54"
   dependencies:
     body-parser "^1.18.2"
     browser-sync "^2.18.13"

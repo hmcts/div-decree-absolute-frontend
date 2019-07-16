@@ -7,7 +7,7 @@ const divTestHarness = require('@hmcts/div-test-harness');
 let Helper = codecept_helper; // eslint-disable-line
 
 class CaseHelper extends Helper {
-  createDnCaseForUser(caseData) {
+  createDaCaseForUser(caseData) {
     caseData.D8PetitionerEmail = idamConfigHelper.getTestEmail();
 
     const params = {
@@ -16,7 +16,7 @@ class CaseHelper extends Helper {
       caseData
     };
 
-    return divTestHarness.createDnCase(params, config.tests.functional.proxy)
+    return divTestHarness.createDaCase(params, config.tests.functional.proxy)
       .then(createCaseResponse => {
         logger.infoWithReq(null, 'case_created',
           'Case created',

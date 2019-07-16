@@ -5,7 +5,7 @@ Feature('Test all pages');
 Scenario('Pages', async I => {
   await I.createAUser();
 
-  await I.createDnCaseForUser(basicDivorceSession);
+  await I.createDaCaseForUser(basicDivorceSession);
 
   I.amOnLoadedPage('/');
 
