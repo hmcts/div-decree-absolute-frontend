@@ -1,7 +1,7 @@
 {
   "en": {
     "title": "Do you want to finalise your divorce?",
-    "body": "The Decree Nisi made on {{ case.decreeNisiGrantedDate | date }} will be made absolute and the marriage between {{ case.petitionerFirstName }} {{ case.petitionerLastName }} and {{ case.respondentFirstName }} {{ case.respondentLastName }} will be ended.",
+    "body": "Once the court has checked that there are no outstanding applications or other matters which need to be resolved first, the decree nisi made on {{ case.decreeNisiGrantedDate | date }} will be made absolute and the marriage between {{ case.petitionerFirstName }} {{ case.petitionerLastName }} and {{ case.respondentFirstName }} {{ case.respondentLastName }} will be ended.",
     "warning": "Warning",
     "submit": "Submit",
     "financialWarning": "When a decree absolute is made, your marriage will be legally ended. This might affect your financial position. If you are unsure what to do, particularly if you have not yet concluded any negotiations or legal proceedings about your matrimonial finances, it is recommended that you seek legal advice before applying for the decree absolute.",
