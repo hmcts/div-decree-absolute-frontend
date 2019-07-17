@@ -5,7 +5,7 @@ const { content } = require('@hmcts/one-per-page-test-suite');
 
 describe(modulePath, () => {
   it('renders the content', () => {
-    const ignoreContent = ['continue', 'signOut'];
+    const ignoreContent = ['continue', 'signOut', 'serviceName'];
     return content(ContactDivorceTeam, {}, { ignoreContent });
   });
 });

@@ -76,7 +76,7 @@ describe(modulePath, () => {
         .get()
         .expect(httpStatus.OK)
         .html($ => {
-          const rightHandSideMenu = $('.column-one-third').html();
+          const rightHandSideMenu = $('.govuk-grid-column-one-third').html();
           expect(rightHandSideMenu).to.include('Guidance on GOV.UK')
             .and.to.include('Get a divorce')
             .and.to.include('Children and divorce')

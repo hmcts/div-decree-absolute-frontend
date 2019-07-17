@@ -5,7 +5,7 @@ const filter = require(modulePath);
 
 describe(modulePath, () => {
   it('should return date formatted', () => {
-    const dateString = '2016-01-01T00:00:00-06:00';
+    const dateString = '2016-01-01T15:03:07+05:00';
     const dateFormatted = '01 January 2016';
     expect(filter.date(dateString)).to.eql(dateFormatted);
   });

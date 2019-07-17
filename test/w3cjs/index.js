@@ -15,7 +15,9 @@ const excludedWarnings = [
   'The “contentinfo” role is unnecessary for element “footer”.',
   'The “complementary” role is unnecessary for element “aside”.',
   'The “navigation” role is unnecessary for element “nav”.',
-  'Possible misuse of “aria-label”. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)' // eslint-disable-line max-len
+  'Possible misuse of “aria-label”. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)', // eslint-disable-line max-len
+  'The “button” role is unnecessary for element “button”.',
+  'The “button” role is unnecessary for element “input” whose type is “submit”.'
 ];
 const filteredWarnings = r => {
   return !excludedWarnings.includes(r.message);
@@ -26,7 +28,10 @@ const filteredWarnings = r => {
 const excludedErrors = [
   'Attribute “pattern” is only allowed when the input type is “email”, “password”, “search”, “tel”, “text”, or “url”.',
   'Element “h2” not allowed as child of element “legend” in this context. (Suppressing further errors from this subtree.)',
-  "Duplicate ID “dnCosts.claimCosts”."
+  "Duplicate ID “dnCosts.claimCosts”.",
+  'Attribute “src” not allowed on element “image” at this point.',
+  'Element “image” is missing required attribute “height”.',
+  'Element “image” is missing required attribute “width”.'
 ];
 /* eslint-enable */
 const filteredErrors = r => {

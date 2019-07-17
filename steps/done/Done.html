@@ -5,19 +5,20 @@
 {% block title %}{% endblock %}
 
 {% block main_content %}
-  <div class="govuk-box-highlight">
+  <div class="govuk-panel govuk-panel--confirmation">
+    <h1 class="govuk-panel__title"> {{ content.youAreNowDivorced }} </h1>
 
-    <h1 class="bold-large">{{ content.youAreNowDivorced }}</h1>
-    <p class="bold-small">{{ content.decreeAbsoluteHasBeenGranted }}</p>
+    <div class="govuk-panel__body">
+      {{ content.decreeAbsoluteHasBeenGranted }}
+    </div>
 
-    <p class="text-reference">
-      {{ content.referenceNumber }}<br>
+    <div class="govuk-panel__body">
+      {{ content.referenceNumber }} <br>
       <strong class="text-reference-number" aria-label="{{ case.caseReference | a11yCharSeparator | safe }}">{{ case.caseReference | safe }}</strong>
-    </p>
-
+    </div>
   </div>
 
-  <p class="text">{{ content.emailConfirmation | safe }}</p>
+  <p class="govuk-body">{{ content.emailConfirmation | safe }}</p>
 
   {{
     progressList({
@@ -42,10 +43,10 @@
 
   <br>
 
-  <h2 class="heading-medium">{{ content.downloadDecreeAbsolute }}</h2>
-  <p>{{ content.ThisIsTheCertificateConfirming }}</p>
-  <p>{{ content.yourDivorceWhoWillBeSentAnEmail }}</p>
+  <h2 class="govuk-heading-l">{{ content.downloadDecreeAbsolute }}</h2>
+  <p class="govuk-body">{{ content.ThisIsTheCertificateConfirming }}</p>
+  <p class="govuk-body">{{ content.yourDivorceWhoWillBeSentAnEmail }}</p>
 
-  <h2 class="heading-medium">{{ content.yourDocumentsWillBeAvailableFor1Year }}</h2>
-  <p>{{ content.yourAccountWillThenBeClosed }}</p>
+  <h2 class="govuk-heading-l">{{ content.yourDocumentsWillBeAvailableFor1Year }}</h2>
+  <p class="govuk-body">{{ content.yourAccountWillThenBeClosed }}</p>
 {% endblock %}
