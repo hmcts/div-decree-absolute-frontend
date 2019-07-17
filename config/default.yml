@@ -26,16 +26,15 @@ service:
 services:
   redis:
     url: redis://127.0.0.1:6379
-
     secret: defaultsecret
     useSSL: false
     encryptionAtRestKey: encryptionAtRestKey
   idam:
     apiHealth: https://localhost:8001/health
-    authenticationHealth: https://localhost:8000/health
+    authenticationHealth: https://localhost:3000/health
     apiUrl: http://localhost:8001
     secret: '123456'
-    loginUrl: /idam-login
+    loginUrl: https://localhost:3000/idam-mock-login
     clientId: 'divorce'
     proxy:
 
