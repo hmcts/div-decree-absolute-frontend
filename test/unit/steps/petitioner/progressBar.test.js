@@ -141,7 +141,7 @@ describe(modulePath, () => {
     it('renders DARequested content', () => {
       const daTitle = 'Your application for Decree Absolute is being processed';
       // eslint-disable-next-line max-len
-      const daDescription = 'This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised';
+      const daDescription = 'This application is subject to checks to ensure there are no outstanding applications or other matters that require completion before the divorce is finalised';
 
       return custom(ProgressBar)
         .withSetup(setup)

@@ -18,7 +18,7 @@
 
     "daRequested": {
       "daRequestedTitle": "Your application for Decree Absolute is being processed",
-      "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications that require completion before the divorce is finalised"
+      "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications or other matters that require completion before the divorce is finalised"
     },
 
     "divorceGranted": {
