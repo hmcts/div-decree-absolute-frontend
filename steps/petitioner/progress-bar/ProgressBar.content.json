@@ -11,10 +11,10 @@
     "youCanNowFinaliseYourDivorce": "You can now finalise your divorce",
     "mainBody": "The 6 week waiting period has passed. You can now complete the divorce and get a decree absolute.",
     "whenYouNeedToApplyBy": "When you need to apply by",
-    "detail1": "You can apply for your decree absolute any time from now. If you apply after 3 June 2020 (1 year after the decree nisi was granted) you’ll have to explain the delay to the court.",
+    "detail1": "You can apply for your decree absolute any time from now. If you apply after {{ case.dateCaseNoLongerEligibleForDA | date }} (1 year after the decree nisi was granted) you’ll have to explain the delay to the court.",
     "detail2": "The court can cancel (legally known as rescind) the decree nisi any time up until the decree absolute is granted, if it’s given new evidence showing why you shouldn't be given a divorce.",
     "detail3": "When your {{ case.divorceWho }} can apply",
-    "detail4": "Your {{ case.divorceWho }} can apply for the decree absolute from 3 April 2019 (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
+    "detail4": "Your {{ case.divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
 
     "daRequested": {
       "daRequestedTitle": "Your application for Decree Absolute is being processed",
