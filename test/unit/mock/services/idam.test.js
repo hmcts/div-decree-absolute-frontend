@@ -51,7 +51,7 @@ describe(modulePath, () => {
 
   describe('#landingPage', () => {
     it('runs next and adds idam object if authenticated', () => {
-      req.session.IdamLogin = { success: 'yes' };
+      req.session.IdamLogin = { success: 'yesPetitioner' };
       const middleware = idam.landingPage(idamArgs);
       middleware(req, res, next);
       expect(next.calledOnce).to.eql(true);

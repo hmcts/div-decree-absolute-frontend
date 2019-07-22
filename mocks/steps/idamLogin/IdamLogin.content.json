@@ -6,7 +6,8 @@
     },
     "fields": {
       "success": {
-        "yes": "Yes",
+        "yesPetitioner": "Yes - login as Petitioner",
+        "yesRespondent": "Yes - login as Respondent",
         "no": "No"
       }
     }

@@ -13,13 +13,13 @@ async function testIdamPage(success = true) {
     if (currentPath === IdamMockLogin.path) {
       I.seeCurrentUrlEquals(IdamMockLogin.path);
       if (success) {
-        I.checkOption(content.en.fields.success.yes);
+        I.checkOption(content.en.fields.success.yesPetitioner);
       } else {
         I.checkOption(content.en.fields.success.no);
       }
       I.navByClick('Continue');
     } else {
-      await I.seeInCurrentUrl('/login?');
+      await I.seeInCurrentUrl('/idam-login');
       I.fillField('username', idamConfigHelper.getTestEmail());
       I.fillField('password', idamConfigHelper.getTestPassword());
       I.navByClick('Sign in');
