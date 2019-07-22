@@ -19,7 +19,7 @@ async function testIdamPage(success = true) {
       }
       I.navByClick('Continue');
     } else {
-      await I.seeInCurrentUrl('/idam-login');
+      await I.seeInCurrentUrl('/login?');
       I.fillField('username', idamConfigHelper.getTestEmail());
       I.fillField('password', idamConfigHelper.getTestPassword());
       I.navByClick('Sign in');
