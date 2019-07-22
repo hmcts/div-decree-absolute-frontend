@@ -19,7 +19,8 @@ describe(modulePath, () => {
 
   it('renders the content', () => {
     const session = { case: { data: {} } };
-    return content(Done, session, { ignoreContent: ['continue', 'signOut', 'backLink'] });
+    const ignoreContent = ['continue', 'serviceName', 'signOut', 'backLink'];
+    return content(Done, session, { ignoreContent });
   });
 
   describe('values', () => {

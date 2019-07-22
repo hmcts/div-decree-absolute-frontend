@@ -3,7 +3,7 @@
     "youAreNowDivorced": "You are now divorced",
     "decreeAbsoluteHasBeenGranted": "Your decree absolute has been granted",
     "referenceNumber": "Your reference number is",
-    "emailConfirmation": "Email confirmation has been sent to <strong class=\"bold-small\">{{ case.petitionerEmail }}</strong>.",
+    "emailConfirmation": "Email confirmation has been sent to <strong class=\"govuk-!-font-size-19\">{{ case.petitionerEmail }}</strong>.",
     "youApplied": "You apply",
     "husbandWifeResponded": "Your {{ case.divorceWho }} responds",
     "getDecreeNisi": "Get a decree nisi",

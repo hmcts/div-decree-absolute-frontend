@@ -31,7 +31,7 @@
   "dependencies": {
     "@hmcts/div-document-express-handler": "^1.1.0",
     "@hmcts/div-idam-express-middleware": "^6.4.0",
-    "@hmcts/look-and-feel": "^2.2.3",
+    "@hmcts/look-and-feel": "3.0.3",
     "@hmcts/nodejs-healthcheck": "^1.5.1",
     "@hmcts/nodejs-logging": "^3.0.0",
     "@hmcts/one-per-page": "^5.2.1",
@@ -42,6 +42,7 @@
     "express": "^4.17.1",
     "express-limiter": "^1.6.1",
     "glob": "^7.1.2",
+    "govuk-frontend": "^2.11.0",
     "helmet": "^3.12.0",
     "i18next": "^11.3.1",
     "ioredis": "^3.2.2",
@@ -57,7 +58,7 @@
   "devDependencies": {
     "@hmcts/div-idam-test-harness": "^1.5.0",
     "@hmcts/div-test-harness": "https://github.com/hmcts/div-test-harness#1.0.1",
-    "@hmcts/one-per-page-test-suite": "^3.0.2",
+    "@hmcts/one-per-page-test-suite": "^4.0.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "chai-jq": "^0.0.9",
@@ -97,11 +98,12 @@
     "hoek": "^4.2.1",
     "js-yaml": "^3.13.0",
     "lodash": "^4.17.5",
-    "mem": "^4.0.0 ",
+    "mem": "^5.0.0 ",
     "minimatch": "^3.0.4",
     "tunnel-agent": "^0.6.0",
     "ua-parser-js": "^0.7.19",
-    "underscore.string": "^3.3.5"
+    "underscore.string": "^3.3.5",
+    "yargs": "^13.0.0"
   },
   "nyc": {
     "report-dir": "coverage",

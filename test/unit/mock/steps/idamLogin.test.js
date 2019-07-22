@@ -6,7 +6,7 @@ const { question, content } = require('@hmcts/one-per-page-test-suite');
 
 describe(modulePath, () => {
   it('renders the page on GET', () => {
-    const ignoreContent = ['signOut'];
+    const ignoreContent = ['signOut', 'serviceName'];
 
     return content(IdamLogin, {}, { ignoreContent });
   });

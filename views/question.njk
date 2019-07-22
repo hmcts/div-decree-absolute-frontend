@@ -1,5 +1,22 @@
 {% extends "look-and-feel/layouts/question.html" %}
 
+{% set serviceName = content.serviceName %}
+
+{% set footerLinks = [
+    {
+        href: "/cookie",
+        text: "Cookies"
+    },
+    {
+        href: "/terms-and-conditions",
+        text: "Terms and conditions"
+    },
+    {
+        href: "/privacy-policy",
+        text: "Privacy Policy"
+    }
+] %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -16,14 +33,6 @@
 
 {% block header_class %}
   with-proposition
-{% endblock %}
-
-{% block footer_support_links %}
-  <ul>
-    <li><a href="/cookie">Cookies</a></li>
-    <li><a href="/terms-and-conditions">Terms and conditions</a></li>
-    <li><a href="/privacy-policy">Privacy Policy</a></li>
-  </ul>
 {% endblock %}
 
 {% block after_form %}

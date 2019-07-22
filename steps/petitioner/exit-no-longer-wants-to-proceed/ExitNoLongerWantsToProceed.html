@@ -9,12 +9,12 @@
 {% endset %}
 
 {% block main_content %}
-  <p class="text">{{ content.youCanApplyForYourDaAnytimeFromNow | safe }}</p>
-  <p class="text">{{ content.theCourtCanCancelTheDN | safe }}</p>
-
-  <h2 class="heading-medium">{{ content.whenYourDivorceWhoCanApply | safe }}</h2>
-  <p class="text">{{ content.yourDivorceWhoCanApplyForTheDaFrom | safe }}</p>
-  <p class="text">{{ content.signInToReturnToApplication | safe }}</p>
+  <p class="govuk-body">{{ content.youCanApplyForYourDaAnytimeFromNow | safe }}</p>
+  <p class="govuk-body">{{ content.theCourtCanCancelTheDN | safe }}</p>
+  <br>
+  <h3 class="govuk-heading-m">{{ content.whenYourDivorceWhoCanApply | safe }}</h3>
+  <p class="govuk-body">{{ content.yourDivorceWhoCanApplyForTheDaFrom | safe }}</p>
+  <p class="govuk-body">{{ content.signInToReturnToApplication | safe }}</p>
 {% endblock %}
 
 {% block fields %}{% endblock %}
