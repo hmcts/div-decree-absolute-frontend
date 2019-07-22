@@ -1,20 +1,28 @@
 {% extends "question.njk" %}
 
-{% from "look-and-feel/components/fields.njk" import formSection, selectionButtons %}
+{% from "look-and-feel/components/fields.njk" import formSection, selectionButtons, errorClass, errorsFor %}
 
 {% set title %}
     {{ content.title | safe }}
 {% endset %}
 
-{% set continueText  %}{{ content.submit | safe }}{% endset %}
+{% set serviceLinks =
+    [{
+        href: "/exit",
+        text: content.signOut
+    }]
+%}
+
+{% set continueText = content.submit %}
 
 {% block fields %}
-    <p class="text">{{ content.body | safe }}</p>
-    <div class="notice">
-        <em class="icon icon-important">
-            <span class="visually-hidden">Warning</span>
-        </em>
-        <strong class="bold-small">{{ content.financialWarning | safe }}</strong>
+    <p class="govuk-body">{{ content.body | safe }}</p>
+    <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            {{ content.financialWarning | safe }}
+        </strong>
     </div>
     <br>
     {% call formSection() %}
@@ -34,7 +42,7 @@
 
     <!-- Dropdown area if answered no -->
     <div class="js-hidden panel panel-border-wide" id="no-container">
-        <p class="text">{{ content.signOutDetail | safe}}</p>
+        <p class="govuk-body">{{ content.signOutDetail | safe}}</p>
     </div>
 
 {% endblock %}

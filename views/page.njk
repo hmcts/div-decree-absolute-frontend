@@ -2,7 +2,23 @@
 {% from "look-and-feel/components/header.njk" import header %}
 {% from "look-and-feel/components/phase_banner.njk" import phaseBanner %}
 {% from "look-and-feel/components/i18n.njk" import languageSwitch %}
-{% from "look-and-feel/components/nav.njk" import propositionalNavigation %}
+
+{% set serviceName = content.serviceName %}
+
+{% set footerLinks = [
+    {
+        href: "/cookie",
+        text: "Cookies"
+    },
+    {
+        href: "/terms-and-conditions",
+        text: "Terms and conditions"
+    },
+    {
+        href: "/privacy-policy",
+        text: "Privacy Policy"
+    }
+] %}
 
 {% block breadcrumbs %}
   {{ phaseBanner(phase, feedbackLink) }}
@@ -12,7 +28,7 @@
   {{ languageSwitch(currentLang, availableLangs) }}
 {% endblock %}
 
-{% set titleSize = titleSize | default('xlarge') %}
+{% set titleSize = titleSize | default('xl') %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -22,14 +38,6 @@
   <noscript>
     <img src="/noJS.png" alt="1px" width="1" height="1" style="display: none;" />
   </noscript>
-{% endblock %}
-
-{% block footer_support_links %}
-  <ul>
-    <li><a href="/cookie">Cookies</a></li>
-    <li><a href="/terms-and-conditions">Terms and conditions</a></li>
-    <li><a href="/privacy-policy">Privacy Policy</a></li>
-  </ul>
 {% endblock %}
 
 {% block proposition_header %}

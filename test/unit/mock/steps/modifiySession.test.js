@@ -10,7 +10,8 @@ const ignoreContent = [
   'isThereAProblemWithThisPageEmail',
   'backLink',
   'signOut',
-  'continue'
+  'continue',
+  'serviceName'
 ];
 
 describe(modulePath, () => {

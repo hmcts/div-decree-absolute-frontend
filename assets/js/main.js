@@ -1,8 +1,13 @@
+/* eslint-disable */
+
 import $ from 'jquery';
-import ShowHideContent from 'govuk/show-hide-content';
+import govukFrontend from 'govuk-frontend/all';
+import './showHideContent';
+
+window.jQuery = $;
 
 $(document).ready(() => {
-  const showHideContent = new ShowHideContent();
+  const showHideContent = new global.GOVUK.ShowHideContent();
   showHideContent.init();
 
   $('input.button[type="submit"]').click(event => {
@@ -12,4 +17,6 @@ $(document).ready(() => {
       $el.attr('aria-disabled', true);
     });
   });
+
+  govukFrontend.initAll();
 });
