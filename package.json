@@ -93,6 +93,7 @@
     "zepto-node": "^1.0.0"
   },
   "resolutions": {
+    "assign-deep": "^1.0.1",
     "braces": "^2.3.1",
     "event-stream": "3.3.4",
     "hoek": "^4.2.1",
