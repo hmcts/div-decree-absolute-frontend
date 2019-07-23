@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 const modulePath = 'steps/petitioner/exit-no-longer-wants-to-proceed/ExitNoLongerWantsToProceed.step';
 
-const Exit = require(modulePath);
+const ExitNoLongerWantsToProceed = require(modulePath);
 const idam = require('services/idam');
-const { middleware, sinon } = require('@hmcts/one-per-page-test-suite');
+const { middleware, sinon, content } = require('@hmcts/one-per-page-test-suite');
 
 describe(modulePath, () => {
   beforeEach(() => {
@@ -15,6 +15,25 @@ describe(modulePath, () => {
   });
 
   it('has idam.protect and idam.logout middleware', () => {
-    return middleware.hasMiddleware(Exit, [ idam.protect(), idam.logout() ]);
+    return middleware.hasMiddleware(ExitNoLongerWantsToProceed, [ idam.protect(), idam.logout() ]);
+  });
+
+
+  describe('Sign out page when user selects no', () => {
+    const ignoreContent = ['continue', 'serviceName', 'backLink', 'signOut'];
+
+    it('displays issue date', () => {
+      const session = {
+        case: {
+          state: 'AwaitingPronouncement',
+          data: {
+            divorceWho: 'husband',
+            dateRespondentEligibleForDa: ['2019-09-24T00:00:00.000Z'],
+            dateCaseNoLongerEligibleForDa: ['2020-05-11T00:00:00.000Z']
+          }
+        }
+      };
+      return content(ExitNoLongerWantsToProceed, session, { ignoreContent });
+    });
   });
 });
