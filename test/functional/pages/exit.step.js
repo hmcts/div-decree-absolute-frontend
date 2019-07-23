@@ -4,7 +4,7 @@ const ExitPageContent = require('steps/exit/Exit.content');
 async function testExitPage() {
   const I = this;
 
-  await I.testIdamPage();
+  await I.testIdamPageForPetitioner();
 
   I.amOnLoadedPage(ExitPage.path);
 

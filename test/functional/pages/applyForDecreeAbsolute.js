@@ -1,7 +1,7 @@
 const ApplyForDecreeAbsolute = require('steps/petitioner/apply-for-da/ApplyForDecreeAbsolute.step');
 const ApplyForDecreeAbsoluteContent = require(
   'steps/petitioner/apply-for-da/ApplyForDecreeAbsolute.content');
-const ProgressBar = require('steps/petitioner/progress-bar/ProgressBar.step');
+const ProgressBar = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
 
 function testApplyForDecreeAbsolutePage() {
   const I = this;

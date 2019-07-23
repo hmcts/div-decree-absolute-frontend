@@ -8,7 +8,7 @@ const Exit = require('steps/petitioner/exit-no-longer-wants-to-proceed/ExitNoLon
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const { INTERNAL_SERVER_ERROR, MOVED_TEMPORARILY } = require('http-status-codes');
-const ProgressBar = require('steps/petitioner/progress-bar/ProgressBar.step');
+const ProgressBar = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
 
 const PRE_STATE = 'AwaitingDecreeAbsolute';
 const POST_STATE = 'DARequested';

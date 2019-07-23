@@ -1,4 +1,4 @@
-const modulePath = 'steps/petitioner/progress-bar/PetitionerProgressBar.step';
+const modulePath = 'steps/respondent/progress-bar/RespondentProgressBar.step';
 const ProgressBar = require(modulePath);
 const ApplyForDA = require('steps/petitioner/apply-for-da/ApplyForDecreeAbsolute.step');
 const idam = require('services/idam');
@@ -59,9 +59,6 @@ describe(modulePath, () => {
               fileName: 'costsOrder1559143445687032.pdf'
             },
             {
-              fileName: 'dnAnswers1559143445687032.pdf'
-            },
-            {
               fileName: 'decreeNisi1559143445687032.pdf'
             },
             {
@@ -98,7 +95,6 @@ describe(modulePath, () => {
         'dpetition',
         'certificateOfEntitlement',
         'costsOrder',
-        'dnAnswers',
         'decreeNisi',
         'decreeAbsolute'
       ]);

@@ -87,6 +87,8 @@ paths:
     applyForDecreeAbsolute: /continue-with-divorce
     progressBar: /progress-bar
     exitNoLongerWantsToProceed: /da-does-not-want-to-continue
+  respondent:
+    progressBar: /progress-bar
   mock:
     idamLogin: /idam-login
     modifySession: /session
@@ -125,12 +127,19 @@ document:
   sessionPath: 'case.data.d8'
   documentNamePath: 'fileName'
   filesWhiteList:
-  - 'd8petition'
-  - 'certificateOfEntitlement'
-  - 'costsOrder'
-  - 'dnAnswers'
-  - 'decreeNisi'
-  - 'decreeAbsolute'
+    petitioner:
+    - 'd8petition'
+    - 'certificateOfEntitlement'
+    - 'costsOrder'
+    - 'dnAnswers'
+    - 'decreeNisi'
+    - 'decreeAbsolute'
+    respondent:
+    - 'd8petition'
+    - 'certificateOfEntitlement'
+    - 'costsOrder'
+    - 'decreeNisi'
+    - 'decreeAbsolute'
 
 ccd:
   d8States:

@@ -17,31 +17,10 @@
     {{ content.title | safe }}
 {% endset %}
 
-{% block main_content %}
-    <p class="govuk-body-s">
-        <strong> {{ content.referenceNumber }}:</strong>
-            {{ session.case.data.caseReference }}
-        <br>
-        <strong>{{ content.name }}:</strong>
-            {% if idamUserIsRespondent %}
-            {{ session.case.data.respondentFirstName }} {{ session.case.data.respondentLastName }}
-        {% else %}
-            {{ session.case.data.petitionerFirstName }} {{ session.case.data.petitionerLastName }}
-            {% endif %}
-    </p>
-
-    {% include stateTemplate %}
-
-    <br>
-    <br>
-
-    {% include pageContentTemplate %}
-
-{% endblock %}
+{% block main_content %}{% endblock %}
 
 {% block one_third %}
 <aside class="govuk-related-items" role="complementary">
-
     <h3 class="govuk-heading-s">{{ content.help }}</h3>
 
     {% include "includes/sideMenuCourtDetails.html" %}

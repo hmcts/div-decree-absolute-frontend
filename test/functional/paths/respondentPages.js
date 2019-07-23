@@ -1,21 +1,17 @@
 const basicDivorceSession = require('test/resources/basic-divorce-session');
 
-Feature('Test all pages');
+Feature('Test all pages for Respondent Journey');
 
 Scenario('Pages', async I => {
   await I.createAUser();
 
   await I.createDaCaseForUser(basicDivorceSession);
 
-  await I.testIdamPage();
+  I.amOnLoadedPage('/');
 
-  I.testProgressBar();
+  await I.testIdamPageForRespondent();
 
-  I.testApplyForDecreeAbsolutePage();
-
-  I.testDonePage();
-
-  await I.testExitPage();
+  I.testRespProgressBar();
 
   I.testContactDivorceTeamError();
 

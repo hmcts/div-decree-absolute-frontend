@@ -1,0 +1,20 @@
+
+<h3 class="govuk-heading-m">{{ content.youCanNowFinaliseYourDivorce }}</h3>
+<p class="govuk-body">{{ content.mainBody | safe }}</p>
+
+<details class="govuk-details">
+    <summary class="govuk-details__summary" aria-controls="details-content-0" aria-expanded="false">
+        <span class="govuk-details__summary-text">{{ content.whenYouNeedToApplyBy }}</span>
+    </summary>
+    <div class="govuk-details__text" id="details-content-0" aria-hidden="true">
+        <p class="govuk-body">{{ content.detail1 }}</p>
+        <p class="govuk-body">{{ content.detail2 }}</p>
+        <h4 class="govuk-heading-s">{{ content.detail3 }}</h4>
+        <p class="govuk-body">{{ content.detail4 }}</p>
+    </div>
+</details>
+
+<form action="{{ postUrl | default(path if path else url) }}" method="post" class="form">
+    <input draggable="false" class="govuk-button govuk-button--start" type="submit" value="{{ content.continue }}">
+</form>
+<br>
