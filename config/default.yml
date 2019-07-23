@@ -141,6 +141,7 @@ ccd:
   validDaStates:
     - 'AwaitingDecreeAbsolute'
     - 'DARequested'
+    - 'DAOverdue'
     - 'DivorceGranted'
 
 saucelabs:

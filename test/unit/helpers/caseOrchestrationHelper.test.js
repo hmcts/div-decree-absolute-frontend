@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const moduleName = 'helpers/caseOrchestrationHelper';
 
 const rewire = require('rewire');
@@ -30,7 +31,7 @@ describe(moduleName, () => {
     class OtherStep extends Question {
       get form() {
         return form({
-          shouldNotApear: text
+          shouldNotAppear: text
         });
       }
     }
@@ -100,21 +101,7 @@ describe(moduleName, () => {
       };
     });
 
-    context('rejects with redirectToDecreeNisiError', () => {
-      beforeEach(() => {
-        response.state = 'aValidState';
-        response.data.courts = config.ccd.courts[0];
-      });
-
-      it('if the state is in blacklist', () => {
-        response.data.petitionerEmail = 'email@email.com';
-        req.idam.userDetails.email = 'email@email.com';
-        return expect(caseOrchestrationHelper.validateResponse(req, response))
-          .to.be.rejectedWith(caseOrchestrationHelper.redirectToDecreeNisiError);
-      });
-    });
-
-    it('resolves if state is valid and case is in proper DA state', () => {
+    it('resolves if case is in DA eligible state: AwaitingDecreeAbsolute', () => {
       response.state = 'AwaitingDecreeAbsolute';
       response.data.courts = config.ccd.courts[0];
       response.data.petitionerEmail = 'email@email.com';
@@ -123,13 +110,58 @@ describe(moduleName, () => {
         .to.eventually.equal(response);
     });
 
-    it('resolves if user is respondent and case state is DivorceGranted', () => {
+    it('resolves if case is in DA eligible state: DARequested', () => {
+      response.state = 'DARequested';
+      response.data.courts = config.ccd.courts[0];
+      response.data.petitionerEmail = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.eventually.equal(response);
+    });
+
+    it('resolves if case is in DA eligible state: DAOverdue', () => {
+      response.state = 'DAOverdue';
+      response.data.courts = config.ccd.courts[0];
+      response.data.petitionerEmail = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.eventually.equal(response);
+    });
+
+    it('resolves if case is in DA eligible state: DivorceGranted', () => {
+      response.state = 'DivorceGranted';
+      response.data.courts = config.ccd.courts[0];
+      response.data.petitionerEmail = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.eventually.equal(response);
+    });
+
+    it('resolves if user is respondent and case is in DA eligible state', () => {
       response.state = 'DivorceGranted';
       response.data.courts = config.ccd.courts[0];
       response.data.respEmailAddress = 'email@email.com';
       req.idam.userDetails.email = 'email@email.com';
       return expect(caseOrchestrationHelper.validateResponse(req, response))
         .to.eventually.equal(response);
+    });
+
+    it('rejects with redirectToDecreeNisiError if user is petitioner and case not in DA eligible state', () => {
+      response.state = 'AosStarted';
+      response.data.courts = config.ccd.courts[0];
+      response.data.petitionerEmail = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.be.rejectedWith(caseOrchestrationHelper.redirectToDecreeNisiError);
+    });
+
+    it('rejects with redirectToRespondentFrontendError if user is respondent and case not in DA eligible state', () => {
+      response.state = 'AosStarted';
+      response.data.courts = config.ccd.courts[0];
+      response.data.respEmailAddress = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.be.rejectedWith(caseOrchestrationHelper.redirectToRespondentFrontendError);
     });
   });
 
@@ -151,7 +183,6 @@ describe(moduleName, () => {
     });
 
     it('redirect to Respondent FE if error is REDIRECT_TO_RESPONDENT_FE', () => {
-    // eslint-disable-next-line max-len
       caseOrchestrationHelper.handleErrorCodes(caseOrchestrationHelper.redirectToRespondentFrontendError);
       expect(redirectToFrontendHelper.redirectToRFE.calledOnce).to.eql(true);
     });

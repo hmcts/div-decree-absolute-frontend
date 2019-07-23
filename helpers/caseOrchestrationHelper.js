@@ -53,14 +53,17 @@ const formatSessionForSubmit = req => {
 
 const validateResponse = (req, response) => {
   const { idam } = req;
+  const userEmail = idam.userDetails.email;
+  // eslint-disable-next-line max-len
+  const caseIsNotInDaEligibleState = !config.ccd.validDaStates.includes(response.state);
 
-  const userIsRespondentAndDivorceNotGranted = (idam.userDetails.email === response.data.respEmailAddress) && !(response.state === 'DivorceGranted');
-  const userIsNotInDaState = !config.ccd.validDaStates.includes(response.state);
+  const userIsRespondentAndNotDaEligible = (userEmail === response.data.respEmailAddress) && caseIsNotInDaEligibleState;
+  const userIsPetitionerAndNotDaEligible = (userEmail === response.data.petitionerEmail) && caseIsNotInDaEligibleState;
 
   switch (true) {
-  case userIsRespondentAndDivorceNotGranted:
+  case userIsRespondentAndNotDaEligible:
     return Promise.reject(redirectToRespondentFrontendError);
-  case userIsNotInDaState:
+  case userIsPetitionerAndNotDaEligible:
     return Promise.reject(redirectToDecreeNisiError);
   default:
     return Promise.resolve(response);
