@@ -1,7 +1,6 @@
 const Cookies = require('cookies');
 const crypto = require('crypto');
-const petitionerCase = require('./case-orchestration/retrieve-case/mock-case');
-const respondentCase = require('./case-orchestration/retrieve-aos-case/mock-case-resp');
+const aosCase = require('./case-orchestration/retrieve-case/mock-case');
 
 const randomStringLength = 64;
 
@@ -22,27 +21,14 @@ const divIdamExpressMiddleware = {
   landingPage: idamArgs => {
     return (req, res, next) => {
       const cookies = new Cookies(req, res);
-      const mockIdamAuthenticatedPet = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yesPetitioner';
-      const mockIdamAuthenticatedResp = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yesRespondent';
-
+      const mockIdamAuthenticated = req.session.hasOwnProperty('IdamLogin') && req.session.IdamLogin.success === 'yes';
       delete req.session.IdamLogin;
 
-      if (mockIdamAuthenticatedPet) {
+      if (mockIdamAuthenticated) {
         const token = crypto.randomBytes(randomStringLength).toString('hex');
         const userDetails = {
           id: `idamUserId-${token}`,
-          email: petitionerCase.data.petitionerEmail
-        };
-
-        cookies.set('mockIdamUserDetails', JSON.stringify(userDetails));
-
-        req.idam = { userDetails };
-        next();
-      } else if (mockIdamAuthenticatedResp) {
-        const token = crypto.randomBytes(randomStringLength).toString('hex');
-        const userDetails = {
-          id: `idamUserId-${token}`,
-          email: respondentCase.data.respEmailAddress
+          email: aosCase.data.petitionerEmail
         };
 
         cookies.set('mockIdamUserDetails', JSON.stringify(userDetails));

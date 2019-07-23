@@ -16,18 +16,13 @@ describe(modulePath, () => {
     return question.redirectWithField(IdamLogin, fields, Authenticated);
   });
 
-  it('redirects to Authenticated if answer is yes - login as Petitioner', () => {
-    const fields = { success: 'yesPetitioner' };
-    return question.redirectWithField(IdamLogin, fields, Authenticated);
-  });
-
-  it('redirects to Authenticated if answer is yes - login as Respondent', () => {
-    const fields = { success: 'yesPetitioner' };
+  it('redirects to Authenticated if answer is yes', () => {
+    const fields = { success: 'yes' };
     return question.redirectWithField(IdamLogin, fields, Authenticated);
   });
 
   it('loads fields from the session', () => {
-    const sessionData = { success: 'yesPetitioner' };
+    const sessionData = { success: 'yes' };
     return question.rendersValues(IdamLogin, sessionData);
   });
 });
