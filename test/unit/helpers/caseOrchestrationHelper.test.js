@@ -108,6 +108,16 @@ describe(moduleName, () => {
 
       it('if the state is in blacklist', () => {
         response.data.petitionerEmail = 'email@email.com';
+        response.data.decreeNisiGrantedDate = '2019-06-10T00:00:00.000Z';
+        req.idam.userDetails.email = 'email@email.com';
+        return expect(caseOrchestrationHelper.validateResponse(req, response))
+          .to.be.rejectedWith(caseOrchestrationHelper.redirectToDecreeNisiError);
+      });
+
+      it('if the case does not have decreeNisiGrantedDate set (i.e old paper-based case) ', () => {
+        response.state = 'AwaitingDecreeAbsolute';
+        response.data.courts = config.ccd.courts[0];
+        response.data.petitionerEmail = 'email@email.com';
         req.idam.userDetails.email = 'email@email.com';
         return expect(caseOrchestrationHelper.validateResponse(req, response))
           .to.be.rejectedWith(caseOrchestrationHelper.redirectToDecreeNisiError);
@@ -116,6 +126,7 @@ describe(moduleName, () => {
 
     it('resolves if state is valid and case is in proper DA state', () => {
       response.state = 'AwaitingDecreeAbsolute';
+      response.data.decreeNisiGrantedDate = '2019-06-10T00:00:00.000Z';
       response.data.courts = config.ccd.courts[0];
       response.data.petitionerEmail = 'email@email.com';
       req.idam.userDetails.email = 'email@email.com';
@@ -125,6 +136,7 @@ describe(moduleName, () => {
 
     it('resolves if user is respondent and case state is DivorceGranted', () => {
       response.state = 'DivorceGranted';
+      response.data.decreeNisiGrantedDate = '2019-06-10T00:00:00.000Z';
       response.data.courts = config.ccd.courts[0];
       response.data.respEmailAddress = 'email@email.com';
       req.idam.userDetails.email = 'email@email.com';
