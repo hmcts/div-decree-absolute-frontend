@@ -26,10 +26,11 @@ class CaseHelper extends Helper {
         caseConfigHelper.setTestCaseId(createCaseResponse.id);
       })
       .catch(error => {
-        logger.infoWithReq(null, 'case_create_error',
+        logger.errorWithReq(null, 'case_create_error',
           'Error creating case',
           error
         );
+        throw error;
       });
   }
 }
