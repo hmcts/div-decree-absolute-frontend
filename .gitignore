@@ -29,3 +29,4 @@ package-lock.json
 dist
 mochawesome-report
 _output
+local-*.yml
