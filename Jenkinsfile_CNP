@@ -34,9 +34,6 @@ withPipeline("nodejs", product, component) {
       sh 'yarn test:validation'
       sh 'yarn test:a11y'
     }
-    stage('Test E2E') {
-      sh 'yarn test:e2e'
-    }
 
     stage('Audit') {
       try {

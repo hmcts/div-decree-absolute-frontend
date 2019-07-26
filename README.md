@@ -43,7 +43,12 @@ $ yarn test:functional
 
 #### Run Functional tests locally against AAT
 
-1. Create remote-config.json file 
-2. Copy SCM config
-3. Add "TEST_URL" with AAT url
-4. Run `yarn test:functional:remote`
+* Connect to the VPN
+
+* Make a copy of `config/example-local-aat.yml` as `config/local-aat.yml` (which is ignored by git)
+
+* Substitute any secret values in ***local-aat.yml*** from SCM - Do not add/commit secrets to the example file!
+
+* If you want to point to a PR, modify `tests.functional.url` accordingly.
+
+* Run ```NODE_ENV=aat yarn test:functional```. This would your tests to pick up the new `local-aat.yml`.

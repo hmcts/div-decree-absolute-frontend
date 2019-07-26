@@ -7,8 +7,6 @@ Scenario('Pages', async I => {
 
   await I.createDaCaseForUser(basicDivorceSession);
 
-  I.amOnLoadedPage('/');
-
   await I.testIdamPage();
 
   I.testProgressBar();

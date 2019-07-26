@@ -24,14 +24,14 @@ class IdamHelper extends Helper {
         length: 16,
         charset: 'numeric'
       });
-      const emailName = `divorce+dn-test-${randomString}`;
-      const testEmail = `${emailName}@localhost.local`;
+      const emailName = `divorce+da-test-${randomString}`;
+      const testEmail = `${emailName}@mailinator.com`;
       const testPassword = 'genericPassword123';
 
       idamArgs.testEmail = testEmail;
       idamArgs.testPassword = testPassword;
       idamArgs.testGroupCode = 'citizens';
-      idamArgs.roles = [{ code: 'citizen' }];
+      idamArgs.roles = [{ code: 'citizen' }, { code: 'caseworker-divorce-courtadmin_beta' }];
 
       idamConfigHelper.setTestEmail(testEmail);
       idamConfigHelper.setTestPassword(testPassword);

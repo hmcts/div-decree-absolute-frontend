@@ -56,10 +56,12 @@ const validateResponse = (req, response) => {
 
   const userIsRespondentAndDivorceNotGranted = (idam.userDetails.email === response.data.respEmailAddress) && !(response.state === 'DivorceGranted');
   const userIsNotInDaState = !config.ccd.validDaStates.includes(response.state);
+  const oldPaperBasedCase = !response.data.decreeNisiGrantedDate;
 
   switch (true) {
   case userIsRespondentAndDivorceNotGranted:
     return Promise.reject(redirectToRespondentFrontendError);
+  case oldPaperBasedCase:
   case userIsNotInDaState:
     return Promise.reject(redirectToDecreeNisiError);
   default:
