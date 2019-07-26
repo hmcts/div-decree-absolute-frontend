@@ -25,7 +25,7 @@ class IdamHelper extends Helper {
         charset: 'numeric'
       });
       const emailName = `divorce+da-test-${randomString}`;
-      const testEmail = `${emailName}@localhost.local`;
+      const testEmail = `${emailName}@mailinator.com`;
       const testPassword = 'genericPassword123';
 
       idamArgs.testEmail = testEmail;
