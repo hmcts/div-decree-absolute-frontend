@@ -31,18 +31,16 @@ class PetitionerProgressBar extends ProgressBar {
 
   get pageContentTemplate() {
     let pageContent = '';
-    /* eslint-disable indent */
     switch (this.currentCaseState.toLowerCase()) {
-      case caseStates.daRequested:
-        pageContent = contentMap.daRequested;
-        break;
-      case caseStates.divorceGranted:
-        pageContent = contentMap.divorceGranted;
-        break;
-      default:
-        pageContent = contentMap.awaitingDA;
+    case caseStates.daRequested:
+      pageContent = contentMap.daRequested;
+      break;
+    case caseStates.divorceGranted:
+      pageContent = contentMap.divorceGranted;
+      break;
+    default:
+      pageContent = contentMap.awaitingDA;
     }
-    /* eslint-enable indent */
     return pageContent;
   }
 }

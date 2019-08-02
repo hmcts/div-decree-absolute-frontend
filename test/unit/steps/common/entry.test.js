@@ -28,13 +28,6 @@ describe(modulePath, () => {
       caseOrchestrationHelper.handleErrorCodes.restore();
     });
 
-    /* Need to readd
-    it('to PetitionProgressBar page', () => {
-      caseOrchestrationService.getApplication.resolves();
-      return redirect.navigatesToNext(Entry, PetitionerProgressBar, null);
-    });
-    */
-
     it('calls caseOrchestrationHelper.handleErrorCodes on failure', () => {
       const error = new Error('An error has occurred on the Case Orchestration Service');
       error.statusCode = INTERNAL_SERVER_ERROR;

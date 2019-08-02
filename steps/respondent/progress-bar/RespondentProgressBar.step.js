@@ -36,11 +36,8 @@ class RespondentProgressBar extends ProgressBar {
       case caseStates.daRequested:
         pageContent = contentMap.daRequested;
         break;
-      case caseStates.divorceGranted:
-        pageContent = contentMap.divorceGranted;
-        break;
       default:
-        pageContent = contentMap.awaitingDA;
+        pageContent = contentMap.divorceGranted;
     }
     /* eslint-enable indent */
     return pageContent;

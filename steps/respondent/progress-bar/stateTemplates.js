@@ -1,11 +1,9 @@
 const caseStates = {
-  awaitingDA: 'awaitingdecreeabsolute',
   daRequested: 'darequested',
   divorceGranted: 'divorcegranted'
 };
 
 const contentMap = {
-  awaitingDA: './sections/DivorceAwaiting.html',
   daRequested: './sections/DivorceRequested.html',
   divorceGranted: './sections/DivorceGranted.html'
 };
