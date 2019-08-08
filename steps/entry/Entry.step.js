@@ -1,5 +1,5 @@
 const { EntryPoint } = require('@hmcts/one-per-page');
-const { redirectTo, action } = require('@hmcts/one-per-page/flow');
+const { action } = require('@hmcts/one-per-page/flow');
 const idam = require('services/idam');
 const config = require('config');
 const caseOrchestrationService = require('services/caseOrchestrationService');
@@ -12,7 +12,12 @@ class Entry extends EntryPoint {
 
   next() {
     return action(caseOrchestrationService.getApplication)
-      .then(redirectTo(this.journey.steps.ProgressBar))
+      .then((req, res) => {
+        if (req.idam.userDetails.email === req.session.case.data.petitionerEmail) {
+          return res.redirect(this.journey.steps.PetitionerProgressBar.path);
+        }
+        return res.redirect(this.journey.steps.RespondentProgressBar.path);
+      })
       .onFailure(caseOrchestrationHelper.handleErrorCodes);
   }
 

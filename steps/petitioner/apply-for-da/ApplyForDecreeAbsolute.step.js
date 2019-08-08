@@ -52,7 +52,7 @@ class ApplyForDecreeAbsolute extends Question {
 
       return promise;
     })
-      .then(redirectTo(this.journey.steps.ProgressBar))
+      .then(redirectTo(this.journey.steps.PetitionerProgressBar))
       .onFailure((error, req, res, next) => {
         next(error);
       });

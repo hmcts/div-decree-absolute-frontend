@@ -1,0 +1,18 @@
+{% extends "progress-bar.njk" %}
+
+{% block main_content %}
+    <p class="govuk-body-s">
+        <strong> {{ content.referenceNumber }}:</strong>
+            {{ session.case.data.caseReference }}
+        <br>
+        <strong>{{ content.name }}:</strong>
+            {{ session.case.data.respondentFirstName }} {{ session.case.data.respondentLastName }}
+    </p>
+
+    {% include stateTemplate %}
+
+    <br>
+    <br>
+
+    {% include pageContentTemplate %}
+{% endblock %}
