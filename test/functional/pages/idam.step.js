@@ -1,7 +1,7 @@
 const IdamMockLogin = require('mocks/steps/idamLogin/IdamLogin.step');
 const content = require('mocks/steps/idamLogin/IdamLogin.content');
 const PetProgressBarPage = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
-const RespProgressBarPage = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
+const RespProgressBarPage = require('steps/respondent/progress-bar/RespondentProgressBar.step');
 const idamConfigHelper = require('test/functional/helpers/idamConfigHelper.js');
 
 async function testIdamPageForPetitioner(success = true) {

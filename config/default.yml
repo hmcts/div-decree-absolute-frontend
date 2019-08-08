@@ -85,10 +85,10 @@ paths:
   privacyPolicy: /privacy-policy
   petitioner:
     applyForDecreeAbsolute: /continue-with-divorce
-    progressBar: /progress-bar
+    progressBar: /progress-bar/petitioner
     exitNoLongerWantsToProceed: /da-does-not-want-to-continue
   respondent:
-    progressBar: /progress-bar
+    progressBar: /progress-bar/respondent
   mock:
     idamLogin: /idam-login
     modifySession: /session

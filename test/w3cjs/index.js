@@ -7,6 +7,9 @@ const cosMockCase = require('mocks/services/case-orchestration/retrieve-case/moc
 const config = require('config');
 const feesAndPaymentsService = require('services/feesAndPaymentsService');
 
+const maxHtmlValidationRetries = 3;
+const htmlValidationTimeout = 5000;
+
 // Ignored warnings
 const excludedWarnings = [
   'The “type” attribute is unnecessary for JavaScript resources.',
@@ -80,6 +83,44 @@ const w3cjsValidate = html => {
   });
 };
 
+const repeatW3cjsValidate = html => {
+  let retries = 0;
+
+  return new Promise((resolve, reject) => {
+    const doValidation = () => {
+      const promise = w3cjsValidate(html)
+        .then(results => {
+          if (!promise.done) {
+            resolve(results);
+          }
+          // set promise done so it does not resolve/reject after timeout
+          promise.done = true;
+        })
+        .catch(error => {
+          if (!promise.done) {
+            reject(error);
+          }
+          // set promise done so it does not resolve/reject after timeout
+          promise.done = true;
+        });
+
+      // catch timeouted request to w3jcs validate
+      setTimeout(() => {
+        retries = retries + 1;
+        if (!promise.done && retries < maxHtmlValidationRetries) {
+          doValidation();
+        } else {
+          reject(new Error('Unable to validate html'));
+        }
+        // set promise done so it does not resolve/reject after timeout
+        promise.done = true;
+      }, htmlValidationTimeout);
+    };
+
+    doValidation();
+  });
+};
+
 steps
   .filter(filterSteps)
   .forEach(step => {
@@ -87,7 +128,8 @@ steps
       let errors = [];
       let warnings = [];
 
-      before(() => {
+      before(function beforeTests() {
+        this.timeout(htmlValidationTimeout * maxHtmlValidationRetries);
         sinon.stub(feesAndPaymentsService, 'getFee')
           .resolves({
             feeCode: 'FEE0002',
@@ -97,7 +139,7 @@ steps
           });
 
         return stepHtml(step)
-          .then(html => w3cjsValidate(html))
+          .then(repeatW3cjsValidate)
           .then(results => {
             errors = results.errors;
             warnings = results.warnings;

@@ -23,7 +23,7 @@ exports.config = {
       url: config.tests.functional.url || config.node.baseUrl,
       waitForTimeout,
       waitForAction,
-      show: false,
+      show: config.tests.functional.show,
       chrome: {
         ignoreHTTPSErrors: true,
         args: chromeArgs

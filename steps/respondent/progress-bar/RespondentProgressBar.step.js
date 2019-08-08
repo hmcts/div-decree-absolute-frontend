@@ -29,6 +29,19 @@ class RespondentProgressBar extends ProgressBar {
     return progressBarMap.threeCirclesFilledIn;
   }
 
+  get petitionerInferredRelationship() {
+    // eslint-disable-next-line max-len
+    const respondentInferredRelationship = this.req.session.case.data.divorceWho.toLowerCase();
+    const marriageIsSameSexCouple = this.req.session.case.data.marriageIsSameSexCouple.toLowerCase() === 'yes';
+
+    if (marriageIsSameSexCouple) {
+      return respondentInferredRelationship;
+    } else if (respondentInferredRelationship === 'husband') {
+      return 'wife';
+    }
+    return 'husband';
+  }
+
   get pageContentTemplate() {
     let pageContent = '';
     /* eslint-disable indent */
