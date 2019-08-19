@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import $ from 'jquery';
-import govukFrontend from 'govuk-frontend/all';
+import govukFrontend from 'govuk-frontend/govuk/all';
 import './showHideContent';
 
 window.jQuery = $;
