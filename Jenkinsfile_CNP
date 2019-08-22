@@ -7,7 +7,7 @@ String component = "da"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
-List<LinkedHashMap<String, Object>> secrets = [
+def secrets = [
         'div-${env}': [
             secret('session-secret', 'SESSION_SECRET'),
             secret('redis-secret', 'REDIS_ENCRYPTION_SECRET'),
