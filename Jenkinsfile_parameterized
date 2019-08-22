@@ -12,7 +12,7 @@ properties([
     ])
 ])
 
-List<LinkedHashMap<String, Object>> secrets = [
+def secrets = [
     'div-${env}': [
           secret('session-secret', 'SESSION_SECRET'),
           secret('redis-secret', 'REDIS_ENCRYPTION_SECRET'),
