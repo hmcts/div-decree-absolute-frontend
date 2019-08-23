@@ -11,7 +11,15 @@ const ignoreContent = [
   'backLink',
   'signOut',
   'continue',
-  'serviceName'
+  'serviceName',
+  'webChatTitle',
+  'chatDown',
+  'chatWithAnAgent',
+  'noAgentsAvailable',
+  'allAgentsBusy',
+  'chatClosed',
+  'chatAlreadyOpen',
+  'chatOpeningHours'
 ];
 
 describe(modulePath, () => {

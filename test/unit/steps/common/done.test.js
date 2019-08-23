@@ -19,7 +19,20 @@ describe(modulePath, () => {
 
   it('renders the content', () => {
     const session = { case: { data: {} } };
-    const ignoreContent = ['continue', 'serviceName', 'signOut', 'backLink'];
+    const ignoreContent = [
+      'continue',
+      'serviceName',
+      'backLink',
+      'signOut',
+      'webChatTitle',
+      'chatDown',
+      'chatWithAnAgent',
+      'noAgentsAvailable',
+      'allAgentsBusy',
+      'chatClosed',
+      'chatAlreadyOpen',
+      'chatOpeningHours'
+    ];
     return content(Done, session, { ignoreContent });
   });
 

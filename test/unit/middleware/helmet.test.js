@@ -24,12 +24,18 @@ describe(modulePath, () => {
     sinon.assert.calledWith(contentSecurityPolicyStub, {
       directives: {
         defaultSrc: ['\'self\''],
-        fontSrc: ['\'self\' data:'],
-        scriptSrc: ['\'self\'', '\'unsafe-inline\'', 'www.google-analytics.com'],
+        fontSrc: ['\'self\' data:', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com'],
+        scriptSrc: [
+          '\'self\'',
+          '\'unsafe-inline\'',
+          'www.google-analytics.com',
+          'vcc-eu4.8x8.com',
+          'vcc-eu4b.8x8.com'
+        ],
         connectSrc: ['\'self\''],
         mediaSrc: ['\'self\''],
         frameSrc: ['\'none\''],
-        imgSrc: ['\'self\'', 'www.google-analytics.com']
+        imgSrc: ['\'self\'', 'www.google-analytics.com', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com']
       }
     });
 

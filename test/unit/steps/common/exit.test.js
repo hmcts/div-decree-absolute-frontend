@@ -19,7 +19,20 @@ describe(modulePath, () => {
 
   describe('values', () => {
     it('displays Correct details', () => {
-      const ignoreContent = ['continue', 'serviceName', 'backLink', 'signOut'];
+      const ignoreContent = [
+        'continue',
+        'serviceName',
+        'backLink',
+        'signOut',
+        'webChatTitle',
+        'chatDown',
+        'chatWithAnAgent',
+        'noAgentsAvailable',
+        'allAgentsBusy',
+        'chatClosed',
+        'chatAlreadyOpen',
+        'chatOpeningHours'
+      ];
 
       return content(Exit, {}, { ignoreContent });
     });
