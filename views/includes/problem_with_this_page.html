@@ -6,12 +6,6 @@
               </span>
           </summary>
           <div class="govuk-details__text" id="details-content-6" aria-hidden="true">
-            {% if features.webchat %}
-                <p class="govuk-body">{{ content.pleaseEmailOrCallDivorceCourtWebchat | safe }}</p>
-            {% else %}
-                <p class="govuk-body">{{ content.pleaseEmailOrCallDivorceCourt | safe }}</p>
-            {% endif %}
-
             <p class="govuk-heading-s govuk-!-margin-bottom-1" >{{ content.phoneTitle | safe }}</p>
             <p class="govuk-body">{{ content.phoneToCallIfProblems | safe }}</p>
 

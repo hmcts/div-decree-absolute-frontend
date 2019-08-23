@@ -5,9 +5,10 @@
     "signOut": "Sign out",
     "pleaseEmailOrCallDivorceCourtWebchat": "You can call, email or web chat with us if you’re having problems with this service.",
     "phoneTitle": "Phone",
-    "phoneToCallIfProblems": "0300 303 0642 (Monday to Friday, 8.30am to 5pm)",
+    "isThereAProblemWithThisPage": "Contact us for help",
+    "phoneToCallIfProblems": "0300 303 0642<br>Monday to Friday, 9.30am to 5pm.",
     "emailTitle": "Email",
-    "emailIfProblems": "divorcecase@justice.gov.uk",
+    "emailIfProblems": "Email us at <a class=\"govuk-link\" href=\"mailto:divorcecase@justice.gov.uk\" aria-label=\"Email us at divorcecase@justice.gov.uk, this link opens a new email.\">divorcecase@justice.gov.uk</a>",
     "webChatTitle": "Web chat",
     "chatDown": "The web chat service is temporarily unavailable, please try again later.",
     "chatWithAnAgent": "Chat online with an agent",
@@ -15,7 +16,7 @@
     "allAgentsBusy": "All our web chat agents are busy helping other people. Please try again later or contact us using one of the ways above.",
     "chatClosed": "Web chat is now closed.\\nOpening hours are Monday to Friday, 9:30am to 5pm.",
     "chatAlreadyOpen": "A web chat window is already open.",
-    "chatOpeningHours": "Monday to Friday, 9:30am to 5pm."
+    "chatOpeningHours": "Monday to Friday, 9:30am to 5pm.",
     "backLink": "Back"
   }
 }
