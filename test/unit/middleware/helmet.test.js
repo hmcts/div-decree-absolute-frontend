@@ -24,7 +24,7 @@ describe(modulePath, () => {
     sinon.assert.calledWith(contentSecurityPolicyStub, {
       directives: {
         defaultSrc: ['\'self\''],
-        fontSrc: ['\'self\' data:', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com'],
+        fontSrc: ['\'self\' data:'],
         scriptSrc: [
           '\'self\'',
           '\'unsafe-inline\'',
@@ -34,7 +34,7 @@ describe(modulePath, () => {
         ],
         connectSrc: ['\'self\''],
         mediaSrc: ['\'self\''],
-        frameSrc: ['\'none\''],
+        frameSrc: ['\'none\'', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com'],
         imgSrc: ['\'self\'', 'www.google-analytics.com', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com']
       }
     });

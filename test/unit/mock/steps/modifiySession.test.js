@@ -19,7 +19,11 @@ const ignoreContent = [
   'allAgentsBusy',
   'chatClosed',
   'chatAlreadyOpen',
-  'chatOpeningHours'
+  'chatOpeningHours',
+  'phoneTitle',
+  'phoneToCallIfProblems',
+  'emailTitle',
+  'emailIfProblems'
 ];
 
 describe(modulePath, () => {
