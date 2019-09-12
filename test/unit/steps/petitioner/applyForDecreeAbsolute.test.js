@@ -37,7 +37,18 @@ describe(modulePath, () => {
   });
 
   it('renders the content', () => {
-    const options = { ignoreContent: ['continue', 'signOut'] };
+    const options = { ignoreContent: [
+      'continue',
+      'signOut',
+      'webChatTitle',
+      'chatDown',
+      'chatWithAnAgent',
+      'noAgentsAvailable',
+      'allAgentsBusy',
+      'chatClosed',
+      'chatAlreadyOpen',
+      'chatOpeningHours'
+    ] };
     return content(ApplyForDA, session, options);
   });
 

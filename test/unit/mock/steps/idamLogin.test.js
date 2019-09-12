@@ -6,7 +6,18 @@ const { question, content } = require('@hmcts/one-per-page-test-suite');
 
 describe(modulePath, () => {
   it('renders the page on GET', () => {
-    const ignoreContent = ['signOut', 'serviceName'];
+    const ignoreContent = [
+      'serviceName',
+      'signOut',
+      'webChatTitle',
+      'chatDown',
+      'chatWithAnAgent',
+      'noAgentsAvailable',
+      'allAgentsBusy',
+      'chatClosed',
+      'chatAlreadyOpen',
+      'chatOpeningHours'
+    ];
 
     return content(IdamLogin, {}, { ignoreContent });
   });

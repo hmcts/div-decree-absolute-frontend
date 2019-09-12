@@ -20,7 +20,20 @@ describe(modulePath, () => {
 
 
   describe('Sign out page when user selects no', () => {
-    const ignoreContent = ['continue', 'serviceName', 'backLink', 'signOut'];
+    const ignoreContent = [
+      'webChatTitle',
+      'chatDown',
+      'chatWithAnAgent',
+      'noAgentsAvailable',
+      'allAgentsBusy',
+      'chatClosed',
+      'chatAlreadyOpen',
+      'chatOpeningHours',
+      'continue',
+      'serviceName',
+      'backLink',
+      'signOut'
+    ];
 
     it('displays issue date', () => {
       const session = {

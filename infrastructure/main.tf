@@ -117,6 +117,7 @@ module "frontend" {
 
     // Feature toggling through config
     FEATURE_IDAM                            = "${var.feature_idam}"
+    FEATURE_WEBCHAT                         = "${var.feature_webchat}"
 
     // Encryption secrets
     SESSION_SECRET = "${data.azurerm_key_vault_secret.session_secret.value}"
@@ -149,6 +150,12 @@ module "frontend" {
     WEBSITE_LOCAL_CACHE_OPTION = "Never"
     WEBSITE_LOCAL_CACHE_SIZEINMB = 0
     WEBSITE_DYNAMIC_CACHE = 0
+
+    WEBCHAT_CHAT_ID = "${var.webchat_chat_id}"
+    WEBCHAT_TENANT = "${var.webchat_tenant}"
+    WEBCHAT_BUTTON_NO_AGENTS = "${var.webchat_button_no_agents}"
+    WEBCHAT_BUTTON_AGENTS_BUSY = "${var.webchat_button_agents_busy}"
+    WEBCHAT_BUTTON_SERVICE_CLOSED = "${var.webchat_button_service_closed}"
   }
 }
 
