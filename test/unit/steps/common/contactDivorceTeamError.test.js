@@ -5,19 +5,7 @@ const { content } = require('@hmcts/one-per-page-test-suite');
 
 describe(modulePath, () => {
   it('renders the content', () => {
-    const ignoreContent = [
-      'continue',
-      'backLink',
-      'signOut',
-      'webChatTitle',
-      'chatDown',
-      'chatWithAnAgent',
-      'noAgentsAvailable',
-      'allAgentsBusy',
-      'chatClosed',
-      'chatAlreadyOpen',
-      'chatOpeningHours'
-    ];
+    const ignoreContent = ['continue', 'signOut', 'serviceName'];
     return content(ContactDivorceTeam, {}, { ignoreContent });
   });
 });
