@@ -1,9 +1,9 @@
 {
   "en": {
     "title": "Your divorce",
-    "youApply": "You apply",
+    "youApply": "Your {{ petitionerInferredRelationship }} applies",
     "youMustRespond": "You must respond",
-    "getDecreeNisi": "Get a decree nisi",
+    "getDecreeNisi": "Your {{ petitionerInferredRelationship }} gets a decree nisi",
     "madeFinal": "The divorce is complete",
     "referenceNumber": "Reference number",
     "name": "Name",
