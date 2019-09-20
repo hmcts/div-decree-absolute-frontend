@@ -89,6 +89,7 @@ paths:
   termsAndConditions: /terms-and-conditions
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
+  accessibilityStatement: /accessibility-statement
   petitioner:
     applyForDecreeAbsolute: /continue-with-divorce
     progressBar: /progress-bar/petitioner
