@@ -1,6 +1,5 @@
 const config = require('config');
 const logger = require('services/logger').getLogger(__filename);
-const randomstring = require('randomstring');
 const idamExpressTestHarness = require('@hmcts/div-idam-test-harness');
 const idamConfigHelper = require('./idamConfigHelper');
 const { parseBool } = require('@hmcts/one-per-page/util');
@@ -18,16 +17,9 @@ const idamArgs = {
 };
 
 class IdamHelper extends Helper {
-  createAUser() {
+  createAUser(testEmail) {
     if (parseBool(config.features.idam)) {
-      const randomString = randomstring.generate({
-        length: 16,
-        charset: 'numeric'
-      });
-      const emailName = `divorce+da-test-${randomString}`;
-      const testEmail = `${emailName}@mailinator.com`;
       const testPassword = 'genericPassword123';
-
       idamArgs.testEmail = testEmail;
       idamArgs.testPassword = testPassword;
       idamArgs.testGroupCode = 'citizens';

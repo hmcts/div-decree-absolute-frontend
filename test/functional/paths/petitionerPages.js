@@ -1,9 +1,18 @@
 const basicDivorceSession = require('test/resources/basic-divorce-session');
+const randomString = require('randomstring');
+
+const emailPrefix = randomString.generate({
+  length: 16,
+  charset: 'numeric'
+});
+
+basicDivorceSession.D8PetitionerEmail = emailPrefix + basicDivorceSession.D8PetitionerEmail;
+basicDivorceSession.RespEmailAddress = emailPrefix + basicDivorceSession.RespEmailAddress;
 
 Feature('Test all pages for Petitioner Journey');
 
 Scenario('Pages', async I => {
-  await I.createAUser();
+  await I.createAUser(basicDivorceSession.D8PetitionerEmail);
 
   await I.createDaCaseForUser(basicDivorceSession);
 

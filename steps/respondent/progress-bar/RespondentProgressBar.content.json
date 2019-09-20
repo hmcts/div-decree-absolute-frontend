@@ -1,9 +1,9 @@
 {
   "en": {
     "title": "Your divorce",
-    "youApply": "You apply",
-    "yourPartnerMustRespond": "Your {{ case.divorceWho }} must respond",
-    "getDecreeNisi": "Get a decree nisi",
+    "youApply": "Your {{ petitionerInferredRelationship }} applies",
+    "youMustRespond": "You must respond",
+    "getDecreeNisi": "Your {{ petitionerInferredRelationship }} gets a decree nisi",
     "madeFinal": "The divorce is complete",
     "referenceNumber": "Reference number",
     "name": "Name",
@@ -17,8 +17,8 @@
     "detail4": "Your {{ case.divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
 
     "daRequested": {
-      "daRequestedTitle": "Your application for Decree Absolute is being processed",
-      "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications or other matters that require completion before the divorce is finalised"
+      "daRequestedTitle": "Your {{ petitionerInferredRelationship }} has applied for Decree Absolute",
+      "daRequestedDescription": "This application is subject to checks to ensure there are no outstanding applications or other matters that require completion before the divorce is finalised. If there are no outstanding applications or other matters that require completion, the court will issue your decree absolute, and your divorce will be complete."
     },
 
     "divorceGranted": {

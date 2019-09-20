@@ -126,5 +126,6 @@
   },
   "D8ReasonForDivorce": "unreasonable-behaviour",
   "D8DerivedPetitionerCurrentFullName": "Brad Tom",
-  "D8InferredPetitionerGender": "male"
+  "D8InferredPetitionerGender": "male",
+  "RespEmailAddress": "anRespondentEmail@mailinator.com"
 }

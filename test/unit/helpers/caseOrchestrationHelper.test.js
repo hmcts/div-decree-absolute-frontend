@@ -122,6 +122,16 @@ describe(moduleName, () => {
         return expect(caseOrchestrationHelper.validateResponse(req, response))
           .to.be.rejectedWith(caseOrchestrationHelper.redirectToDecreeNisiError);
       });
+
+      it('if user is respondent and the state is in awaitingDecreeAbsolute', () => {
+        response.state = 'AwaitingDecreeAbsolute';
+        response.data.courts = config.ccd.courts[0];
+        response.data.respEmailAddress = 'email@email.com';
+        response.data.decreeNisiGrantedDate = '2019-06-10T00:00:00.000Z';
+        req.idam.userDetails.email = 'email@email.com';
+        return expect(caseOrchestrationHelper.validateResponse(req, response))
+          .to.be.rejectedWith(caseOrchestrationHelper.redirectToRespondentFrontendError);
+      });
     });
 
     it('resolves if state is valid and case is in proper DA state', () => {
@@ -136,6 +146,16 @@ describe(moduleName, () => {
 
     it('resolves if user is respondent and case state is DivorceGranted', () => {
       response.state = 'DivorceGranted';
+      response.data.decreeNisiGrantedDate = '2019-06-10T00:00:00.000Z';
+      response.data.courts = config.ccd.courts[0];
+      response.data.respEmailAddress = 'email@email.com';
+      req.idam.userDetails.email = 'email@email.com';
+      return expect(caseOrchestrationHelper.validateResponse(req, response))
+        .to.eventually.equal(response);
+    });
+
+    it('resolves if user is respondent and case state is DARequested', () => {
+      response.state = 'DARequested';
       response.data.decreeNisiGrantedDate = '2019-06-10T00:00:00.000Z';
       response.data.courts = config.ccd.courts[0];
       response.data.respEmailAddress = 'email@email.com';
