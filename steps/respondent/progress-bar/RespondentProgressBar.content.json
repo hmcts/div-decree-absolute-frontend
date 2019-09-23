@@ -48,9 +48,9 @@
     "downloadAndSaveYourDocuments" : "Download and save all the documents for this application before you continue. If you do amend your application, you won’t be able to access any of these documents online anymore.",
     "guidance": {
       "title": "Guidance on GOV.UK",
-      "getADivorce": "<a class=\"govuk-link\" href=\"https://www.gov.uk/get-a-divorce\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Get a divorce</a>",
-      "childrenAndDivorceLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
-      "moneyAndPropertyLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Money and property</a>"
+      "getADivorce": "<a class=\"govuk-link\" href=\"https://www.gov.uk/get-a-divorce\" target=\"_blank\" aria-label=\"Get a divorce. This link will open in a new tab.\">Get a divorce</a>",
+      "childrenAndDivorceLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"Children and divorce. This link will open in a new tab.\">Children and divorce</a>",
+      "moneyAndPropertyLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/money-property-when-relationship-ends\" target=\"_blank\" aria-label=\"Money and property. This link will open in a new tab.\">Money and property</a>"
     },
     "files": {
       "dpetition": "Divorce application",
