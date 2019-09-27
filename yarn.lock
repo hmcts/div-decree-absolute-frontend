@@ -225,16 +225,29 @@
     govuk-frontend "^2.13.0"
     node-sass "^4.12.0"
 
-"@hmcts/div-document-express-handler@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@hmcts/div-document-express-handler/-/div-document-express-handler-1.1.0.tgz#1fed050291e943402848b030597a9d31f487e0a5"
-  integrity sha512-yonHJAp3ouw+3c9iq9fANW/F/CPAiV5e2LUz5WwEnlgj3zkHF3zsJGHy3GnQW3HOK+TkpaDGogzjaI3Nu37dFg==
+"@hmcts/div-document-express-handler@https://github.com/hmcts/div-document-express-handler#a6d9d210396f6576aece5b9191edcdc3ce39457b":
+  version "1.2.0"
+  resolved "https://github.com/hmcts/div-document-express-handler#a6d9d210396f6576aece5b9191edcdc3ce39457b"
   dependencies:
     config "^3.0.1"
     lodash "^4.17.11"
     request "^2.88.0"
 
-"@hmcts/div-idam-express-middleware@^6.4.0", "@hmcts/div-idam-express-middleware@^6.5.0":
+"@hmcts/div-idam-express-middleware@^6.4.0":
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/@hmcts/div-idam-express-middleware/-/div-idam-express-middleware-6.6.0.tgz#2126b94221f4430ecda52152a5523173d838bb74"
+  integrity sha512-XxVKqJJDNr+rwKibA+8dOkmRqPJFzDtSTUQS5AKJEjSVA8LOTZPywSNxLxTivc+VJh/GCERY75b8CTKAl1vv3Q==
+  dependencies:
+    "@hmcts/nodejs-logging" "^3.0.0"
+    diff "^3.5.0"
+    jwt-decode "^2.2.0"
+    mem "^4.0.0"
+    request "^2.88.0"
+    request-promise-core "^1.1.2"
+    request-promise-native "^1.0.5"
+    uuid "^3.1.0"
+
+"@hmcts/div-idam-express-middleware@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@hmcts/div-idam-express-middleware/-/div-idam-express-middleware-6.5.0.tgz#357020b9d73d013268338ba9469540e2e839fee6"
   integrity sha512-M0w0ff6hXr3gOVgERMHLUI4Eg1OCYPe8CQnGHkWsE1GAxcqNHqz9CV6H8rkDMSNrh/0TS+It4Vh64QQwZYRTFw==
@@ -6468,7 +6481,7 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
-"mem@^5.0.0 ":
+mem@^4.0.0, "mem@^5.0.0 ":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/mem/-/mem-5.1.1.tgz#7059b67bf9ac2c924c9f1cff7155a064394adfb3"
   integrity sha512-qvwipnozMohxLXG1pOqoLiZKNkC4r4qqRucSoDwXowsNGDSULiqFTRUF05vcZWnwJSG22qTsynQhxbaMtnX9gw==
@@ -8408,7 +8421,7 @@ request-progress@^2.0.1:
   dependencies:
     throttleit "^1.0.0"
 
-request-promise-core@1.1.2:
+request-promise-core@1.1.2, request-promise-core@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/request-promise-core/-/request-promise-core-1.1.2.tgz#339f6aababcafdb31c799ff158700336301d3346"
   integrity sha512-UHYyq1MO8GsefGEt7EprS8UrXsm1TxEvFUX1IMTuSLU2Rh7fTIdFtl8xD7JiEYiWU2dl+NYAjCTksTehQUxPag==

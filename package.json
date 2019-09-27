@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@hmcts/ctsc-web-chat": "^0.3.9",
-    "@hmcts/div-document-express-handler": "^1.1.0",
+    "@hmcts/div-document-express-handler": "https://github.com/hmcts/div-document-express-handler#a6d9d210396f6576aece5b9191edcdc3ce39457b",
     "@hmcts/div-idam-express-middleware": "^6.4.0",
     "@hmcts/look-and-feel": "3.0.3",
     "@hmcts/nodejs-healthcheck": "^1.5.1",
