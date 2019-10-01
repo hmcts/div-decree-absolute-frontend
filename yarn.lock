@@ -268,10 +268,10 @@
   resolved "https://registry.yarnpkg.com/@hmcts/eslint-config/-/eslint-config-1.4.0.tgz#e713457cee3758a43394c2974913885aaae8a41b"
   integrity sha1-5xNFfO43WKQzlMKXSROIWqropBs=
 
-"@hmcts/look-and-feel@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@hmcts/look-and-feel/-/look-and-feel-3.0.3.tgz#f95c501c0f471fdc0ecd288f9b458e7fb99fcb13"
-  integrity sha512-YRuSO4Z4yNQnYfMxY5BIR/VHt0QDB0gsHyy38fWLgpJfkIxUSKYlD2x/xBNTTVaplFLxrDksEj16b5PIGeUTaA==
+"@hmcts/look-and-feel@4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@hmcts/look-and-feel/-/look-and-feel-4.0.3.tgz#4f82e0d44dc52f12a86b24a32546966a34c737f1"
+  integrity sha512-2FBmT0V8oqO9aQA5Mmbyj+uFhGyCD4VAPCiMr9UAJUU2VhXcXcTyPvUXej77ilJTfapcJkyKov/kLZyIM/zZlA==
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -4394,10 +4394,15 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-govuk-frontend@^2.11.0, govuk-frontend@^2.13.0, govuk-frontend@^2.6.0:
+govuk-frontend@^2.13.0, govuk-frontend@^2.6.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-2.13.0.tgz#0273f7c92070abd6450c73a006ebb3ddc793463a"
   integrity sha512-6XDtTt5plSrPQvPgLFN4LCtb9ULuqoXCgkHy5c7XE/70/sVm47RPbLR11tYGPcmV8cOApBhW0wL8y8ryspHfpw==
+
+govuk-frontend@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-3.0.0.tgz#27e4751592c0587ec925c637dcd1a2582429afe4"
+  integrity sha512-GCrEeaQZEnsthNtfmOUFlgsieNjHOeoamSWMdD4Gdq0RPxCA9uzfrT2i3jVnlBORekKjOL0C8eFZQBSNnjtz2A==
 
 graceful-fs@^4.1.0, graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0:
   version "4.2.1"
