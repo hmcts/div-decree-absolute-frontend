@@ -157,6 +157,9 @@ module "frontend" {
     WEBCHAT_BUTTON_NO_AGENTS = "${var.webchat_button_no_agents}"
     WEBCHAT_BUTTON_AGENTS_BUSY = "${var.webchat_button_agents_busy}"
     WEBCHAT_BUTTON_SERVICE_CLOSED = "${var.webchat_button_service_closed}"
+
+    SMARTSURVEY_FEEDBACK_URL      = "${var.survey_feedback_url}"
+    SMARTSURVEY_FEEDBACK_DONE_URL = "${var.survey_feedback_done_url}"
   }
 }
 

@@ -45,7 +45,8 @@ lookAndFeel.configure(app, {
     filters: getFilters(),
     globals: {
       phase: 'BETA',
-      feedbackLink: 'http://www.smartsurvey.co.uk/s/8RR1T?pageurl=/email',
+      feedbackLink: config.commonProps.smartSurveyFeedbackUrl,
+      feedbackDoneLink: config.commonProps.smartSurveyFeedbackDonePageUrl,
       googleAnalyticsId: config.services.googleAnalytics.id,
       webchat: config.services.webchat,
       features: { webchat: parseBool(config.features.webchat) }
