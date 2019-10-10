@@ -106,7 +106,8 @@
     "underscore.string": "^3.3.5",
     "yargs": "^13.0.0",
     "marked": ">=0.7.0",
-    "handlebars": ">=4.3.0"
+    "handlebars": ">=4.3.0",
+    "helmet-csp": ">=2.9.1"
   },
   "nyc": {
     "report-dir": "coverage",
