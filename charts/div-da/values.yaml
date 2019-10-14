@@ -1,29 +1,54 @@
 nodejs:
     applicationPort: 3000
+    aadIdentityName: divorce
+    image: "hmctspublic.azurecr.io/div/da:latest"
+    ingressHost: "div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     environment:
         CCD_DIGITAL_COURTS: '["serviceCentre", "eastMidlands", "westMidlands", "southWest", "northWest"]'
+        GOOGLE_ANALYTICS_ID: "TBD"
         GOOGLE_ANALYTICS_TRACKING_URL: "http://www.google-analytics.com/collect"
         EVIDENCE_MANAGEMENT_CLIENT_API_UPLOAD_ENDPOINT: "/emclientapi/version/1/upload"
         HPKP_MAX_AGE: "86400"
         HPKP_SHAS: "Naw+prhcXSIkbtYJ0t7vAD+Fc92DWL9UZevVfWBvids=,klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=,grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME="
-        IDAM_PROXY: "http://proxyout.reform.hmcts.net:8080"
         NODE_ENV: "production"
         RATE_LIMITER_ENABLED: "false"
         RATE_LIMITER_EXPIRE: "3600000"
         RATE_LIMITER_TOTAL: "3600"
-        LOG_LEVEL: "DEBUG"
+        LOG_LEVEL: "INFO"
         WEBCHAT_CHAT_ID: 3833071605d5d4518036a09.30917386
         WEBCHAT_TENANT: aG1jdHNzdGFnaW5nMDE
         WEBCHAT_BUTTON_NO_AGENTS: 7732814745cac6f4603c4d1.53357933
         WEBCHAT_BUTTON_AGENTS_BUSY: 2042157415cc19c95669039.65793052
         WEBCHAT_BUTTON_SERVICE_CLOSED: 20199488815cc1a89e0861d5.73103009
+        REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
+
+        BASE_URL: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+        PUBLIC_HOSTNAME: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+
+        CASE_MAINTENANCE_BASE_URL: "http://div-cms-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+        DEPLOYMENT_ENV: "{{ .Values.global.environment }}"
+        EVIDENCE_MANAGEMENT_CLIENT_API_URL: "http://div-emca-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
+        EVIDENCE_MANAGEMENT_CLIENT_API_DOWNLOAD_ENDPOINT: "/emclientapi/version/1/download"
+        FEES_AND_PAYMENTS_URL: "http://div-fps-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+        IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"
+        IDAM_LOGIN_URL: "https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login"
+        ORCHESTRATION_SERVICE_DRAFT_ENDPOINT: "http://div-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/draftsapi/version/1"
+        ORCHESTRATION_SERVICE_GET_PETITION_URL: "http://div-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/retrieve-case"
+        ORCHESTRATION_SERVICE_GET_AOS_PETITION_URL: "http://div-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/retrieve-aos-case"
+        ORCHESTRATION_SERVICE_POST_PETITION_URL: "http://div-cos-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/submit-da"
+        PETITIONER_FRONTEND_URL: "https://div-pfe-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+        RESPONDENT_FRONTEND_URL: "https://div-rfe-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+        DECREE_NISI_FRONTEND_URL: "https://div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+
+        FEATURE_WEBCHAT: "true"
     keyVaults:
-        "div":
-            resourceGroup: div
+        div:
             secrets:
                 - session-secret
                 - redis-secret
                 - idam-secret
+                - da-redis-connection-string
+                - AppInsightsInstrumentationKey
 
 redis:
     cluster:
@@ -33,3 +58,7 @@ redis:
     master:
         persistence:
             enabled: false
+
+tags:
+  idam-pr: false
+  pr: false

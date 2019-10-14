@@ -17,6 +17,8 @@ describe(modulePath, () => {
       start: sinon.stub()
     };
     appInsightsStub.setAutoCollectConsole.returns(appInsightsStub);
+    appInsightsStub.setDistributedTracingMode.returns(appInsightsStub);
+    appInsightsStub.setSendLiveMetrics.returns(appInsightsStub);
     appInsightsStub.start.returns(appInsightsStub);
 
     sinon.stub(applicationinsights, 'setup').returns(appInsightsStub);
