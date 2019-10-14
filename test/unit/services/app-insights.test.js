@@ -14,6 +14,8 @@ describe(modulePath, () => {
   beforeEach(() => {
     appInsightsStub = {
       setAutoCollectConsole: sinon.stub(),
+      setDistributedTracingMode: sinon.stub(),
+      setSendLiveMetrics: sinon.stub(),
       start: sinon.stub()
     };
     appInsightsStub.setAutoCollectConsole.returns(appInsightsStub);
