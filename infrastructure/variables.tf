@@ -4,10 +4,6 @@ variable "reform_team" {
   default = "div"
 }
 
-variable "reform_service_name" {
-  default = "da"
-}
-
 variable "product" {}
 
 variable "raw_product" {
