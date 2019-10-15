@@ -40,8 +40,6 @@ nodejs:
         PETITIONER_FRONTEND_URL: "https://div-pfe-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         RESPONDENT_FRONTEND_URL: "https://div-rfe-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
         DECREE_NISI_FRONTEND_URL: "https://div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-
-        FEATURE_WEBCHAT: "true"
     keyVaults:
         div:
             secrets:
