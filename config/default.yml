@@ -54,6 +54,7 @@ services:
     expire: 3600000
     enabled: false
   orchestrationService:
+    baseUrl: http://localhost:3001/case-orchestration
     getCaseUrl: http://localhost:3001/case-orchestration/retrieve-case
     getAosCaseUrl: http://localhost:3001/case-orchestration/retrieve-aos-case
     submitCaseUrl: http://localhost:3001/case-orchestration/submit-da
@@ -124,7 +125,7 @@ tests:
 
 features:
   idam: false
-  webchat: false
+  webchat: true
 
 journey:
   timeoutDelay: 300
