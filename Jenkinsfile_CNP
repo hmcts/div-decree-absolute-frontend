@@ -28,6 +28,7 @@ withPipeline("nodejs", product, component) {
   enableDockerBuild()
   installCharts()
   loadVaultSecrets(secrets)
+  enableAksStagingDeployment()
 
   before('securitychecks') {
     stage('Test HTML') {
