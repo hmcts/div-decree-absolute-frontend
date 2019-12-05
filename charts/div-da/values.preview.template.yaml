@@ -8,18 +8,18 @@ idam-pr:
       - https://${SERVICE_FQDN}/authenticated
 
 nodejs:
-    aadIdentityName:
-    environment:
-        BASE_URL: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
-        PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
+  aadIdentityName:
+  environment:
+    BASE_URL: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
+    PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
 
-        REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
-    # Don't modify below here
-    image: ${IMAGE_NAME}
-    ingressHost: ${SERVICE_FQDN}
-    keyVaults:
-      div:
-        secrets:
-          - session-secret
-          - redis-secret
-          - idam-secret
+    REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
+  # Don't modify below here
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}
+  keyVaults:
+    div:
+      secrets:
+        - session-secret
+        - redis-secret
+        - idam-secret
