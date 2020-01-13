@@ -17,3 +17,5 @@ respondent_frontend_url = "https://div-rfe-demo.service.core-compute-demo.intern
 decree_nisi_frontend_url = "https://div-dn-demo.service.core-compute-demo.internal"
 
 ccd_digital_courts = "[\"serviceCentre\", \"eastMidlands\", \"westMidlands\", \"southWest\", \"northWest\"]"
+
+enable_ase = true
