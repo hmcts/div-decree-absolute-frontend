@@ -11,5 +11,18 @@
         "no": "No"
       }
     }
+  },
+  "cy": {
+    "title": "[CY] Sign in",
+    "errors": {
+      "required": "[CY] Select the an option"
+    },
+    "fields": {
+      "success": {
+        "yesPetitioner": "[CY] Yes - login as Petitioner",
+        "yesRespondent": "[CY] Yes - login as Respondent",
+        "no": "[CY] No"
+      }
+    }
   }
 }

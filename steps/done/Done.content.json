@@ -15,5 +15,22 @@
 
     "yourDocumentsWillBeAvailableFor1Year": "Your documents will be available here for one year",
     "yourAccountWillThenBeClosed": "Your account will then be closed. If you need a certified copy after that, you'll need to apply to the general register office and pay a fee."
+  },
+  "cy": {
+    "youAreNowDivorced": "[CY] You are now divorced",
+    "decreeAbsoluteHasBeenGranted": "[CY] Your decree absolute has been granted",
+    "referenceNumber": "[CY] Your reference number is",
+    "emailConfirmation": "[CY] Email confirmation has been sent to <strong class=\"govuk-!-font-size-19\">{{ case.petitionerEmail }}</strong>.",
+    "youApplied": "[CY] You apply",
+    "husbandWifeResponded": "[CY] Your {{ case.divorceWho }} responds",
+    "getDecreeNisi": "[CY] Get a decree nisi",
+    "madeFinal": "[CY] Divorce is complete",
+
+    "downloadDecreeAbsolute": "[CY] Download your decree absolute",
+    "ThisIsTheCertificateConfirming": "[CY] This is the certificate confirming that you're divorced. Keep your certificate safe. You'll need to take a printed copy to the register office if you want to get married again.",
+    "yourDivorceWhoWillBeSentAnEmail": "[CY] Your {{ case.divorceWho }} has been sent an email telling them how to download the decree absolute.",
+
+    "yourDocumentsWillBeAvailableFor1Year": "[CY] Your documents will be available here for one year",
+    "yourAccountWillThenBeClosed": "[CY] Your account will then be closed. If you need a certified copy after that, you'll need to apply to the general register office and pay a fee."
   }
 }

@@ -6,5 +6,13 @@
     "whenYourDivorceWhoCanApply": "When your {{ case.divorceWho }} can apply",
     "yourDivorceWhoCanApplyForTheDaFrom": "Your {{ case.divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
     "signInToReturnToApplication": "<a class=\"govuk-link\" href=\"/\">Sign in</a> to return to the application."
+  },
+  "cy": {
+    "title": "[CY] You've been signed out",
+    "youCanApplyForYourDaAnytimeFromNow": "[CY] You can apply for your decree absolute any time from now. If you apply after {{ case.dateCaseNoLongerEligibleForDA | date }} (1 year after the decree nisi was granted) you’ll have to explain the delay to the court.",
+    "theCourtCanCancelTheDN": "[CY] The court can cancel (legally known as rescind) the decree nisi any time up until the decree absolute is granted, if it’s given new evidence showing why you shouldn’t be given a divorce.",
+    "whenYourDivorceWhoCanApply": "[CY] When your {{ case.divorceWho }} can apply",
+    "yourDivorceWhoCanApplyForTheDaFrom": "[CY] Your {{ case.divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
+    "signInToReturnToApplication": "[CY] <a class=\"govuk-link\" href=\"/\">Sign in</a> to return to the application."
   }
 }

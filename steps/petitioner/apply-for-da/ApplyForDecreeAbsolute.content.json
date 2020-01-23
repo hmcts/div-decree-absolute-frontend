@@ -17,5 +17,24 @@
       "submitError": "Sorry, we’re having technical problems. Please try again in a few minutes. If the problem continues you can contact the Courts and Tribunals Service Centre."
     },
     "signOutDetail": "Press Submit to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
+  },
+  "cy": {
+    "title": "[CY] Do you want to finalise your divorce?",
+    "body": "[CY] Once the court has checked that there are no outstanding applications or other matters which need to be resolved first, the decree nisi made on {{ case.decreeNisiGrantedDate | date }} will be made absolute and the marriage between {{ case.petitionerFirstName }} {{ case.petitionerLastName }} and {{ case.respondentFirstName }} {{ case.respondentLastName }} will be ended.",
+    "warning": "[CY] Warning",
+    "submit": "[CY] Submit",
+    "financialWarning": "[CY] When a decree absolute is made, your marriage will be legally ended. This might affect your financial position. If you are unsure what to do, particularly if you have not yet concluded any negotiations or legal proceedings about your matrimonial finances, it is recommended that you seek legal advice before applying for the decree absolute.",
+    "fields": {
+      "applyForDecreeAbsolute": {
+        "title": "[CY] Do you want to finalise your divorce?",
+        "yes": "[CY] Yes",
+        "no": "[CY] No"
+      }
+    },
+    "errors": {
+      "required": "[CY] Select whether you want to finalise your divorce or not.",
+      "submitError": "[CY] Sorry, we’re having technical problems. Please try again in a few minutes. If the problem continues you can contact the Courts and Tribunals Service Centre."
+    },
+    "signOutDetail": "[CY] Press Submit to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
   }
 }
