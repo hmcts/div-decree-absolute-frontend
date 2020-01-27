@@ -1,17 +1,19 @@
 {% extends "look-and-feel/layouts/error.html" %}
 
 {% block proposition_header %}
-    {% include 'errors/header.html' %}
+  {% include "errors/header.html" %}
 {% endblock %}
 
 {% block two_thirds -%}
-    <a class="govuk-back-link" href="#" onclick="history.go(-1); return false;">Back</a>
-    {{ header(title, size='l') }}
-    <p class="govuk-body"> {{ message.errorMessage }} </p>
-    <p class="govuk-body"> {{ message.isThereAProblem }} </p>
-    <p class="govuk-body"> {{ message.phoneDetails }} <br />
-        {{ message.emailDetails }}
-    </p>
+  <a class="govuk-back-link" href="#" onclick="history.go(-1); return false;">{{ content.backLink }}</a>
+  {{ header(title, size="l") }}
+  <p class="govuk-body"> {{ message.errorMessage }} </p>
+  <p class="govuk-body"> {{ message.isThereAProblem }} </p>
+  <p class="govuk-body">
+    {{ message.canContact }}<br />
+    {{ message.phoneDetails }}<br />
+    {{ message.emailDetails }}
+  </p>
 
-    {% include 'errors/content.html' %}
+  {% include "errors/content.html" %}
 {% endblock %}
