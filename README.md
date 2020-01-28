@@ -13,7 +13,7 @@ $ yarn install
 Run Redis DB using Docker
 
 ```shell
-docker-compose up
+docker-compose up redis
 ```
 
 To start running the application on ```https://localhost:3000```. (Note https not http)
@@ -22,7 +22,7 @@ To start running the application on ```https://localhost:3000```. (Note https no
 yarn dev
 ```
 
-This will create a new endpoint of ```"/session"``` where you can view and edit the current session. 
+This will create a new endpoint of ```"/session"``` where you can view and edit the current session.
 (Note: each time you login/logout of IDAM the session will be reset)
 
 ```shell
