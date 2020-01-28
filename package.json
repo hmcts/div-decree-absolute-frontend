@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=10.15.2"
+    "node": ">=12.14.1"
   },
   "scripts": {
     "start": "NODE_PATH=. node server.js",
@@ -53,6 +53,7 @@
     "os": "^0.1.1",
     "paths": "^0.1.1",
     "redis": "^2.8.0",
+    "redis-server": "^1.2.2",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },
