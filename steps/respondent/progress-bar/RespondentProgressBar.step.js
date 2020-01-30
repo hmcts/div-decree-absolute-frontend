@@ -45,14 +45,12 @@ class RespondentProgressBar extends ProgressBar {
   get pageContentTemplate() {
     let pageContent = '';
     /* eslint-disable indent */
-    switch (this.currentCaseState.toLowerCase()) {
-      case caseStates.daRequested:
-        pageContent = contentMap.daRequested;
-        break;
-      default:
-        pageContent = contentMap.divorceGranted;
+    if (this.currentCaseState.toLowerCase() === caseStates.daRequested) {
+      pageContent = contentMap.daRequested;
+    } else {
+      pageContent = contentMap.divorceGranted;
     }
-    /* eslint-enable indent */
+
     return pageContent;
   }
 }
