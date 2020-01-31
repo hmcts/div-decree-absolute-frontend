@@ -22,7 +22,7 @@
       if ($content.length) {
         $control.attr('aria-controls', $content.attr('id'));
         $control.attr('aria-expanded', 'false');
-        $content.attr('aria-hidden', 'true')
+        $content.attr('aria-hidden', 'true');
       }
     }
 
@@ -48,7 +48,7 @@
 
         // If the controlling input, update aria-expanded
         if ($control.attr('aria-controls')) {
-          $control.attr('aria-expanded', 'true')
+          $control.attr('aria-expanded', 'true');
         }
       }
     }
@@ -64,7 +64,7 @@
 
         // If the controlling input, update aria-expanded
         if ($control.attr('aria-controls')) {
-          $control.attr('aria-expanded', 'false')
+          $control.attr('aria-expanded', 'false');
         }
       }
     }
@@ -78,12 +78,12 @@
 
       // Hide content for radios in group
       $radios.each(function () {
-        hideToggledContent(jQuery(this))
+        hideToggledContent(jQuery(this));
       });
 
       // Select content for this control
       if ($control.is('[aria-controls]')) {
-        showToggledContent($control, $content)
+        showToggledContent($control, $content);
       }
     }
 
@@ -104,7 +104,7 @@
       // Handle control clicks
       function deferred () {
         var $control = jQuery(this);
-        handler($control, getToggledContent($control))
+        handler($control, getToggledContent($control));
       }
 
       // Prepare ARIA attributes
@@ -113,12 +113,12 @@
 
       // Handle events
       jQuery.each(eventSelectors, function (idx, eventSelector) {
-        $container.on('click.' + selectors.namespace, eventSelector, deferred)
+        $container.on('click.' + selectors.namespace, eventSelector, deferred);
       });
 
       // Any already :checked on init?
       if ($controls.is(':checked')) {
-        $controls.filter(':checked').each(deferred)
+        $controls.filter(':checked').each(deferred);
       }
     }
 
@@ -140,24 +140,24 @@
 
     // Set up radio show/hide content for container
     self.showHideRadioToggledContent = function ($container) {
-      init($container, selectors.radio, getEventSelectorsForRadioGroups(), handleRadioContent)
+      init($container, selectors.radio, getEventSelectorsForRadioGroups(), handleRadioContent);
     };
 
     // Set up checkbox show/hide content for container
     self.showHideCheckboxToggledContent = function ($container) {
-      init($container, selectors.checkbox, [selectors.checkbox], handleCheckboxContent)
+      init($container, selectors.checkbox, [selectors.checkbox], handleCheckboxContent);
     };
 
     // Remove event handlers
     self.destroy = function ($container) {
       $container = $container || jQuery(document.body);
-      $container.off('.' + selectors.namespace)
+      $container.off('.' + selectors.namespace);
     }
   }
 
   ShowHideContent.prototype.init = function ($container) {
     this.showHideRadioToggledContent($container);
-    this.showHideCheckboxToggledContent($container)
+    this.showHideCheckboxToggledContent($container);
   };
 
   GOVUK.ShowHideContent = ShowHideContent;
