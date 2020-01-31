@@ -189,9 +189,6 @@
     "paymentPhoneNumber": "1234567332",
     "divorceCostsClaim": "Yes",
     "divorceIsNamed": "Yes",
-    "claimsCostsFrom": [
-      "respondent"
-    ],
     "jurisdictionIsConnected": true,
     "jurisdictionResidence": "petitioner",
     "jurisdictionDomicile": "petitioner",

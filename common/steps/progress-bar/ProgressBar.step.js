@@ -12,10 +12,6 @@ class ProgressBar extends Interstitial {
     return this.req.session.case.data;
   }
 
-  get caseId() {
-    return this.req.session.case.caseId;
-  }
-
   get middleware() {
     return [
       ...super.middleware,
