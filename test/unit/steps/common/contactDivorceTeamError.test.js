@@ -16,7 +16,8 @@ describe(modulePath, () => {
       'allAgentsBusy',
       'chatClosed',
       'chatAlreadyOpen',
-      'chatOpeningHours'
+      'chatOpeningHours',
+      'signIn'
     ];
     return content(ContactDivorceTeam, {}, { ignoreContent });
   });

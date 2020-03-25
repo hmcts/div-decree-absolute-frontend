@@ -24,7 +24,10 @@ const ignoreContent = [
   'phoneToCallIfProblems',
   'emailTitle',
   'emailIfProblems',
-  'responseTime'
+  'responseTime',
+  'feedback',
+  'languageToggle',
+  'signIn'
 ];
 
 describe(modulePath, () => {

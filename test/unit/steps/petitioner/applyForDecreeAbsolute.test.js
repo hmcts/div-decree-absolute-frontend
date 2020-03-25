@@ -47,7 +47,8 @@ describe(modulePath, () => {
       'allAgentsBusy',
       'chatClosed',
       'chatAlreadyOpen',
-      'chatOpeningHours'
+      'chatOpeningHours',
+      'signIn'
     ] };
     return content(ApplyForDA, session, options);
   });

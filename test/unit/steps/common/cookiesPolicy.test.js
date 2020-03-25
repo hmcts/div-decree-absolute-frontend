@@ -22,7 +22,8 @@ describe(modulePath, () => {
         'allAgentsBusy',
         'chatClosed',
         'chatAlreadyOpen',
-        'chatOpeningHours'
+        'chatOpeningHours',
+        'signIn'
       ];
 
       return content(CookiesPolicy, {}, { ignoreContent });

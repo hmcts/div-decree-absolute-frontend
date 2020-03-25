@@ -17,7 +17,8 @@ describe(modulePath, () => {
       'allAgentsBusy',
       'chatClosed',
       'chatAlreadyOpen',
-      'chatOpeningHours'
+      'chatOpeningHours',
+      'signIn'
     ];
     return content(PrivacyPolicy, {}, { ignoreContent });
   });
