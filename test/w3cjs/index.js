@@ -34,7 +34,8 @@ const excludedErrors = [
   "Duplicate ID “dnCosts.claimCosts”.",
   'Attribute “src” not allowed on element “image” at this point.',
   'Element “image” is missing required attribute “height”.',
-  'Element “image” is missing required attribute “width”.'
+  'Element “image” is missing required attribute “width”.',
+  'Bad value “presentation” for attribute “role” on element “svg”.'
 ];
 /* eslint-enable */
 const filteredErrors = r => {
