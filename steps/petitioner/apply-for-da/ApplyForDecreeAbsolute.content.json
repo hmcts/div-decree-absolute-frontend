@@ -19,22 +19,22 @@
     "signOutDetail": "Press Submit to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
   },
   "cy": {
-    "title": "[CY] Do you want to finalise your divorce?",
-    "body": "[CY] Once the court has checked that there are no outstanding applications or other matters which need to be resolved first, the decree nisi made on {{ case.decreeNisiGrantedDate | date }} will be made absolute and the marriage between {{ case.petitionerFirstName }} {{ case.petitionerLastName }} and {{ case.respondentFirstName }} {{ case.respondentLastName }} will be ended.",
-    "warning": "[CY] Warning",
-    "submit": "[CY] Submit",
-    "financialWarning": "[CY] When a decree absolute is made, your marriage will be legally ended. This might affect your financial position. If you are unsure what to do, particularly if you have not yet concluded any negotiations or legal proceedings about your matrimonial finances, it is recommended that you seek legal advice before applying for the decree absolute.",
+    "title": "Ydych chi eisiau cadarnhau eich ysgariad?",
+    "body": "Unwaith y bydd y llys wedi gwirio nad oes unrhyw geisiadau heb eu cwblhau neu unrhyw faterion eraill sydd angen eu datrys yn gyntaf, bydd y dyfarniad nisi a wnaed ar {{ case.decreeNisiGrantedDate | date }} yn cael ei wneud yn absoliwt a bydd y briodas rhwng {{ case.petitionerFirstName }} {{ case.petitionerLastName }}  a/ac {{ case.respondentFirstName }} {{ case.respondentLastName }} yn dod i ben.",
+    "warning": "Rhybudd",
+    "submit": "Cyflwyno",
+    "financialWarning": "Pan fydd dyfarniad absoliwt yn cael ei wneud, bydd eich priodas yn dod i ben yn gyfreithiol. Gall hyn effeithio ar eich sefyllfa ariannol. Os ydych yn ansicr ynghylch beth ddylech ei wneud, yn enwedig os nad ydych wedi cwblhau unrhyw drafodaethau neu achos cyfreithiol ynghylch eich cyllid priodasol, argymhellir eich bod yn ceisio cyngor cyfreithiol cyn gwneud cais am ddyfarniad absoliwt.",
     "fields": {
       "applyForDecreeAbsolute": {
-        "title": "[CY] Do you want to finalise your divorce?",
-        "yes": "[CY] Yes",
-        "no": "[CY] No"
+        "title": "Ydych chi eisiau cadarnhau eich ysgariad?",
+        "yes": "Ydw",
+        "no": "Nac ydw"
       }
     },
     "errors": {
-      "required": "[CY] Select whether you want to finalise your divorce or not.",
-      "submitError": "[CY] Sorry, we’re having technical problems. Please try again in a few minutes. If the problem continues you can contact the Courts and Tribunals Service Centre."
+      "required": "Dewiswch a ydych chi eisiau cadarnhau eich ysgariad ai peidio.",
+      "submitError": "Mae’n ddrwg gennym, rydym yn cael problemau technegol. Rhowch gynnig arall arni ymhen ychydig o funudau. Os bydd y broblem yn parhau, gallwch gysylltu â’r Gwasanaeth Llysoedd a Thribiwnlysoedd."
     },
-    "signOutDetail": "[CY] Press Submit to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
+    "signOutDetail": "Cliciwch ar ‘Cyflwyno’ i allgofnodi. Os ydych eisiau tynnu eich cais am ysgariad yn ôl, cysylltwch â’r Gwasanaeth Llysoedd a Thribiwnlysoedd."
   }
 }

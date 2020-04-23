@@ -1,4 +1,5 @@
 {
+  "en":{
   "serviceName": "Respond to a divorce application",
   "isThereAProblemWithThisPage": "Is there a problem with this page?",
   "isThereAProblemWithThisPageParagraph": "You can call or email us if you’re having problems with this service.",
@@ -15,4 +16,16 @@
   "cookies": "Cookies",
   "privacyPolicy": "Privacy policy",
   "termsAndConditions": "Terms and conditions"
+},
+  "cy": {
+    "serviceName": "Gwneud cais am ysgariad",
+    "isThereAProblemWithThisPage": "A oes problem gyda'r dudalen hon?",
+    "isThereAProblemWithThisPageParagraph": "Gallwch ein ffonio neu anfon neges e-bost atom os byddwch yn cael trafferthion gyda'r gwasanaeth hwn.",
+    "isThereAProblemWithThisPagePhone": "Rhif ffôn: 0300 303 5171 (Dydd Llun i ddydd Gwener, 8.30am - 5pm)",
+    "isThereAProblemWithThisPageEmail": "E-bost: ymholiadaucymraeg@justice.gov.uk",
+    "notFoundMessage": "Gall hyn fod oherwydd eich bod wedi dilyn dolen nad yw’n gweithio’n iawn neu hen ddolen, neu fod gwall ar ein gwefan.",
+    "tryAgain": "Rhowch gynnig arall arni ymhen ychydig o funudau.",
+    "canContact": "Mae croeso i chi gysylltu â ni os bydd y broblem yn parhau."
+  }
+
 }
