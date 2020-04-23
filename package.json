@@ -103,7 +103,7 @@
     "js-yaml": "^3.13.0",
     "lodash": "^4.17.5",
     "marked": ">=0.7.0",
-    "mem": "^5.0.0 ",
+    "mem": "^5.0.0",
     "minimatch": "^3.0.4",
     "tunnel-agent": "^0.6.0",
     "ua-parser-js": "^0.7.19",
