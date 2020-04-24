@@ -13,7 +13,7 @@ class Entry extends EntryPoint {
   next() {
     return action(caseOrchestrationService.getApplication)
       .then((req, res) => {
-        if (req.idam.userDetails.email === req.session.case.data.petitionerEmail) {
+        if (req.idam.userDetails.email.toLowerCase() === req.session.case.data.petitionerEmail.toLowerCase()) {
           return res.redirect(this.journey.steps.PetitionerProgressBar.path);
         }
         return res.redirect(this.journey.steps.RespondentProgressBar.path);
