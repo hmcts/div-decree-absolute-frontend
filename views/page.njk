@@ -24,7 +24,7 @@
 ] %}
 
 {% block breadcrumbs %}
-  {{ divPhaseBanner(phase, content.feedback, content.languageToggle) }}
+  {{ divPhaseBanner(phase, content.feedback, content.languageToggle, session) }}
 
   {% block back %}
     <a class="link-back" href="#" onclick="history.go(-1); return false;">{{ content.backLink }}</a>

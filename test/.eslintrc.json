@@ -19,7 +19,8 @@
         "code": 100
       }
     ],
-    "id-blacklist": ["error", "err", "e", "cb", "callback"]
+    "id-blacklist": ["error", "err", "e", "cb", "callback"],
+    "line-comment-position": "off"
   },
   "globals": {
     "After": true,

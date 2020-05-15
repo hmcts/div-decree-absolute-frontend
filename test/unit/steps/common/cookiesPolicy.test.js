@@ -23,7 +23,8 @@ describe(modulePath, () => {
         'chatClosed',
         'chatAlreadyOpen',
         'chatOpeningHours',
-        'signIn'
+        'signIn',
+        'languageToggle'
       ];
 
       return content(CookiesPolicy, {}, { ignoreContent });

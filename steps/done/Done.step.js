@@ -1,6 +1,7 @@
 const { ExitPoint } = require('@hmcts/one-per-page');
 const config = require('config');
 const idam = require('services/idam');
+const checkWelshToggle = require('middleware/checkWelshToggle');
 
 class Done extends ExitPoint {
   static get path() {
@@ -15,7 +16,8 @@ class Done extends ExitPoint {
     return [
       idam.protect(),
       idam.logout(),
-      ...super.middleware
+      ...super.middleware,
+      checkWelshToggle
     ];
   }
 }

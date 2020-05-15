@@ -32,7 +32,8 @@ describe(modulePath, () => {
       'continue',
       'serviceName',
       'backLink',
-      'signOut'
+      'signOut',
+      'languageToggle'
     ];
 
     it('displays issue date', () => {

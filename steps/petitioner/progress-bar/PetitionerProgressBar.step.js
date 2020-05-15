@@ -1,6 +1,7 @@
 const ProgressBar = require('common/steps/progress-bar/ProgressBar.step.js');
 const config = require('config');
 const { createUris } = require('@hmcts/div-document-express-handler');
+const checkWelshToggle = require('middleware/checkWelshToggle');
 
 const {
   caseStates,
@@ -42,6 +43,13 @@ class PetitionerProgressBar extends ProgressBar {
       pageContent = contentMap.awaitingDA;
     }
     return pageContent;
+  }
+
+  get middleware() {
+    return [
+      ...super.middleware,
+      checkWelshToggle
+    ];
   }
 }
 

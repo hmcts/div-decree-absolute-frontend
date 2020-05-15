@@ -30,3 +30,4 @@ dist
 mochawesome-report
 _output
 local-*.yml
+/config/dev.yaml

@@ -48,6 +48,7 @@ nodejs:
         - idam-secret
         - da-redis-connection-string
         - AppInsightsInstrumentationKey
+        - launchdarkly-key
 
 redis:
   cluster:

@@ -16,7 +16,8 @@ describe(modulePath, () => {
       'allAgentsBusy',
       'chatClosed',
       'chatAlreadyOpen',
-      'chatOpeningHours'
+      'chatOpeningHours',
+      'languageToggle'
     ];
 
     return content(IdamLogin, {}, { ignoreContent });
