@@ -1,7 +1,7 @@
 require('./services/app-insights')();
 const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
 const config = require('@hmcts/properties-volume').addTo(require('config'));
-const setupSecrets = require('./helpers/setupSecretsHelper');
+const setupSecrets = require('services/setupSecretsHelper');
 
 // Setup secrets before loading the app
 setupSecrets();
