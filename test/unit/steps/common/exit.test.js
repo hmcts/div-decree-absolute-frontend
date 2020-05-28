@@ -32,7 +32,8 @@ describe(modulePath, () => {
         'chatClosed',
         'chatAlreadyOpen',
         'chatOpeningHours',
-        'languageToggle'
+        'languageToggle',
+        'thereWasAProblem'
       ];
 
       return content(Exit, {}, { ignoreContent });

@@ -9,6 +9,7 @@ const ignoreContent = [
   'isThereAProblemWithThisPagePhone',
   'isThereAProblemWithThisPageEmail',
   'backLink',
+  'signIn',
   'signOut',
   'continue',
   'serviceName',
@@ -27,7 +28,7 @@ const ignoreContent = [
   'responseTime',
   'feedback',
   'languageToggle',
-  'signIn'
+  'thereWasAProblem'
 ];
 
 describe(modulePath, () => {

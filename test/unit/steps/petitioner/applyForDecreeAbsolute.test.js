@@ -39,6 +39,7 @@ describe(modulePath, () => {
   it('renders the content', () => {
     const options = { ignoreContent: [
       'continue',
+      'signIn',
       'signOut',
       'webChatTitle',
       'chatDown',
@@ -48,8 +49,8 @@ describe(modulePath, () => {
       'chatClosed',
       'chatAlreadyOpen',
       'chatOpeningHours',
-      'signIn',
-      'languageToggle'
+      'languageToggle',
+      'thereWasAProblem'
     ] };
     return content(ApplyForDA, session, options);
   });

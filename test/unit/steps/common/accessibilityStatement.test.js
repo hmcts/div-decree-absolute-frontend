@@ -9,6 +9,7 @@ describe(modulePath, () => {
       'continue',
       'serviceName',
       'backLink',
+      'signIn',
       'signOut',
       'webChatTitle',
       'chatDown',
@@ -18,8 +19,8 @@ describe(modulePath, () => {
       'chatClosed',
       'chatAlreadyOpen',
       'chatOpeningHours',
-      'signIn',
-      'languageToggle'
+      'languageToggle',
+      'thereWasAProblem'
     ];
     return content(PrivacyPolicy, {}, { ignoreContent });
   });
