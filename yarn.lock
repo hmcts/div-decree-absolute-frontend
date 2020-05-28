@@ -5440,11 +5440,6 @@ i18next@^10.2.1:
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-10.6.0.tgz#90ffd9f9bc617f34b9a12e037260f524445f7684"
   integrity sha1-kP/Z+bxhfzS5oS4DcmD1JERfdoQ=
 
-i18next@^11.3.1:
-  version "11.10.2"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-11.10.2.tgz#e5f10346f6320ecf15595419926c25255381a56c"
-  integrity sha512-1rowdX8PqrvsdFhYb3v0A/LlIHLQL1HTa4ia29IzhvNAg2fesNV7R1jXibWLmLQdz3FfTB8RuqSqDEjIawXruA==
-
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.24, iconv-lite@^0.4.4:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"

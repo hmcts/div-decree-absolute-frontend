@@ -2,7 +2,7 @@
   "en": {
     "title": "Your divorce",
     "youApply": "You apply",
-    "yourPartnerMustRespond": "Your {{ case.divorceWho }} must respond",
+    "yourPartnerMustRespond": "Your {{ divorceWho }} must respond",
     "getDecreeNisi": "Get a decree nisi",
     "madeFinal": "The divorce is complete",
     "referenceNumber": "Reference number",
@@ -13,8 +13,8 @@
     "whenYouNeedToApplyBy": "When you need to apply by",
     "detail1": "You can apply for your decree absolute any time from now. If you apply after {{ case.dateCaseNoLongerEligibleForDA | date }} (1 year after the decree nisi was granted) you’ll have to explain the delay to the court.",
     "detail2": "The court can cancel (legally known as rescind) the decree nisi any time up until the decree absolute is granted, if it’s given new evidence showing why you shouldn't be given a divorce.",
-    "detail3": "When your {{ case.divorceWho }} can apply",
-    "detail4": "Your {{ case.divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
+    "detail3": "When your {{ divorceWho }} can apply",
+    "detail4": "Your {{ divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ divorceWho }} applies you’ll both need to go to a court hearing.",
 
     "daRequested": {
       "daRequestedTitle": "Your application for Decree Absolute is being processed",
@@ -38,7 +38,7 @@
     "divorceEmail": "divorcecase@justice.gov.uk",
     "openTimes": "(Monday to Friday, 8am to 8pm, Saturday 8am to 2pm)",
     "phoneNumber": "0300 303 0642",
-    "howRespondsLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">How your {{ case.divorceWho }} responds</a>",
+    "howRespondsLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">How your {{ divorceWho }} responds</a>",
     "decreeNisiLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/divorce/apply-for-decree-nisi\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree nisi</a>",
     "decreeAbsoluteLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/divorce/apply-for-a-decree-absolute\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Decree absolute</a>",
     "childrenAndDivorceLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"This link will open in a new tab.\">Children and divorce</a>",
@@ -64,7 +64,7 @@
   "cy": {
     "title": "Eich ysgariad",
     "youApply": "Chi sy’n gwneud y cais",
-    "yourPartnerMustRespond": "Rhaid i’ch {{ case.divorceWho }} ymateb",
+    "yourPartnerMustRespond": "Rhaid i’ch {{ divorceWho }} ymateb",
     "getDecreeNisi": "Cael dyfarniad nisi",
     "madeFinal": "Mae’r ysgariad wedi’i gwblhau",
     "referenceNumber": "Cyfeirnod",
@@ -74,8 +74,8 @@
     "whenYouNeedToApplyBy": "Erbyn pryd mae’n rhaid ichi wneud cais",
     "detail1": "Gallwch wneud cais am ddyfarniad absoliwt ar unrhyw bwynt o hyn ymlaen. Os byddwch yn gwneud cais ar ôl {{ case.dateCaseNoLongerEligibleForDA | date }}  (1 flwyddyn ar ôl i’r dyfarniad nisi gael ei ganiatáu) bydd rhaid ichi esbonio i’r llys am yr oedi.",
     "detail2": "Gall y llys ganslo (a elwir yn gyfreithiol yn ‘dadwneud’) y datganiad nisi unrhyw bryd hyd at adeg caniatáu’r dyfarniad absoliwt, os bydd tystiolaeth newydd yn cael ei chyflwyno i’r llys yn dangos pam na ddylech gael ysgariad.",
-    "detail3": "Pryd gall eich {{ case.divorceWho }} wneud cais",
-    "detail4": "Gall eich {{ case.divorceWho }} wneud cais am ddyfarniad absoliwt o {{ case.dateRespondentEligibleForDA | date }} (3 mis ar ôl yr adeg byddwch chi’n gallu gwneud cais). Os bydd eich {{ case.divorceWho }} yn gwneud cais bydd rhaid i’r ddau ohonoch fynd i wrandawiad llys.",
+    "detail3": "Pryd gall eich {{ divorceWho }} wneud cais",
+    "detail4": "Gall eich {{ divorceWho }} wneud cais am ddyfarniad absoliwt o {{ case.dateRespondentEligibleForDA | date }} (3 mis ar ôl yr adeg byddwch chi’n gallu gwneud cais). Os bydd eich {{ divorceWho }} yn gwneud cais bydd rhaid i’r ddau ohonoch fynd i wrandawiad llys.",
     "daRequested": {
       "daRequestedTitle": "Mae eich cais am Ddyfarniad Absoliwt yn cael ei brosesu",
       "daRequestedDescription": "Mae'r cais hwn yn amodol ar wiriadau i sicrhau nad oes unrhyw geisiadau heb eu cwblhau neu unrhyw faterion eraill sydd angen eu datrys cyn i'r ysgariad gael ei gadarnhau"
@@ -96,7 +96,7 @@
     "divorceEmail": "ymholiadaucymraeg@justice.gov.uk",
     "openTimes": "(Dydd Llun i ddydd Gwener, 8.30am – 5pm)",
     "phoneNumber": "0300 303 5171",
-    "howRespondsLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"Bydd y ddolen hon yn agor mewn tab newydd.\">Sut mae eich {{ case.divorceWho }} yn ymateb</a>",
+    "howRespondsLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/respond-divorce-application\" target=\"_blank\" aria-label=\"Bydd y ddolen hon yn agor mewn tab newydd.\">Sut mae eich {{ divorceWho }} yn ymateb</a>",
     "decreeNisiLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/divorce/apply-for-decree-nisi\" target=\"_blank\" aria-label=\"Bydd y ddolen hon yn agor mewn tab newydd.\">Dyfarniad nisi</a>",
     "decreeAbsoluteLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/divorce/apply-for-a-decree-absolute\" target=\"_blank\" aria-label=\"Bydd y ddolen hon yn agor mewn tab newydd.\">Dyfarniad absoliwt</a>",
     "childrenAndDivorceLink": "<a class=\"govuk-link\" href=\"https://www.gov.uk/looking-after-children-divorce/overview\" target=\"_blank\" aria-label=\"Bydd y ddolen hon yn agor mewn tab newydd.\">Plant ac ysgariad</a>",

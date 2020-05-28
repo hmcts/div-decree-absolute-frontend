@@ -25,7 +25,9 @@
     "termsAndConditions": "Terms and conditions",
     "signIn": "Sign in",
     "signOut": "Sign out",
-    "thereWasAProblem": "There was a problem"
+    "thereWasAProblem": "There was a problem",
+    "husband": "husband",
+    "wife": "wife"
   },
   "cy": {
     "continue": "Parhau",
@@ -53,6 +55,8 @@
     "termsAndConditions": "Telerau ac Amodau",
     "signIn": "Mewngofnodi",
     "signOut": "Allgofnodi",
-    "thereWasAProblem": "Roedd yna broblem"
+    "thereWasAProblem": "Roedd yna broblem",
+    "husband": "gŵr",
+    "wife": "gwraig"
   }
 }

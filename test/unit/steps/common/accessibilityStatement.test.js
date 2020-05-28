@@ -20,7 +20,9 @@ describe(modulePath, () => {
       'chatAlreadyOpen',
       'chatOpeningHours',
       'languageToggle',
-      'thereWasAProblem'
+      'thereWasAProblem',
+      'husband',
+      'wife'
     ];
     return content(PrivacyPolicy, {}, { ignoreContent });
   });

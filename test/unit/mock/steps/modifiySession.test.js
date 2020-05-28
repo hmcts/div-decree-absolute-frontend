@@ -28,7 +28,9 @@ const ignoreContent = [
   'responseTime',
   'feedback',
   'languageToggle',
-  'thereWasAProblem'
+  'thereWasAProblem',
+  'husband',
+  'wife'
 ];
 
 describe(modulePath, () => {

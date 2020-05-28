@@ -3,16 +3,16 @@
     "title": "You've been signed out",
     "youCanApplyForYourDaAnytimeFromNow": "You can apply for your decree absolute any time from now. If you apply after {{ case.dateCaseNoLongerEligibleForDA | date }} (1 year after the decree nisi was granted) you’ll have to explain the delay to the court.",
     "theCourtCanCancelTheDN": "The court can cancel (legally known as rescind) the decree nisi any time up until the decree absolute is granted, if it’s given new evidence showing why you shouldn’t be given a divorce.",
-    "whenYourDivorceWhoCanApply": "When your {{ case.divorceWho }} can apply",
-    "yourDivorceWhoCanApplyForTheDaFrom": "Your {{ case.divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ case.divorceWho }} applies you’ll both need to go to a court hearing.",
+    "whenYourDivorceWhoCanApply": "When your {{ divorceWho }} can apply",
+    "yourDivorceWhoCanApplyForTheDaFrom": "Your {{ divorceWho }} can apply for the decree absolute from {{ case.dateRespondentEligibleForDA | date }} (3 months after you can). If your {{ divorceWho }} applies you’ll both need to go to a court hearing.",
     "signInToReturnToApplication": "<a class=\"govuk-link\" href=\"/\">Sign in</a> to return to the application."
   },
   "cy": {
     "title": "Rydych wedi cael eich allgofnodi",
     "youCanApplyForYourDaAnytimeFromNow": "Gallwch wneud cais am ddyfarniad absoliwt ar unrhyw bwynt o hyn ymlaen. Os byddwch yn gwneud cais ar ôl {{ case.dateCaseNoLongerEligibleForDA | date }}  (1 flwyddyn ar ôl i’r dyfarniad nisi gael ei ganiatáu) bydd rhaid ichi esbonio i’r llys am yr oedi.",
     "theCourtCanCancelTheDN": "Gall y llys ganslo (a elwir yn gyfreithiol yn ‘dadwneud’) y datganiad nisi unrhyw bryd hyd at adeg caniatáu’r dyfarniad absoliwt, os bydd tystiolaeth newydd yn cael ei chyflwyno i’r llys yn dangos pam na ddylech gael ysgariad.",
-    "whenYourDivorceWhoCanApply": "Pryd gall eich {{ case.divorceWho }} wneud cais",
-    "yourDivorceWhoCanApplyForTheDaFrom": "Gall eich {{ case.divorceWho }} wneud cais am ddyfarniad absoliwt o {{ case.dateRespondentEligibleForDA | date }} (3 mis ar ôl yr adeg byddwch chi’n gallu gwneud cais). Os bydd eich {{ case.divorceWho }} yn gwneud cais bydd rhaid i’r ddau ohonoch fynd i wrandawiad llys.",
+    "whenYourDivorceWhoCanApply": "Pryd gall eich {{ divorceWho }} wneud cais",
+    "yourDivorceWhoCanApplyForTheDaFrom": "Gall eich {{ divorceWho }} wneud cais am ddyfarniad absoliwt o {{ case.dateRespondentEligibleForDA | date }} (3 mis ar ôl yr adeg byddwch chi’n gallu gwneud cais). Os bydd eich {{ divorceWho }} yn gwneud cais bydd rhaid i’r ddau ohonoch fynd i wrandawiad llys.",
     "signInToReturnToApplication": "<a class=\"govuk-link\" href=\"/\" >Mewngofnodwch</a> i ddychwelyd i'r cais."
   }
 }

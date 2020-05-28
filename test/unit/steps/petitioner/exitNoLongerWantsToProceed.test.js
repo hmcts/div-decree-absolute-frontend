@@ -34,7 +34,9 @@ describe(modulePath, () => {
       'backLink',
       'signOut',
       'languageToggle',
-      'thereWasAProblem'
+      'thereWasAProblem',
+      'husband',
+      'wife'
     ];
 
     it('displays issue date', () => {
