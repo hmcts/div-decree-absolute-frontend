@@ -79,7 +79,14 @@ onePerPage.journey(app, {
         canContact: errorContent.canContact,
         phoneDetails: errorContent.isThereAProblemWithThisPagePhone,
         emailDetails: errorContent.isThereAProblemWithThisPageEmail,
-        serviceName: errorContent.serviceName
+        serviceName: errorContent.serviceName,
+        youCanEither: errorContent.youCanEither,
+        backLink: errorContent.backLink,
+        feedback: errorContent.feedback,
+        accessibility: errorContent.accessibility,
+        cookies: errorContent.cookies,
+        privacyPolicy: errorContent.privacyPolicy,
+        termsAndConditions: errorContent.termsAndConditions
       }
     },
     notFound: {
@@ -89,7 +96,14 @@ onePerPage.journey(app, {
         isThereAProblem: errorContent.isThereAProblemWithThisPageParagraph,
         phoneDetails: errorContent.isThereAProblemWithThisPagePhone,
         emailDetails: errorContent.isThereAProblemWithThisPageEmail,
-        serviceName: errorContent.serviceName
+        serviceName: errorContent.serviceName,
+        youCanEither: errorContent.youCanEither,
+        backLink: errorContent.backLink,
+        feedback: errorContent.feedback,
+        accessibility: errorContent.accessibility,
+        cookies: errorContent.cookies,
+        privacyPolicy: errorContent.privacyPolicy,
+        termsAndConditions: errorContent.termsAndConditions
       }
     }
   },

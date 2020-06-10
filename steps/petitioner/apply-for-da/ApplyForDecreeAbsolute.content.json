@@ -17,5 +17,24 @@
       "submitError": "Sorry, we’re having technical problems. Please try again in a few minutes. If the problem continues you can contact the Courts and Tribunals Service Centre."
     },
     "signOutDetail": "Press Submit to sign out. If you want to withdraw your divorce application, contact the Courts and Tribunals Service Centre."
+  },
+  "cy": {
+    "title": "Ydych chi eisiau cadarnhau eich ysgariad?",
+    "body": "Unwaith y bydd y llys wedi gwirio nad oes unrhyw geisiadau heb eu cwblhau neu unrhyw faterion eraill sydd angen eu datrys yn gyntaf, bydd y dyfarniad nisi a wnaed ar {{ case.decreeNisiGrantedDate | date }} yn cael ei wneud yn absoliwt a bydd y briodas rhwng {{ case.petitionerFirstName }} {{ case.petitionerLastName }}  a/ac {{ case.respondentFirstName }} {{ case.respondentLastName }} yn dod i ben.",
+    "warning": "Rhybudd",
+    "submit": "Cyflwyno",
+    "financialWarning": "Pan fydd dyfarniad absoliwt yn cael ei wneud, bydd eich priodas yn dod i ben yn gyfreithiol. Gall hyn effeithio ar eich sefyllfa ariannol. Os ydych yn ansicr ynghylch beth ddylech ei wneud, yn enwedig os nad ydych wedi cwblhau unrhyw drafodaethau neu achos cyfreithiol ynghylch eich cyllid priodasol, argymhellir eich bod yn ceisio cyngor cyfreithiol cyn gwneud cais am ddyfarniad absoliwt.",
+    "fields": {
+      "applyForDecreeAbsolute": {
+        "title": "Ydych chi eisiau cadarnhau eich ysgariad?",
+        "yes": "Ydw",
+        "no": "Nac ydw"
+      }
+    },
+    "errors": {
+      "required": "Dewiswch a ydych chi eisiau cadarnhau eich ysgariad ai peidio.",
+      "submitError": "Mae’n ddrwg gennym, rydym yn cael problemau technegol. Rhowch gynnig arall arni ymhen ychydig o funudau. Os bydd y broblem yn parhau, gallwch gysylltu â’r Gwasanaeth Llysoedd a Thribiwnlysoedd."
+    },
+    "signOutDetail": "Cliciwch ar ‘Cyflwyno’ i allgofnodi. Os ydych eisiau tynnu eich cais am ysgariad yn ôl, cysylltwch â’r Gwasanaeth Llysoedd a Thribiwnlysoedd."
   }
 }

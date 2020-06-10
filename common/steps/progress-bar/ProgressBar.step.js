@@ -2,6 +2,8 @@ const { Interstitial } = require('@hmcts/one-per-page/steps');
 const { goTo } = require('@hmcts/one-per-page/flow');
 const idam = require('services/idam');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
+const i18next = require('i18next');
+const commonContent = require('common/content');
 
 class ProgressBar extends Interstitial {
   get session() {
@@ -10,6 +12,11 @@ class ProgressBar extends Interstitial {
 
   get case() {
     return this.req.session.case.data;
+  }
+
+  get divorceWho() {
+    const sessionLanguage = i18next.language;
+    return commonContent[sessionLanguage][this.req.session.case.data.divorceWho];
   }
 
   get middleware() {

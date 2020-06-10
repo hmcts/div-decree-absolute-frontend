@@ -6,5 +6,13 @@
     "ifYouNeedHelp": "If you need help with this service you can call or email us.",
     "phoneToCallIfProblems": "Phone: 0300 303 0642 (Monday to Friday, 8am to 8pm, Saturday 8am to 2pm)",
     "emailIfProblems": "Email: divorcecase@justice.gov.uk"
+  },
+  "cy": {
+    "title": "Rydych wedi cael eich allgofnodi",
+    "progressNotSaved": "Nid yw’r hyn rydych wedi’i wneud wedi cael ei arbed.",
+    "signInToReturn": "<a class=\"govuk-link\" href=\"/\" >Mewngofnodwch</a> i ddychwelyd i’ch ymateb.",
+    "ifYouNeedHelp": "Os ydych angen help gyda’r gwasanaeth hwn, gallwch ein ffonio neu gysylltu â ni drwy e-bost.",
+    "phoneToCallIfProblems": "Rhif ffôn: 0300 303 5171 (Dydd Llun i ddydd Gwener, 8.30am - 5pm)",
+    "emailIfProblems": "E-bost: ymholiadaucymraeg@justice.gov.uk"
   }
 }

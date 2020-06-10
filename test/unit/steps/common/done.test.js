@@ -23,6 +23,7 @@ describe(modulePath, () => {
       'continue',
       'serviceName',
       'backLink',
+      'signIn',
       'signOut',
       'webChatTitle',
       'chatDown',
@@ -31,7 +32,11 @@ describe(modulePath, () => {
       'allAgentsBusy',
       'chatClosed',
       'chatAlreadyOpen',
-      'chatOpeningHours'
+      'chatOpeningHours',
+      'languageToggle',
+      'thereWasAProblem',
+      'husband',
+      'wife'
     ];
     return content(Done, session, { ignoreContent });
   });

@@ -8,6 +8,7 @@ describe(modulePath, () => {
     const ignoreContent = [
       'continue',
       'backLink',
+      'signIn',
       'signOut',
       'webChatTitle',
       'chatDown',
@@ -16,7 +17,11 @@ describe(modulePath, () => {
       'allAgentsBusy',
       'chatClosed',
       'chatAlreadyOpen',
-      'chatOpeningHours'
+      'chatOpeningHours',
+      'languageToggle',
+      'thereWasAProblem',
+      'husband',
+      'wife'
     ];
     return content(ContactDivorceTeam, {}, { ignoreContent });
   });

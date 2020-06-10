@@ -5,15 +5,30 @@
     "referenceNumber": "Your reference number is",
     "emailConfirmation": "Email confirmation has been sent to <strong class=\"govuk-!-font-size-19\">{{ case.petitionerEmail }}</strong>.",
     "youApplied": "You apply",
-    "husbandWifeResponded": "Your {{ case.divorceWho }} responds",
+    "husbandWifeResponded": "Your {{ divorceWho }} responds",
     "getDecreeNisi": "Get a decree nisi",
     "madeFinal": "Divorce is complete",
 
     "downloadDecreeAbsolute": "Download your decree absolute",
     "ThisIsTheCertificateConfirming": "This is the certificate confirming that you're divorced. Keep your certificate safe. You'll need to take a printed copy to the register office if you want to get married again.",
-    "yourDivorceWhoWillBeSentAnEmail": "Your {{ case.divorceWho }} has been sent an email telling them how to download the decree absolute.",
+    "yourDivorceWhoWillBeSentAnEmail": "Your {{ divorceWho }} has been sent an email telling them how to download the decree absolute.",
 
     "yourDocumentsWillBeAvailableFor1Year": "Your documents will be available here for one year",
     "yourAccountWillThenBeClosed": "Your account will then be closed. If you need a certified copy after that, you'll need to apply to the general register office and pay a fee."
+  },
+  "cy": {
+    "youAreNowDivorced": "Rydych chi nawr wedi ysgaru",
+    "decreeAbsoluteHasBeenGranted": "Mae eich dyfarniad absoliwt wedi’i ganiatáu",
+    "referenceNumber": "Eich cyfeirnod yw",
+    "emailConfirmation": "Mae neges e-bost yn cadarnhau hyn wedi’i anfon i <strong class=\"govuk-!-font-size-19\" >{{ case.petitionerEmail }}</strong>.",
+    "youApplied": "Chi sy’n gwneud y cais",
+    "husbandWifeResponded": "Bydd eich {{ divorceWho }} yn ymateb",
+    "getDecreeNisi": "Gwneud cais am ddyfarniad nisi",
+    "madeFinal": "Mae eich ysgariad wedi’i gwblhau",
+    "downloadDecreeAbsolute": "Lawrlwytho eich dyfarniad absoliwt",
+    "ThisIsTheCertificateConfirming": "Dyma'r dystysgrif sy’n cadarnhau eich bod wedi ysgaru. Cadwch eich tystysgrif yn ddiogel. Bydd angen ichi fynd â chopi wedi’i argraffu i'r swyddfa gofrestru os byddwch eisiau priodi eto.",
+    "yourDivorceWhoWillBeSentAnEmail": "Mae eich {{ divorceWho }} wedi cael neges e-bost yn rhoi gwybod iddynt sut i lawrlwytho’r dyfarniad absoliwt.",
+    "yourDocumentsWillBeAvailableFor1Year": "Bydd eich dogfennau ar gael yma am flwyddyn",
+    "yourAccountWillThenBeClosed": "Yna bydd eich cyfrif yn cael ei gau. Os byddwch angen copi ardystiedig ar ôl hynny, bydd rhaid ichi wneud cais i’r swyddfa gofrestru gyffredinol a thalu ffi."
   }
 }

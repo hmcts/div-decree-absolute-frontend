@@ -31,7 +31,11 @@ describe(modulePath, () => {
         'allAgentsBusy',
         'chatClosed',
         'chatAlreadyOpen',
-        'chatOpeningHours'
+        'chatOpeningHours',
+        'languageToggle',
+        'thereWasAProblem',
+        'husband',
+        'wife'
       ];
 
       return content(Exit, {}, { ignoreContent });
