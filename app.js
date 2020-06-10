@@ -64,7 +64,6 @@ app.get('/noJS.png', (req, res) => {
 });
 
 app.use(accessLogger());
-
 app.set('trust proxy', 1);
 
 onePerPage.journey(app, {
