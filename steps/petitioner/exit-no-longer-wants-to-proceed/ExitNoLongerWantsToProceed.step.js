@@ -1,7 +1,6 @@
 const { ExitPoint } = require('@hmcts/one-per-page');
 const config = require('config');
 const idam = require('services/idam');
-const checkWelshToggle = require('middleware/checkWelshToggle');
 const i18next = require('i18next');
 const commonContent = require('common/content');
 
@@ -23,8 +22,7 @@ class ExitNoLongerWantsToProceed extends ExitPoint {
     return [
       idam.protect(),
       idam.logout(),
-      ...super.middleware,
-      checkWelshToggle
+      ...super.middleware
     ];
   }
 }

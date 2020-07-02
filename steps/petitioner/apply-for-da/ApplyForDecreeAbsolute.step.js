@@ -4,7 +4,6 @@ const { form, text } = require('@hmcts/one-per-page/forms');
 const config = require('config');
 const idam = require('services/idam');
 const Joi = require('joi');
-const checkWelshToggle = require('middleware/checkWelshToggle');
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
 
@@ -62,8 +61,7 @@ class ApplyForDecreeAbsolute extends Question {
     return [
       ...super.middleware,
       idam.protect(),
-      removeNonCurrentStepErrors,
-      checkWelshToggle
+      removeNonCurrentStepErrors
     ];
   }
 }
