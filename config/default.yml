@@ -123,7 +123,6 @@ tests:
 features:
   idam: false
   webchat: true
-  welsh: false
 
 journey:
   timeoutDelay: 300

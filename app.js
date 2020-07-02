@@ -48,10 +48,7 @@ lookAndFeel.configure(app, {
       feedbackLink: 'https://www.smartsurvey.co.uk/s/Divorce_Feedback',
       googleAnalyticsId: config.services.googleAnalytics.id,
       webchat: config.services.webchat,
-      features: {
-        webchat: parseBool(config.features.webchat),
-        welsh: process.env.FT_WELSH || config.features.welsh
-      }
+      features: { webchat: parseBool(config.features.webchat) }
     }
   }
 });
