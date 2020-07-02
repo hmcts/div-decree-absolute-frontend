@@ -22,4 +22,3 @@ nodejs:
         - session-secret
         - redis-secret
         - idam-secret
-        - launchdarkly-key

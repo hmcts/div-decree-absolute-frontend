@@ -92,6 +92,3 @@ features:
 
 ccd:
   courts: CCD_DIGITAL_COURTS
-
-featureToggles:
-  launchDarklyKey: LAUNCHDARKLY_KEY
