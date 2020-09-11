@@ -58,7 +58,8 @@
       "costsOrder": "Cost Order",
       "dnAnswers": "Decree Nisi Answers",
       "decreeNisi": "Decree Nisi",
-      "decreeAbsolute": "Decree Absolute"
+      "decreeAbsolute": "Decree Absolute",
+      "generalOrder": "General Order"
     }
   },
   "cy": {
@@ -116,7 +117,8 @@
       "costsOrder": "Gorchymyn Costau",
       "dnAnswers": "Atebion y Dyfarniad Nisi",
       "decreeNisi": "Dyfarniad Nisi",
-      "decreeAbsolute": "Dyfarniad Absoliwt"
+      "decreeAbsolute": "Dyfarniad Absoliwt",
+      "generalOrder": "[CY] General Order"
     }
   }
 }

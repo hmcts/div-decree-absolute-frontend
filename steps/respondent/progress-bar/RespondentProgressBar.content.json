@@ -57,7 +57,8 @@
       "certificateOfEntitlement": "Certificate of Entitlement",
       "costsOrder": "Cost Order",
       "decreeNisi": "Decree Nisi",
-      "decreeAbsolute": "Decree Absolute"
+      "decreeAbsolute": "Decree Absolute",
+      "generalOrder": "General Order"
     }
   },
   "cy": {
@@ -114,7 +115,8 @@
       "certificateOfEntitlement": "Tystysgrif Hawl",
       "costsOrder": "Gorchymyn Costau",
       "decreeNisi": "Dyfarniad Nisi",
-      "decreeAbsolute": "Dyfarniad Absoliwt"
+      "decreeAbsolute": "Dyfarniad Absoliwt",
+      "generalOrder": "[CY] General Order"
     }
   }
 }

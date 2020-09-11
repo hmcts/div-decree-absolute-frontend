@@ -143,12 +143,14 @@ document:
     - 'dnAnswers'
     - 'decreeNisi'
     - 'decreeAbsolute'
+    - 'generalOrder'
     respondent:
     - 'd8petition'
     - 'certificateOfEntitlement'
     - 'costsOrder'
     - 'decreeNisi'
     - 'decreeAbsolute'
+    - 'generalOrder'
 
 ccd:
   d8States:
