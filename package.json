@@ -16,7 +16,7 @@
     "test:unit": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit 'test/unit/**/*.js' --timeout 15000",
     "test:smoke": "NODE_PATH=. LOG_LEVEL=ERROR codeceptjs run -c test/functional/codecept.smoke.conf.js --steps",
     "test:coverage": "nyc check-coverage --statements 10 --branches 10 --functions 10 --lines 10",
-    "test:a11y": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit test/a11y --timeout 15000",
+    "test:a11y": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit test/a11y --reporter spec --recursive --timeout 15000 --reporter mochawesome --reporter-options reportDir=functional-output,reportFilename=a11y",
     "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner",
     "test:functional": "NODE_PATH=. LOG_LEVEL=ERROR codeceptjs run -c test/functional/codecept.conf.js --steps --invert",
     "test:validation": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit test/w3cjs --timeout 15000",
