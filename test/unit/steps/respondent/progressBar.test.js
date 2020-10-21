@@ -64,6 +64,12 @@ describe(modulePath, () => {
             },
             {
               fileName: 'decreeAbsolute1559143445687032.pdf'
+            },
+            {
+              fileName: 'generalOrder1559143445687032.pdf'
+            },
+            {
+              fileName: 'generalOrder1559143445687033.pdf'
             }
           ]
         }
@@ -97,7 +103,9 @@ describe(modulePath, () => {
         'certificateOfEntitlement',
         'costsOrder',
         'decreeNisi',
-        'decreeAbsolute'
+        'decreeAbsolute',
+        'generalOrder',
+        'generalOrder'
       ]);
     });
   });
