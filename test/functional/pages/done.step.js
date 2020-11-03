@@ -1,12 +1,12 @@
 const DonePage = require('steps/done/Done.step');
 const DoneContent = require('steps/done/Done.content');
 
-function testDonePage() {
+function testDonePage(language = 'en') {
   const I = this;
 
   I.amOnLoadedPage(DonePage.path);
 
-  I.see(DoneContent.en.youAreNowDivorced);
+  I.see(DoneContent[language].youAreNowDivorced);
 }
 
 module.exports = { testDonePage };
