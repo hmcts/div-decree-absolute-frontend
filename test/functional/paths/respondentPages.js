@@ -20,7 +20,29 @@ Scenario('Pages', async I => {
 
   await I.testIdamPageForRespondent();
 
-  I.testRespProgressBar();
+  I.testRespProgressBar('en');
+
+  I.testContactDivorceTeamError();
+
+  I.testCookiesPolicyPage();
+
+  I.testPrivacyPolicyPage();
+
+  I.testTermsAndConditionsPage();
+
+  I.checkUrlsNotTested();
+}).retry(3);
+
+Scenario('Pages', async I => {
+  await I.createAUser(basicDivorceSession.RespEmailAddress);
+
+  await I.createDaCaseInDaRequestedForUser(basicDivorceSession);
+
+  I.amOnLoadedPage('/');
+
+  await I.testIdamPageForRespondent();
+
+  I.testRespProgressBar('cy');
 
   I.testContactDivorceTeamError();
 
