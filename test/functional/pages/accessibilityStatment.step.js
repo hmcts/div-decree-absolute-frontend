@@ -6,7 +6,7 @@ const AccessibilityStatementContent = require(
 function testAccessibilityStatementPage(language = 'en') {
   const I = this;
 
-  I.amOnLoadedPage(AccessibilityStatement.path);
+  I.amOnLoadedPage(AccessibilityStatement.path, language);
 
   I.see(AccessibilityStatementContent[language].title);
 }

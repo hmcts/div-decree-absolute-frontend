@@ -4,7 +4,7 @@ const DoneContent = require('steps/done/Done.content');
 function testDonePage(language = 'en') {
   const I = this;
 
-  I.amOnLoadedPage(DonePage.path);
+  I.amOnLoadedPage(DonePage.path, language);
 
   I.see(DoneContent[language].youAreNowDivorced);
 }

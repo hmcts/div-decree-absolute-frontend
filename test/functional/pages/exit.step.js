@@ -6,7 +6,7 @@ async function testExitPage(language) {
 
   await I.testIdamPageForPetitioner();
 
-  I.amOnLoadedPage(ExitPage.path);
+  I.amOnLoadedPage(ExitPage.path, language);
 
   I.see(ExitPageContent[language].title);
 }

@@ -15,7 +15,7 @@ async function testPetitionerJourney(I, language = 'en') {
 
   await I.createDaCaseForUser(basicDivorceSession);
 
-  I.amOnLoadedPage('/');
+  I.amOnLoadedPage('/', language);
 
   await I.testIdamPageForPetitioner();
 

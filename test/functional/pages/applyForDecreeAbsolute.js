@@ -6,7 +6,7 @@ const ProgressBar = require('steps/petitioner/progress-bar/PetitionerProgressBar
 function testApplyForDecreeAbsolutePage(language = 'en') {
   const I = this;
 
-  I.amOnLoadedPage(ApplyForDecreeAbsolute.path);
+  I.amOnLoadedPage(ApplyForDecreeAbsolute.path, language);
 
   I.checkOption(ApplyForDecreeAbsoluteContent[language].fields.applyForDecreeAbsolute.yes);
 

@@ -15,7 +15,7 @@ async function testRespondentJourney(I, language = 'en') {
 
   await I.createDaCaseInDaRequestedForUser(basicDivorceSession);
 
-  I.amOnLoadedPage('/');
+  I.amOnLoadedPage('/', language);
 
   await I.testIdamPageForRespondent();
 

@@ -5,7 +5,7 @@ const ProgressBarStepContent = require('steps/respondent/progress-bar/Respondent
 function testRespProgressBar(language) {
   const I = this;
 
-  I.amOnLoadedPage(ProgressBarStep.path);
+  I.amOnLoadedPage(ProgressBarStep.path, language);
 
   I.see(ProgressBarStepContent[language].title);
 }

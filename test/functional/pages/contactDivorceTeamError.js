@@ -8,7 +8,7 @@ const ContactDivorceTeamErrorContent = require(
 function testContactDivorceTeamError(language = 'en') {
   const I = this;
 
-  I.amOnLoadedPage(ContactDivorceTeamError.path);
+  I.amOnLoadedPage(ContactDivorceTeamError.path, language);
 
   I.see(ContactDivorceTeamErrorContent[language].title);
 }

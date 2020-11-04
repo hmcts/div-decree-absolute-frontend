@@ -4,7 +4,7 @@ const TermsAndConditionsContent = require('steps/terms-and-conditions/TermsAndCo
 function testTermsAndConditionsPage(language = 'en') {
   const I = this;
 
-  I.amOnLoadedPage(TermsAndConditions.path);
+  I.amOnLoadedPage(TermsAndConditions.path, language);
 
   I.see(TermsAndConditionsContent[language].title);
 }
