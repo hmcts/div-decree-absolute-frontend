@@ -3,12 +3,12 @@ const AccessibilityStatementContent = require(
   'steps/accessibility-statement/AccessibilityStatement.content'
 );
 
-function testAccessibilityStatementPage() {
+function testAccessibilityStatementPage(language = 'en') {
   const I = this;
 
-  I.amOnLoadedPage(AccessibilityStatement.path);
+  I.amOnLoadedPage(AccessibilityStatement.path, language);
 
-  I.see(AccessibilityStatementContent.en.title);
+  I.see(AccessibilityStatementContent[language].title);
 }
 
 module.exports = { testAccessibilityStatementPage };

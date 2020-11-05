@@ -9,26 +9,35 @@ const emailPrefix = randomString.generate({
 basicDivorceSession.D8PetitionerEmail = emailPrefix + basicDivorceSession.D8PetitionerEmail;
 basicDivorceSession.RespEmailAddress = emailPrefix + basicDivorceSession.RespEmailAddress;
 
-Feature('Test all pages for Respondent Journey');
 
-Scenario('Pages', async I => {
+async function testRespondentJourney(I, language = 'en') {
   await I.createAUser(basicDivorceSession.RespEmailAddress);
 
   await I.createDaCaseInDaRequestedForUser(basicDivorceSession);
 
-  I.amOnLoadedPage('/');
+  I.amOnLoadedPage('/', language);
 
   await I.testIdamPageForRespondent();
 
-  I.testRespProgressBar();
+  I.testRespProgressBar(language);
 
-  I.testContactDivorceTeamError();
+  I.testContactDivorceTeamError(language);
 
-  I.testCookiesPolicyPage();
+  I.testCookiesPolicyPage(language);
 
-  I.testPrivacyPolicyPage();
+  I.testPrivacyPolicyPage(language);
 
-  I.testTermsAndConditionsPage();
+  I.testTermsAndConditionsPage(language);
 
   I.checkUrlsNotTested();
+}
+
+Feature('Test all pages for Respondent Journey');
+
+Scenario('Pages with English language preference', async I => {
+  await testRespondentJourney(I, 'en');
+}).retry(3);
+
+Scenario('Pages with Welsh language preference', async I => {
+  await testRespondentJourney(I, 'cy');
 }).retry(3);
