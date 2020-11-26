@@ -20,8 +20,7 @@ async function testIdamPageForPetitioner(success = true) {
       }
       I.navByClick('Continue');
     } else {
-      await I.waitInUrl('/login?');
-      I.seeInCurrentUrl('/login?');
+      await I.seeInCurrentUrl('/login?');
       I.fillField('username', idamConfigHelper.getTestEmail());
       I.fillField('password', idamConfigHelper.getTestPassword());
       I.navByClick('Sign in');
