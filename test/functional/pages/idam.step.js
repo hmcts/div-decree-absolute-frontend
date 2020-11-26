@@ -28,6 +28,7 @@ async function testIdamPageForPetitioner(success = true) {
     }
   }
 
+  I.waitInUrl(PetProgressBarPage.path);
   I.seeCurrentUrlEquals(PetProgressBarPage.path);
 }
 

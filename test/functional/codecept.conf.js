@@ -17,7 +17,7 @@ if (proxyByPass) {
 
 exports.config = {
   tests: './paths/**/*.js',
-  output: config.tests.functional.outputDir,
+  output: `${process.cwd()}/functional-output`,
   helpers: {
     Puppeteer: {
       url: config.tests.functional.url || config.node.baseUrl,
@@ -38,9 +38,22 @@ exports.config = {
   include: { I: './pages/steps.js' },
   mocha: {
     reporterOptions: {
-      reportDir: process.env.FUNCTIONAL_OUTPUT_DIR || './functional-output',
-      reportName: 'DecreeAbsoluteFrontendTests',
-      inlineAssets: true
+      'codeceptjs-cli-reporter': {
+        stdout: '-',
+        options: { steps: true }
+      },
+      'mocha-junit-reporter': {
+        stdout: '-',
+        options: { mochaFile: './functional-output/result.xml' }
+      },
+      mochawesome: {
+        stdout: './functional-output/console.log',
+        options: {
+          reportDir: process.env.E2E_OUTPUT_DIR || './functional-output',
+          reportName: 'DecreeAbsoluteFrontendTests',
+          inlineAssets: true
+        }
+      }
     }
   },
   plugins: {
