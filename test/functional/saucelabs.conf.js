@@ -35,7 +35,7 @@ function getBrowserConfig(browserGroup) {
 }
 
 const setupConfig = {
-  tests: './paths/intergration.js',
+  tests: './paths/**/*.js',
   output: `${process.cwd()}/functional-output`,
   helpers: {
     WebDriver: {

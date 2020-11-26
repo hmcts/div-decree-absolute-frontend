@@ -11,9 +11,9 @@ basicDivorceSession.RespEmailAddress = emailPrefix + basicDivorceSession.RespEma
 
 
 async function testPetitionerJourney(I, language = 'en') {
-  await I.createAUser(basicDivorceSession.D8PetitionerEmail);
-
-  await I.createDaCaseForUser(basicDivorceSession);
+  await I.retry(2).createAUser(basicDivorceSession.D8PetitionerEmail);
+  I.wait(2);
+  await I.retry(2).createDaCaseForUser(basicDivorceSession);
 
   I.amOnLoadedPage('/', language);
 
