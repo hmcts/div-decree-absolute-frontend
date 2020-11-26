@@ -55,7 +55,6 @@ class IdamHelper extends Helper {
           idamConfigHelper.setPin(response.pin);
         })
         .catch(error => {
-          console.log('error creating user is ...', error);// eslint-disable-line no-console
           logger.warnWithReq(
             null, 'idam_user_created',
             'Unable to create IDAM test user/token',
