@@ -12,6 +12,7 @@ async function testIdamPageForPetitioner(success = true) {
   const currentPath = await I.getCurrentUrl();
   if (currentPath !== PetProgressBarPage.path) {
     if (currentPath === IdamMockLogin.path) {
+      I.waitInUrl(IdamMockLogin.path);
       I.seeCurrentUrlEquals(IdamMockLogin.path);
       if (success) {
         I.checkOption(content.en.fields.success.yesPetitioner);
@@ -40,6 +41,7 @@ async function testIdamPageForRespondent(success = true) {
   const currentPath = await I.getCurrentUrl();
   if (currentPath !== RespProgressBarPage.path) {
     if (currentPath === IdamMockLogin.path) {
+      I.waitInUrl(IdamMockLogin.path);
       I.seeCurrentUrlEquals(IdamMockLogin.path);
       if (success) {
         I.checkOption(content.en.fields.success.yesRespondent);

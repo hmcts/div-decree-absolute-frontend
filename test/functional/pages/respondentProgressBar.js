@@ -7,6 +7,8 @@ function testRespProgressBar(language) {
 
   I.amOnLoadedPage(ProgressBarStep.path, language);
 
+  I.waitInUrl(ProgressBarStep.path);
+
   I.see(ProgressBarStepContent[language].title);
 }
 
