@@ -102,7 +102,7 @@ paths:
     modifySession: /session
 
 tests:
-  functional:
+  e2e:
     show: false
     waitForTimeout: 10000
     waitForAction: 1000
