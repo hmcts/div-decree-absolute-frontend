@@ -37,6 +37,7 @@ withNightlyPipeline("nodejs", product, component) {
   env.test_environment = 'aat'
 
   loadVaultSecrets(secrets)
+  enableCrossBrowserTest()
   enableSecurityScan()
   enableFullFunctionalTest()
 
@@ -45,6 +46,10 @@ withNightlyPipeline("nodejs", product, component) {
       yarnBuilder.yarn('test:validation')
       yarnBuilder.yarn('test:a11y')
     }
+  }
+
+  after('crossBrowserTest') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
   }
 
   after('fullfunctionalTest') {
