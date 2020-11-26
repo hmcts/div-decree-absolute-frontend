@@ -57,7 +57,7 @@ class IdamHelper extends Helper {
         .catch(error => {
           logger.warnWithReq(
             null, 'idam_user_created',
-            'Unable to create IDAM test user/token',
+            'Unable to create IDAM test user/token due to error ..',
             error
           );
           throw error;
