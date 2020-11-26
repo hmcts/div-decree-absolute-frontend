@@ -63,7 +63,7 @@ class IdamHelper extends Helper {
           throw error;
         });
     }
-    return Promise.resolve({});
+    return null;
   }
 
   _after() {
