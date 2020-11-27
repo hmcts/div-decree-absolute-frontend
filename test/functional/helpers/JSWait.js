@@ -25,7 +25,7 @@ class JSWait extends codecept_helper { // eslint-disable-line camelcase
     const helper = this.helpers.WebDriver || this.helpers.Puppeteer;
     const helperIsPuppeteer = this.helpers.Puppeteer;
 
-    helper.click(text, locator);
+    await helper.click(text, locator);
 
     if (helperIsPuppeteer) {
       await helper.page.waitForNavigation({ waitUntil: 'networkidle0' });
@@ -53,7 +53,6 @@ class JSWait extends codecept_helper { // eslint-disable-line camelcase
       await helper.page.waitForNavigation({ waitUntil: 'networkidle0' });
     } else {
       await helper.amOnPage(newUrl);
-      await helper.waitInUrl(newUrl);
       await helper.waitForElement('body');
     }
   }

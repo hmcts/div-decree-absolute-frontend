@@ -8,9 +8,13 @@ function testApplyForDecreeAbsolutePage(language = 'en') {
 
   I.amOnLoadedPage(ApplyForDecreeAbsolute.path, language);
 
+  I.waitInUrl(ApplyForDecreeAbsolute.path);
+
   I.checkOption(ApplyForDecreeAbsoluteContent[language].fields.applyForDecreeAbsolute.yes);
 
   I.navByClick(ApplyForDecreeAbsoluteContent[language].submit);
+
+  I.waitInUrl(ProgressBar.path);
 
   I.seeCurrentUrlEquals(ProgressBar.path);
 }

@@ -6,6 +6,8 @@ function testDonePage(language = 'en') {
 
   I.amOnLoadedPage(DonePage.path, language);
 
+  I.waitInUrl(DonePage.path);
+
   I.see(DoneContent[language].youAreNowDivorced);
 }
 
