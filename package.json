@@ -44,7 +44,7 @@
     "express": "^4.17.1",
     "express-limiter": "^1.6.1",
     "glob": "^7.1.2",
-    "govuk-frontend": "^3.0.0",
+    "govuk-frontend": "^3.10.2",
     "handlebars": ">=4.3.0",
     "helmet": "^3.21.2",
     "ioredis": "^3.2.2",
