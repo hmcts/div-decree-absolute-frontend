@@ -120,7 +120,8 @@
     "yargs-parser": "13.1.2",
     "serialize-javascript": ">=2.1.1",
     "bl": ">=4.0.3",
-    "axios":  "0.21.1"
+    "axios":  "0.21.1",
+    "ssri": "8.0.1"
   },
   "nyc": {
     "report-dir": "coverage",
