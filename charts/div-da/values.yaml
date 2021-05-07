@@ -22,8 +22,8 @@ nodejs:
     WEBCHAT_BUTTON_SERVICE_CLOSED: 20199488815cc1a89e0861d5.73103009
     REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
 
-    BASE_URL: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    PUBLIC_HOSTNAME: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+    BASE_URL: "https://decree-absolute-aks.{{ .Values.global.environment }}.platform.hmcts.net"
+    PUBLIC_HOSTNAME: "https://decree-absolute-aks.{{ .Values.global.environment }}.platform.hmcts.net"
 
     CASE_MAINTENANCE_BASE_URL: "http://div-cms-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     DEPLOYMENT_ENV: "{{ .Values.global.environment }}"
