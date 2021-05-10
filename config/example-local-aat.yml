@@ -11,9 +11,9 @@ services:
 tests:
   functional:
     show: true
-    url: https://div-da-aat.service.core-compute-aat.internal
-    proxy: http://proxyout.reform.hmcts.net:8080
-    proxyByPass: '*beta*LB.reform.hmcts.net'
+    url: https://decree-absolute-aks.aat.platform.hmcts.net
+    proxy: # Proxy no longer needed: http://proxyout.reform.hmcts.net:8080
+    proxyByPass: # Proxy no longer needed: '*beta*LB.reform.hmcts.net'
 
 features:
   idam: true
