@@ -80,7 +80,7 @@
   "D8DerivedRespondentCurrentName": "Angelina JJ",
   "D8ReasonForDivorceLimitReasons": "NO",
   "D8HelpWithFeesAppliedForFees": "YES",
-  "D8PetitionerEmail": "petEmail@mailinator.com",
+  "D8PetitionerEmail": "divdnhappypath@mailinator.com",
   "D8ReasonForDivorceBehaviourDetails": "My wife is temperamental \nMy wife doesn't have any interest\nMy wife scolds me and hits me",
   "D8HelpWithFeesReferenceNumber": "HWF-123-456",
   "D8ReasonForDivorceClaiming5YearSeparatio": "NO",
@@ -127,5 +127,5 @@
   "D8ReasonForDivorce": "unreasonable-behaviour",
   "D8DerivedPetitionerCurrentFullName": "Brad Tom",
   "D8InferredPetitionerGender": "male",
-  "RespEmailAddress": "respEmail@mailinator.com"
+  "RespEmailAddress": "anRespondentEmail@mailinator.com"
 }
