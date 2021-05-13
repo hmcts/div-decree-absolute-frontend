@@ -22,7 +22,6 @@ class IdamHelper extends Helper {
       const testPassword = 'genericPassword123';
       idamArgs.testEmail = testEmail;
       idamArgs.testPassword = testPassword;
-      idamArgs.testGroupCode = 'citizens';
       idamArgs.roles = [{ code: 'citizen' }, { code: 'caseworker-divorce-courtadmin_beta' }];
 
       idamConfigHelper.setTestEmail(testEmail);
