@@ -26,18 +26,6 @@ async function testPetitionerJourney(I, language = 'en') {
   I.testDonePage(language);
 
   await I.testExitPage(language);
-
-  I.testContactDivorceTeamError(language);
-
-  I.testCookiesPolicyPage(language);
-
-  I.testPrivacyPolicyPage(language);
-
-  I.testTermsAndConditionsPage(language);
-
-  I.testAccessibilityStatementPage(language);
-
-  I.checkUrlsNotTested();
 }
 
 Feature('Test all pages for Petitioner Journey');

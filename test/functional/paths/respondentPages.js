@@ -20,16 +20,6 @@ async function testRespondentJourney(I, language = 'en') {
   await I.testIdamPageForRespondent();
 
   I.testRespProgressBar(language);
-
-  I.testContactDivorceTeamError(language);
-
-  I.testCookiesPolicyPage(language);
-
-  I.testPrivacyPolicyPage(language);
-
-  I.testTermsAndConditionsPage(language);
-
-  I.checkUrlsNotTested();
 }
 
 Feature('Test all pages for Respondent Journey');
