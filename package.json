@@ -63,7 +63,7 @@
     "yargs": "^13.0.0"
   },
   "devDependencies": {
-    "@hmcts/div-idam-test-harness": "^1.5.0",
+    "@hmcts/div-idam-test-harness": "^1.9.0",
     "@hmcts/div-test-harness": "^1.0.4",
     "@hmcts/one-per-page-test-suite": "^4.0.0",
     "chai": "^4.1.2",
