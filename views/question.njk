@@ -42,10 +42,14 @@
   {% include "includes/head.html" %}
 {% endblock %}
 
-{% block body_start %}
-    <noscript>
-        <img src="/noJS.png" alt="1px" width="1" height="1" style="display: none;" />
-    </noscript>
+{% block bodyStart %}
+  {% set serviceName = 'Divorce' %}
+  <div id="global-cookie-message">
+    {% include "includes/cookies/cookie-manager/cookie-banner.njk" %}
+  </div>
+  <noscript>
+    <img src="/noJS.png" alt="1px" width="1" height="1" style="display: none;" />
+  </noscript>
 {% endblock %}
 
 {% block proposition_header %}
@@ -58,4 +62,9 @@
 
 {% block after_form %}
     {% include "includes/problem_with_this_page.html" %}
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+  <script type="text/javascript" src="{{ asset_path }}main.js"></script>
 {% endblock %}
