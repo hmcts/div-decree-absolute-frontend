@@ -56,8 +56,7 @@
     "moment": "^2.24.0",
     "os": "^0.1.1",
     "paths": "^0.1.1",
-    "redis": "^2.8.0",
-    "redis-server": "^1.2.2",
+    "redis": "^3.1.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "yargs": "^13.0.0"
@@ -117,7 +116,7 @@
     "ua-parser-js": "^0.7.19",
     "underscore.string": "^3.3.5",
     "yargs": "^13.0.0",
-    "yargs-parser": "13.1.2",
+    "yargs-parser": "^13.1.2",
     "serialize-javascript": ">=2.1.1",
     "bl": ">=4.0.3",
     "axios": ">=0.21.1",
