@@ -96,6 +96,7 @@ paths:
   cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   accessibilityStatement: /accessibility-statement
+  avayaWebchat: /avaya-webchat
   petitioner:
     applyForDecreeAbsolute: /continue-with-divorce
     progressBar: /progress-bar/petitioner
