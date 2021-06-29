@@ -23,7 +23,7 @@ nodejs:
     REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
 
     ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
-      ANTENNA_WEBCHAT_SERVICE: "Testing"
+    ANTENNA_WEBCHAT_SERVICE: "Testing"
 
 
 
