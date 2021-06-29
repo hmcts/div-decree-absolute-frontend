@@ -1,9 +1,12 @@
 const modulePath = 'middleware/helmet';
 
 const helmet = require('helmet');
+const proxyquire = require('proxyquire');
 const config = require('config');
-const setupHelmet = require(modulePath);
 const { sinon, expect } = require('@hmcts/one-per-page-test-suite');
+
+const hpkpStub = sinon.stub(helmet, 'hpkp');
+const setupHelmet = proxyquire(modulePath, { hpkp: hpkpStub });
 
 const app = {};
 
@@ -23,18 +26,72 @@ describe(modulePath, () => {
 
     sinon.assert.calledWith(contentSecurityPolicyStub, {
       directives: {
+        defaultSrc: [
+          '\'self\'',
+          '\'data:\''
+        ],
         fontSrc: ['\'self\' data:'],
         scriptSrc: [
           '\'self\'',
           '\'unsafe-inline\'',
           'www.google-analytics.com',
+          'hmctspiwik.useconnect.co.uk',
+          'www.googletagmanager.com',
           'vcc-eu4.8x8.com',
-          'vcc-eu4b.8x8.com'
+          'vcc-eu4b.8x8.com',
+          'https://webchat-client.ctsc.hmcts.net',
+          'https://webchat-client.training.ctsc.hmcts.net',
+          'https://webchat.ctsc.hmcts.net',
+          'https://webchat.training.ctsc.hmcts.net',
+          'wss://webchat.ctsc.hmcts.net',
+          'wss://webchat.training.ctsc.hmcts.net'
         ],
-        connectSrc: ['\'self\''],
-        mediaSrc: ['\'self\''],
-        frameSrc: ['\'none\'', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com'],
-        imgSrc: ['\'self\'', 'www.google-analytics.com', 'vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com']
+        connectSrc: [
+          '\'self\'',
+          'https://webchat-client.ctsc.hmcts.net',
+          'https://webchat-client.training.ctsc.hmcts.net',
+          'https://webchat.ctsc.hmcts.net',
+          'https://webchat.training.ctsc.hmcts.net',
+          'wss://webchat.ctsc.hmcts.net',
+          'wss://webchat.training.ctsc.hmcts.net'
+        ],
+        mediaSrc: [
+          '\'self\'',
+          'https://webchat-client.ctsc.hmcts.net',
+          'https://webchat-client.training.ctsc.hmcts.net',
+          'https://webchat.ctsc.hmcts.net',
+          'https://webchat.training.ctsc.hmcts.net',
+          'wss://webchat.ctsc.hmcts.net',
+          'wss://webchat.training.ctsc.hmcts.net'
+        ],
+        frameSrc: [
+          '\'none\'',
+          'vcc-eu4.8x8.com',
+          'vcc-eu4b.8x8.com',
+          'https://webchat-client.ctsc.hmcts.net',
+          'https://webchat-client.training.ctsc.hmcts.net',
+          'https://webchat.ctsc.hmcts.net',
+          'https://webchat.training.ctsc.hmcts.net',
+          'wss://webchat.ctsc.hmcts.net',
+          'wss://webchat.training.ctsc.hmcts.net'
+        ],
+        imgSrc: [
+          '\'self\'',
+          'www.google-analytics.com',
+          'hmctspiwik.useconnect.co.uk',
+          'vcc-eu4.8x8.com',
+          'vcc-eu4b.8x8.com',
+          'https://webchat-client.ctsc.hmcts.net',
+          'https://webchat-client.training.ctsc.hmcts.net',
+          'https://webchat.ctsc.hmcts.net',
+          'https://webchat.training.ctsc.hmcts.net',
+          'wss://webchat.ctsc.hmcts.net',
+          'wss://webchat.training.ctsc.hmcts.net'
+        ],
+        styleSrc: [
+          '\'self\'',
+          '\'unsafe-inline\''
+        ]
       }
     });
 
@@ -42,15 +99,12 @@ describe(modulePath, () => {
   });
 
   it('adds hpkp helmet to app middleware', () => {
-    const hpkpStub = sinon.stub(helmet, 'hpkp');
     const maxAge = config.ssl.hpkp.maxAge;
     const sha256s = [ config.ssl.hpkp.sha256s, config.ssl.hpkp.sha256sBackup ];
 
     setupHelmet(app);
 
     sinon.assert.calledWith(hpkpStub, { maxAge, sha256s });
-
-    hpkpStub.restore();
   });
 
   it('adds referrerPolicy helmet to app middleware', () => {
