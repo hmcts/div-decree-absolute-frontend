@@ -13,6 +13,9 @@ nodejs:
     PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
 
     REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
+    ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
+    ANTENNA_WEBCHAT_SERVICE: "Testing"
+
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
