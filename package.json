@@ -1,7 +1,7 @@
 {
   "name": "divorce-decree-absolute",
   "description": "Divorce Decree Absolute Frontend",
-  "version": "0.0.1",
+  "version": "1.22.10",
   "license": "MIT",
   "engines": {
     "node": ">=12.13.0"
@@ -120,7 +120,7 @@
     "yargs-parser": "13.1.2",
     "serialize-javascript": ">=2.1.1",
     "bl": ">=4.0.3",
-    "axios":  ">=0.21.1",
+    "axios": ">=0.21.1",
     "ssri": ">=6.0.2 <7.0.0 || >=8.0.1",
     "netmask": ">=2.0.1",
     "hosted-git-info": "^3.0.8",
