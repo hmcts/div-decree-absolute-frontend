@@ -1,7 +1,7 @@
 {
   "name": "divorce-decree-absolute",
   "description": "Divorce Decree Absolute Frontend",
-  "version": "1.22.10",
+  "version": "0.0.1",
   "license": "MIT",
   "engines": {
     "node": ">=12.13.0"
