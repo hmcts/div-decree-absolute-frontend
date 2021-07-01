@@ -9,6 +9,7 @@ const hpkpStub = sinon.stub(helmet, 'hpkp');
 const setupHelmet = proxyquire(modulePath, { hpkp: hpkpStub });
 
 const app = {};
+const webchatUrl = config.services.antennaWebchat.url;
 
 describe(modulePath, () => {
   beforeEach(() => {
@@ -39,41 +40,25 @@ describe(modulePath, () => {
           'www.googletagmanager.com',
           'vcc-eu4.8x8.com',
           'vcc-eu4b.8x8.com',
-          'https://webchat-client.ctsc.hmcts.net',
-          'https://webchat-client.training.ctsc.hmcts.net',
-          'https://webchat.ctsc.hmcts.net',
-          'https://webchat.training.ctsc.hmcts.net',
-          'wss://webchat.ctsc.hmcts.net',
-          'wss://webchat.training.ctsc.hmcts.net'
+          `https://${webchatUrl}`,
+          `wss://${webchatUrl}`
         ],
         connectSrc: [
           '\'self\'',
-          'https://webchat-client.ctsc.hmcts.net',
-          'https://webchat-client.training.ctsc.hmcts.net',
-          'https://webchat.ctsc.hmcts.net',
-          'https://webchat.training.ctsc.hmcts.net',
-          'wss://webchat.ctsc.hmcts.net',
-          'wss://webchat.training.ctsc.hmcts.net'
+          `https://${webchatUrl}`,
+          `wss://${webchatUrl}`
         ],
         mediaSrc: [
           '\'self\'',
-          'https://webchat-client.ctsc.hmcts.net',
-          'https://webchat-client.training.ctsc.hmcts.net',
-          'https://webchat.ctsc.hmcts.net',
-          'https://webchat.training.ctsc.hmcts.net',
-          'wss://webchat.ctsc.hmcts.net',
-          'wss://webchat.training.ctsc.hmcts.net'
+          `https://${webchatUrl}`,
+          `wss://${webchatUrl}`
         ],
         frameSrc: [
           '\'none\'',
           'vcc-eu4.8x8.com',
           'vcc-eu4b.8x8.com',
-          'https://webchat-client.ctsc.hmcts.net',
-          'https://webchat-client.training.ctsc.hmcts.net',
-          'https://webchat.ctsc.hmcts.net',
-          'https://webchat.training.ctsc.hmcts.net',
-          'wss://webchat.ctsc.hmcts.net',
-          'wss://webchat.training.ctsc.hmcts.net'
+          `https://${webchatUrl}`,
+          `wss://${webchatUrl}`
         ],
         imgSrc: [
           '\'self\'',
@@ -81,12 +66,8 @@ describe(modulePath, () => {
           'hmctspiwik.useconnect.co.uk',
           'vcc-eu4.8x8.com',
           'vcc-eu4b.8x8.com',
-          'https://webchat-client.ctsc.hmcts.net',
-          'https://webchat-client.training.ctsc.hmcts.net',
-          'https://webchat.ctsc.hmcts.net',
-          'https://webchat.training.ctsc.hmcts.net',
-          'wss://webchat.ctsc.hmcts.net',
-          'wss://webchat.training.ctsc.hmcts.net'
+          `https://${webchatUrl}`,
+          `wss://${webchatUrl}`
         ],
         styleSrc: [
           '\'self\'',

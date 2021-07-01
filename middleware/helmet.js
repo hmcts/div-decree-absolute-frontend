@@ -6,6 +6,7 @@ const setupHelmet = app => {
   // by setting HTTP headers appropriately.
   app.use(helmet());
 
+  const webchatUrl = config.services.antennaWebchat.url;
   // Helmet content security policy (CSP) to allow only assets from same domain.
   app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -22,41 +23,25 @@ const setupHelmet = app => {
         'www.googletagmanager.com',
         'vcc-eu4.8x8.com',
         'vcc-eu4b.8x8.com',
-        'https://webchat-client.ctsc.hmcts.net',
-        'https://webchat-client.training.ctsc.hmcts.net',
-        'https://webchat.ctsc.hmcts.net',
-        'https://webchat.training.ctsc.hmcts.net',
-        'wss://webchat.ctsc.hmcts.net',
-        'wss://webchat.training.ctsc.hmcts.net'
+        `https://${webchatUrl}`,
+        `wss://${webchatUrl}`
       ],
       connectSrc: [
         '\'self\'',
-        'https://webchat-client.ctsc.hmcts.net',
-        'https://webchat-client.training.ctsc.hmcts.net',
-        'https://webchat.ctsc.hmcts.net',
-        'https://webchat.training.ctsc.hmcts.net',
-        'wss://webchat.ctsc.hmcts.net',
-        'wss://webchat.training.ctsc.hmcts.net'
+        `https://${webchatUrl}`,
+        `wss://${webchatUrl}`
       ],
       mediaSrc: [
         '\'self\'',
-        'https://webchat-client.ctsc.hmcts.net',
-        'https://webchat-client.training.ctsc.hmcts.net',
-        'https://webchat.ctsc.hmcts.net',
-        'https://webchat.training.ctsc.hmcts.net',
-        'wss://webchat.ctsc.hmcts.net',
-        'wss://webchat.training.ctsc.hmcts.net'
+        `https://${webchatUrl}`,
+        `wss://${webchatUrl}`
       ],
       frameSrc: [
         '\'none\'',
         'vcc-eu4.8x8.com',
         'vcc-eu4b.8x8.com',
-        'https://webchat-client.ctsc.hmcts.net',
-        'https://webchat-client.training.ctsc.hmcts.net',
-        'https://webchat.ctsc.hmcts.net',
-        'https://webchat.training.ctsc.hmcts.net',
-        'wss://webchat.ctsc.hmcts.net',
-        'wss://webchat.training.ctsc.hmcts.net'
+        `https://${webchatUrl}`,
+        `wss://${webchatUrl}`
       ],
       imgSrc: [
         '\'self\'',
@@ -64,12 +49,8 @@ const setupHelmet = app => {
         'hmctspiwik.useconnect.co.uk',
         'vcc-eu4.8x8.com',
         'vcc-eu4b.8x8.com',
-        'https://webchat-client.ctsc.hmcts.net',
-        'https://webchat-client.training.ctsc.hmcts.net',
-        'https://webchat.ctsc.hmcts.net',
-        'https://webchat.training.ctsc.hmcts.net',
-        'wss://webchat.ctsc.hmcts.net',
-        'wss://webchat.training.ctsc.hmcts.net'
+        `https://${webchatUrl}`,
+        `wss://${webchatUrl}`
       ],
       styleSrc: [
         '\'self\'',
