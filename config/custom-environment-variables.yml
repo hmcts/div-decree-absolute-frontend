@@ -86,6 +86,9 @@ services:
     buttonNoAgents: WEBCHAT_BUTTON_NO_AGENTS
     buttonAgentsBusy: WEBCHAT_BUTTON_AGENTS_BUSY
     buttonServiceClosed: WEBCHAT_BUTTON_SERVICE_CLOSED
+  antennaWebchat:
+    url: ANTENNA_WEBCHAT_URL
+    service: ANTENNA_WEBCHAT_SERVICE
 
 journey:
   timeoutDelay: JOURNEY_TIMEOUT_DELAY
@@ -93,6 +96,7 @@ journey:
 features:
   idam: FEATURE_IDAM
   webchat: FEATURE_WEBCHAT
+  antennaWebchat: FEATURE_ANTENNA_WEBCHAT
 
 ccd:
   courts: CCD_DIGITAL_COURTS

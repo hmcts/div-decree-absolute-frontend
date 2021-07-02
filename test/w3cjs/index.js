@@ -42,11 +42,15 @@ const filteredErrors = r => {
   return !excludedErrors.includes(r.message);
 };
 
+const excludedSteps = ['AvayaWebchat'];
+
+
 // ensure step has a template - if it doesnt no need to test it
 const filterSteps = step => {
   const stepInstance = new step({ journey: {} });
   const isMockStep = Object.values(config.paths.mock).includes(step.path);
-  return stepInstance.middleware.includes(resolveTemplate) && !isMockStep;
+  return stepInstance.middleware.includes(resolveTemplate) && !isMockStep && !excludedSteps
+    .includes(step.name);
 };
 
 const userDetails = {
