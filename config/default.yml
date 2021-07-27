@@ -126,7 +126,7 @@ tests:
 features:
   idam: false
   webchat: true
-  antennaWebchat: true
+  antennaWebchat: false
   antennaWebchatUserAttribute: false
 
 journey:
