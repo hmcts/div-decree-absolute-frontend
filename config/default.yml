@@ -126,7 +126,8 @@ tests:
 features:
   idam: false
   webchat: true
-  antennaWebchat: false
+  antennaWebchat: true
+  antennaWebchatUserAttribute: false
 
 journey:
   timeoutDelay: 300
