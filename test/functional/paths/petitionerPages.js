@@ -48,10 +48,10 @@ Scenario('Exit page (English)', async I => {
   await testExitPage(I, 'en');
 }).retry(3);
 
-// Scenario('Complete divorce process (Welsh)', async I => {
-//   await testPetitionerJourney(I, 'cy');
-// }).retry(3);
-//
-// Scenario('Exit page (Welsh)', async I => {
-//   await testExitPage(I, 'en');
-// }).retry(3);
+Scenario('Complete divorce process (Welsh)', async I => {
+  await testPetitionerJourney(I, 'cy');
+}).retry(3);
+
+Scenario('Exit page (Welsh)', async I => {
+  await testExitPage(I, 'en');
+}).retry(3);
