@@ -9,7 +9,8 @@ const supportedBrowsers = {
       browserVersion: 'latest',
       'sauce:options': {
         name: 'IE11_DECREE_ABSOLUTE',
-        screenResolution: '1400x1050'
+        screenResolution: '1400x1050',
+        extendedDebugging: true
       }
     }
   },
@@ -19,7 +20,8 @@ const supportedBrowsers = {
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'Edge_Win10_DECREE_ABSOLUTE'
+        name: 'Edge_Win10_DECREE_ABSOLUTE',
+        extendedDebugging: true
       }
     }
   },
@@ -31,7 +33,8 @@ const supportedBrowsers = {
       'sauce:options': {
         name: 'MAC_SAFARI_LATEST_DECREE_ABSOLUTE',
         seleniumVersion: '3.141.59',
-        screenResolution: '1400x1050'
+        screenResolution: '1400x1050',
+        extendedDebugging: true
       }
     }
   },
@@ -41,7 +44,8 @@ const supportedBrowsers = {
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'WIN_CHROME_LATEST_DECREE_ABSOLUTE'
+        name: 'WIN_CHROME_LATEST_DECREE_ABSOLUTE',
+        extendedDebugging: true
       }
     },
     chrome_mac_latest: {
@@ -49,7 +53,8 @@ const supportedBrowsers = {
       platformName: LATEST_MAC,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'MAC_CHROME_LATEST_DECREE_ABSOLUTE'
+        name: 'MAC_CHROME_LATEST_DECREE_ABSOLUTE',
+        extendedDebugging: true
       }
     }
   },
@@ -59,7 +64,8 @@ const supportedBrowsers = {
       platformName: LATEST_WINDOWS,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'WIN_FIREFOX_LATEST_DECREE_ABSOLUTE'
+        name: 'WIN_FIREFOX_LATEST_DECREE_ABSOLUTE',
+        extendedDebugging: true
       }
     },
     firefox_mac_latest: {
@@ -67,7 +73,8 @@ const supportedBrowsers = {
       platformName: LATEST_MAC,
       browserVersion: 'latest',
       'sauce:options': {
-        name: 'MAC_FIREFOX_LATEST_DECREE_ABSOLUTE'
+        name: 'MAC_FIREFOX_LATEST_DECREE_ABSOLUTE',
+        extendedDebugging: true
       }
     }
   }
