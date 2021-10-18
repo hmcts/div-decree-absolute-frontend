@@ -64,27 +64,6 @@ class IdamHelper extends Helper {
     }
     return null;
   }
-
-  _after() {
-    if (false) {
-      idamExpressTestHarness.removeUser(idamArgs, config.tests.functional.proxy)
-        .then(() => {
-          logger.infoWithReq(
-            null,
-            'idam_user_removed',
-            `Removed IDAM test user: ${idamArgs.testEmail}`
-          );
-        })
-        .catch(error => {
-          logger.warnWithReq(
-            null,
-            'idam_user_remove_error',
-            'Unable to remove IDAM test user',
-            error
-          );
-        });
-    }
-  }
 }
 
 module.exports = IdamHelper;
