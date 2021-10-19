@@ -10,24 +10,24 @@ basicDivorceSession.D8PetitionerEmail = emailPrefix + basicDivorceSession.D8Peti
 basicDivorceSession.RespEmailAddress = emailPrefix + basicDivorceSession.RespEmailAddress;
 
 
-// async function testRespondentJourney(I, language = 'en') {
-//   await I.retry(2).createAUser(basicDivorceSession.RespEmailAddress);
-//   I.wait(2);
-//   await I.retry(2).createDaCaseInDaRequestedForUser(basicDivorceSession);
-//
-//   I.amOnLoadedPage('/', language);
-//
-//   await I.testIdamPageForRespondent();
-//
-//   I.testRespProgressBar(language);
-// }
+async function testRespondentJourney(I, language = 'en') {
+  await I.retry(2).createAUser(basicDivorceSession.RespEmailAddress);
+  I.wait(2);
+  await I.retry(2).createDaCaseInDaRequestedForUser(basicDivorceSession);
 
-// Feature('Test all pages for Respondent Journey');
-//
-// Scenario('Pages with English language preference', async I => {
-//   await testRespondentJourney(I, 'en');
-// }).retry(3);
-//
-// Scenario('Pages with Welsh language preference', async I => {
-//   await testRespondentJourney(I, 'cy');
-// }).retry(3);
+  I.amOnLoadedPage('/', language);
+
+  await I.testIdamPageForRespondent();
+
+  I.testRespProgressBar(language);
+}
+
+Feature('Test all pages for Respondent Journey');
+
+Scenario('Pages with English language preference', async I => {
+  await testRespondentJourney(I, 'en');
+}).retry(3);
+
+Scenario('Pages with Welsh language preference', async I => {
+  await testRespondentJourney(I, 'cy');
+}).retry(3);
