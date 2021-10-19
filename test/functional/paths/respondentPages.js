@@ -28,6 +28,6 @@ Scenario('Pages with English language preference', async I => {
   await testRespondentJourney(I, 'en');
 }).retry(3);
 
-Scenario('Pages with Welsh language preference', async I => {
-  await testRespondentJourney(I, 'cy');
-}).retry(3);
+// Scenario('Pages with Welsh language preference', async I => {
+//   await testRespondentJourney(I, 'cy');
+// }).retry(3);
