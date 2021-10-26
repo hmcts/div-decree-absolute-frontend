@@ -22,7 +22,8 @@ describe(modulePath, () => {
       'languageToggle',
       'thereWasAProblem',
       'husband',
-      'wife'
+      'wife',
+      'script'
     ];
     return content(PrivacyPolicy, {}, { ignoreContent });
   });

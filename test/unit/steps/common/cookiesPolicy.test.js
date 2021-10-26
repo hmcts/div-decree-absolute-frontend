@@ -27,7 +27,8 @@ describe(modulePath, () => {
         'languageToggle',
         'thereWasAProblem',
         'husband',
-        'wife'
+        'wife',
+        'script'
       ];
 
       return content(CookiesPolicy, {}, { ignoreContent });
