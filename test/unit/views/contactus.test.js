@@ -1,7 +1,6 @@
 const PetitionProgressBar = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
 const idam = require('services/idam');
-const { middleware, sinon, content, custom, expect } = require('@hmcts/one-per-page-test-suite');
-const httpStatus = require('http-status-codes');
+const { middleware, sinon, content } = require('@hmcts/one-per-page-test-suite');
 
 const session = {
   case: {
