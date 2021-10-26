@@ -89,7 +89,6 @@ journey:
 
 features:
   idam: FEATURE_IDAM
-  antennaWebchat: FEATURE_ANTENNA_WEBCHAT
   antennaWebchatUserAttribute: FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE
 
 ccd:

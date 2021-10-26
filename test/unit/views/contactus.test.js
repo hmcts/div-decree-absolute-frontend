@@ -50,17 +50,4 @@ describe('Test contact us for help', () => {
     ];
     return content(PetitionProgressBar, session, { specificContent });
   });
-
-  it('shows webchat content if enabled', () => {
-    const features = { antennaWebchat: true };
-
-    return custom(PetitionProgressBar)
-      .withSession(session)
-      .withGlobal('features', features)
-      .get()
-      .expect(httpStatus.OK)
-      .text(pageContent => {
-        expect(pageContent).to.include('Talk to an Agent');
-      });
-  });
 });

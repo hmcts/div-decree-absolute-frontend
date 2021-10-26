@@ -21,8 +21,6 @@ const setupHelmet = app => {
         'www.google-analytics.com',
         'hmctspiwik.useconnect.co.uk',
         'www.googletagmanager.com',
-        'vcc-eu4.8x8.com',
-        'vcc-eu4b.8x8.com',
         `https://${webchatUrl}`,
         `wss://${webchatUrl}`
       ],
@@ -38,8 +36,6 @@ const setupHelmet = app => {
       ],
       frameSrc: [
         '\'none\'',
-        'vcc-eu4.8x8.com',
-        'vcc-eu4b.8x8.com',
         `https://${webchatUrl}`,
         `wss://${webchatUrl}`
       ],
@@ -47,8 +43,6 @@ const setupHelmet = app => {
         '\'self\'',
         'www.google-analytics.com',
         'hmctspiwik.useconnect.co.uk',
-        'vcc-eu4.8x8.com',
-        'vcc-eu4b.8x8.com',
         `https://${webchatUrl}`,
         `wss://${webchatUrl}`
       ],
