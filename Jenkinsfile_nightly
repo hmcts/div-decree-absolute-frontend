@@ -60,5 +60,4 @@ withNightlyPipeline("nodejs", product, component) {
   after('fortify-scan') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
   }
-
 }
