@@ -109,6 +109,7 @@
     "hoek": "^4.2.1",
     "https-proxy-agent": "^2.2.3",
     "js-yaml": "^3.13.0",
+    "json-schema": "^0.4.0",
     "lodash": "^4.17.21",
     "marked": ">=0.7.0",
     "mem": "^5.0.0",
