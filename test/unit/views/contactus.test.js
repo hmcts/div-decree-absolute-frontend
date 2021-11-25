@@ -51,7 +51,7 @@ describe('Test contact us for help', () => {
     return content(PetitionProgressBar, session, { specificContent });
   });
 
-  it('shows webchat content', () => {
+  xit('shows webchat content', () => {
     return custom(PetitionProgressBar)
       .withSession(session)
       .get()
