@@ -5,7 +5,7 @@
     </span>
   </summary>
   <div class="govuk-details__text" id="details-content-6" aria-hidden="true">
-    {% if antennaWebchat.url is defined and antennaWebchat.url is not empty and i18n.currentLanguage == "en" %}
+    {% if i18n.currentLanguage == "en" %}
     <p class="govuk-heading-s govuk-!-margin-bottom-1" id="antenna-web-chat-header">{{ common.webChatTitle | safe }}</p>
     <p id="metrics"></p>
     <web-chat
@@ -40,7 +40,7 @@
 </details>
 
 <!-- Javascript -->
-{% if antennaWebchat.url is defined and antennaWebchat.url is not empty and i18n.currentLanguage == "en" %}
+{% if i18n.currentLanguage == "en" %}
 <script src="https://{{ antennaWebchat.url }}/chat-client/1/app-es2015.js"></script>
 <script src="https://{{ antennaWebchat.url }}/chat-client/1/app-es5.js"></script>
 <script>
