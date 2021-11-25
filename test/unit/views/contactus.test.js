@@ -1,6 +1,7 @@
 const PetitionProgressBar = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
 const idam = require('services/idam');
-const { middleware, sinon, content } = require('@hmcts/one-per-page-test-suite');
+const { middleware, sinon, content, custom, expect } = require('@hmcts/one-per-page-test-suite');
+const httpStatus = require('http-status-codes');
 
 const session = {
   case: {
@@ -48,5 +49,15 @@ describe('Test contact us for help', () => {
       'responseTime'
     ];
     return content(PetitionProgressBar, session, { specificContent });
+  });
+
+  it('shows webchat content', () => {
+    return custom(PetitionProgressBar)
+      .withSession(session)
+      .get()
+      .expect(httpStatus.OK)
+      .text(pageContent => {
+        expect(pageContent).to.include('Talk to an Agent');
+      });
   });
 });
