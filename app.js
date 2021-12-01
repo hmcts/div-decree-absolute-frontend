@@ -15,7 +15,6 @@ const setupRateLimiter = require('services/rateLimiter');
 const getFilters = require('views/filters');
 const errorContent = require('views/errors/error-content');
 const { parseBool } = require('@hmcts/one-per-page/util');
-const { log } = require('mochawesome/dist/utils');
 
 const app = express();
 
@@ -135,15 +134,5 @@ onePerPage.journey(app, {
   i18n: { filters: getFilters() },
   useCsrfToken: true
 });
-
-/* Output redis.url and redis.encryptionAtRestKey for testing */
-log(
-  `
-  =======================================================================
-  redis.url: ${config.services.redis.url}
-  redis.encryptionAtRestKey: ${config.services.redis.encryptionAtRestKey}
-  =======================================================================
-  `
-);
 
 module.exports = app;
