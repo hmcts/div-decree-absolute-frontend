@@ -39,7 +39,6 @@ logger.info(
   `
   =======================================================================
   redis.url: ${config.services.redis.url}
-  redis.encryptionAtRestKey: ${config.services.redis.encryptionAtRestKey}
   =======================================================================
   `
 );
