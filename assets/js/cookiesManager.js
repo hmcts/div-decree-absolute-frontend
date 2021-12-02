@@ -34,7 +34,7 @@ function setCookiePreference() {
   // eslint-disable-next-line no-magic-numbers,no-use-before-define
   setCookie('cookies_preferences_set', true, expiryDays);
   // eslint-disable-next-line no-use-before-define
-  setCookie('cookies_policy', `{"essential":true,"analytics":${getAnalyticsSelectedValue.value},"apm:"${getApmSelectedValue.value}}`, expiryDays);
+  setCookie('cookies_policy', encodeURIComponent(`{"essential":true,"analytics":${getAnalyticsSelectedValue.value},"apm:"${getApmSelectedValue.value}}`), expiryDays);
   document.getElementById('cookie-preference-success').classList.remove('govuk-visually-hidden');
   if (document.getElementById('accept-all-cookies-successs')) {
     document.getElementById('accept-all-cookies-success').classList.add('govuk-visually-hidden');
@@ -83,9 +83,7 @@ function setCookie(cname, cvalue, exdays) {
   // eslint-disable-next-line no-magic-numbers
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   const expires = `expires=${d.toUTCString()}`;
-  // encode cookie value
-  const evalue = encodeURIComponent(cvalue);
-  document.cookie = `${cname}=${evalue};${expires};path=/;domain=core-compute-preview.internal;Secure=true`;
+  document.cookie = `${cname}=${cvalue};${expires};path=/;domain=core-compute-preview.internal;Secure=true`;
 }
 
 function getCookie(cname) {
