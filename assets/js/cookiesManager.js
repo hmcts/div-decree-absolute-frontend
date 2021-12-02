@@ -83,7 +83,9 @@ function setCookie(cname, cvalue, exdays) {
   // eslint-disable-next-line no-magic-numbers
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   const expires = `expires=${d.toUTCString()}`;
-  document.cookie = `${cname}=${cvalue};${expires};path=/;domain=core-compute-preview.internal;Secure=true`;
+  // encode cookie value
+  const evalue = encodeURIComponent(cvalue);
+  document.cookie = `${cname}=${evalue};${expires};path=/;domain=core-compute-preview.internal;Secure=true`;
 }
 
 function getCookie(cname) {
