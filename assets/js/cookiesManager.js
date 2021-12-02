@@ -92,7 +92,14 @@ function getCookie(cname) {
   const name = `${cname}=`;
   const ca = document.cookie.split(';');
   for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
+    let c = '';
+    // try to decode cookie value
+    try {
+      c = decodeURIComponent(ca[i]);
+    } catch (decodeErr) {
+      // if decode fails use raw value
+      c = ca[i];
+    }
     // eslint-disable-next-line eqeqeq
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
