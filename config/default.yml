@@ -125,8 +125,8 @@ tests:
 
 features:
   idam: false
-  webchat: true
-  antennaWebchat: false
+  antennaWebchat: true
+  antennaWebchatUserAttribute: false
 
 journey:
   timeoutDelay: 300
@@ -171,6 +171,5 @@ saucelabs:
   browser: 'chrome'
   username: 'username'
   key: 'privatekey'
-  tunnelId: 'reformtunnel'
   waitForTimeout: 60000
   smartWait: 45000

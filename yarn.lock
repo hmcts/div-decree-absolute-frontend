@@ -1257,6 +1257,16 @@ ajv@^6.12.6:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+ajv@^6.12.6:
+  version "6.12.6"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
+  integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
 allure-js-commons@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/allure-js-commons/-/allure-js-commons-1.3.2.tgz#e1cf0466e36695bb3ced1228f6570eac6c2e9eda"
@@ -6927,11 +6937,11 @@ json5@^2.1.1, json5@^2.1.2:
     minimist "^1.2.5"
 
 jsoneditor@>=9.5.6:
-  version "9.5.7"
-  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.5.7.tgz#b74d0c2cf64febe102b1b0a91d693f48d1f90917"
-  integrity sha512-RWI1YqIhb2XzLcnSHMta7LROItQg49FhSd7KNPWr81HyCj2pc0m25no4BpzygmxW9320r9PnYKJwZsqL2PpdrQ==
+  version "9.5.6"
+  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.5.6.tgz#b2abca2aeb34bb5291025d0eeddcb2845e0d90a9"
+  integrity sha512-smu4CKCOeJiizGGGYQ7ZAvCclnuJP7gX/wcoHw/DWiJMUZq+3KjJNDhYnVTRgi+Zk0UlPngA4egmuJre/H2mXg==
   dependencies:
-    ace-builds "^1.4.13"
+    ace-builds "^1.4.12"
     ajv "^6.12.6"
     javascript-natural-sort "^0.7.1"
     jmespath "^0.15.0"
@@ -6939,7 +6949,7 @@ jsoneditor@>=9.5.6:
     jsonrepair "^2.2.1"
     mobius1-selectr "^2.4.13"
     picomodal "^3.0.0"
-    vanilla-picker "^2.12.1"
+    vanilla-picker "^2.11.2"
 
 jsonfile@^2.1.0:
   version "2.4.0"
@@ -11181,9 +11191,9 @@ traverse@^0.6.6:
   integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
 trim-newlines@^1.0.0, trim-newlines@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-4.0.1.tgz#caa1a0c92e86282c9cc8485ccd3ee5a6a4fbd958"
-  integrity sha512-5n5GIW0uEbjCB2PO6OoaG11rscJmLOLw12ZG9e0vBKNMToDJ2n1+AkUhJpGO2bLj3jXKa/gYTGVmilX5CCxqmA==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-4.0.2.tgz#d6aaaf6a0df1b4b536d183879a6b939489808c7c"
+  integrity sha512-GJtWyq9InR/2HRiLZgpIKv+ufIKrVrvjQWEj7PxAXNc5dwbNJkqhAUoAGgzRmULAnoOM5EIpveYd3J2VeSAIew==
 
 trim-right@^1.0.1:
   version "1.0.1"
@@ -11527,10 +11537,10 @@ validator@^9.1.2:
   resolved "https://registry.yarnpkg.com/validator/-/validator-9.4.1.tgz#abf466d398b561cd243050112c6ff1de6cc12663"
   integrity sha512-YV5KjzvRmSyJ1ee/Dm5UED0G+1L4GZnLN3w6/T+zZm8scVua4sOhYKWTUrKa0H/tMiJyO9QLHMPN+9mB/aMunA==
 
-vanilla-picker@^2.12.1:
-  version "2.12.1"
-  resolved "https://registry.yarnpkg.com/vanilla-picker/-/vanilla-picker-2.12.1.tgz#6e619eecf553891b8d2d042b745a23c91f19f34c"
-  integrity sha512-2qrEP9VYylKXbyzXKsbu2dferBTvqnlsr29XjHwFE+/MEp0VNj6oEUESLDtKZ7DWzGdSv1x/+ujqFZF+KsO3cg==
+vanilla-picker@^2.11.2:
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/vanilla-picker/-/vanilla-picker-2.11.2.tgz#eaa24efa68c27e7ee9e0776df55d6913b855f133"
+  integrity sha512-2cP7LlUnxHxwOf06ReUVtd2RFJMnJGaxN2s0p8wzBH3In5b00Le7fFZ9VrIoBE0svZkSq/BC/Pwq/k/9n+AA2g==
   dependencies:
     "@sphinxxxx/color-conversion" "^2.2.2"
 
