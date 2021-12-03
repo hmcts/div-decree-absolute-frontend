@@ -1,4 +1,4 @@
-# Divorce Decree Absolute - Build Testing
+# Divorce Decree Absolute
 
 ## Getting started
 
