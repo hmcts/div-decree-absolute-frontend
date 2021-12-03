@@ -34,7 +34,7 @@ function setCookiePreference() {
   // eslint-disable-next-line no-magic-numbers,no-use-before-define
   setCookie('cookies_preferences_set', true, expiryDays);
   // eslint-disable-next-line no-use-before-define
-  setCookie('cookies_policy', encodeURIComponent(`{"essential":true,"analytics":${String(getAnalyticsSelectedValue.value).replace(/[\n\r]+/g, '')},"apm:"${String(getApmSelectedValue.value).replace(/[\n\r]+/g, '')}}`), expiryDays);
+  setCookie('cookies_policy', `{"essential":true,"analytics":${encodeValue(getAnalyticsSelectedValue.value)},"apm:"${encodeValue(getApmSelectedValue.value)}}`, expiryDays);
   document.getElementById('cookie-preference-success').classList.remove('govuk-visually-hidden');
   if (document.getElementById('accept-all-cookies-successs')) {
     document.getElementById('accept-all-cookies-success').classList.add('govuk-visually-hidden');
@@ -76,6 +76,12 @@ function setRejectAllCookies() {
   manageAnalyticsCookies('false');
   // eslint-disable-next-line no-use-before-define
   manageAPMCookie('false');
+}
+
+// Convert value to string, strip CRLF, encode and return
+function encodeValue(value) {
+  const encValue = encodeURIComponent(String(value).replace(/[\n\r]+/g, ''));
+  return encValue;
 }
 
 function setCookie(cname, cvalue, exdays) {
