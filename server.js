@@ -34,16 +34,6 @@ if (['development'].includes(config.environment)) {
 
 logger.info(`Application running: ${config.node.baseUrl}`);
 
-/* Output redis.url and redis.encryptionAtRestKey for testing */
-logger.info(
-  `
-  =======================================================================
-  redis.url: ${config.services.redis.url}
-  redis.encryptionAtRestKey: ${config.services.redis.encryptionAtRestKey}
-  =======================================================================
-  `
-);
-
 process.on('SIGTERM', () => {
   http.close(() => {
     process.exit(0); // eslint-disable-line no-process-exit
