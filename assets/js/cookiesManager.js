@@ -27,11 +27,6 @@ $(document).ready(() => {
 // eslint-disable-next-line no-invalid-this
 }).call(this);
 
-// Convert value to string, strip CRLF, encode and return
-function encodeValue(value) {
-  return encodeURIComponent(String(value).replace(/[\n\r]+/g, ''));
-}
-
 function setCookiePreference() {
   const expiryDays = 365;
   const getAnalyticsSelectedValue = document.querySelector('input[name="analytics"]:checked');
@@ -41,8 +36,8 @@ function setCookiePreference() {
   // eslint-disable-next-line no-use-before-define
   setCookie(
     'cookies_policy',
-    `{"essential":true,"analytics":${encodeValue(getAnalyticsSelectedValue.value)},
-    "apm:"${encodeValue(getApmSelectedValue.value)}}`,
+    `{"essential":true,"analytics":${encodeURIComponent(getAnalyticsSelectedValue.value)},
+    "apm:"${encodeURIComponent(getApmSelectedValue.value)}}`,
     expiryDays
   );
   document.getElementById('cookie-preference-success').classList.remove('govuk-visually-hidden');
