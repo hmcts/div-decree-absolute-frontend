@@ -16,6 +16,7 @@ nodejs:
     REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
     ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
     ANTENNA_WEBCHAT_SERVICE: "Testing"
+    FEATURE_DYNATRACE: "true"
 
   # Don't modify below here
   image: ${IMAGE_NAME}
