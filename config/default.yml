@@ -127,7 +127,7 @@ features:
   idam: false
   antennaWebchat: true
   antennaWebchatUserAttribute: false
-  dynatrace: true
+  dynatrace: false
 
 journey:
   timeoutDelay: 300
