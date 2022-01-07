@@ -92,6 +92,7 @@ features:
   antennaWebchat: FEATURE_ANTENNA_WEBCHAT
   antennaWebchatUserAttribute: FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE
   dynatrace: FEATURE_DYNATRACE
+  pingRedis: FEATURE_PING_REDIS
 
 ccd:
   courts: CCD_DIGITAL_COURTS
