@@ -120,6 +120,7 @@ tests:
 features:
   idam: false
   antennaWebchatUserAttribute: false
+  pingRedis: false
 
 journey:
   timeoutDelay: 300

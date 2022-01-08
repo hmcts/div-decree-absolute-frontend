@@ -12,6 +12,7 @@ nodejs:
     BASE_URL: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
     PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
     FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE: "true"
+    FEATURE_PING_REDIS: "true"
     REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
     ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
     ANTENNA_WEBCHAT_SERVICE: "Testing"

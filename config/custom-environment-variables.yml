@@ -90,6 +90,7 @@ journey:
 features:
   idam: FEATURE_IDAM
   antennaWebchatUserAttribute: FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE
+  pingRedis: FEATURE_PING_REDIS
 
 ccd:
   courts: CCD_DIGITAL_COURTS
