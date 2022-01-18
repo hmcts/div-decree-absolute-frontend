@@ -5,7 +5,7 @@
 #### Install dependencies
 
 ```shell
-$ yarn install
+yarn install
 ```
 
 #### Start application
@@ -32,13 +32,13 @@ yarn mocks
 #### Test application
 
 ```shell
-$ yarn test
+yarn test
 ```
 
 #### Run Functional tests locally
 
 ```shell
-$ yarn test:functional
+yarn test:functional
 ```
 
 #### Run Functional tests locally against AAT
