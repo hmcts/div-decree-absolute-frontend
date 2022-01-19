@@ -91,7 +91,7 @@ paths:
   entry: /entry
   exit: /exit
   termsAndConditions: /terms-and-conditions
-  cookiesPolicy: /cookies
+  cookiesPolicy: /cookie
   privacyPolicy: /privacy-policy
   accessibilityStatement: /accessibility-statement
   petitioner:
