@@ -85,7 +85,7 @@ paths:
   entry: /entry
   exit: /exit
   termsAndConditions: /terms-and-conditions
-  cookiesPolicy: /cookie
+  cookiesPolicy: /cookies
   privacyPolicy: /privacy-policy
   accessibilityStatement: /accessibility-statement
   petitioner:
@@ -120,6 +120,7 @@ tests:
 features:
   idam: false
   antennaWebchatUserAttribute: false
+  dynatrace: false
   pingRedis: false
 
 journey:

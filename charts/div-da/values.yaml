@@ -20,6 +20,8 @@ nodejs:
     ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
     ANTENNA_WEBCHAT_SERVICE: "Testing"
 
+    FEATURE_DYNATRACE: "false"
+
     BASE_URL: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     PUBLIC_HOSTNAME: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 

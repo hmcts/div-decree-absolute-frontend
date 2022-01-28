@@ -90,6 +90,7 @@ journey:
 features:
   idam: FEATURE_IDAM
   antennaWebchatUserAttribute: FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE
+  dynatrace: FEATURE_DYNATRACE
   pingRedis: FEATURE_PING_REDIS
 
 ccd:
