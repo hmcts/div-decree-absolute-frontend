@@ -1,6 +1,7 @@
 const ProgressBar = require('common/steps/progress-bar/ProgressBar.step.js');
 const config = require('config');
 const { createUris } = require('@hmcts/div-document-express-handler');
+const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
 
 const {
   caseStates,
@@ -14,6 +15,21 @@ class RespondentProgressBar extends ProgressBar {
   }
 
   get downloadableFiles() {
+    // If divorce was granted > 1 year ago, do not return docs for respondent download
+    if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
+      const daGrantedDate = new Date(this.case.decreeAbsoluteGrantedDate);
+      const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
+      const today = new Date();
+      if (today > docRemovalDate) {
+        logger.info('===============================================: No Files Available');
+        const noFiles = {
+          documentNamePath: config.document.documentNamePath,
+          documentWhiteList: ['returnNothing']
+        };
+        return createUris(this.case.d8, noFiles);
+      }
+      logger.info('===============================================: Files Available');
+    }
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
       documentWhiteList: config.document.filesWhiteList.respondent
