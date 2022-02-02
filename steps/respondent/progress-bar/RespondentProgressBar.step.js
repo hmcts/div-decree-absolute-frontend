@@ -24,7 +24,6 @@ class RespondentProgressBar extends ProgressBar {
         logger.info(`
                            ===============================================
                            No Files Available
-                           DA Granted As JS Date: ${daGrantedDate}
                            ===============================================
                            `);
         const noFiles = {
@@ -35,7 +34,6 @@ class RespondentProgressBar extends ProgressBar {
       }
       logger.info(`===============================================
                          Files Available
-                         DA Granted As JS Date: ${daGrantedDate}
                          ===============================================
                          `);
     }
