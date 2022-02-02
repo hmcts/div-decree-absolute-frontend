@@ -22,8 +22,6 @@ class RespondentProgressBar extends ProgressBar {
       const today = new Date();
       if (today > docRemovalDate) {
         logger.info('===============================================: No Files Available');
-        logger.info(docRemovalDate);
-        logger.info('===============================================');
         const noFiles = {
           documentNamePath: config.document.documentNamePath,
           documentWhiteList: ['returnNothing']
@@ -31,8 +29,6 @@ class RespondentProgressBar extends ProgressBar {
         return createUris(this.case.d8, noFiles);
       }
       logger.info('===============================================: Files Available');
-      logger.info(docRemovalDate);
-      logger.info('===============================================');
     }
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
