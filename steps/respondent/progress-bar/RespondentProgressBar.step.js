@@ -21,21 +21,14 @@ class RespondentProgressBar extends ProgressBar {
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
       const today = new Date();
       if (today > docRemovalDate) {
-        logger.info(`
-                           ===============================================
-                           No Files Available
-                           ===============================================
-                           `);
+        logger.info('===============================================: No Files Available');
         const noFiles = {
           documentNamePath: config.document.documentNamePath,
           documentWhiteList: ['returnNothing']
         };
         return createUris(this.case.d8, noFiles);
       }
-      logger.info(`===============================================
-                         Files Available
-                         ===============================================
-                         `);
+      logger.info('===============================================: Files Available');
     }
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
