@@ -18,7 +18,6 @@ class RespondentProgressBar extends ProgressBar {
     // If divorce was granted > 1 year ago, do not return docs for respondent download
     if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
       const caseState = this.currentCaseState;
-      const caseId = this.case.caseId;
       const caseGrantedDate = this.case.decreeAbsoluteGrantedDate;
       const daGrantedDate = new Date(this.case.decreeAbsoluteGrantedDate);
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
@@ -26,7 +25,6 @@ class RespondentProgressBar extends ProgressBar {
       if (today > docRemovalDate) {
         logger.info(`
                            ===============================================
-                           Case ID: ${caseId}
                            Case State: ${caseState}
                            No Files Available
                            DA Raw: ${caseGrantedDate}
@@ -40,7 +38,6 @@ class RespondentProgressBar extends ProgressBar {
         return createUris(this.case.d8, noFiles);
       }
       logger.info(`===============================================
-                         Case ID: ${caseId}
                          Case State: ${caseState}
                          Files Available
                          DA Raw: ${caseGrantedDate}
