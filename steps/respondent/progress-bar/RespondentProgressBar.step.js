@@ -17,16 +17,19 @@ class RespondentProgressBar extends ProgressBar {
   get downloadableFiles() {
     // If divorce was granted > 1 year ago, do not return docs for respondent download
     if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
+      const caseState = this.currentCaseState;
+      const caseId = this.case.caseId;
+      const caseGrantedDate = this.case.decreeAbsoluteGrantedDate;
       const daGrantedDate = new Date(this.case.decreeAbsoluteGrantedDate);
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
       const today = new Date();
       if (today > docRemovalDate) {
         logger.info(`
                            ===============================================
-                           Case ID: ${this.case.caseId}
-                           Case State: ${this.currentCaseState}
+                           Case ID: ${caseId}
+                           Case State: ${caseState}
                            No Files Available
-                           DA Raw: ${this.case.decreeAbsoluteGrantedDate}
+                           DA Raw: ${caseGrantedDate}
                            DA Granted As JS Date: ${daGrantedDate}
                            ===============================================
                            `);
@@ -37,10 +40,10 @@ class RespondentProgressBar extends ProgressBar {
         return createUris(this.case.d8, noFiles);
       }
       logger.info(`===============================================
-                         Case ID: ${this.case.caseId}
-                         Case State: ${this.currentCaseState}
+                         Case ID: ${caseId}
+                         Case State: ${caseState}
                          Files Available
-                         DA Raw: ${this.case.decreeAbsoluteGrantedDate}
+                         DA Raw: ${caseGrantedDate}
                          DA Granted As JS Date: ${daGrantedDate}
                          ===============================================
                          `);
