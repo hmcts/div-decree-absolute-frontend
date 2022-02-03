@@ -17,19 +17,22 @@ class RespondentProgressBar extends ProgressBar {
   get downloadableFiles() {
     // If divorce was granted > 1 year ago, do not return docs for respondent download
     if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
-      const daGrantedDate = new Date(this.case.decreeAbsoluteGrantedDate);
+      const caseId = this.case.caseId;
+      const caseState = this.currentCaseState;
+      const rawDaGrantedDate = this.case.divorceGranted;
+      const daGrantedDate = new Date(rawDaGrantedDate);
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
       const today = new Date();
       if (today > docRemovalDate) {
         logger.info(`===============================================
-                           CaseId: ${this.case.caseId}
-                           State: ${this.currentCaseState}
-                           No Files Available
-                           Divorce Granted Date: ${daGrantedDate}
-                           Divorce Granted Date (Raw): ${this.case.decreeAbsoluteGrantedDate}
-                           Doc Removal Date: ${docRemovalDate}
-                           Current Date: ${today}
-                          ===============================================`);
+                            CaseId: ${caseId}
+                            State: ${caseState}
+                            No Files Available
+                            Divorce Granted Date: ${daGrantedDate}
+                            Divorce Granted Date (Raw): ${rawDaGrantedDate}
+                            Doc Removal Date: ${docRemovalDate}
+                            Current Date: ${today}
+                           ===============================================`);
         const noFiles = {
           documentNamePath: config.document.documentNamePath,
           documentWhiteList: ['returnNothing']
@@ -37,14 +40,14 @@ class RespondentProgressBar extends ProgressBar {
         return createUris(this.case.d8, noFiles);
       }
       logger.info(`===============================================
-                           CaseId: ${this.case.caseId}
-                           State: ${this.currentCaseState}
-                           Files Available
-                           Divorce Granted Date: ${daGrantedDate}
-                           Divorce Granted Date (Raw): ${this.case.decreeAbsoluteGrantedDate}
-                           Doc Removal Date: ${docRemovalDate}
-                           Current Date: ${today}
-                          ===============================================`);
+                          CaseId: ${caseId}
+                          State: ${caseState}
+                          Files Available
+                          Divorce Granted Date: ${daGrantedDate}
+                          Divorce Granted Date (Raw): ${rawDaGrantedDate}
+                          Doc Removal Date: ${docRemovalDate}
+                          Current Date: ${today}
+                         ===============================================`);
     }
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
