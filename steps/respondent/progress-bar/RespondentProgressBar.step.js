@@ -21,14 +21,30 @@ class RespondentProgressBar extends ProgressBar {
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
       const today = new Date();
       if (today > docRemovalDate) {
-        logger.info('===============================================: No Files Available');
+        logger.info(`===============================================
+                           CaseId: ${this.case.caseId}
+                           State: ${this.currentCaseState}
+                           No Files Available
+                           Divorce Granted Date: ${daGrantedDate}
+                           Divorce Granted Date (Raw): ${this.case.decreeAbsoluteGrantedDate}
+                           Doc Removal Date: ${docRemovalDate}
+                           Current Date: ${today}
+                          ===============================================`);
         const noFiles = {
           documentNamePath: config.document.documentNamePath,
           documentWhiteList: ['returnNothing']
         };
         return createUris(this.case.d8, noFiles);
       }
-      logger.info('===============================================: Files Available');
+      logger.info(`===============================================
+                           CaseId: ${this.case.caseId}
+                           State: ${this.currentCaseState}
+                           Files Available
+                           Divorce Granted Date: ${daGrantedDate}
+                           Divorce Granted Date (Raw): ${this.case.decreeAbsoluteGrantedDate}
+                           Doc Removal Date: ${docRemovalDate}
+                           Current Date: ${today}
+                          ===============================================`);
     }
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
