@@ -19,7 +19,7 @@ class RespondentProgressBar extends ProgressBar {
     if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
       const caseId = this.case.caseId;
       const caseState = this.currentCaseState;
-      const rawDaGrantedDate = this.case.divorceGranted;
+      const rawDaGrantedDate = this.case.divorceGrantedDate;
       const daGrantedDate = new Date(rawDaGrantedDate);
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
       const today = new Date();
