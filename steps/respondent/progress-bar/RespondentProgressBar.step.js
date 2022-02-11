@@ -17,7 +17,7 @@ class RespondentProgressBar extends ProgressBar {
   get downloadableFiles() {
     // If divorce was granted > 1 year ago, do not return docs for respondent download
     if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
-      const caseId = this.case.caseId;
+      const caseId = this.case.caseReference;
       const caseState = this.currentCaseState;
       const rawDaGrantedDate = this.case.decreeAbsoluteGrantedDate;
       const daGrantedDate = new Date(rawDaGrantedDate);
