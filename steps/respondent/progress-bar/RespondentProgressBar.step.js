@@ -34,11 +34,7 @@ class RespondentProgressBar extends ProgressBar {
                             Doc Removal Date: ${docRemovalDate}
                             Current Date: ${today}
                            ===============================================`);
-        const noFiles = {
-          documentNamePath: config.document.documentNamePath,
-          documentWhiteList: ['returnNothing']
-        };
-        return createUris(this.case.d8, noFiles);
+        return [];
       }
       logger.info(JSON.stringify(this.case));
       /*
