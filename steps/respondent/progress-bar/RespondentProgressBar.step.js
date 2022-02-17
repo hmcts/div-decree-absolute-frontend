@@ -25,29 +25,33 @@ class RespondentProgressBar extends ProgressBar {
       const today = new Date();
       if (today > docRemovalDate) {
         logger.info(`
-                           ===============================================
+                           ========================================================================
+                            No Files Available
+                            ------------------
                             CaseId: ${caseId}
                             State: ${caseState}
-                            No Files Available
-                            Divorce Granted Date: ${daGrantedDate}
                             Divorce Granted Date (Raw): ${rawDaGrantedDate}
+                            Divorce Granted Date (JS Date): ${daGrantedDate}
                             Doc Removal Date: ${docRemovalDate}
                             Current Date: ${today}
-                           ===============================================`);
+                           ========================================================================
+        `);
         return [];
       }
       logger.info(JSON.stringify(this.case));
       /*
       logger.info(`
-                         ===============================================
+                         ========================================================================
+                          Files Available
+                          ---------------
                           CaseId: ${caseId}
                           State: ${caseState}
-                          Files Available
-                          Divorce Granted Date: ${daGrantedDate}
                           Divorce Granted Date (Raw): ${rawDaGrantedDate}
+                          Divorce Granted Date (JS Date): ${daGrantedDate}
                           Doc Removal Date: ${docRemovalDate}
                           Current Date: ${today}
-                         ===============================================`);
+                         ========================================================================
+      `);
       */
     }
     const docConfig = {
