@@ -12,6 +12,8 @@ const REDIRECT_TO_RESPONDENT_FE = Symbol('redirect_to_rfe');
 const redirectToRespondentFrontendError = new Error('User is respondent');
 redirectToRespondentFrontendError.statusCode = REDIRECT_TO_RESPONDENT_FE;
 
+const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
+
 const formatSessionForSubmit = req => {
   const { journey } = req;
   const sessionFieldPaths = Object.keys(sessionToCosMapping);
@@ -53,6 +55,16 @@ const formatSessionForSubmit = req => {
 
 const validateResponse = (req, response) => {
   const { idam } = req;
+
+  logger.info(`
+  ==================================================================================
+  Request Object:
+  ${JSON.stringify(req)}
+  ==================================================================================
+  Response Object:
+  ${JSON.stringify(response)}
+  ==================================================================================
+  `);
 
   const stateIsAwaitingDA = response.state === 'AwaitingDecreeAbsolute';
   // eslint-disable-next-line max-len
