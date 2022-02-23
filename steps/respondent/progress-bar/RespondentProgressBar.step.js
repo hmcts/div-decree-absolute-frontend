@@ -1,7 +1,6 @@
 const ProgressBar = require('common/steps/progress-bar/ProgressBar.step.js');
 const config = require('config');
 const { createUris } = require('@hmcts/div-document-express-handler');
-const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
 
 const {
   caseStates,
@@ -17,43 +16,17 @@ class RespondentProgressBar extends ProgressBar {
   get downloadableFiles() {
     // If divorce was granted > 1 year ago, do not return docs for respondent download
     if (this.currentCaseState.toLowerCase() === caseStates.divorceGranted) {
-      const caseId = this.case.caseReference;
-      const caseState = this.currentCaseState;
-      const rawDaGrantedDate = this.case.decreeAbsoluteGrantedDate;
-      const daGrantedDate = new Date(rawDaGrantedDate);
+      // Get decree absolute granted date
+      const daGrantedDate = new Date(this.case.decreeAbsoluteGrantedDate);
+      // Doc removal date is 1 year after decree absolute granted date
       const docRemovalDate = new Date(daGrantedDate.setFullYear(daGrantedDate.getFullYear() + 1));
+      // If we have passed the doc removal date, return an empty array instead of the file list
       const today = new Date();
       if (today > docRemovalDate) {
-        logger.info(`
-                           ========================================================================
-                            No Files Available
-                            ------------------
-                            CaseId: ${caseId}
-                            State: ${caseState}
-                            Divorce Granted Date (Raw): ${rawDaGrantedDate}
-                            Divorce Granted Date (JS Date): ${daGrantedDate}
-                            Doc Removal Date: ${docRemovalDate}
-                            Current Date: ${today}
-                           ========================================================================
-        `);
         return [];
       }
-      logger.info(JSON.stringify(this.case));
-      /*
-      logger.info(`
-                         ========================================================================
-                          Files Available
-                          ---------------
-                          CaseId: ${caseId}
-                          State: ${caseState}
-                          Divorce Granted Date (Raw): ${rawDaGrantedDate}
-                          Divorce Granted Date (JS Date): ${daGrantedDate}
-                          Doc Removal Date: ${docRemovalDate}
-                          Current Date: ${today}
-                         ========================================================================
-      `);
-      */
     }
+    // if divorce was not yet granted, or was granted less than one year ago, return the array of docs for respondent download
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
       documentWhiteList: config.document.filesWhiteList.respondent
