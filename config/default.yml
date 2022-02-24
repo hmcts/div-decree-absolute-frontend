@@ -123,7 +123,7 @@ tests:
       idamTestLevelOfAccess:
       idamTestSupportCreateAccountEndpoint:
 
-hideDocsForCase: 'ZZ20D08715'
+hideDocsForCase: 'EZ12D91234'
 
 features:
   idam: false
