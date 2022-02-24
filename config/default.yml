@@ -123,6 +123,8 @@ tests:
       idamTestLevelOfAccess:
       idamTestSupportCreateAccountEndpoint:
 
+hideDocsForCase: 'ZZ20D08715'
+
 features:
   idam: false
   antennaWebchat: true
