@@ -15,15 +15,17 @@ class RespondentProgressBar extends ProgressBar {
   }
 
   get downloadableFiles() {
+    const caseId = this.case.caseReference;
+    const caseState = this.currentCaseState;
     logger.info(`
                            ========================================================================
                             Debug Output
                             ------------------
-                            CaseId: ${this.case.caseId}
-                            State: ${this.caseState}
+                            CaseId: ${caseId}
+                            State: ${caseState}
                            ========================================================================
         `);
-    if (this.case.caseid === config.hideDocsForCase) {
+    if (caseId === config.hideDocsForCase) {
       return [];
     }
 
