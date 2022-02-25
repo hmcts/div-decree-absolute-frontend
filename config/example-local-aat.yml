@@ -11,8 +11,6 @@ services:
 tests:
   functional:
     show: true
-    url: <Test URL>
-
 
 features:
   idam: true

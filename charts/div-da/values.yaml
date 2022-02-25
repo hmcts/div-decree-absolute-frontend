@@ -22,6 +22,11 @@ nodejs:
     WEBCHAT_BUTTON_SERVICE_CLOSED: 20199488815cc1a89e0861d5.73103009
     REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
 
+    ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
+    ANTENNA_WEBCHAT_SERVICE: "Testing"
+
+    FEATURE_DYNATRACE: "false"
+
     BASE_URL: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     PUBLIC_HOSTNAME: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
 
