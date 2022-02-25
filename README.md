@@ -51,4 +51,4 @@ yarn test:functional
 
 * If you want to point to a PR, modify `tests.functional.url` accordingly.
 
-* Run ```NODE_ENV=aat yarn test:functional```. This would your tests to pick up the new `local-aat.yml`.
+* Run ``` test:local```. This would your tests to pick up the new `local-aat.yml`.
