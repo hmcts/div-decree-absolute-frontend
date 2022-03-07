@@ -1,7 +1,6 @@
 const ProgressBar = require('common/steps/progress-bar/ProgressBar.step.js');
 const config = require('config');
 const { createUris } = require('@hmcts/div-document-express-handler');
-const logger = require('@hmcts/nodejs-logging').Logger.getLogger(__filename);
 
 const {
   caseStates,
@@ -16,15 +15,6 @@ class RespondentProgressBar extends ProgressBar {
 
   get downloadableFiles() {
     const caseId = this.case.caseReference;
-    const caseState = this.currentCaseState;
-    logger.info(`
-                           ========================================================================
-                            Debug Output
-                            ------------------
-                            CaseId: ${caseId}
-                            State: ${caseState}
-                           ========================================================================
-        `);
     if (caseId === config.hideDocsForCase) {
       return [];
     }
