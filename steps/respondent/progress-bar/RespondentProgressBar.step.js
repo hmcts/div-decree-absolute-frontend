@@ -14,6 +14,11 @@ class RespondentProgressBar extends ProgressBar {
   }
 
   get downloadableFiles() {
+    const caseId = this.case.caseReference;
+    if (caseId === config.hideDocsForCase) {
+      return [];
+    }
+
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
       documentWhiteList: config.document.filesWhiteList.respondent
