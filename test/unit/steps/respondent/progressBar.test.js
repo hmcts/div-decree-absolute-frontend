@@ -7,6 +7,7 @@ const idam = require('services/idam');
 const { custom, expect, middleware,
   sinon, redirect, stepAsInstance } = require('@hmcts/one-per-page-test-suite');
 const httpStatus = require('http-status-codes');
+const config = require('config');
 
 const progressBarTemplates = {
   divorceGranted:
@@ -107,6 +108,17 @@ describe(modulePath, () => {
         'generalOrder',
         'generalOrder'
       ]);
+    });
+
+    it('should expect no download documents if caseId matches config.hideDocsForCase', () => {
+      session.case.data.caseReference = config.hideDocsForCase;
+      const instance = stepAsInstance(ProgressBar, session);
+
+      const fileTypes = instance.downloadableFiles.map(file => {
+        return file.type;
+      });
+
+      expect(fileTypes).to.eql([]);
     });
   });
 
