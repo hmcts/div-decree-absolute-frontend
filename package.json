@@ -110,7 +110,7 @@
     "lodash": "^4.17.21",
     "mem": "^5.0.0",
     "minimatch": "^3.0.4",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "tunnel-agent": "^0.6.0",
     "ua-parser-js": "^0.7.19",
     "underscore.string": "^3.3.5",
@@ -135,7 +135,8 @@
     "follow-redirects": "^1.14.7",
     "marked": "^4.0.10",
     "pathval": "^1.1.1",
-    "pac-resolver": "^5.0.0"
+    "pac-resolver": "^5.0.0",
+    "nanoid": "^3.1.31"
   },
   "nyc": {
     "report-dir": "coverage",
