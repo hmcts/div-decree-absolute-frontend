@@ -446,7 +446,7 @@
     imports-loader "github:webpack-contrib/imports-loader#abea1c24f84b1343f9a277e33c8d89c83c013274"
     jquery "^3.2.1"
     js-yaml "^3.9.1"
-    node-sass "^4.12.0"
+    node-sass "^7.0.0"
     nunjucks "^3.1.7"
     sass-loader "^6.0.6"
     serve-static "^1.13.2"
@@ -478,7 +478,7 @@
     imports-loader "github:webpack-contrib/imports-loader#abea1c24f84b1343f9a277e33c8d89c83c013274"
     jquery "^3.2.1"
     js-yaml "^3.9.1"
-    node-sass "^4.12.0"
+    node-sass "^7.0.0"
     nunjucks "^3.1.7"
     sass-loader "^6.0.6"
     serve-static "^1.13.2"
@@ -9575,8 +9575,8 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@^2.8.0:
-  version "2.8.0"
+redis@^3.1.1:
+  version "3.1.1"
   resolved "https://registry.yarnpkg.com/redis/-/redis-2.8.0.tgz#202288e3f58c49f6079d97af7a10e1303ae14b02"
   integrity sha512-M1OkonEQwtRmZv4tEWF2VgpG0JWJ8Fv1PhlgT5+B+uNq2cA3Rt1Yt/ryoR+vQNOQcIEgdCdfH0jr3bDpihAw1A==
   dependencies:
@@ -10067,7 +10067,7 @@ schema-utils@^0.3.0:
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.3.0.tgz#f5877222ce3e931edae039f17eb3716e7137f8cf"
   integrity sha1-9YdyIs4+kx7a4DnxfrNxbnE3+M8=
   dependencies:
-    ajv "^5.0.0"
+    ajv "^6.12.3"
 
 schema-utils@^0.4.5:
   version "0.4.7"
