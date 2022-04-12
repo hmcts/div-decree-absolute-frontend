@@ -55,7 +55,8 @@ module "frontend" {
   asp_name                        = local.asp_name
   asp_rg                          = local.asp_rg
   instance_size                   = "I3"
-  appinsights_instrumentation_key = data.azurerm_key_vault_secret.appinsights_secret.value
+  appinsights_instrumentation_key = var.appinsights_instrumentation_key
+  # appinsights_instrumentation_key = data.azurerm_key_vault_secret.appinsights_secret.value
   enable_ase                      = var.enable_ase
 
   app_settings = {
