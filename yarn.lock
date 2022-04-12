@@ -467,9 +467,9 @@
     webpack-dev-middleware "^2.0.4"
 
 "@hmcts/look-and-feel@^4.0.8":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@hmcts/look-and-feel/-/look-and-feel-4.1.1.tgz#a1669eb0e617bb67f1e2cbc7ec162e013c124b2f"
-  integrity sha512-sk15KMJ74hFuIArPXrB6KX8X0vfW08BUl4+5B9HMah8fo6KSCK66tFQcLpyytcx3TR+v9Na7M6R5nFiF7aPboA==
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@hmcts/look-and-feel/-/look-and-feel-4.0.8.tgz#a5aaf69c320fab6aab07227e71600ddc16e4dca2"
+  integrity sha512-g38TGXeUW2YP+0Gptx0DmepGSazBvlOQ7ed/QI9O68oSsEjX1AgD6IiTLxFfWiFcLfoRVAM9+HHoMd6cPG6kNA==
   dependencies:
     babel-core "^6.26.3"
     babel-loader "^7.1.2"
@@ -495,7 +495,7 @@
     sass-loader "^6.0.6"
     serve-static "^1.14.1"
     style-loader "^0.20.1"
-    webpack "^4.41.5"
+    webpack "^3.4.1"
     webpack-dev-middleware "^2.0.4"
 
 "@hmcts/nodejs-healthcheck@^1.7.0":
