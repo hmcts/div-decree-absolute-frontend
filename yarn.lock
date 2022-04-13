@@ -5023,7 +5023,7 @@ extract-text-webpack-plugin@^3.0.0, extract-text-webpack-plugin@^3.0.2:
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
   integrity sha512-bt/LZ4m5Rqt/Crl2HiKuAl/oqg0psx1tsTLkvWbJen1CtD+fftkZhMaQ9HOtY2gWsl2Wq+sABmMVi9z3DhKWQQ==
   dependencies:
-    async "^2.4.1"
+    async "^3.2.2"
     loader-utils "^1.1.0"
     schema-utils "^0.3.0"
     webpack-sources "^1.0.1"
@@ -12958,7 +12958,7 @@ webpack@^3.4.1:
     acorn-dynamic-import "^2.0.0"
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
-    async "^2.1.2"
+    async "^3.2.2"
     enhanced-resolve "^3.4.0"
     escope "^3.6.0"
     interpret "^1.0.0"
@@ -13091,7 +13091,7 @@ winston@^2.4.5:
   resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.5.tgz#f2e431d56154c4ea765545fc1003bd340c95b59a"
   integrity sha512-TWoamHt5yYvsMarGlGEQE59SbJHqGsZV8/lwC+iCcGeAe0vUaOh+Lv6SYM17ouzC/a/LB1/hz/7sxFBtlu1l4A==
   dependencies:
-    async "~1.0.0"
+    async "~3.2.2"
     colors "1.0.x"
     cycle "1.0.x"
     eyes "0.1.x"
