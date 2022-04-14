@@ -55,7 +55,7 @@ module "frontend" {
   asp_name                        = local.asp_name
   asp_rg                          = local.asp_rg
   instance_size                   = "I3"
-  appinsights_instrumentation_key = var.appinsights_instrumentation_key
+  appinsights_instrumentation_key = data.azurerm_key_vault_secret.appinsights_secret.value
   enable_ase                      = var.enable_ase
 
   app_settings = {
@@ -178,6 +178,11 @@ data "azurerm_key_vault_secret" "session_secret" {
 
 data "azurerm_key_vault_secret" "redis_secret" {
   name      = "redis-secret"
+  key_vault_id = data.azurerm_key_vault.div_key_vault.id
+}
+
+data "azurerm_key_vault_secret" "appinsights_secret" {
+  name = "AppInsightsInstrumentationKey"
   key_vault_id = data.azurerm_key_vault.div_key_vault.id
 }
 
