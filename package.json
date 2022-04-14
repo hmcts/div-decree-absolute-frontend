@@ -137,7 +137,8 @@
     "marked": "^4.0.10",
     "pathval": "^1.1.1",
     "pac-resolver": "^5.0.0",
-    "nanoid": "^3.1.31"
+    "nanoid": "^3.1.31",
+    "async": ">=3.2.2"
   },
   "nyc": {
     "report-dir": "coverage",
