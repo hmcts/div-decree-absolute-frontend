@@ -17,7 +17,7 @@ nodejs:
     REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
     ANTENNA_WEBCHAT_URL: "webchat-client.pp.ctsc.hmcts.net"
     ANTENNA_WEBCHAT_SERVICE: "Testing"
-    ANTENNA_WEBCHAT_VERSION: "1"
+    ANTENNA_WEBCHAT_VERSION: "1-6-12"
     FEATURE_DYNATRACE: "false"
 
   # Don't modify below here
