@@ -41,7 +41,8 @@ lookAndFeel.configure(app, {
       path.resolve(__dirname, 'assets/js/cookiesManager.js'),
       path.resolve(__dirname, 'assets/scss/main.scss'),
       path.resolve(__dirname, 'assets/scss/_cookies.scss'),
-      path.resolve(__dirname, 'assets/scss/_web-chat.scss')
+      path.resolve(__dirname, 'assets/scss/_web-chat.scss'),
+      path.resolve(__dirname, 'assets/js/webchat.js')
     ]
   },
   nunjucks: {
