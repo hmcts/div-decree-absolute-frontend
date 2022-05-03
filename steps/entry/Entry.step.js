@@ -4,6 +4,7 @@ const idam = require('services/idam');
 const config = require('config');
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const caseOrchestrationHelper = require('helpers/caseOrchestrationHelper');
+const { getWebchatOpeningHours } = require('../../middleware/getWebchatOpenHours');
 
 class Entry extends EntryPoint {
   static get path() {
@@ -22,7 +23,11 @@ class Entry extends EntryPoint {
   }
 
   get middleware() {
-    return [...super.middleware, idam.authenticate];
+    return [
+      ...super.middleware,
+      getWebchatOpeningHours,
+      idam.authenticate
+    ];
   }
 }
 

@@ -6,6 +6,7 @@ const idam = require('services/idam');
 const Joi = require('joi');
 const caseOrchestrationService = require('services/caseOrchestrationService');
 const removeNonCurrentStepErrors = require('middleware/removeNonCurrentStepErrors');
+const { getWebchatOpeningHours } = require('../../../middleware/getWebchatOpenHours');
 
 class ApplyForDecreeAbsolute extends Question {
   static get path() {
@@ -60,6 +61,7 @@ class ApplyForDecreeAbsolute extends Question {
   get middleware() {
     return [
       ...super.middleware,
+      getWebchatOpeningHours,
       idam.protect(),
       removeNonCurrentStepErrors
     ];
