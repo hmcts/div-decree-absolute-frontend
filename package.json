@@ -9,7 +9,7 @@
   "scripts": {
     "start": "NODE_PATH=. node server.js",
     "setup": "NODE_PATH=.",
-    "dev": "NODE_ENV=dev NODE_PATH=. node-dev server.js",
+    "dev": "FEATURE_ANTENNA_WEBCHAT_AVAILABILITY_TOGGLE=true ANTENNA_WEBCHAT_URL=webchat.pp.ctsc.hmcts.net ANTENNA_WEBCHAT_SERVICE=Divorce ANTENNA_WEBCHAT_AVAILABILITY_DEBUG=true NODE_ENV=dev NODE_PATH=. node-dev server.js",
     "mocks": "NODE_ENV=dev NODE_PATH=. node-dev mocks/index.js",
     "test": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR nyc mocha --exit 'test/unit/**/*.test.js' --timeout 15000",
     "test:all": "yarn lint; yarn test:unit; yarn test:a11y; yarn test:validation; yarn test:functional",
