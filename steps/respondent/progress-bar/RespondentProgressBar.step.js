@@ -7,6 +7,7 @@ const {
   contentMap,
   progressBarMap
 } = require('./stateTemplates');
+const { getWebchatOpeningHours } = require('../../../middleware/getWebchatOpenHours');
 
 class RespondentProgressBar extends ProgressBar {
   static get path() {
@@ -57,6 +58,13 @@ class RespondentProgressBar extends ProgressBar {
     }
 
     return pageContent;
+  }
+
+  get middleware() {
+    return [
+      ...super.middleware,
+      getWebchatOpeningHours
+    ];
   }
 }
 

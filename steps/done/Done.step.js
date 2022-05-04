@@ -3,6 +3,7 @@ const config = require('config');
 const idam = require('services/idam');
 const i18next = require('i18next');
 const commonContent = require('common/content');
+const { getWebchatOpeningHours } = require('../../middleware/getWebchatOpenHours');
 
 class Done extends ExitPoint {
   static get path() {
@@ -22,7 +23,8 @@ class Done extends ExitPoint {
     return [
       idam.protect(),
       idam.logout(),
-      ...super.middleware
+      ...super.middleware,
+      getWebchatOpeningHours
     ];
   }
 }

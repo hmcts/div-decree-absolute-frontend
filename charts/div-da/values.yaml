@@ -26,6 +26,9 @@ nodejs:
     ANTENNA_WEBCHAT_SERVICE: "Testing"
     ANTENNA_WEBCHAT_VERSION: "1"
 
+    ANTENNA_WEBCHAT_AVAILABILITY_DEBUG: "false"
+    FEATURE_WEBCHAT_AVAILABILITY_TOGGLE: "false"
+
     FEATURE_DYNATRACE: "false"
 
     BASE_URL: "https://div-da-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
