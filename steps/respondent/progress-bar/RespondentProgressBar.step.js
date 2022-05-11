@@ -7,6 +7,7 @@ const {
   contentMap,
   progressBarMap
 } = require('./stateTemplates');
+const { getWebchatOpeningHours } = require('../../../middleware/getWebchatOpenHours');
 
 class RespondentProgressBar extends ProgressBar {
   static get path() {
@@ -14,6 +15,11 @@ class RespondentProgressBar extends ProgressBar {
   }
 
   get downloadableFiles() {
+    const caseId = this.case.caseReference;
+    if (caseId === config.hideDocsForCase) {
+      return [];
+    }
+
     const docConfig = {
       documentNamePath: config.document.documentNamePath,
       documentWhiteList: config.document.filesWhiteList.respondent
@@ -52,6 +58,13 @@ class RespondentProgressBar extends ProgressBar {
     }
 
     return pageContent;
+  }
+
+  get middleware() {
+    return [
+      ...super.middleware,
+      getWebchatOpeningHours
+    ];
   }
 }
 
