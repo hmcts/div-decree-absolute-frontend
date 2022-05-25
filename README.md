@@ -52,3 +52,14 @@ yarn test:functional
 * If you want to point to a PR, modify `tests.functional.url` accordingly.
 
 * Run ```NODE_ENV=aat yarn test:functional```. This would your tests to pick up the new `local-aat.yml`.
+
+### Running additional tests in the Jenkins PR Pipeline
+
+1. Add one or more appropriate labels to your PR in GitHub. Valid labels are:
+
+- ```enable_html_test```
+- ```enable_full_functional_test```
+- ```enable_fortify_scan```
+- ```enable_all_tests_and_scans```
+
+2. Trigger a build of your PR in Jenkins.  Once the regular pipeline completes, the nightly pipeline will trigger to execute your chosen test(s).
