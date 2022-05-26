@@ -5,7 +5,7 @@
     </span>
   </summary>
   <div class="govuk-details__text" id="details-content-6" aria-hidden="true">
-    {% if features.antennaWebchat and i18n.currentLanguage == "en" %}
+    {% if antennaWebchat is defined and i18n.currentLanguage == "en" %}
     <p class="govuk-heading-s govuk-!-margin-bottom-1" id="antenna-web-chat-header">{{ content.webChatTitle | safe }}</p>
     <p id="metrics"></p>
     {% if features.antennaWebchatAvailabilityToggle %}
@@ -43,7 +43,7 @@
 </details>
 
 <!-- Javascript -->
-{% if features.antennaWebchat and i18n.currentLanguage == "en" %}
+{% if antennaWebchat is defined and i18n.currentLanguage == "en" %}
 <script src="https://{{ antennaWebchat.url }}/chat-client/{{ antennaWebchat.version }}/app-es2015.js"></script>
 <script src="https://{{ antennaWebchat.url }}/chat-client/{{ antennaWebchat.version }}/app-es5.js"></script>
 {% endif %}
