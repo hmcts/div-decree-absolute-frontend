@@ -105,6 +105,11 @@ webchatAvailability:
     prefixMessage: 'Web chat is now closed. Please come back during the following hours:'
     suffixMessage: 'Alternatively, contact us using one of the ways below.'
 
+commonProps:
+  courtPhoneNumberEn: '0300 303 0642'
+  courtOpeningHourEn: 'Monday - Friday - Phones and Webchat are open 8am-6pm.'
+  courtOpeningHourEn2: 'Closed on Saturday and Sunday.'
+
 paths:
   health: /health
   authenticated: /authenticated

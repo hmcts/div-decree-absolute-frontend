@@ -56,6 +56,13 @@ lookAndFeel.configure(app, {
         service: config.services.antennaWebchat.service,
         version: config.services.antennaWebchat.version
       },
+      commonProps: {
+        en: {
+          courtPhoneNumber: config.commonProps.courtPhoneNumberEn,
+          courtOpeningHours: config.commonProps.courtOpeningHourEn,
+          courtOpeningHours2: config.commonProps.courtOpeningHourEn2
+        }
+      },
       features: {
         antennaWebchatUserAttribute: parseBool(config.features.antennaWebchatUserAttribute),
         antennaWebchatAvailabilityToggle: parseBool(config.features.antennaWebchatAvailabilityToggle),
