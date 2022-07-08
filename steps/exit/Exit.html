@@ -14,12 +14,12 @@
     <p class="govuk-body">{{ content.signInToReturn | safe }}</p>
     <p class="govuk-body">{{ content.ifYouNeedHelp | safe }}</p>
     <p class="govuk-body">
-      % if i18n.currentLanguage == "en" %}
+      {% if i18n.currentLanguage == "en" %}
         {{ commonProps.en.courtPhoneNumber | safe }}<br>
         {{ commonProps.en.courtOpeningHours | safe}}<br>
         {{ commonProps.en.courtOpeningHours2 | safe}}
       {% else %}
-        {{ content.phoneToCallIfProblems | safe }}
+          {{ content.phoneToCallIfProblems | safe }}
       {% endif %}
     </p>
     <p class="govuk-body">{{ content.emailIfProblems | safe }}</p>
