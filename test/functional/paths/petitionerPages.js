@@ -31,7 +31,7 @@ async function testExitPage(I, language = 'en') {
   I.wait(2);
   await I.retry(2).createDaCaseForUser(basicDivorceSession);
 
-  I.amOnLoadedPage('/', language);
+  await I.amOnLoadedPage('/', language);
 
   await I.testIdamPageForPetitioner();
 
