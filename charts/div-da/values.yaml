@@ -62,13 +62,13 @@ nodejs:
         - AppInsightsInstrumentationKey
 
 redis:
-  cluster:
-    enabled: false
-    slaveCount: 0
-  usePassword: false
+  enabled: false
+  architecture: standalone
   master:
     persistence:
       enabled: false
+  auth:
+    enabled: false
 
 tags:
   idam-pr: false
