@@ -8,7 +8,7 @@ const config = require('config');
 const feesAndPaymentsService = require('services/feesAndPaymentsService');
 
 const maxHtmlValidationRetries = 3;
-const htmlValidationTimeout = 5000;
+const htmlValidationTimeout = 6500;
 
 // Ignored warnings
 const excludedWarnings = [
@@ -67,24 +67,34 @@ const stepHtml = step => {
     .text(html => html);
 };
 
+const delay = time => {
+  return new Promise(delayResolve => setTimeout(delayResolve, time));
+};
+
 const w3cjsValidate = html => {
   return new Promise((resolve, reject) => {
-    w3cjs.setW3cCheckUrl('https://validator.w3.org/nu/');
-    w3cjs.validate({
-      input: html,
-      callback: (error, res) => { // eslint-disable-line id-blacklist
-        if (error) {
-          return reject(error);
-        }
+    delay(1500).then(() => {
+      w3cjs.setW3cCheckUrl('https://validator.w3.org/nu/');
+      w3cjs.validate({
+        input: html,
+        callback: (error, res) => { // eslint-disable-line id-blacklist
+          if (error) {
+            return reject(error);
+          }
 
-        const errors = res.messages
-          .filter(r => r.type === 'error')
-          .filter(filteredErrors);
-        const warnings = res.messages
-          .filter(r => r.type === 'info')
-          .filter(filteredWarnings);
-        return resolve({ errors, warnings });
-      }
+          if (res === '') {
+            // eslint-disable-next-line prefer-promise-reject-errors
+            return reject(new Error('No Response'));
+          }
+          const errors = res.messages
+            .filter(r => r.type === 'error')
+            .filter(filteredErrors);
+          const warnings = res.messages
+            .filter(r => r.type === 'info')
+            .filter(filteredWarnings);
+          return resolve({ errors, warnings });
+        }
+      });
     });
   });
 };
@@ -104,7 +114,13 @@ const repeatW3cjsValidate = html => {
         })
         .catch(error => {
           if (!promise.done) {
-            reject(error);
+            if (error.message !== 'No Response' && error.message !== 'Unsuccessful HTTP response') {
+              reject(error);
+            }
+
+            if (retries >= maxHtmlValidationRetries) {
+              reject(error);
+            }
           }
           // set promise done so it does not resolve/reject after timeout
           promise.done = true;
@@ -112,10 +128,10 @@ const repeatW3cjsValidate = html => {
 
       // catch timeouted request to w3jcs validate
       setTimeout(() => {
-        retries = retries + 1;
-        if (!promise.done && retries < maxHtmlValidationRetries) {
+        retries += 1;
+        if (!promise.done && retries <= maxHtmlValidationRetries) {
           doValidation();
-        } else {
+        } else if (!promise.done && retries > maxHtmlValidationRetries) {
           reject(new Error('Unable to validate html'));
         }
         // set promise done so it does not resolve/reject after timeout
@@ -135,7 +151,7 @@ steps
       let warnings = [];
 
       before(function beforeTests() {
-        this.timeout(htmlValidationTimeout * maxHtmlValidationRetries);
+        this.timeout(htmlValidationTimeout * (maxHtmlValidationRetries + 2));
         sinon.stub(feesAndPaymentsService, 'getFee')
           .resolves({
             feeCode: 'FEE0002',
