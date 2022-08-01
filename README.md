@@ -57,7 +57,7 @@ yarn test:functional
 
 1. Add one or more appropriate labels to your PR in GitHub. Valid labels are:
 
-- ```enable_full_functional_test```
+- ```enable_full_functional_tests```
 - ```enable_fortify_scan```
 
 2. Trigger a build of your PR in Jenkins.  Fortify scans will take place asynchronously as part of the Static Checks/Container Build step.
