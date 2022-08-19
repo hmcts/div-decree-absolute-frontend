@@ -5,6 +5,7 @@ const formidable = require('formidable');
 
 const saveFileFromRequest = (req = {}) => {
   return new Promise((resolve, reject) => {
+    // NOSONAR
     const form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
       if (error) {
