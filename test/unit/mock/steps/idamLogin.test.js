@@ -20,7 +20,8 @@ describe(modulePath, () => {
       'languageToggle',
       'thereWasAProblem',
       'husband',
-      'wife'
+      'wife',
+      'phoneToCallIfProblems'
     ];
 
     return content(IdamLogin, {}, { ignoreContent });

@@ -5,8 +5,8 @@
     </li>
     <li>
         <strong class="govuk-!-font-size-16">{{ content.phone }}</strong><br>
-        {{ content.phoneNumber | safe }} <br>
-        {{ content.openTimes | safe }} <br>
+        {{ commonProps.en.courtPhoneNumber | safe }} <br>
+        {{ commonProps.en.courtOpeningHours | safe }} <br>
     </li>
     <li>
         {% if case.court[case.courts].serviceCentreName %}

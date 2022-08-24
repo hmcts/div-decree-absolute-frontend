@@ -22,7 +22,9 @@ describe(modulePath, () => {
       'languageToggle',
       'thereWasAProblem',
       'husband',
-      'wife'
+      'wife',
+      'phoneToCallIfProblems',
+      'phone'
     ];
     return content(PrivacyPolicy, {}, { ignoreContent });
   });
