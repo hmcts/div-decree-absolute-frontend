@@ -83,14 +83,20 @@ services:
   antennaWebchat:
     url: ANTENNA_WEBCHAT_URL
     service: ANTENNA_WEBCHAT_SERVICE
+    version: ANTENNA_WEBCHAT_VERSION
+
+webchatAvailability:
+  debug: ANTENNA_WEBCHAT_AVAILABILITY_DEBUG
+  url:
+    hostName: ANTENNA_WEBCHAT_URL
 
 journey:
   timeoutDelay: JOURNEY_TIMEOUT_DELAY
 
 features:
   idam: FEATURE_IDAM
-  antennaWebchat: FEATURE_ANTENNA_WEBCHAT
   antennaWebchatUserAttribute: FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE
+  antennaWebchatAvailabilityToggle: FEATURE_ANTENNA_WEBCHAT_AVAILABILITY_TOGGLE
   dynatrace: FEATURE_DYNATRACE
   pingRedis: FEATURE_PING_REDIS
 

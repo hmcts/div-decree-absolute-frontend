@@ -43,7 +43,6 @@ describe('Test contact us for help', () => {
   it('shows email and phone content', () => {
     const specificContent = [
       'phoneTitle',
-      'phoneToCallIfProblems',
       'emailTitle',
       'emailIfProblems',
       'responseTime'
@@ -51,12 +50,9 @@ describe('Test contact us for help', () => {
     return content(PetitionProgressBar, session, { specificContent });
   });
 
-  it('shows webchat content if enabled', () => {
-    const features = { antennaWebchat: true };
-
+  xit('shows webchat content', () => {
     return custom(PetitionProgressBar)
       .withSession(session)
-      .withGlobal('features', features)
       .get()
       .expect(httpStatus.OK)
       .text(pageContent => {

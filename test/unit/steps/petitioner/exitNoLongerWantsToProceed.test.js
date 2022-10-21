@@ -36,7 +36,8 @@ describe(modulePath, () => {
       'languageToggle',
       'thereWasAProblem',
       'husband',
-      'wife'
+      'wife',
+      'phoneToCallIfProblems'
     ];
 
     it('displays issue date', () => {

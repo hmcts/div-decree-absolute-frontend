@@ -3,6 +3,14 @@ nodejs:
   aadIdentityName: divorce
   image: "hmctspublic.azurecr.io/div/da:latest"
   ingressHost: "div-dn-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  memoryLimits: '256Mi'
+  memoryRequests: '256Mi'
+  cpuLimits: '1000m'
+  cpuRequests: '200m'
+  autoscaling:
+      enabled: true
+      maxReplicas: 4
+      targetCPUUtilizationPercentage: 80 # Default is 80% target CPU utilization
   environment:
     CCD_DIGITAL_COURTS: '["serviceCentre", "eastMidlands", "westMidlands", "southWest", "northWest"]'
     GOOGLE_ANALYTICS_ID: "TBD"
@@ -15,15 +23,17 @@ nodejs:
     RATE_LIMITER_EXPIRE: "3600000"
     RATE_LIMITER_TOTAL: "3600"
     LOG_LEVEL: "INFO"
-    WEBCHAT_CHAT_ID: 3833071605d5d4518036a09.30917386
-    WEBCHAT_TENANT: aG1jdHNzdGFnaW5nMDE
-    WEBCHAT_BUTTON_NO_AGENTS: 7732814745cac6f4603c4d1.53357933
-    WEBCHAT_BUTTON_AGENTS_BUSY: 2042157415cc19c95669039.65793052
-    WEBCHAT_BUTTON_SERVICE_CLOSED: 20199488815cc1a89e0861d5.73103009
     REFORM_ENVIRONMENT: "{{ .Values.global.environment }}"
 
     ANTENNA_WEBCHAT_URL: "webchat.training.ctsc.hmcts.net"
     ANTENNA_WEBCHAT_SERVICE: "Testing"
+    ANTENNA_WEBCHAT_VERSION: "1"
+
+    ANTENNA_WEBCHAT_AVAILABILITY_DEBUG: "false"
+    FEATURE_WEBCHAT_AVAILABILITY_TOGGLE: "false"
+
+    COURT_PHONENUMBER_EN: "0300 303 0642"
+    COURT_OPENINGHOURS_EN: 'Monday to Friday, 8am to 6pm'
 
     FEATURE_DYNATRACE: "false"
 

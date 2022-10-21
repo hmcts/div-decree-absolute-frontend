@@ -41,7 +41,8 @@ lookAndFeel.configure(app, {
       path.resolve(__dirname, 'assets/js/cookiesManager.js'),
       path.resolve(__dirname, 'assets/scss/main.scss'),
       path.resolve(__dirname, 'assets/scss/_cookies.scss'),
-      path.resolve(__dirname, 'assets/scss/_web-chat.scss')
+      path.resolve(__dirname, 'assets/scss/_web-chat.scss'),
+      path.resolve(__dirname, 'assets/js/webchat.js')
     ]
   },
   nunjucks: {
@@ -50,14 +51,20 @@ lookAndFeel.configure(app, {
       phase: 'BETA',
       feedbackLink: 'https://www.smartsurvey.co.uk/s/Divorce_Feedback',
       googleAnalyticsId: config.services.googleAnalytics.id,
-      webchat: config.services.webchat,
       antennaWebchat: {
         url: config.services.antennaWebchat.url,
-        service: config.services.antennaWebchat.service
+        service: config.services.antennaWebchat.service,
+        version: config.services.antennaWebchat.version
+      },
+      commonProps: {
+        en: {
+          courtPhoneNumber: config.commonProps.courtPhoneNumberEn,
+          courtOpeningHours: config.commonProps.courtOpeningHourEn
+        }
       },
       features: {
-        antennaWebchat: parseBool(config.features.antennaWebchat),
         antennaWebchatUserAttribute: parseBool(config.features.antennaWebchatUserAttribute),
+        antennaWebchatAvailabilityToggle: parseBool(config.features.antennaWebchatAvailabilityToggle),
         // Dynatrace Feature Toggle
         dynatrace: parseBool(config.features.dynatrace)
       }
@@ -65,7 +72,6 @@ lookAndFeel.configure(app, {
   }
 });
 
-app.use('/webchat', express.static(`${__dirname}/node_modules/@hmcts/ctsc-web-chat/assets`));
 app.use('/public/locale', express.static(`${__dirname}/assets/locale`));
 
 // Get user details from idam, sets req.idam.userDetails
