@@ -20,7 +20,8 @@ const excludedWarnings = [
   'The “navigation” role is unnecessary for element “nav”.',
   'Possible misuse of “aria-label”. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)', // eslint-disable-line max-len
   'The “button” role is unnecessary for element “button”.',
-  'The “button” role is unnecessary for element “input” whose type is “submit”.'
+  'The “button” role is unnecessary for element “input” whose type is “submit”.',
+  'Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.'
 ];
 const filteredWarnings = r => {
   return !excludedWarnings.includes(r.message);
