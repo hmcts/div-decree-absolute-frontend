@@ -1935,7 +1935,7 @@ babel-loader@^7.1.2:
   integrity sha512-iCHfbieL5d1LfOQeeVJEUyD9rTwBcP/fcEbRCfempxTDuqrKpu0AZjLAQHEQa3Yqyj9ORKe2iHfoj4rHLf7xpw==
   dependencies:
     find-cache-dir "^1.0.0"
-    loader-utils "^1.0.2"
+    loader-utils "^1.4.1"
     mkdirp "^0.5.1"
 
 babel-messages@^6.23.0:
@@ -3398,7 +3398,7 @@ copy-webpack-plugin@^4.0.1:
     find-cache-dir "^1.0.0"
     globby "^7.1.1"
     is-glob "^4.0.0"
-    loader-utils "^1.1.0"
+    loader-utils "^1.4.1"
     minimatch "^3.0.4"
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
@@ -3551,7 +3551,7 @@ css-loader@^3.0.0:
     camelcase "^5.3.1"
     cssesc "^3.0.0"
     icss-utils "^4.1.1"
-    loader-utils "^1.2.3"
+    loader-utils "^1.4.1"
     normalize-path "^3.0.0"
     postcss "^7.0.32"
     postcss-modules-extract-imports "^2.0.0"
@@ -4564,7 +4564,7 @@ exports-loader@^0.7.0:
   resolved "https://registry.yarnpkg.com/exports-loader/-/exports-loader-0.7.0.tgz#84881c784dea6036b8e1cd1dac3da9b6409e21a5"
   integrity sha512-RKwCrO4A6IiKm0pG3c9V46JxIHcDplwwGJn6+JJ1RcVnh/WSGJa0xkmk5cRVtgOPzCAtTMGj2F7nluh9L0vpSA==
   dependencies:
-    loader-utils "^1.1.0"
+    loader-utils "^1.4.1"
     source-map "0.5.0"
 
 express-limiter@^1.6.1:
@@ -4702,7 +4702,7 @@ extract-text-webpack-plugin@^3.0.0:
   integrity sha512-bt/LZ4m5Rqt/Crl2HiKuAl/oqg0psx1tsTLkvWbJen1CtD+fftkZhMaQ9HOtY2gWsl2Wq+sABmMVi9z3DhKWQQ==
   dependencies:
     async "^2.4.1"
-    loader-utils "^1.1.0"
+    loader-utils "^1.4.1"
     schema-utils "^0.3.0"
     webpack-sources "^1.0.1"
 
@@ -5897,7 +5897,7 @@ import-local@^3.0.2:
   version "0.7.1"
   resolved "https://codeload.github.com/webpack-contrib/imports-loader/tar.gz/abea1c24f84b1343f9a277e33c8d89c83c013274"
   dependencies:
-    loader-utils "^1.0.2"
+    loader-utils "^1.4.1"
     source-map "^0.5.6"
 
 imurmurhash@^0.1.4:
@@ -10419,7 +10419,7 @@ sass-loader@^6.0.6:
   integrity sha512-JoiyD00Yo1o61OJsoP2s2kb19L1/Y2p3QFcCdWdF6oomBGKVYuZyqHWemRBfQ2uGYsk+CH3eCguXNfpjzlcpaA==
   dependencies:
     clone-deep "^2.0.1"
-    loader-utils "^1.0.1"
+    loader-utils "^1.4.1"
     lodash.tail "^4.1.1"
     neo-async "^2.5.0"
     pify "^3.0.0"
@@ -11198,7 +11198,7 @@ style-loader@^0.20.1:
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.20.3.tgz#ebef06b89dec491bcb1fdb3452e913a6fd1c10c4"
   integrity sha512-2I7AVP73MvK33U7B9TKlYZAqdROyMXDYSMvHLX43qy3GCOaJNiV6i0v/sv9idWIaQ42Yn2dNv79Q5mKXbKhAZg==
   dependencies:
-    loader-utils "^1.1.0"
+    loader-utils "^1.4.1"
     schema-utils "^0.4.5"
 
 superagent-proxy@^1.0.2:
@@ -12169,7 +12169,7 @@ webpack@^3.4.1:
     json-loader "^0.5.4"
     json5 "^0.5.1"
     loader-runner "^2.3.0"
-    loader-utils "^1.1.0"
+    loader-utils "^1.4.1"
     memory-fs "~0.4.1"
     mkdirp "~0.5.0"
     node-libs-browser "^2.0.0"
