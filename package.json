@@ -137,7 +137,12 @@
     "pathval": "^1.1.1",
     "pac-resolver": "^5.0.0",
     "nanoid": "^3.1.31",
-    "async": ">=3.2.2"
+    "async": ">=3.2.2",
+    "scss-tokenizer": "^0.4.3",
+    "jsdom": "^16.5.0",
+    "vm2": "^3.9.11",
+    "decode-uri-component": "^0.2.1",
+    "node-notifier": "^8.0.1"
   },
   "nyc": {
     "report-dir": "coverage",
