@@ -146,8 +146,7 @@
     "qs": "^6.9.7",
     "express": "4.17.3",
     "got": "^11.8.5",
-    "validator": "^13.7.0",
-    "ajv": "^6.12.3"
+    "validator": "^13.7.0"
   },
   "nyc": {
     "report-dir": "coverage",
