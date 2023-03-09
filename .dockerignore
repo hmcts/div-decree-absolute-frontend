@@ -3,6 +3,10 @@
 infrastructure
 charts
 node_modules
+build
+Dockerfile
+.dockerignore
+.gitignore
 
 Jenkinsfile*
 README.md
