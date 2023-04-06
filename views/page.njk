@@ -1,6 +1,7 @@
 {% extends "look-and-feel/layouts/two_thirds.html" %}
 {% from "look-and-feel/components/header.njk" import header %}
 {% from "includes/phase_banner.html" import divPhaseBanner %}
+{% from "look-and-feel/components/warning-text.njk" import warningText %}
 
 {% set serviceName = content.serviceName %}
 
@@ -29,6 +30,10 @@
   {% block back %}
     <a class="link-back" href="#" onclick="history.go(-1); return false;">{{ content.backLink }}</a>
   {% endblock %}
+  {{ warningText({
+        text: "Please note that due to a technical error some users may have received a copy of an old petition and acknowledgement of service pack. If the same divorce case number has already concluded with a Decree Absolute, or you have already responded to this, please rely on your portal to confirm the latest position.",
+        iconFallbackText: "Information"
+      }) }}
 {% endblock %}
 
 {% set titleSize = titleSize | default("xl") %}
