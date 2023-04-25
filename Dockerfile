@@ -1,7 +1,12 @@
-FROM hmctspublic.azurecr.io/base/node:14-alpine as runtime
-COPY --chown=hmcts:hmcts package.json yarn.lock ./
-RUN yarn cache clean
-RUN yarn set version berry && yarn install
-COPY . .
+FROM hmctspublic.azurecr.io/base/node:14-alpine as base
+USER root
+RUN corepack enable
+RUN apk add git
+USER hmcts
+COPY --chown=hmcts:hmcts . .
+RUN yarn install && yarn cache clean
 
+# ---- Runtime image ----
+FROM base as runtime
+COPY . .
 EXPOSE 3000
