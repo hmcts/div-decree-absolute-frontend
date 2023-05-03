@@ -85,7 +85,7 @@ describe(modulePath, () => {
       const result = getWebchatOpenHours.timeTo12Hr('20:00:00');
       expect(result)
         .to
-        .eql('8 pm');
+        .eql('8 PM');
     });
 
     it('will return Invalid Time if invalid time provided', () => {
@@ -241,7 +241,7 @@ describe(modulePath, () => {
         .eql(false);
       expect(result)
         .to
-        .eql({ day: 'Monday', from: '8 am', until: '8 pm' });
+        .eql({ day: 'Monday', from: '8 AM', until: '8 PM' });
     });
 
     it('will return false when an invalid day is provided', () => {
@@ -279,7 +279,7 @@ describe(modulePath, () => {
       const result = getWebchatOpenHours.parseOpenHoursToTable(validOpenHrsData);
       expect(result)
         .to
-        .eql('<table style="margin-bottom: 1em;"><caption style="display: none;">Divorce Web Chat Opening Hours</caption><tr><th style="text-align: left; padding-right: 25px;">Day</th><th style="text-align: left; padding-right: 25px;">From</th><th style="text-align: left; padding-right: 25px;">Until</th></tr><tr><td style="padding-right: 25px;">Monday</td><td style="padding-right: 25px;">8 am</td><td style="padding-right: 25px;">8 pm</td></tr><tr><td style="padding-right: 25px;">Tuesday</td><td style="padding-right: 25px;">7 am</td><td style="padding-right: 25px;">7 pm</td></tr><tr><td style="padding-right: 25px;">Wednesday</td><td style="padding-right: 25px;">9 am</td><td style="padding-right: 25px;">9 pm</td></tr></table>');
+        .eql('<table style="margin-bottom: 1em;"><caption style="display: none;">Divorce Web Chat Opening Hours</caption><tr><th style="text-align: left; padding-right: 25px;">Day</th><th style="text-align: left; padding-right: 25px;">From</th><th style="text-align: left; padding-right: 25px;">Until</th></tr><tr><td style="padding-right: 25px;">Monday</td><td style="padding-right: 25px;">8 AM</td><td style="padding-right: 25px;">8 PM</td></tr><tr><td style="padding-right: 25px;">Tuesday</td><td style="padding-right: 25px;">7 AM</td><td style="padding-right: 25px;">7 PM</td></tr><tr><td style="padding-right: 25px;">Wednesday</td><td style="padding-right: 25px;">9 AM</td><td style="padding-right: 25px;">9 PM</td></tr></table>');
     });
 
     it('will return false when any invalid day/from/until values are provided', () => {
@@ -298,7 +298,7 @@ describe(modulePath, () => {
         .eql(false);
       expect(result)
         .to
-        .eql(`<p>${config.messages.prefixMessage}</p><table style="margin-bottom: 1em;"><caption style="display: none;">Divorce Web Chat Opening Hours</caption><tr><th style="text-align: left; padding-right: 25px;">Day</th><th style="text-align: left; padding-right: 25px;">From</th><th style="text-align: left; padding-right: 25px;">Until</th></tr><tr><td style="padding-right: 25px;">Monday</td><td style="padding-right: 25px;">8 am</td><td style="padding-right: 25px;">8 pm</td></tr><tr><td style="padding-right: 25px;">Tuesday</td><td style="padding-right: 25px;">7 am</td><td style="padding-right: 25px;">7 pm</td></tr><tr><td style="padding-right: 25px;">Wednesday</td><td style="padding-right: 25px;">9 am</td><td style="padding-right: 25px;">9 pm</td></tr></table><p>${config.messages.suffixMessage}</p>`);
+        .eql(`<p>${config.messages.prefixMessage}</p><table style="margin-bottom: 1em;"><caption style="display: none;">Divorce Web Chat Opening Hours</caption><tr><th style="text-align: left; padding-right: 25px;">Day</th><th style="text-align: left; padding-right: 25px;">From</th><th style="text-align: left; padding-right: 25px;">Until</th></tr><tr><td style="padding-right: 25px;">Monday</td><td style="padding-right: 25px;">8 AM</td><td style="padding-right: 25px;">8 PM</td></tr><tr><td style="padding-right: 25px;">Tuesday</td><td style="padding-right: 25px;">7 AM</td><td style="padding-right: 25px;">7 PM</td></tr><tr><td style="padding-right: 25px;">Wednesday</td><td style="padding-right: 25px;">9 AM</td><td style="padding-right: 25px;">9 PM</td></tr></table><p>${config.messages.suffixMessage}</p>`);
     });
 
     it('will return valid default HTML message when JSON data fails to validate', () => {
@@ -348,7 +348,7 @@ describe(modulePath, () => {
         expect(res.locals.antennaWebchat_hours).to.exist;
         expect(res.locals.antennaWebchat_hours)
           .to
-          .eql(`<p>${config.messages.prefixMessage}</p><table style="margin-bottom: 1em;"><caption style="display: none;">Divorce Web Chat Opening Hours</caption><tr><th style="text-align: left; padding-right: 25px;">Day</th><th style="text-align: left; padding-right: 25px;">From</th><th style="text-align: left; padding-right: 25px;">Until</th></tr><tr><td style="padding-right: 25px;">Monday</td><td style="padding-right: 25px;">8 am</td><td style="padding-right: 25px;">8 pm</td></tr><tr><td style="padding-right: 25px;">Tuesday</td><td style="padding-right: 25px;">7 am</td><td style="padding-right: 25px;">7 pm</td></tr><tr><td style="padding-right: 25px;">Wednesday</td><td style="padding-right: 25px;">9 am</td><td style="padding-right: 25px;">9 pm</td></tr></table><p>${config.messages.suffixMessage}</p>`);
+          .eql(`<p>${config.messages.prefixMessage}</p><table style="margin-bottom: 1em;"><caption style="display: none;">Divorce Web Chat Opening Hours</caption><tr><th style="text-align: left; padding-right: 25px;">Day</th><th style="text-align: left; padding-right: 25px;">From</th><th style="text-align: left; padding-right: 25px;">Until</th></tr><tr><td style="padding-right: 25px;">Monday</td><td style="padding-right: 25px;">8 AM</td><td style="padding-right: 25px;">8 PM</td></tr><tr><td style="padding-right: 25px;">Tuesday</td><td style="padding-right: 25px;">7 AM</td><td style="padding-right: 25px;">7 PM</td></tr><tr><td style="padding-right: 25px;">Wednesday</td><td style="padding-right: 25px;">9 AM</td><td style="padding-right: 25px;">9 PM</td></tr></table><p>${config.messages.suffixMessage}</p>`);
         done();
       });
     });
