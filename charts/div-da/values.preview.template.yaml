@@ -9,8 +9,8 @@ idam-pr:
 
 nodejs:
   environment:
-    BASE_URL: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
-    PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.service.core-compute-preview.internal"
+    BASE_URL: "https://${SERVICE_NAME}.preview.platform.hmcts.net"
+    PUBLIC_HOSTNAME: "https://${SERVICE_NAME}.preview.platform.hmcts.net"
     FEATURE_ANTENNA_WEBCHAT_USER_ATTRIBUTE: "true"
     FEATURE_PING_REDIS: "true"
     REDISCLOUD_URL: "redis://${SERVICE_NAME}-redis-master:6379"
