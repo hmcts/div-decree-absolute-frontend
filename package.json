@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=14.9.3"
   },
   "scripts": {
     "start": "NODE_PATH=. node server.js",
@@ -32,13 +32,13 @@
   "dependencies": {
     "@hmcts/div-document-express-handler": "^1.1.0",
     "@hmcts/div-idam-express-middleware": "^6.6.2",
+    "@hmcts/eslint-config": "^1.4.0",
     "@hmcts/look-and-feel": "^4.0.8",
     "@hmcts/nodejs-healthcheck": "^1.7.0",
     "@hmcts/nodejs-logging": "^3.0.0",
     "@hmcts/one-per-page": "^5.4.0",
     "@hmcts/properties-volume": "^0.0.13",
-    "applicationinsights": "1.5.0",
-    "applicationinsights-native-metrics": "^0.0.5",
+    "applicationinsights": "^2.5.0",
     "cookie-parser": "^1.4.4",
     "cookies": "^0.7.3",
     "express": "4.17.3",
@@ -159,5 +159,6 @@
       "test/**/*",
       "mocks/**/*"
     ]
-  }
+  },
+  "packageManager": "yarn@3.5.1"
 }
