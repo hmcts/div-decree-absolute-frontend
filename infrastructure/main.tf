@@ -36,10 +36,7 @@ module "redis-cache" {
   product  = var.env != "preview" ? "${var.product}-redis" : "${var.product}-${var.component}-redis"
   location = var.location
   env      = var.env
-  private_endpoint_enabled = true
-  redis_version = "6"
-  business_area = "cft"
-  public_network_access_enabled = false
+  subnetid = data.azurerm_subnet.core_infra_redis_subnet.id
   common_tags = var.common_tags
 }
 
