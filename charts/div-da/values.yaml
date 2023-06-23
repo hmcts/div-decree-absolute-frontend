@@ -61,7 +61,7 @@ nodejs:
         - session-secret
         - redis-secret
         - idam-secret
-        - da-redis-connection-string
+        - redis-connection-string
         - AppInsightsInstrumentationKey
 
 redis:
