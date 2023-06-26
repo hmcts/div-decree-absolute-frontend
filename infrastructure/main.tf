@@ -84,7 +84,6 @@ module "frontend" {
     IDAM_SECRET = data.azurerm_key_vault_secret.idam_secret.value
 
     // Redis Cloud
-    REDISCLOUD_URL = data.azurerm_key_vault_secret.redis_connection_string.value
     REDIS_ENCRYPTION_SECRET = data.azurerm_key_vault_secret.redis_secret.value
 
     // Evidence Management Client API
