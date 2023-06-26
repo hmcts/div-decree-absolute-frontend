@@ -161,6 +161,11 @@ data "azurerm_key_vault_secret" "session_secret" {
   key_vault_id = data.azurerm_key_vault.div_key_vault.id
 }
 
+data "azurerm_key_vault_secret" "redis_secret" {
+  name      = "redis-secret"
+  key_vault_id = data.azurerm_key_vault.div_key_vault.id
+}
+
 data "azurerm_key_vault_secret" "appinsights_secret" {
   name = "AppInsightsInstrumentationKey"
   key_vault_id = data.azurerm_key_vault.div_key_vault.id
