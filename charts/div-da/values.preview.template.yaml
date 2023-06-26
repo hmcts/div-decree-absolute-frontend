@@ -30,6 +30,7 @@ nodejs:
         - session-secret
         - redis-secret
         - idam-secret
+        - redis-connection-string
 
 redis:
   enabled: true
