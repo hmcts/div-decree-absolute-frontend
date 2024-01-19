@@ -53,6 +53,7 @@
     "jsoneditor": ">=9.5.6",
     "lodash": "^4.17.21",
     "moment": ">=2.29.4",
+    "node-sass": "^9.0.0",
     "os": "^0.1.1",
     "paths": "^0.1.1",
     "request": "^2.88.0",
@@ -159,6 +160,5 @@
       "test/**/*",
       "mocks/**/*"
     ]
-  },
-  "packageManager": "yarn@3.5.1"
+  }
 }
