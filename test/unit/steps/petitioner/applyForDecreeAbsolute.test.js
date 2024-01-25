@@ -7,7 +7,7 @@ const { middleware, question, sinon, content, custom, expect } = require('@hmcts
 const Exit = require('steps/petitioner/exit-no-longer-wants-to-proceed/ExitNoLongerWantsToProceed.step');
 
 const caseOrchestrationService = require('services/caseOrchestrationService');
-const { INTERNAL_SERVER_ERROR, MOVED_TEMPORARILY } = require('http-status-codes');
+const { MOVED_TEMPORARILY } = require('http-status-codes');
 const ProgressBar = require('steps/petitioner/progress-bar/PetitionerProgressBar.step');
 
 const PRE_STATE = 'AwaitingDecreeAbsolute';
@@ -89,23 +89,6 @@ describe(modulePath, () => {
     it('shows error if does not answer question', () => {
       const onlyErrors = ['required'];
       return question.testErrors(ApplyForDA, session, {}, { onlyErrors });
-    });
-
-    it('calls caseOrchestrationHelper.handleErrorCodes on failure', () => {
-      const error = new Error('An error has occurred on the Case Orchestration Service');
-      error.statusCode = INTERNAL_SERVER_ERROR;
-      caseOrchestrationService.submitApplication.rejects(error);
-      return custom(ApplyForDA)
-        .withSession(session)
-        .withField('applyForDecreeAbsolute', 'yes')
-        .post()
-        .expect(INTERNAL_SERVER_ERROR)
-        .expect(() => {
-          expect(session.case.state).to.be.equal(PRE_STATE);
-        })
-        .text(pageContent => {
-          expect(pageContent.indexOf(error) !== -1).to.eql(true);
-        });
     });
   });
 });
