@@ -81,6 +81,47 @@
             ],
             "url": "https://github.com/advisories/GHSA-c429-5p7v-vgjp"
         },
+        "1096543": {
+            "findings": [
+                {
+                    "version": "0.5.1",
+                    "paths": [
+                        "@hmcts/div-document-express-handler>config>json5",
+                        "@hmcts/look-and-feel>babel-loader>babel-core>json5",
+                        "@hmcts/look-and-feel>copy-webpack-plugin>webpack>loader-utils>json5"
+                    ]
+                }
+            ],
+            "found_by": null,
+            "deleted": null,
+            "references": "- https://github.com/json5/json5/security/advisories/GHSA-9c47-m6qq-7p4h\n- https://nvd.nist.gov/vuln/detail/CVE-2022-46175\n- https://github.com/json5/json5/issues/199\n- https://github.com/json5/json5/issues/295\n- https://github.com/json5/json5/pull/298\n- https://github.com/json5/json5/commit/62a65408408d40aeea14c7869ed327acead12972\n- https://github.com/json5/json5/commit/7774c1097993bc3ce9f0ac4b722a32bf7d6871c8\n- https://lists.debian.org/debian-lts-announce/2023/11/msg00021.html\n- https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/3S26TLPLVFAJTUN3VIXFDEBEXDYO22CE\n- https://github.com/advisories/GHSA-9c47-m6qq-7p4h",
+            "created": "2022-12-29T01:51:03.000Z",
+            "id": 1096543,
+            "npm_advisory_id": null,
+            "overview": "The `parse` method of the JSON5 library before and including version `2.2.1` does not restrict parsing of keys named `__proto__`, allowing specially crafted strings to pollute the prototype of the resulting object.\n\nThis vulnerability pollutes the prototype of the object returned by `JSON5.parse` and not the global Object prototype, which is the commonly understood definition of Prototype Pollution. However, polluting the prototype of a single object can have significant security impact for an application if the object is later used in trusted operations.\n\n## Impact\nThis vulnerability could allow an attacker to set arbitrary and unexpected keys on the object returned from `JSON5.parse`. The actual impact will depend on how applications utilize the returned object and how they filter unwanted keys, but could include denial of service, cross-site scripting, elevation of privilege, and in extreme cases, remote code execution.\n\n## Mitigation\nThis vulnerability is patched in json5 v2.2.2 and later. A patch has also been backported for json5 v1 in versions v1.0.2 and later.\n\n## Details\n \nSuppose a developer wants to allow users and admins to perform some risky operation, but they want to restrict what non-admins can do. To accomplish this, they accept a JSON blob from the user, parse it using `JSON5.parse`, confirm that the provided data does not set some sensitive keys, and then performs the risky operation using the validated data:\n \n```js\nconst JSON5 = require('json5');\n\nconst doSomethingDangerous = (props) => {\n  if (props.isAdmin) {\n    console.log('Doing dangerous thing as admin.');\n  } else {\n    console.log('Doing dangerous thing as user.');\n  }\n};\n\nconst secCheckKeysSet = (obj, searchKeys) => {\n  let searchKeyFound = false;\n  Object.keys(obj).forEach((key) => {\n    if (searchKeys.indexOf(key) > -1) {\n      searchKeyFound = true;\n    }\n  });\n  return searchKeyFound;\n};\n\nconst props = JSON5.parse('{\"foo\": \"bar\"}');\nif (!secCheckKeysSet(props, ['isAdmin', 'isMod'])) {\n  doSomethingDangerous(props); // \"Doing dangerous thing as user.\"\n} else {\n  throw new Error('Forbidden...');\n}\n```\n \nIf the user attempts to set the `isAdmin` key, their request will be rejected:\n \n```js\nconst props = JSON5.parse('{\"foo\": \"bar\", \"isAdmin\": true}');\nif (!secCheckKeysSet(props, ['isAdmin', 'isMod'])) {\n  doSomethingDangerous(props);\n} else {\n  throw new Error('Forbidden...'); // Error: Forbidden...\n}\n```\n \nHowever, users can instead set the `__proto__` key to `{\"isAdmin\": true}`. `JSON5` will parse this key and will set the `isAdmin` key on the prototype of the returned object, allowing the user to bypass the security check and run their request as an admin:\n \n```js\nconst props = JSON5.parse('{\"foo\": \"bar\", \"__proto__\": {\"isAdmin\": true}}');\nif (!secCheckKeysSet(props, ['isAdmin', 'isMod'])) {\n  doSomethingDangerous(props); // \"Doing dangerous thing as admin.\"\n} else {\n  throw new Error('Forbidden...');\n}\n ```",
+            "reported_by": null,
+            "title": "Prototype Pollution in JSON5 via Parse Method",
+            "metadata": null,
+            "cves": [
+                "CVE-2022-46175"
+            ],
+            "access": "public",
+            "severity": "high",
+            "module_name": "json5",
+            "vulnerable_versions": "<1.0.2",
+            "github_advisory_id": "GHSA-9c47-m6qq-7p4h",
+            "recommendation": "Upgrade to version 1.0.2 or later",
+            "patched_versions": ">=1.0.2",
+            "updated": "2024-02-22T05:08:21.000Z",
+            "cvss": {
+                "score": 7.1,
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:H"
+            },
+            "cwe": [
+                "CWE-1321"
+            ],
+            "url": "https://github.com/advisories/GHSA-9c47-m6qq-7p4h"
+        },
         "1096727": {
             "findings": [
                 {
@@ -247,6 +288,50 @@
             ],
             "url": "https://github.com/advisories/GHSA-67hx-6x53-jw92"
         },
+        "1097685": {
+            "findings": [
+                {
+                    "version": "5.5.2",
+                    "paths": [
+                        "jsoneditor>ajv",
+                        "request>har-validator>ajv",
+                        "@hmcts/div-document-express-handler>request>har-validator>ajv",
+                        "@hmcts/div-idam-express-middleware>request-promise-core>request>har-validator>ajv",
+                        "@hmcts/div-idam-express-middleware>request-promise-native>request-promise-core>request>har-validator>ajv"
+                    ]
+                }
+            ],
+            "found_by": null,
+            "deleted": null,
+            "references": "- https://nvd.nist.gov/vuln/detail/CVE-2020-15366\n- https://github.com/ajv-validator/ajv/commit/65b2f7d76b190ac63a0d4e9154c712d7aa37049f\n- https://github.com/ajv-validator/ajv/releases/tag/v6.12.3\n- https://hackerone.com/bugs?subject=user&report_id=894259\n- https://github.com/ajv-validator/ajv/tags\n- https://security.netapp.com/advisory/ntap-20240621-0007\n- https://github.com/advisories/GHSA-v88g-cgmw-v5xw",
+            "created": "2022-02-10T23:30:59.000Z",
+            "id": 1097685,
+            "npm_advisory_id": null,
+            "overview": "An issue was discovered in ajv.validate() in Ajv (aka Another JSON Schema Validator) 6.12.2. A carefully crafted JSON schema could be provided that allows execution of other code by prototype pollution. (While untrusted schemas are recommended against, the worst case of an untrusted schema should be a denial of service, not execution of code.)",
+            "reported_by": null,
+            "title": "Prototype Pollution in Ajv",
+            "metadata": null,
+            "cves": [
+                "CVE-2020-15366"
+            ],
+            "access": "public",
+            "severity": "moderate",
+            "module_name": "ajv",
+            "vulnerable_versions": "<6.12.3",
+            "github_advisory_id": "GHSA-v88g-cgmw-v5xw",
+            "recommendation": "Upgrade to version 6.12.3 or later",
+            "patched_versions": ">=6.12.3",
+            "updated": "2024-06-21T21:33:49.000Z",
+            "cvss": {
+                "score": 5.6,
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+            },
+            "cwe": [
+                "CWE-915",
+                "CWE-1321"
+            ],
+            "url": "https://github.com/advisories/GHSA-v88g-cgmw-v5xw"
+        },
         "1098094": {
             "findings": [
                 {
@@ -291,6 +376,127 @@
             ],
             "url": "https://github.com/advisories/GHSA-grv7-fg5c-xmjg"
         },
+        "1098681": {
+            "findings": [
+                {
+                    "version": "2.3.11",
+                    "paths": [
+                        "@hmcts/look-and-feel>webpack>watchpack>chokidar>anymatch>micromatch",
+                        "@hmcts/look-and-feel>copy-webpack-plugin>webpack>watchpack>chokidar>anymatch>micromatch",
+                        "@hmcts/look-and-feel>copy-webpack-plugin>webpack>watchpack>watchpack-chokidar2>chokidar>anymatch>micromatch"
+                    ]
+                }
+            ],
+            "found_by": null,
+            "deleted": null,
+            "references": "- https://nvd.nist.gov/vuln/detail/CVE-2024-4067\n- https://github.com/micromatch/micromatch/issues/243\n- https://github.com/micromatch/micromatch/pull/247\n- https://devhub.checkmarx.com/cve-details/CVE-2024-4067\n- https://github.com/micromatch/micromatch/blob/2c56a8604b68c1099e7bc0f807ce0865a339747a/index.js#L448\n- https://github.com/micromatch/micromatch/commit/500d5d6f42f0e8dfa1cb5464c6cb420b1b6aaaa0\n- https://github.com/micromatch/micromatch/pull/266\n- https://github.com/micromatch/micromatch/commit/03aa8052171e878897eee5d7bb2ae0ae83ec2ade\n- https://advisory.checkmarx.net/advisory/CVE-2024-4067\n- https://github.com/micromatch/micromatch/releases/tag/4.0.8\n- https://github.com/advisories/GHSA-952p-6rrq-rcjv",
+            "created": "2024-05-14T18:30:54.000Z",
+            "id": 1098681,
+            "npm_advisory_id": null,
+            "overview": "The NPM package `micromatch` prior to version 4.0.8 is vulnerable to Regular Expression Denial of Service (ReDoS). The vulnerability occurs in `micromatch.braces()` in `index.js` because the pattern `.*` will greedily match anything. By passing a malicious payload, the pattern matching will keep backtracking to the input while it doesn't find the closing bracket. As the input size increases, the consumption time will also increase until it causes the application to hang or slow down. There was a merged fix but further testing shows the issue persisted prior to https://github.com/micromatch/micromatch/pull/266. This issue should be mitigated by using a safe pattern that won't start backtracking the regular expression due to greedy matching.\n",
+            "reported_by": null,
+            "title": "Regular Expression Denial of Service (ReDoS) in micromatch",
+            "metadata": null,
+            "cves": [
+                "CVE-2024-4067"
+            ],
+            "access": "public",
+            "severity": "moderate",
+            "module_name": "micromatch",
+            "vulnerable_versions": "<4.0.8",
+            "github_advisory_id": "GHSA-952p-6rrq-rcjv",
+            "recommendation": "Upgrade to version 4.0.8 or later",
+            "patched_versions": ">=4.0.8",
+            "updated": "2024-08-28T13:12:27.000Z",
+            "cvss": {
+                "score": 5.3,
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "cwe": [
+                "CWE-1333"
+            ],
+            "url": "https://github.com/advisories/GHSA-952p-6rrq-rcjv"
+        },
+        "1099520": {
+            "findings": [
+                {
+                    "version": "1.19.2",
+                    "paths": [
+                        "express>body-parser",
+                        "@hmcts/look-and-feel>express>body-parser"
+                    ]
+                }
+            ],
+            "found_by": null,
+            "deleted": null,
+            "references": "- https://github.com/expressjs/body-parser/security/advisories/GHSA-qwcr-r2fm-qrc7\n- https://github.com/expressjs/body-parser/commit/b2695c4450f06ba3b0ccf48d872a229bb41c9bce\n- https://nvd.nist.gov/vuln/detail/CVE-2024-45590\n- https://github.com/advisories/GHSA-qwcr-r2fm-qrc7",
+            "created": "2024-09-10T15:52:39.000Z",
+            "id": 1099520,
+            "npm_advisory_id": null,
+            "overview": "### Impact\n\nbody-parser <1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n",
+            "reported_by": null,
+            "title": "body-parser vulnerable to denial of service when url encoding is enabled",
+            "metadata": null,
+            "cves": [
+                "CVE-2024-45590"
+            ],
+            "access": "public",
+            "severity": "high",
+            "module_name": "body-parser",
+            "vulnerable_versions": "<1.20.3",
+            "github_advisory_id": "GHSA-qwcr-r2fm-qrc7",
+            "recommendation": "Upgrade to version 1.20.3 or later",
+            "patched_versions": ">=1.20.3",
+            "updated": "2024-09-10T19:01:11.000Z",
+            "cvss": {
+                "score": 7.5,
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "cwe": [
+                "CWE-405"
+            ],
+            "url": "https://github.com/advisories/GHSA-qwcr-r2fm-qrc7"
+        },
+        "1099527": {
+            "findings": [
+                {
+                    "version": "1.14.2",
+                    "paths": [
+                        "express>serve-static",
+                        "@hmcts/look-and-feel>express>serve-static"
+                    ]
+                }
+            ],
+            "found_by": null,
+            "deleted": null,
+            "references": "- https://github.com/expressjs/serve-static/security/advisories/GHSA-cm22-4g7w-348p\n- https://nvd.nist.gov/vuln/detail/CVE-2024-43800\n- https://github.com/expressjs/serve-static/commit/0c11fad159898cdc69fd9ab63269b72468ecaf6b\n- https://github.com/expressjs/serve-static/commit/ce730896fddce1588111d9ef6fdf20896de5c6fa\n- https://github.com/advisories/GHSA-cm22-4g7w-348p",
+            "created": "2024-09-10T19:42:33.000Z",
+            "id": 1099527,
+            "npm_advisory_id": null,
+            "overview": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n",
+            "reported_by": null,
+            "title": "serve-static vulnerable to template injection that can lead to XSS",
+            "metadata": null,
+            "cves": [
+                "CVE-2024-43800"
+            ],
+            "access": "public",
+            "severity": "moderate",
+            "module_name": "serve-static",
+            "vulnerable_versions": "<1.16.0",
+            "github_advisory_id": "GHSA-cm22-4g7w-348p",
+            "recommendation": "Upgrade to version 1.16.0 or later",
+            "patched_versions": ">=1.16.0",
+            "updated": "2024-09-10T19:42:34.000Z",
+            "cvss": {
+                "score": 5,
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+            },
+            "cwe": [
+                "CWE-79"
+            ],
+            "url": "https://github.com/advisories/GHSA-cm22-4g7w-348p"
+        },
         "1099529": {
             "findings": [
                 {
@@ -330,6 +536,46 @@
                 "CWE-79"
             ],
             "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+        },
+        "1099562": {
+            "findings": [
+                {
+                    "version": "0.1.7",
+                    "paths": [
+                        "express>path-to-regexp",
+                        "@hmcts/look-and-feel>express>path-to-regexp"
+                    ]
+                }
+            ],
+            "found_by": null,
+            "deleted": null,
+            "references": "- https://github.com/pillarjs/path-to-regexp/security/advisories/GHSA-9wv6-86v2-598j\n- https://github.com/pillarjs/path-to-regexp/commit/29b96b4a1de52824e1ca0f49a701183cc4ed476f\n- https://github.com/pillarjs/path-to-regexp/commit/60f2121e9b66b7b622cc01080df0aabda9eedee6\n- https://nvd.nist.gov/vuln/detail/CVE-2024-45296\n- https://github.com/pillarjs/path-to-regexp/commit/925ac8e3c5780b02f58cbd4e52f95da8ad2ac485\n- https://github.com/pillarjs/path-to-regexp/commit/d31670ae8f6e69cbfd56e835742195b7d10942ef\n- https://github.com/pillarjs/path-to-regexp/commit/f1253b47b347dcb909e3e80b0eb2649109e59894\n- https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0\n- https://github.com/advisories/GHSA-9wv6-86v2-598j",
+            "created": "2024-09-09T20:19:15.000Z",
+            "id": 1099562,
+            "npm_advisory_id": null,
+            "overview": "### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `/:a-:b`.\n\n### Patches\n\nFor users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\nThese versions add backtrack protection when a custom regex pattern is not provided:\n\n- [0.1.10](https://github.com/pillarjs/path-to-regexp/releases/tag/v0.1.10)\n- [1.9.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v1.9.0)\n- [3.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v3.3.0)\n- [6.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0)\n\nThey do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\nVersion [7.1.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\nVersion [8.0.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v8.0.0) removes the features that can cause a ReDoS.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `/:a-:b` to `/:a-:b([^-/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\n### Details\n\nUsing `/:a-:b` will produce the regular expression `/^\\/([^\\/]+?)-([^\\/]+?)\\/?$/`. This can be exploited by a path such as `/a${'-a'.repeat(8_000)}/a`. [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\nBecause JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\n### References\n\n* [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)\n* [Detailed blog post](https://blakeembrey.com/posts/2024-09-web-redos/)",
+            "reported_by": null,
+            "title": "path-to-regexp outputs backtracking regular expressions",
+            "metadata": null,
+            "cves": [
+                "CVE-2024-45296"
+            ],
+            "access": "public",
+            "severity": "high",
+            "module_name": "path-to-regexp",
+            "vulnerable_versions": "<0.1.10",
+            "github_advisory_id": "GHSA-9wv6-86v2-598j",
+            "recommendation": "Upgrade to version 0.1.10 or later",
+            "patched_versions": ">=0.1.10",
+            "updated": "2024-09-12T17:09:43.000Z",
+            "cvss": {
+                "score": 7.5,
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "cwe": [
+                "CWE-1333"
+            ],
+            "url": "https://github.com/advisories/GHSA-9wv6-86v2-598j"
         }
     },
     "muted": [],
@@ -337,13 +583,13 @@
         "vulnerabilities": {
             "info": 0,
             "low": 0,
-            "moderate": 8,
-            "high": 10,
+            "moderate": 18,
+            "high": 17,
             "critical": 5
         },
-        "dependencies": 845,
-        "devDependencies": 0,
+        "dependencies": 860,
+        "devDependencies": 1,
         "optionalDependencies": 0,
-        "totalDependencies": 845
+        "totalDependencies": 861
     }
 }
