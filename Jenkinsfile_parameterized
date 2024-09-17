@@ -1,6 +1,6 @@
 #!groovy
 
-@Library("Infrastructure@old-provider") _
+@Library("Infrastructure") _
 
 properties([
     parameters([
