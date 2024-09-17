@@ -12,7 +12,7 @@
     "dev": "NODE_ENV=dev NODE_PATH=. node-dev server.js",
     "mocks": "NODE_ENV=dev NODE_PATH=. node-dev mocks/index.js",
     "test": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR nyc mocha --exit 'test/unit/**/*.test.js' --timeout 15000",
-    "test:all": "NODE_NO_WARNINGS=1  yarn lint; yarn test:unit; yarn test:a11y; yarn test:validation; yarn test:functional",
+    "test:all": "yarn lint; yarn test:unit; yarn test:a11y; yarn test:validation; yarn test:functional",
     "test:unit": "NODE_PATH=. NODE_ENV=testing LOG_LEVEL=ERROR mocha --exit 'test/unit/**/*.js' --timeout 15000",
     "test:smoke": "NODE_PATH=. LOG_LEVEL=ERROR codeceptjs run -c test/functional/codecept.smoke.conf.js --steps",
     "test:coverage": "nyc check-coverage --statements 10 --branches 10 --functions 10 --lines 10",
