@@ -760,7 +760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hmcts/nodejs-logging@npm:^3.0.0":
+"@hmcts/nodejs-logging@npm:^3.0.0, @hmcts/nodejs-logging@npm:^3.0.1":
   version: 3.0.4
   resolution: "@hmcts/nodejs-logging@npm:3.0.4"
   dependencies:
@@ -5825,7 +5825,7 @@ __metadata:
     "@hmcts/eslint-config": ^1.4.0
     "@hmcts/look-and-feel": ^5.0.6
     "@hmcts/nodejs-healthcheck": ^1.7.0
-    "@hmcts/nodejs-logging": ^3.0.0
+    "@hmcts/nodejs-logging": ^3.0.1
     "@hmcts/one-per-page": 5.4.0
     "@hmcts/one-per-page-test-suite": ^4.0.0
     "@hmcts/properties-volume": ^0.0.13
