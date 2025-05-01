@@ -4,8 +4,8 @@ name: div-da
 version: 2.0.26
 dependencies:
   - name: nodejs
-    version: 3.1.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 3.2.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: redis
     version: 17.7.2
     repository: "https://charts.bitnami.com/bitnami"
@@ -13,6 +13,6 @@ dependencies:
       -  pr
   - name: idam-pr
     version: 2.2.7
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     tags:
       - idam-pr
