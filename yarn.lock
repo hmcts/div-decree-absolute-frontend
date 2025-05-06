@@ -695,7 +695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hmcts/look-and-feel@npm:^5.0.6":
+"@hmcts/look-and-feel@npm:latest":
   version: 5.0.6
   resolution: "@hmcts/look-and-feel@npm:5.0.6"
   dependencies:
@@ -5870,7 +5870,7 @@ __metadata:
     "@hmcts/div-idam-test-harness": ^1.9.0
     "@hmcts/div-test-harness": ^1.0.4
     "@hmcts/eslint-config": ^1.4.0
-    "@hmcts/look-and-feel": ^5.0.6
+    "@hmcts/look-and-feel": latest
     "@hmcts/nodejs-healthcheck": ^1.7.0
     "@hmcts/nodejs-logging": ^3.0.1
     "@hmcts/one-per-page": 5.4.0
