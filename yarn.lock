@@ -695,9 +695,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hmcts/look-and-feel@npm:^5.0.6":
-  version: 5.0.6
-  resolution: "@hmcts/look-and-feel@npm:5.0.6"
+"@hmcts/look-and-feel@npm:^4.0.8":
+  version: 4.1.1
+  resolution: "@hmcts/look-and-feel@npm:4.1.1"
   dependencies:
     babel-core: ^6.26.3
     babel-loader: ^7.1.2
@@ -712,20 +712,20 @@ __metadata:
     exports-loader: ^0.7.0
     express: ^4.17.1
     express-nunjucks: ^2.2.3
-    govuk-frontend: ^3.6.0
+    extract-text-webpack-plugin: ^3.0.2
+    govuk-frontend: ^2.6.0
     hard-source-webpack-plugin: ^0.13.1
     imports-loader: "github:webpack-contrib/imports-loader#abea1c24f84b1343f9a277e33c8d89c83c013274"
     jquery: ^3.4.1
     js-yaml: ^3.13.1
-    mini-css-extract-plugin: ^0.9.0
     node-sass: ^4.13.1
     nunjucks: ^3.2.0
     sass-loader: ^6.0.6
     serve-static: ^1.14.1
-    style-loader: ^0.23.1
+    style-loader: ^0.20.1
     webpack: ^4.41.5
     webpack-dev-middleware: ^2.0.4
-  checksum: 1d298fc48987b0db6972de70d00cff58d7118393a34868148fcf55331f427396c92ddaeb55cd9c0d810acbd3d445805c755ba09cf7ff6edf5ba0786a9f2a75ed
+  checksum: d7d2c8979123c8bd642bea8d80c16ff3134eefeeeef2cb619de86978aac38cff62c100a5d853c2b0a95f87f79ccb6e83f9c2e8975a5ce41d40959721e97a7504
   languageName: node
   linkType: hard
 
@@ -6072,7 +6072,7 @@ __metadata:
     "@hmcts/div-idam-test-harness": ^1.9.0
     "@hmcts/div-test-harness": ^1.0.4
     "@hmcts/eslint-config": ^1.4.0
-    "@hmcts/look-and-feel": ^5.0.6
+    "@hmcts/look-and-feel": ^4.0.8
     "@hmcts/nodejs-healthcheck": ^1.7.0
     "@hmcts/nodejs-logging": ^3.0.1
     "@hmcts/one-per-page": 5.4.0
@@ -7242,7 +7242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"extract-text-webpack-plugin@npm:^3.0.0":
+"extract-text-webpack-plugin@npm:^3.0.0, extract-text-webpack-plugin@npm:^3.0.2":
   version: 3.0.2
   resolution: "extract-text-webpack-plugin@npm:3.0.2"
   dependencies:
@@ -8364,7 +8364,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"govuk-frontend@npm:^3.0.0, govuk-frontend@npm:^3.6.0":
+"govuk-frontend@npm:^3.0.0":
   version: 3.15.0
   resolution: "govuk-frontend@npm:3.15.0"
   checksum: be542a5d52ebc69c2e154f199ffaa3679bb506212d19c7fc15ff31b7a5a580f7be16af8978d357949e4d9af10a6f3b85eb240ae32bd78a3b1a0f8fed63d7aac0
@@ -11841,20 +11841,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "mini-css-extract-plugin@npm:0.9.0"
-  dependencies:
-    loader-utils: ^1.1.0
-    normalize-url: 1.9.1
-    schema-utils: ^1.0.0
-    webpack-sources: ^1.1.0
-  peerDependencies:
-    webpack: ^4.4.0
-  checksum: e5cf437c15e4adf119d3a5af1bb604c880bc90a637aaf0535c8db68219efec42dcace1c54789422dec05d76ced98c44ef89ae44a3c556e34936fdbdd4743a210
-  languageName: node
-  linkType: hard
-
 "minimalistic-assert@npm:^1.0.0, minimalistic-assert@npm:^1.0.1":
   version: 1.0.1
   resolution: "minimalistic-assert@npm:1.0.1"
@@ -12773,18 +12759,6 @@ __metadata:
   version: 3.0.0
   resolution: "normalize-path@npm:3.0.0"
   checksum: 88eeb4da891e10b1318c4b2476b6e2ecbeb5ff97d946815ffea7794c31a89017c70d7f34b3c2ebf23ef4e9fc9fb99f7dffe36da22011b5b5c6ffa34f4873ec20
-  languageName: node
-  linkType: hard
-
-"normalize-url@npm:1.9.1":
-  version: 1.9.1
-  resolution: "normalize-url@npm:1.9.1"
-  dependencies:
-    object-assign: ^4.0.1
-    prepend-http: ^1.0.0
-    query-string: ^4.1.0
-    sort-keys: ^1.0.0
-  checksum: 4b03c22bebbb822874ce3b9204367ad1f27c314ae09b13aa201de730b3cf95f00dadf378277a56062322968c95c06e5764d01474d26af8b43d20bc4c8c491f84
   languageName: node
   linkType: hard
 
@@ -13873,13 +13847,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prepend-http@npm:^1.0.0":
-  version: 1.0.4
-  resolution: "prepend-http@npm:1.0.4"
-  checksum: 01e7baf4ad38af02257b99098543469332fc42ae50df33d97a124bf8172295907352fa6138c9b1610c10c6dd0847ca736e53fda736387cc5cf8fcffe96b47f29
-  languageName: node
-  linkType: hard
-
 "pretty-format@npm:^26.6.2":
   version: 26.6.2
   resolution: "pretty-format@npm:26.6.2"
@@ -14218,16 +14185,6 @@ __metadata:
   dependencies:
     side-channel: ^1.1.0
   checksum: 189b52ad4e9a0da1a16aff4c58b2a554a8dad9bd7e287c7da7446059b49ca2e33a49e570480e8be406b87fccebf134f51c373cbce36c8c83859efa0c9b71d635
-  languageName: node
-  linkType: hard
-
-"query-string@npm:^4.1.0":
-  version: 4.3.4
-  resolution: "query-string@npm:4.3.4"
-  dependencies:
-    object-assign: ^4.1.0
-    strict-uri-encode: ^1.0.0
-  checksum: 3b2bae6a8454cf0edf11cf1aa4d1f920398bbdabc1c39222b9bb92147e746fcd97faf00e56f494728fb66b2961b495ba0fde699d5d3bd06b11472d664b36c6cf
   languageName: node
   linkType: hard
 
@@ -15933,15 +15890,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sort-keys@npm:^1.0.0":
-  version: 1.1.2
-  resolution: "sort-keys@npm:1.1.2"
-  dependencies:
-    is-plain-obj: ^1.0.0
-  checksum: 5963fd191a2a185a5ec86f06e47721e8e04713eda43bb04ae60d2a8afb21241553dd5bc9d863ed2bd7c3d541b609b0c8d0e58836b1a3eb6764c09c094bcc8b00
-  languageName: node
-  linkType: hard
-
 "sort-keys@npm:^2.0.0":
   version: 2.0.0
   resolution: "sort-keys@npm:2.0.0"
@@ -16292,13 +16240,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strict-uri-encode@npm:^1.0.0":
-  version: 1.1.0
-  resolution: "strict-uri-encode@npm:1.1.0"
-  checksum: 9466d371f7b36768d43f7803f26137657559e4c8b0161fb9e320efb8edba3ae22f8e99d4b0d91da023b05a13f62ec5412c3f4f764b5788fac11d1fea93720bb3
-  languageName: node
-  linkType: hard
-
 "string-length@npm:^4.0.1":
   version: 4.0.2
   resolution: "string-length@npm:4.0.2"
@@ -16531,16 +16472,6 @@ __metadata:
     loader-utils: ^1.1.0
     schema-utils: ^0.4.5
   checksum: 1901bedf13b4009faf0fb6998f167d88493e80662679c63bf4b8a89f8b458b4347c67a76f1f8b16dc61100559980b4830edef3a657b873ac49e0f4e0f4979e63
-  languageName: node
-  linkType: hard
-
-"style-loader@npm:^0.23.1":
-  version: 0.23.1
-  resolution: "style-loader@npm:0.23.1"
-  dependencies:
-    loader-utils: ^1.1.0
-    schema-utils: ^1.0.0
-  checksum: 0a513a2d881e88bbfd574750df3dc61f57424684458d94cb6ae41e635d03abfa8974bb591eab9051650082c5f5502994dc17c7ca9fb0fc9e8d31f651f6737479
   languageName: node
   linkType: hard
 
@@ -17978,7 +17909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^1.0.1, webpack-sources@npm:^1.1.0, webpack-sources@npm:^1.4.0, webpack-sources@npm:^1.4.1":
+"webpack-sources@npm:^1.0.1, webpack-sources@npm:^1.4.0, webpack-sources@npm:^1.4.1":
   version: 1.4.3
   resolution: "webpack-sources@npm:1.4.3"
   dependencies:
