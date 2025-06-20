@@ -1,6 +1,6 @@
 tags:
-  - idam-pr
-  - pr
+  - idam-pr: true
+  - pr: true
 
 idam-pr:
   redirect_uris:
@@ -37,3 +37,7 @@ redis:
   architecture: standalone
   auth:
     enabled: false
+  serviceAccount:
+    create: false
+    name: "divorce"
+    automountServiceAccountToken: true
