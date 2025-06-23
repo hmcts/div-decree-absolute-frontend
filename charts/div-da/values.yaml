@@ -42,7 +42,7 @@ nodejs:
 
     CASE_MAINTENANCE_BASE_URL: "http://div-cms-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     DEPLOYMENT_ENV: "{{ .Values.global.environment }}"
-    EVIDENCE_MANAGEMENT_CLIENT_API_URL: "http://div-emca-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/"
+    EVIDENCE_MANAGEMENT_CLIENT_API_URL: "http://div-emca-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     EVIDENCE_MANAGEMENT_CLIENT_API_DOWNLOAD_ENDPOINT: "/emclientapi/version/1/download"
     FEES_AND_PAYMENTS_URL: "http://div-fps-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
     IDAM_API_URL: "https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net"

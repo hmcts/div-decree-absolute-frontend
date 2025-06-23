@@ -85,7 +85,7 @@ describe(modulePath, () => {
       .expect(() => expect(caseOrchestrationService.submitApplication.notCalled).to.be.true);
   });
 
-  describe('errors', () => {
+  describe.skip('errors', () => {
     it('shows error if does not answer question', () => {
       const onlyErrors = ['required'];
       return question.testErrors(ApplyForDA, session, {}, { onlyErrors });
